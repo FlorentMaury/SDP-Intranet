@@ -36,7 +36,7 @@
 
         <!-- Bouton de déconnexion. -->
         <div class="container my-4 d-flex justify-content-end">
-            <button type="button" href="" class="btn btn-dark me-2">
+            <button type="button" href="" class="btn btn-dark m-2">
                 <a class="text-decoration-none text-white p-2" href="index.php?page=logout">Déconnexion</a>
             </button>
         </div>

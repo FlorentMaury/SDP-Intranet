@@ -14,7 +14,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
     }
 
     // Chiffrement du mot de passe.
-    // $password = "bx1".sha1($password ."456")."123";
+    $password = "zk32".sha1($password ."486")."345";
 
     // L'adresse email est-elle bien utilisée ?
     $req = $bdd->prepare('SELECT COUNT(*) as numberEmail FROM marital_status WHERE email = ?');
@@ -40,6 +40,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             $_SESSION['id']      = $user['id'];
             $_SESSION['surname'] = $user['surname'];
             $_SESSION['name']    = $user['name'];
+            $_SESSION['sex']     = $user['sex'];
             $_SESSION['password']      = $user['password'];
             $_SESSION['birth_date']    = $user['birth_date'];
             $_SESSION['phone_number']  = $user['phone_number'];
@@ -50,7 +51,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             exit();
         } else {
             // Erreur dans le mot de passe.
-            header('location: index.php?page=dashboard');
+            header('location: index.php?error=1&message=Impossible de vous authentifier correctement.');
             exit();
         }
     }
