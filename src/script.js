@@ -48,20 +48,3 @@ arrowDown3.addEventListener('click', () => {
     arrowUp3.style.display = 'block';
     arrowDown3.style.display = 'none';
 });
-
-$(document).ready(function(){
-    function getData(){
-        $.ajax({
-            type: 'POST',
-            url: './index.php',
-            success: function(data){
-                $('#output').html(data);
-            }
-        });
-    }
-    getData();
-    setInterval(function () {
-        getData(); 
-    }, 1000);  // it will refresh your data every 1 sec
-
-});
