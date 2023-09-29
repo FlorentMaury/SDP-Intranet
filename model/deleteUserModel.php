@@ -8,6 +8,12 @@ if (isset($_GET['id'])) {
     // Connexion à la base de données.
     require('../model/connectionDBModel.php');
 
+    // Suppression de l'image de profil du serveur.
+    $r = $bdd->prepare("SELECT profile_picture FROM `marital_status` WHERE id = ?");
+    $r->execute([$id]);
+    $profilePicture = $r->fetchColumn();
+    unlink('../public/assets/usersImg/'.$profilePicture);
+
     // Suppression des informations du véhicule de la base de donnée.
     $req = $bdd->prepare('DELETE FROM marital_status WHERE id = ?');
     $req->execute([$id]);

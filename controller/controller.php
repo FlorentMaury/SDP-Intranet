@@ -26,6 +26,8 @@
             require('model/modifyInformationsModels/modifyProfilePictureModel.php');
             require('model/modifyInformationsModels/modifyCurrentStreetName.php');
             require('model/modifyInformationsModels/modifyCurrentCity.php');
+            require('model/modifyInformationsModels/modifyZipCode.php');
+            require('model/modifyInformationsModels/modifyCurrentCountry.php');
 
         require('view/dashboardView.php');
     };
