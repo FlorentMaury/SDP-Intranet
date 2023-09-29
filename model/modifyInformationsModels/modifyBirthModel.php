@@ -2,15 +2,15 @@
 
 // Vérification du formulaire de modification du planning.
 if(
-    !empty($_POST['modifyName']) 
+    !empty($_POST['modifyBirth']) 
     ) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $modifyName = htmlspecialchars($_POST['modifyName']);
-    $userId     = $_SESSION['id'];
+    $modifyBirth = htmlspecialchars($_POST['modifyBirth']);
+    $userId      = $_SESSION['id'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
@@ -18,8 +18,8 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET name = ? WHERE id = ?');
-    $req->execute([$modifyName, $userModifiedId]);
+    $req = $bdd->prepare('UPDATE marital_status SET birth_date = ? WHERE id = ?');
+    $req->execute([$modifyBirth, $userModifiedId]);
 
     // Redirection.
     header('location: index.php?page=dashboard');
