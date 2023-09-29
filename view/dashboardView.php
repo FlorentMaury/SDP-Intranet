@@ -7,7 +7,9 @@
 
 ?>
 
-<h1 class="text-center">Tableau de bord de <?= $_SESSION['name'] ?> <?= $_SESSION['surname'] ?></h1>
+<h1><?= $_SESSION['id']; ?></h1>
+
+<h1 class="text-center my-5">Tableau de bord de <?= $_SESSION['name'] ?> <?= $_SESSION['surname'] ?></h1>
 
 <?php
 
@@ -94,22 +96,123 @@
 <div class="border rounded p-3">
     <h2>Informations personnelles</h2>
 
-        <p><?= $_SESSION['email'] ?></p>
-        <p><?= $_SESSION['name'] ?></p>
-        <p><?= $_SESSION['surname'] ?></p>
-        <p><?= $_SESSION['birth_date'] ?></p>
-        <p><?= $_SESSION['sex'] ?></p>
-        <p><?= $_SESSION['phone_number'] ?></p>
-        <p><?= $_SESSION['creation_date'] ?></p>
+        <p>Email : <?= $_SESSION['email'] ?></p>         <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInfos">Modifier les informations</a>
+        </button>
+        <p>Prénom : <?= $_SESSION['name'] ?></p>
+        <p>Nom de famille :<?= $_SESSION['surname'] ?></p>
+        <p>Date de naissance : <?= $_SESSION['birth_date'] ?></p>
+        <p>Sexe : <?= $_SESSION['sex'] ?></p>
+        <p>Numéro de téléphone : +33<?= $_SESSION['phone_number'] ?></p>
+        <p>Date d'inscription : <?= $_SESSION['creation_date'] ?></p>
+        <p>Numéro de carte vitale : <?php if(empty($_SESSION['social_security_number'])) {echo 'A completer';} else { echo $_SESSION['social_security_number'];} ?></p>
+        <p>Numéro de carte d'identité : <?php if(empty($_SESSION['id_number'])) {echo 'A completer';} else { echo $_SESSION['id_number'];} ?></p>
 
+</div>
+
+<!-- Modale de modifications. -->
+<div class="modal fade" id="modifyInfos" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier les informations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
+
+                <p class="form-floating m-2">
+                    <input type="text" name="modifyName" class="form-control" id="modifyName" placeholder="Prénom">
+                    <label for="modifyName">Prénom</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="modifySurname" class="form-control" id="modifySurname" placeholder="Nom de famille">
+                    <label for="modifySurname">Nom de famille</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="date" name="modifyBirth" class="form-control" id="modifyBirth" placeholder="Date de naissance">
+                    <label for="modifyBirth">Date de naissance</label>
+                </p>
+                <p class="form-floating m-2">
+                    <label for="modifySex"></label>
+                    <select class="form-control" id="modifySex">
+                        <option>Homme</option>
+                        <option>Femme</option>
+                    </select>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="phone" name="modifyPhone" class="form-control" id="modifyPhone" placeholder="Numéro de téléphone">
+                    <label for="modifyPhone">Téléphone</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="cityBirthCity" class="form-control" id="cityBirthCity" placeholder="Ville de naissance">
+                    <label for="cityBirthCity">Ville de naissance</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="cityBirthCountry" class="form-control" id="cityBirthCountry" placeholder="Pays de naissance">
+                    <label for="cityBirthCountry">Pays de naissance</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="cityLivingNumber" class="form-control" id="cityLivingNumber" placeholder="Numéro de rue de résidence">
+                    <label for="cityLivingNumber">Numéro de rue de résidence</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="cityLivingStreet" class="form-control" id="cityLivingStreet" placeholder="Rue de résidence">
+                    <label for="cityLivingStreet">Rue de résidence</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="cityLivingCity" class="form-control" id="cityLivingCity" placeholder="Ville de résidence">
+                    <label for="cityLivingCity">Ville de résidence</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="cityLivingCountry	" class="form-control" id="cityLivingCountry" placeholder="Pays de résidence">
+                    <label for="cityLivingCountry">Pays de résidence</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="idNumber" class="form-control" id="idNumber" placeholder="Numéro de carte d'identité">
+                    <label for="idNumber">Numéro de carte d'identité</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="idInsurance" class="form-control" id="idInsurance" placeholder="Numéro de carte vitale">
+                    <label for="idInsurance">Numéro de carte vitale</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="file" name="modifyIdImg" class="form-control" id="modifyIdImg" placeholder="Photo d'identité">
+                    <label for="modifyIdImg">Photo d'identité</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="file" name="modifyInsuranceFace" class="form-control" id="modifyIdImg" placeholder="Carte vitale (recto)">
+                    <label for="modifyIdImg">Carte vitale (recto)</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="file" name="modifyInsuranceBack" class="form-control" id="modifyIdImg" placeholder="Carte vitale (verso)">
+                    <label for="modifyIdImg">Carte vitale (verso)</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="file" name="modifyIdFace" class="form-control" id="modifyIdImg" placeholder="Carte d'identité (recto)">
+                    <label for="modifyIdImg">Carte d'identité (recto)</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="file" name="modifyIdBack" class="form-control" id="modifyIdImg" placeholder="Carte d'identité (verso)">
+                    <label for="modifyIdImg">Carte d'identité (verso)</label>
+                </p>
+                
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <?php 
 
-// Fin de l'enregistrement du HTML.
-$content = ob_get_clean();
+    // Fin de l'enregistrement du HTML.
+    $content = ob_get_clean();
 
-// Intégration à base.php.
-require('base.php');
+    // Intégration à base.php.
+    require('base.php');
 
 ?>

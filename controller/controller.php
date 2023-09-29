@@ -12,6 +12,7 @@
     function dashboard() {
         require('model/connectionDBModel.php');
         require('model/addNewUserModel.php');
+        require('model/modifyInformationsModels/modifyNameModel.php');
         require('view/dashboardView.php');
     };
 
