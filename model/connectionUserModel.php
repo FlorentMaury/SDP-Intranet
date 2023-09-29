@@ -41,10 +41,18 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             $_SESSION['surname'] = $user['surname'];
             $_SESSION['name']    = $user['name'];
             $_SESSION['sex']     = $user['sex'];
-            $_SESSION['password']      = $user['password'];
-            $_SESSION['birth_date']    = $user['birth_date'];
-            $_SESSION['phone_number']  = $user['phone_number'];
-            $_SESSION['creation_date'] = $user['creation_date'];
+            $_SESSION['password']       = $user['password'];
+            $_SESSION['birth_date']     = $user['birth_date'];
+            $_SESSION['phone_number']   = $user['phone_number'];
+            $_SESSION['birth_city']     = $user['birth_city'];
+            $_SESSION['birth_country']  = $user['birth_country'];
+            $_SESSION['current_street_number']  = $user['current_street_number'];
+            $_SESSION['current_city_street']    = $user['current_city_street'];
+            $_SESSION['current_city']           = $user['current_city'];
+            $_SESSION['current_country']        = $user['current_country'];
+            $_SESSION['id_number']              = $user['id_number'];
+            $_SESSION['social_security_number'] = $user['social_security_number'];
+            $_SESSION['creation_date']          = $user['creation_date'];
 
             // Validation de la connexion.
             header('location: index.php?page=dashboard');

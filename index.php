@@ -22,6 +22,10 @@
             else if ($_GET['page'] == 'dashboard') {
                 dashboard();
             }
+            // Page employé.
+            else if ($_GET['page'] == 'user') {
+                user();
+            }
             // Deconnexion.
             else if ($_GET['page'] == 'logout') {
                 logOut();

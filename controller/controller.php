@@ -20,8 +20,20 @@
             require('model/modifyInformationsModels/modifyNumberModel.php');
             require('model/modifyInformationsModels/modifyInsuranceNumberModel.php');
             require('model/modifyInformationsModels/modifyIdNumberModel.php');
+            require('model/modifyInformationsModels/modifyBirthCityModel.php');
+            require('model/modifyInformationsModels/modifyBirthCountryModel.php');
+            require('model/modifyInformationsModels/modifyCurrentStreetNumberModel.php');
+            require('model/modifyInformationsModels/modifyProfilePictureModel.php');
+            require('model/modifyInformationsModels/modifyCurrentStreetName.php');
+            require('model/modifyInformationsModels/modifyCurrentCity.php');
 
         require('view/dashboardView.php');
+    };
+
+    // Dans la page employée.
+    function user() {
+        require('model/connectionDBModel.php');
+        require('view/getUserInfosView.php');
     };
 
     // Dans la fonction de déconnexion.

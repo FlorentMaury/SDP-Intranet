@@ -16,7 +16,7 @@
     <title><?= $title ?> | Intranet SDP</title>
 </head>
 
-<body class="container">
+<body class="container" id="output">
 
     <header class="text-center">
         <a href="index.php?page=home">
