@@ -18,9 +18,15 @@
 
 <div class="border rounded p-3">
     <img 
-        id="arrow1"
+        id="arrowUp1"
         style="width: 15px" 
         src="./public/assets/arrow_up.svg" 
+        alt="Image de suppression"
+    >
+    <img 
+        id="arrowDown1"
+        style="width: 15px" 
+        src="./public/assets/arrow_down.svg" 
         alt="Image de suppression"
     >
     <h2>Liste des collaborateurs</h2>
@@ -66,41 +72,49 @@
 
 <div class="border rounded p-3 my-3">
     <img 
-        id="arrow2"
+        id="arrowUp2"
         style="width: 15px" 
         src="./public/assets/arrow_up.svg" 
         alt="Image de suppression"
     >
+    <img 
+        id="arrowDown2"
+        style="width: 15px" 
+        src="./public/assets/arrow_down.svg" 
+        alt="Image de suppression"
+    >
     <h2>Nouveau collaborateur</h2>
 
-    <!-- Formulaire d'enregistrement d'un nouvel employé. -->
-    <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
+    <div id="newUser">
+        <!-- Formulaire d'enregistrement d'un nouvel employé. -->
+        <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
 
-        <!-- Formulaire. -->
-        <p class="form-floating m-2">
-            <input type="text" name="surname" class="form-control" id="surname" placeholder="Nom de famille">
-            <label for="surname">Nom de famille</label>
-        </p>
-        <p class="form-floating m-2">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Prénom">
-            <label for="name">Prénom</label>
-        </p>
-        <p class="form-floating m-2">
-            <input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">
-            <label for="email">Email</label>
-        </p>
-        <p class="form-floating m-2">
-            <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
-            <label for="password">Mot de passe</label>
-        </p>
-        <p class="form-floating m-2">
-            <input type="password" name="passwordTwo" class="form-control" id="passwordTwo" placeholder="Confirmez votre mot de passe">
-            <label for="passwordTwo">Confirmez le mot de passe</label>
-        </p>
-        
-        <button class="btn btn-md btn-dark mt-4 p-2 align-self-end" type="submit">Enregister</button>
+            <!-- Formulaire. -->
+            <p class="form-floating m-2">
+                <input type="text" name="surname" class="form-control" id="surname" placeholder="Nom de famille">
+                <label for="surname">Nom de famille</label>
+            </p>
+            <p class="form-floating m-2">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Prénom">
+                <label for="name">Prénom</label>
+            </p>
+            <p class="form-floating m-2">
+                <input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">
+                <label for="email">Email</label>
+            </p>
+            <p class="form-floating m-2">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
+                <label for="password">Mot de passe</label>
+            </p>
+            <p class="form-floating m-2">
+                <input type="password" name="passwordTwo" class="form-control" id="passwordTwo" placeholder="Confirmez votre mot de passe">
+                <label for="passwordTwo">Confirmez le mot de passe</label>
+            </p>
+            
+            <button class="btn btn-md btn-dark mt-4 p-2 align-self-end" type="submit">Enregister</button>
 
-    </form>
+        </form>
+    </div>
 </div>
 
 <?php
@@ -109,12 +123,20 @@
 
 <div class="border rounded p-3">
     <img 
-        id="arrow3"
+        id="arrowUp3"
         style="width: 15px" 
         src="./public/assets/arrow_up.svg" 
         alt="Image de suppression"
     >
+    <img 
+        id="arrowDown3"
+        style="width: 15px" 
+        src="./public/assets/arrow_down.svg" 
+        alt="Image de suppression"
+    >
     <h2>Informations personnelles</h2>
+    
+    <div id="userInfos">
 
         <p>Email : <?= $_SESSION['email'] ?></p>
         <p>Prénom : <?= $_SESSION['name'] ?>
@@ -132,11 +154,23 @@
                 <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyBirthInfo">Modifier la date de naissance</a>
             </button>
         </p>
-        <p>Numéro de téléphone : 0<?= $_SESSION['phone_number'] ?></p>
+        <p>Numéro de téléphone : 0<?= $_SESSION['phone_number'] ?>
+            <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
+                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPhoneInfo">Modifier le numéro de téléphone</a>
+            </button>
+        </p>
+        <p>Numéro de carte vitale : <?php if(empty($_SESSION['social_security_number'])) {echo 'A completer';} else { echo $_SESSION['social_security_number'];} ?>
+            <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
+                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#socialSecurityNumber">Modifier le numéro de carte vitale</a>
+            </button>
+        </p>
+        <p>Numéro de carte d'identité : <?php if(empty($_SESSION['id_number'])) {echo 'A completer';} else { echo $_SESSION['id_number'];} ?>
+            <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
+                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#idNumber">Modifier le numéro de carte d'identité</a>
+            </button>
+        </p>
         <p>Date d'inscription : <?= $_SESSION['creation_date'] ?></p>
-        <p>Numéro de carte vitale : <?php if(empty($_SESSION['social_security_number'])) {echo 'A completer';} else { echo $_SESSION['social_security_number'];} ?></p>
-        <p>Numéro de carte d'identité : <?php if(empty($_SESSION['id_number'])) {echo 'A completer';} else { echo $_SESSION['id_number'];} ?></p>
-
+    </div>
 </div>
 
 <!-- Modale de modification du Prénom. -->
@@ -204,6 +238,71 @@
         </div>
     </div>
 </div>
+
+<!-- Modale de modification du numéro de téléphone. -->
+<div class="modal fade" id="modifyPhoneInfo" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier le numéro de téléphone</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="number" name="modifyPhone" class="form-control" id="modifyPhone" placeholder="<?= $_SESSION['phone_number'] ?>">
+                    <label for="modifyPhone">Numéro de téléphone</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du numéro de carte vitale. -->
+<div class="modal fade" id="socialSecurityNumber" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier le numéro de carte vitale</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="number" name="socialSecurityNumber" class="form-control" id="socialSecurityNumber" placeholder="<?= $_SESSION['social_security_number'] ?>">
+                    <label for="socialSecurityNumber">Numéro de carte vitale</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du numéro de carte d'identité. -->
+<div class="modal fade" id="idNumber" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier le numéro de carte d'identité</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="number" name="idNumber" class="form-control" id="idNumber" placeholder="<?= $_SESSION['id_number'] ?>">
+                    <label for="idNumber">Numéro de carte d'identité</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <?php 

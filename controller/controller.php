@@ -17,6 +17,9 @@
             require('model/modifyInformationsModels/modifyNameModel.php');
             require('model/modifyInformationsModels/modifySurnameModel.php');
             require('model/modifyInformationsModels/modifyBirthModel.php');
+            require('model/modifyInformationsModels/modifyNumberModel.php');
+            require('model/modifyInformationsModels/modifyInsuranceNumberModel.php');
+            require('model/modifyInformationsModels/modifyIdNumberModel.php');
 
         require('view/dashboardView.php');
     };
