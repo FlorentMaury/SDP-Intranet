@@ -97,7 +97,7 @@
     <h2>Informations personnelles</h2>
 
         <p>Email : <?= $_SESSION['email'] ?></p>         <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
-            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInfos">Modifier les informations</a>
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyNameInfo">Modifier les informations</a>
         </button>
         <p>Prénom : <?= $_SESSION['name'] ?></p>
         <p>Nom de famille :<?= $_SESSION['surname'] ?></p>
