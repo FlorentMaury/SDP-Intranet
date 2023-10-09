@@ -7,7 +7,8 @@ arrowDown3 = document.querySelector('#arrowDown3');
 
 employeesList = document.querySelector('#employeesList');
 newUser       = document.querySelector('#newUser');
-userInfos     = document.querySelector('#userInfos');
+userInfos1    = document.querySelector('#userInfos1');
+userInfos2     = document.querySelector('#userInfos2');
 
 arrowUp1.style.cursor = 'pointer';
 arrowUp2.style.cursor = 'pointer';
@@ -45,13 +46,15 @@ arrowDown2.addEventListener('click', () => {
 });
 
 arrowUp3.addEventListener('click', () => {
-    userInfos.style.display = 'none';
+    userInfos1.style.display = 'none';
+    userInfos2.style.display = 'none';
     arrowUp3.style.display = 'none';
     arrowDown3.style.display = 'block';
 });  
 
 arrowDown3.addEventListener('click', () => {
-    userInfos.style.display = 'block';
+    userInfos1.style.display = 'block';
+    userInfos2.style.display = 'block';
     arrowUp3.style.display = 'block';
     arrowDown3.style.display = 'none';
 });

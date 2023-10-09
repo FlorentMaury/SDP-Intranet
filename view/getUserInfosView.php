@@ -61,7 +61,47 @@ if (isset($_GET['id'])) {
         </p>
         <p>Numéro de carte vitale : <?php if(empty($data['social_security_number'])) {echo 'A completer';} else { echo $data['social_security_number'];} ?>
         </p>
+        <div class="userInfosInsuranceCards">
+            <p class="userInfosInsuranceCard">
+                <img 
+                    src="<?= './public/assets/insuranceCardFace/'.$data['insurance_card_face'] ?>" 
+                    alt="Carte vitale recto à télécharger"
+                    class="w-25"
+                >
+                <button type="button" href="" class="btn btn-dark me-2">
+                    <a class="text-decoration-none text-white p-2" 
+                        href="<?= './public/assets/insuranceCardFace/'.$data['insurance_card_face'] ?>" 
+                        download="<?= 'CarteVitaleRecto-'.$data['name'].$data['surname'] ?>">Télécharger l'image
+                    </a>            
+                </button>
+            </p>
+            <p class="userInfosInsuranceCard">
+                <img 
+                    src="<?= './public/assets/insuranceCardBack/'.$data['insurance_card_back'] ?>" 
+                    alt="Carte vitale verso à télécharger"
+                    class="w-25"
+                >
+                <button type="button" href="" class="btn btn-dark me-2">
+                    <a class="text-decoration-none text-white p-2" 
+                        href="<?= './public/assets/insuranceCardFace/'.$data['insurance_card_face'] ?>" 
+                        download="<?= 'CarteVitaleRecto-'.$data['name'].$data['surname'] ?>">Télécharger l'image
+                    </a>            
+                </button>
+            </p>
+        </div>
         <p>Numéro de carte d'identité : <?php if(empty($data['id_number'])) {echo 'A completer';} else { echo $data['id_number'];} ?>
+        </p>
+        <p class="userInfosInsuranceCard">
+            <img 
+                src="<?= './public/assets/idCardFace/'.$data['id_card_face'] ?>" 
+                alt="Carte d'identité recto à télécharger"
+                class="w-25"
+            >
+            <img 
+                src="<?= './public/assets/idCardBack/'.$data['id_card_back'] ?>" 
+                alt="Carte d'identité verso à télécharger"
+                class="w-25"
+            >
         </p>
         <p>Date d'inscription : <?= $_SESSION['creation_date'] ?></p>
     </div>

@@ -1,0 +1,44 @@
+.managerViewGrid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    height: auto;
+}
+
+#employeesList {
+    height: 80%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.userInfosGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.dashboardItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.dashboardItems:hover {
+    background-color: rgba(142, 141, 141, 0.205);
+    border-radius: 10px;
+}
+
+.userInfosInsuranceCards,
+.userInfosIdCards {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.userInfosInsuranceCard,
+.userInfosIdCard {
+    display: flex;
+    font-display: column;
+}
