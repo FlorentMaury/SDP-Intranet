@@ -9,6 +9,13 @@ employeesList = document.querySelector('#employeesList');
 newUser       = document.querySelector('#newUser');
 userInfos     = document.querySelector('#userInfos');
 
+arrowUp1.style.cursor = 'pointer';
+arrowUp2.style.cursor = 'pointer';
+arrowUp3.style.cursor = 'pointer';
+arrowDown1.style.cursor = 'pointer';
+arrowDown2.style.cursor = 'pointer';
+arrowDown3.style.cursor = 'pointer';
+
 arrowDown1.style.display = 'none';
 arrowDown2.style.display = 'none';
 arrowDown3.style.display = 'none';

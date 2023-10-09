@@ -230,6 +230,16 @@
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#socialSecurityNumber">Modifier le numéro de carte vitale</a>
                 </button>
             </p>
+            <p>
+                <img 
+                    src="<?= './public/assets/insuranceCardFace/'.$data['insurance_card_face'] ?>" 
+                    alt="Carte vitale de face à télécharger"
+                    class="w-25"    
+                >
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardFace">Carte vitale de face</a>
+                </button>
+            </p>
             <p>Numéro de carte d'identité : <?php if(empty($data['id_number'])) {echo 'A completer';} else { echo $data['id_number'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#idNumber">Modifier le numéro de carte d'identité</a>
