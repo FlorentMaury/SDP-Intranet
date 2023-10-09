@@ -157,6 +157,8 @@
     
     <div class="d-flex" id="usersInfos">
         <div class="1">
+
+            <!-- Image de profil -->
             <p>
                 <img 
                     src="<?= './public/assets/usersImg/'.$data['profile_picture'] ?>" 
@@ -167,69 +169,98 @@
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyProfilePicture">Télécharger une image de profil</a>
                 </button>
             </p>
+
+            <!-- Email -->
             <p>Email : <?= $data['email'] ?></p>
+
+            <!-- Prénom -->
             <p>Prénom : <?= $data['name'] ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyNameInfo">Modifier le prénom</a>
                 </button>
             </p>
+
+            <!-- Nom de famille -->
             <p>Nom de famille : <?= $data['surname'] ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySurnameInfo">Modifier le nom</a>
                 </button>
             </p>
+
+            <!-- Date de naissance -->
             <p>Date de naissance : <?php if(empty($data['birth_date'])) {echo 'A completer';} else { echo $data['birth_date'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyBirthInfo">Modifier la date de naissance</a>
                 </button>
             </p>
+
+            <!-- Numéro de téléphone -->
             <p>Numéro de téléphone : <?php if(empty($data['phone_number'])) {echo 'A completer';} else { echo $data['phone_number'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPhoneInfo">Modifier le numéro de téléphone</a>
                 </button>
             </p>
+
+            <!-- Ville de naissance -->
             <p>Ville de naissance : <?php if(empty($data['birth_city'])) {echo 'A completer';} else { echo $data['birth_city'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCity">Modifier la ville de naissance</a>
                 </button>
             </p>
+
+            <!-- Pays de naissance -->
             <p>Pays de naissance : <?php if(empty($data['birth_country'])) {echo 'A completer';} else { echo $data['birth_country'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCountry">Modifier le pays de naissance</a>
                 </button>
             </p>
+
+            <!-- Numéro de rue actuelle -->
             <p>Numéro de rue actuelle : <?php if(empty($data['current_street_number'])) {echo 'A completer';} else { echo $data['current_street_number'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetNumber">Modifier le numéro de rue actuelle</a>
                 </button>
             </p>
+
+            <!-- Nom de rue actuelle -->
             <p>Nom de rue actuelle : <?php if(empty($data['current_city_street'])) {echo 'A completer';} else { echo $data['current_city_street'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetName">Modifier la rue actuelle</a>
                 </button>
             </p>
+
+            <!-- Ville actuelle -->
             <p>Ville actuelle : <?php if(empty($data['current_city'])) {echo 'A completer';} else { echo $data['current_city'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCity">Modifier la ville</a>
                 </button>
             </p>
+
+            <!-- Code postal -->
             <p>Code postal : <?php if(empty($data['current_zip_code'])) {echo 'A completer';} else { echo $data['current_zip_code'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyZipCode">Modifier le code postal</a>
                 </button>
             </p>
+
+            <!-- Pays actuel -->
             <p>Pays actuel : <?php if(empty($data['current_country'])) {echo 'A completer';} else { echo $data['current_country'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCountry">Modifier le pays actuel</a>
                 </button>
             </p>
         </div>
+
         <div class="2">
+
+            <!-- Numéro de sécurité sociale -->
             <p>Numéro de carte vitale : <?php if(empty($data['social_security_number'])) {echo 'A completer';} else { echo $data['social_security_number'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#socialSecurityNumber">Modifier le numéro de carte vitale</a>
                 </button>
             </p>
+
+            <!-- Carte vitale de face -->
             <p>
                 <img 
                     src="<?= './public/assets/insuranceCardFace/'.$data['insurance_card_face'] ?>" 
@@ -240,11 +271,51 @@
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardFace">Carte vitale de face</a>
                 </button>
             </p>
+
+            <!-- Carte vitale de dos -->
+            <p>
+                <img 
+                    src="<?= './public/assets/insuranceCardBack/'.$data['insurance_card_back'] ?>" 
+                    alt="Carte vitale de dos à télécharger"
+                    class="w-25"    
+                >
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardBack">Carte vitale de dos</a>
+                </button>
+            </p>
+
+            <!-- Numéro de carte d'identité -->
             <p>Numéro de carte d'identité : <?php if(empty($data['id_number'])) {echo 'A completer';} else { echo $data['id_number'];} ?>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#idNumber">Modifier le numéro de carte d'identité</a>
                 </button>
             </p>
+
+            <!-- Carte d'identité de face -->
+            <p>
+                <img 
+                    src="<?= './public/assets/idCardFace/'.$data['id_card_face'] ?>" 
+                    alt="Carte d'identité de face à télécharger"
+                    class="w-25"    
+                >
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardFace">Carte d'identité de face</a>
+                </button>
+            </p>
+
+            <!-- Carte d'identité de dos -->
+            <p>
+                <img 
+                    src="<?= './public/assets/idCardBack/'.$data['id_card_back'] ?>" 
+                    alt="Carte d'identité de dos à télécharger"
+                    class="w-25"    
+                >
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardBack">Carte d'identité de dos</a>
+                </button>
+            </p>
+
+            <!-- Date d'inscription -->
             <p>Date d'inscription : <?= $_SESSION['creation_date'] ?></p>
         </div>
     </div>

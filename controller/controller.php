@@ -27,6 +27,8 @@
             require('model/modifyInformationsModels/modifyCurrentCity.php');
             require('model/modifyInformationsModels/modifyZipCode.php');
             require('model/modifyInformationsModels/modifyCurrentCountry.php');
+            require('model/modifyInformationsModels/modifyInsuranceCardModel.php');
+            require('model/modifyInformationsModels/modifyIdCardModel.php');
 
             // Images.
             require('model/modifyInformationsModels/modifyProfilePictureModel.php');

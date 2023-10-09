@@ -1,8 +1,8 @@
 <?php
 
-// Vérification du formulaire d'ajout ou de modification de la carte vitale de face.
+// Vérification du formulaire d'ajout ou de modification de la carte d'identité de face.
 if(
-    isset($_FILES['insuranceCardFace']) 
+    isset($_FILES['idCardFace']) 
     ) {
 
     // Connexion à la base de données.
@@ -15,19 +15,19 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Suppression de l'ancienne image.
-    $req = $bdd->prepare("SELECT insurance_card_face FROM `marital_status` WHERE id = ?");
+    $req = $bdd->prepare("SELECT id_card_face FROM `marital_status` WHERE id = ?");
     $req->execute([$userId]);
-    $insuranceCardFaceImg = $req->fetchColumn();
-    unlink('./public/assets/insuranceCardFace/'.$insuranceCardFaceImg);
+    $idCardFaceImg = $req->fetchColumn();
+    unlink('./public/assets/idCardFace/'.$idCardFaceImg);
 
     // Pour les images du véhicule de face.
-    $insuranceFacePictureName    = $_FILES['insuranceCardFace']['name'];
-    $insuranceFacePictureTmpName = $_FILES['insuranceCardFace']['tmp_name'];
-    $insuranceFacePictureSize    = $_FILES['insuranceCardFace']['size'];
-    $insuranceFacePictureError   = $_FILES['insuranceCardFace']['error'];
+    $idFacePictureName    = $_FILES['idCardFace']['name'];
+    $idFacePictureTmpName = $_FILES['idCardFace']['tmp_name'];
+    $idFacePictureSize    = $_FILES['idCardFace']['size'];
+    $idFacePictureError   = $_FILES['idCardFace']['error'];
 
     // Récupérer l'extension des images.
-    $tabExtension = explode('.', $insuranceFacePictureName);
+    $tabExtension = explode('.', $idFacePictureName);
 
     // Mise en minuscule de cette extendion.
     $extension = strtolower(end($tabExtension));
@@ -38,16 +38,16 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille de l'image.
-    if(in_array($extension, $extensions) && $insuranceFacePictureSize <= $maxSize && $insuranceFacePictureError == 0){
+    if(in_array($extension, $extensions) && $idFacePictureSize <= $maxSize && $idFacePictureError == 0){
         $uniqId = uniqid('', true);
         // Création d'un uniqid
-        $insuranceCardFacePicture = $uniqId.".".$extension;
-        // Enregistrement de l'image dans le dossier 'insuranceCardFace'.
-        move_uploaded_file($insuranceFacePictureTmpName, './public/assets/insuranceCardFace/'.$insuranceCardFacePicture);
+        $idCardFacePicture = $uniqId.".".$extension;
+        // Enregistrement de l'image dans le dossier 'idCardFace'.
+        move_uploaded_file($idFacePictureTmpName, './public/assets/idCardFace/'.$idCardFacePicture);
 
         // Ajout d'un véhicule avec toutes les informations si les images ont étés validées.
-        $req = $bdd->prepare('UPDATE marital_status SET insurance_card_face = ? WHERE id = ?');
-        $req->execute([$insuranceCardFacePicture, $userModifiedId]);
+        $req = $bdd->prepare('UPDATE marital_status SET id_card_face = ? WHERE id = ?');
+        $req->execute([$idCardFacePicture, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard');
 
@@ -59,7 +59,7 @@ if(
 
 // Vérification du formulaire d'ajout ou de modification de la carte vitale de dos.
 if(
-    isset($_FILES['insuranceCardBack']) 
+    isset($_FILES['idCardBack']) 
     ) {
 
     // Connexion à la base de données.
@@ -72,19 +72,19 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Suppression de l'ancienne image.
-    $req = $bdd->prepare("SELECT insurance_card_back FROM `marital_status` WHERE id = ?");
+    $req = $bdd->prepare("SELECT id_card_back FROM `marital_status` WHERE id = ?");
     $req->execute([$userId]);
-    $insuranceCardBackImg = $req->fetchColumn();
-    unlink('./public/assets/insuranceCardBack/'.$insuranceCardBackImg);
+    $idCardBackImg = $req->fetchColumn();
+    unlink('./public/assets/idCardBack/'.$idCardBackImg);
 
     // Pour les images du véhicule de face.
-    $insuranceBackPictureName    = $_FILES['insuranceCardBack']['name'];
-    $insuranceBackPictureTmpName = $_FILES['insuranceCardBack']['tmp_name'];
-    $insuranceBackPictureSize    = $_FILES['insuranceCardBack']['size'];
-    $insuranceBackPictureError   = $_FILES['insuranceCardBack']['error'];
+    $idBackPictureName    = $_FILES['idCardBack']['name'];
+    $idBackPictureTmpName = $_FILES['idCardBack']['tmp_name'];
+    $idBackPictureSize    = $_FILES['idCardBack']['size'];
+    $idBackPictureError   = $_FILES['idCardBack']['error'];
 
     // Récupérer l'extension des images.
-    $tabExtension = explode('.', $insuranceBackPictureName);
+    $tabExtension = explode('.', $idBackPictureName);
 
     // Mise en minuscule de cette extendion.
     $extension = strtolower(end($tabExtension));
@@ -95,16 +95,16 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille de l'image.
-    if(in_array($extension, $extensions) && $insuranceBackPictureSize <= $maxSize && $insuranceBackPictureError == 0){
+    if(in_array($extension, $extensions) && $idBackPictureSize <= $maxSize && $idBackPictureError == 0){
         $uniqId = uniqid('', true);
         // Création d'un uniqid
-        $insuranceCardBackPicture = $uniqId.".".$extension;
-        // Enregistrement de l'image dans le dossier 'insuranceCardBack'.
-        move_uploaded_file($insuranceBackPictureTmpName, './public/assets/insuranceCardBack/'.$insuranceCardBackPicture);
+        $idCardBackPicture = $uniqId.".".$extension;
+        // Enregistrement de l'image dans le dossier 'idCardBack'.
+        move_uploaded_file($idBackPictureTmpName, './public/assets/idCardBack/'.$idCardBackPicture);
 
         // Ajout d'un véhicule avec toutes les informations si les images ont étés validées.
-        $req = $bdd->prepare('UPDATE marital_status SET insurance_card_back = ? WHERE id = ?');
-        $req->execute([$insuranceCardBackPicture, $userModifiedId]);
+        $req = $bdd->prepare('UPDATE marital_status SET id_card_back = ? WHERE id = ?');
+        $req->execute([$idCardBackPicture, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard');
 

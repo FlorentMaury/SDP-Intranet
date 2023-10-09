@@ -14,6 +14,12 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Suppression de l'ancienne image de profil.
+    $req = $bdd->prepare("SELECT profile_picture FROM `marital_status` WHERE id = ?");
+    $req->execute([$userId]);
+    $profileImg = $req->fetchColumn();
+    unlink('./public/assets/usersImg/'.$profileImg);
+
     // Pour les images du véhicule de face.
     $profilePictureName    = $_FILES['profilePicture']['name'];
     $profilePictureTmpName = $_FILES['profilePicture']['tmp_name'];
