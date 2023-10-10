@@ -902,3 +902,180 @@
         </div>
     </div>
 </div>
+
+<!-- Modale de modification deu premier champ études. -->
+<div class="modal fade" id="modifySchool1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter un diplôme</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="text" name="school1" class="form-control" id="school1">
+                    <label for="school1">Nom de l'école</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du premier champ études (date de début). -->
+<div class="modal fade" id="modifySchool1Start" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Date de début</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="date" name="school1Start" class="form-control" id="school1Start">
+                    <label for="school1Start">Date de début</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du premier champ études (date de fin). -->
+<div class="modal fade" id="modifySchool1End" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Date de début</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="date" name="school1End" class="form-control" id="school1End">
+                    <label for="school1End">Date de début</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du premier champ études (document). -->
+<div class="modal fade" id="modifySchool1Doc" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Date de début</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
+                <p class="form-floating m-2">
+                    <input type="file" name="school1Doc" class="form-control" id="school1Doc">
+                    <label for="school1Doc">Diplôme obtenu</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modale de modification du second champ études. -->
+<div class="modal fade" id="modifySchool2" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter un diplôme</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="text" name="school2" class="form-control" id="school2">
+                    <label for="school2">Nom de l'école</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du second champ études (date de début). -->
+<div class="modal fade" id="modifySchool2Start" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Date de début</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="date" name="school2Start" class="form-control" id="school2Start">
+                    <label for="school1Start">Date de début</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du second champ études (date de fin). -->
+<div class="modal fade" id="modifySchool2End" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Date de début</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="date" name="school2End" class="form-control" id="school2End">
+                    <label for="school1End">Date de début</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du second champ études (document). -->
+<div class="modal fade" id="modifySchool2Doc" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Date de début</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
+                <p class="form-floating m-2">
+                    <input type="file" name="school2Doc" class="form-control" id="school2Doc">
+                    <label for="school1Doc">Diplôme obtenu</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>

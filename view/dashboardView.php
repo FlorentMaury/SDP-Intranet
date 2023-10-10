@@ -13,13 +13,35 @@
 
 ?>
 
-<h1 class="text-center my-5">Tableau de bord de <?= $data['name'] ?> <?= $data['surname'] ?></h1>
+<h1 class="text-center">
+    Tableau de bord de <?= $_SESSION['name'].' '.$_SESSION['surname'] ?>
+</h1>
+
+<nav>
+    <ul>
+        <li>
+            <a class="a" href="#collabList">
+                Ajouter / Voir collaborateurs
+            </a>
+        </li>
+        <li>
+            <a href="#userInfos">
+                Informations personnelles
+            </a>
+        </li>
+        <li>
+            <a href="#experiences">
+                Expériences
+            </a>
+        </li>
+    </ul>
+</nav>
 
 <?php
-
     if($_SESSION['id'] == 1) {
 ?>
 
+<!-- Grille administrateur -->
 <div class="managerViewGrid">
     <div class="border rounded p-3">
         <img 
@@ -34,7 +56,7 @@
             src="./public/assets/arrow_down.svg" 
             alt="Fléche vers le bas"
         >
-        <h2>Liste des collaborateurs</h2>
+        <h2 id="collabList">Liste des collaborateurs</h2>
 
         <div id="employeesList">
             <div class="table-responsive">
@@ -142,6 +164,9 @@
     }
 ?>
 
+<!-- Grille générale -->
+
+<!-- Informations personnelles -->
 <div class="border rounded mt-3 p-3">
     <img 
         id="arrowUp3"
@@ -155,7 +180,7 @@
         src="./public/assets/arrow_down.svg" 
         alt="Fléche vers le bas"
     >
-    <h2>Informations personnelles</h2>
+    <h2 id="userInfos">Informations personnelles</h2>
     
     <div class="userInfosGrid">
         <div class="1" id="userInfos1">
@@ -347,6 +372,123 @@
         </div>
     </div>
 </div>
+
+<!-- Expériences -->
+<div class="border rounded mt-3 p-3">
+    <img 
+        id="arrowUp4"
+        style="width: 15px" 
+        src="./public/assets/arrow_up.svg" 
+        alt="Fléche vers le haut"
+    >
+    <img 
+        id="arrowDown4"
+        style="width: 15px" 
+        src="./public/assets/arrow_down.svg" 
+        alt="Fléche vers le bas"
+    >
+    <h2 id="experiences">Expériences</h2>
+    
+    <div id="schoolsGrid">
+
+        <div class="school1">
+            <div class="expItems">
+                <p>Ecole : <?php if(empty($data['school_1'])) {echo 'A completer';} else { echo $data['school_1'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de début : <?php if(empty($data['school_1_start'])) {echo 'A completer';} else { echo $data['school_1_start'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1Start">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de fin : <?php if(empty($data['school_1_end'])) {echo 'A completer';} else { echo $data['school_1_end'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1End">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>
+                    <img 
+                        src="<?= './public/assets/school1Doc/'.$data['school_1_doc'] ?>" 
+                        alt="Diplôme obtenu à télécharger"
+                        class="w-25"    
+                    >
+                </p>            
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1Doc">Modifier</a>
+                </button>
+            </div>
+        </div>
+
+        <?php
+            if($_SESSION) {
+        ?>
+
+        <div id="school2">
+            <div class="expItems">
+                <p>Seconde école : <?php if(empty($data['school_2'])) {echo 'A completer';} else { echo $data['school_2'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de début : <?php if(empty($data['school_2_start'])) {echo 'A completer';} else { echo $data['school_2_start'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2Start">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de fin : <?php if(empty($data['school_2_end'])) {echo 'A completer';} else { echo $data['school_2_end'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2End">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>
+                    <?php 
+                        if(empty($data['school_2_doc'])) {
+                            echo 'Diplôme obtenu à télécharger';
+                        } else {
+                    ?>
+                    <img 
+                        src="<?= './public/assets/school2Doc/'.$data['school_2_doc'] ?>" 
+                        alt="Second diplôme obtenu à télécharger"
+                        class="w-25"    
+                    >
+                    <?php 
+                        }
+                    ?>
+                </p>            
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2Doc">Modifier</a>
+                </button>
+            </div>
+        </div>
+
+        <div class="schoolButtons">
+            <div id="addSchool" class="expItems">
+                <button type="button" class="btn btn-dark me-2">
+                    Ajouter un diplôme scolaire
+                </button>
+            </div>
+
+            <div id="cancel" class="expItems">
+                <button type="button" href="" class="btn btn-dark me-2">
+                    Annuler
+                </button>
+            </div>  
+        </div>
+
+        <?php
+            }
+        ?>
+    </div>
+</div>
+
 
 
 <?php 

@@ -29,6 +29,7 @@
             require('model/modifyInformationsModels/modifyCurrentCountry.php');
             require('model/modifyInformationsModels/modifyInsuranceCardModel.php');
             require('model/modifyInformationsModels/modifyIdCardModel.php');
+            require('model/modifyInformationsModels/modifySchoolModel.php');
 
             // Images.
             require('model/modifyInformationsModels/modifyProfilePictureModel.php');

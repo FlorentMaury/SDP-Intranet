@@ -25,7 +25,21 @@
         <a href="index.php?page=home">
             <img style="width: 30vh; height: 13vh; margin: 2% 0" src="./public/assets/logo.webp" alt="Logo Studio Des Parfums">
         </a>
-    </header>  
+    </header>
+
+     <!-- Lien de retour en haut de page. -->
+     <a 
+            class="rounded-circle d-flex justify-content-center shadow-sm"
+            href="#" 
+            style="
+                position: fixed;
+                width: 3vw;
+                height: 5vh;
+                bottom: 50px;
+                right: 30px;"
+        >
+        <img src="./public/assets/arrow_up.svg" alt="Retour haut de page">
+    </a>
 
     <main>
         <?= $content ?>

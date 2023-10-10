@@ -1,3 +1,7 @@
+nav ul li a {
+    text-decoration: none;
+}
+
 .managerViewGrid {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -17,7 +21,8 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.dashboardItems {
+.dashboardItems,
+.expItems {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,20 +30,56 @@
     border-radius: 10px;
 }
 
-.dashboardItems:hover {
+.dashboardItems:hover,
+.expItems:hover {
     background-color: rgba(142, 141, 141, 0.205);
     border-radius: 10px;
 }
 
 .userInfosInsuranceCards,
-.userInfosIdCards {
+.userInfosIdCards,
+.userInfosDiplomaCards {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
 .userInfosInsuranceCard,
-.userInfosIdCard {
+.userInfosIdCard,
+.userInfosDiplomaCard {
     display: flex;
-    font-display: column;
+    flex-direction: column;
+}
+
+.userInfosInsuranceCard img,
+.userInfosIdCard img,
+.userInfosDiplomaCard img {
+    width: 200px;
+    height: 150px;
+}
+
+.schoolsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.userInfosSchool1 {
+    grid-column: 1 / 2;
+}
+
+.userInfosSchool2 {
+    grid-column: 2 / 3;
+}
+
+.school1 {
+    grid-column: 1 / 2;
+}
+
+.school2 {
+    grid-column: 2 / 3;
+}
+
+.schoolButtons {
+    grid-column: 2 / 3;
 }
