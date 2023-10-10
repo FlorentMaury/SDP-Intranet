@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
     </button>
 </div>
 
-<h1>Profil de <?= $data['surname'] ?> <?= $data['name'] ?></h1>
+<h1>Profil de <?= $data['name'] ?> <?= $data['surname'] ?></h1>
 
 <div class="border rounded m-2 p-3 text-center">
     <h2>Informations générales</h2>
@@ -158,8 +158,11 @@ if (isset($_GET['id'])) {
                     Diplôme obtenu :
                     <img 
                         src="<?= './public/assets/school1Doc/'.$data['school_1_doc'] ?>" 
-                        alt="Diplôme à télécharger"
+                        alt="Diplôme à completer"
                     >
+                    <?php
+                        if(!empty($data['school_1_doc'])) {
+                    ?>
                     <a
                         class="text-decoration-none text-white p-2" 
                         href="<?= './public/assets/school1Doc/'.$data['school_1_doc'] ?>" 
@@ -169,9 +172,16 @@ if (isset($_GET['id'])) {
                             Télécharger                   
                         </button>
                     </a>
+                    <?php
+                        }
+                    ?>
                 </p>
             </div> 
         </div>
+
+        <?php 
+            if(!empty($data['school_2'])) {
+        ?>
 
         <div class="border rounded userInfosSchool2">
             <p>Seconde école : <?php if(empty($data['school_2'])) {echo 'A completer';} else { echo $data['school_2'];} ?>
@@ -185,8 +195,13 @@ if (isset($_GET['id'])) {
                     Diplôme obtenu :
                     <img 
                         src="<?= './public/assets/school2Doc/'.$data['school_2_doc'] ?>" 
-                        alt="Diplôme à télécharger"
+                        alt="Diplôme à completer"
                     >
+
+                    <?php 
+                        if(!empty($data['school_2_doc'])) {
+                    ?>
+
                     <a 
                         class="text-decoration-none text-white p-2" 
                         href="<?= './public/assets/school2Doc/'.$data['school_2_doc'] ?>" 
@@ -196,9 +211,17 @@ if (isset($_GET['id'])) {
                             Télécharger                   
                         </button>
                     </a>
+
+                    <?php 
+                        }
+                    ?>
                 </p>
             </div> 
         </div>
+
+        <?php 
+            }  
+        ?>
     </div>
 </div>
 

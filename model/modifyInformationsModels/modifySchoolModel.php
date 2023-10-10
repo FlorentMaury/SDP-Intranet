@@ -228,7 +228,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Suppression de l'ancienne image de profil.
-    $req = $bdd->prepare("SELECT school_1_doc FROM `marital_status` WHERE id = ?");
+    $req = $bdd->prepare("SELECT school_2_doc FROM `marital_status` WHERE id = ?");
     $req->execute([$userId]);
     $school2Doc = $req->fetchColumn();
     unlink('./public/assets/school2Doc/'.$school2Doc);

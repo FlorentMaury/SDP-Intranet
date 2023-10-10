@@ -19,11 +19,17 @@
 
 <nav>
     <ul>
+        <?php
+            if($_SESSION['id'] == 1) {
+        ?>
         <li>
             <a class="a" href="#collabList">
                 Ajouter / Voir collaborateurs
             </a>
         </li>
+        <?php
+            }
+        ?>
         <li>
             <a href="#userInfos">
                 Informations personnelles
@@ -391,7 +397,7 @@
     
     <div id="schoolsGrid">
 
-        <div class="school1">
+        <div class="school1 border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Ecole : <?php if(empty($data['school_1'])) {echo 'A completer';} else { echo $data['school_1'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -425,10 +431,10 @@
         </div>
 
         <?php
-            if($_SESSION) {
+            if($data['school_2']) {
         ?>
 
-        <div id="school2">
+        <div id="school2 border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Seconde école : <?php if(empty($data['school_2'])) {echo 'A completer';} else { echo $data['school_2'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -487,6 +493,7 @@
             }
         ?>
     </div>
+
 </div>
 
 
