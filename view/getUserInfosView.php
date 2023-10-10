@@ -160,7 +160,7 @@ if (isset($_GET['id'])) {
                         src="<?= './public/assets/school1Doc/'.$data['school_1_doc'] ?>" 
                         alt="Diplôme à télécharger"
                     >
-                    <a 
+                    <a
                         class="text-decoration-none text-white p-2" 
                         href="<?= './public/assets/school1Doc/'.$data['school_1_doc'] ?>" 
                         download="<?= 'Diplome1-'.$data['name'].$data['surname'] ?>"
@@ -200,7 +200,6 @@ if (isset($_GET['id'])) {
             </div> 
         </div>
     </div>
-
 </div>
 
 <div class="container my-4 d-flex">
@@ -208,7 +207,6 @@ if (isset($_GET['id'])) {
         <a class="text-decoration-none text-white p-2" href="index.php?page=dashboard">Retour au tableau de bord</a>
     </button>
 </div>
-
 
 
 <?php 

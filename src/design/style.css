@@ -61,6 +61,7 @@ nav ul li a {
 .schoolsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
     grid-gap: 10px;
 }
 
@@ -78,6 +79,10 @@ nav ul li a {
 
 .school2 {
     grid-column: 2 / 3;
+}
+
+.school3 {
+    grid-column: 3 / 4;
 }
 
 .schoolButtons {
