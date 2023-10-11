@@ -30,6 +30,7 @@
             require('model/modifyInformationsModels/modifyInsuranceCardModel.php');
             require('model/modifyInformationsModels/modifyIdCardModel.php');
             require('model/modifyInformationsModels/modifySchoolModel.php');
+            require('model/modifyInformationsModels/modifyJobModel.php');
 
             // Images.
             require('model/modifyInformationsModels/modifyProfilePictureModel.php');

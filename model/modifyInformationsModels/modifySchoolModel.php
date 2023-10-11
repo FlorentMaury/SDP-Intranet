@@ -269,4 +269,137 @@ if(
     };
 };
 
+    // Vérification du formulaire de modification de la troisième école.
+    if(
+        !empty($_POST['school3']) 
+        ) {
+    
+        // Connexion à la base de données.
+        require('./model/connectionDBModel.php');
+    
+        // Variables.
+        $modifySchool3 = htmlspecialchars($_POST['school3']);
+        $userId        = $_SESSION['id'];
+    
+        // Sélection de l'ID.
+        $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+        $r->execute([$userId]);
+        $userModifiedId = $r->fetchColumn();
+    
+        // Modification des modifications dans la base de données.
+        $req = $bdd->prepare('UPDATE marital_status SET school_3 = ? WHERE id = ?');
+        $req->execute([$modifySchool3, $userModifiedId]);
+    
+        // Redirection.
+        header('location: index.php?page=dashboard');
+        exit();
+    } 
+    
+    // Vérification du formulaire de modification des dates de début la trosième école.
+    if(
+        !empty($_POST['school3Start']) 
+        ) {
+    
+        // Connexion à la base de données.
+        require('./model/connectionDBModel.php');
+    
+        // Variables.
+        $modifySchool3Start = htmlspecialchars($_POST['school3Start']);
+        $userId             = $_SESSION['id'];
+    
+        // Sélection de l'ID.
+        $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+        $r->execute([$userId]);
+        $userModifiedId = $r->fetchColumn();
+    
+        // Modification des modifications dans la base de données.
+        $req = $bdd->prepare('UPDATE marital_status SET school_3_start = ? WHERE id = ?');
+        $req->execute([$modifySchool3Start, $userModifiedId]);
+    
+        // Redirection.
+        header('location: index.php?page=dashboard');
+        exit();
+    } 
+    
+    // Vérification du formulaire de modification des dates de fin la troisième école.
+    if(
+        !empty($_POST['school3End']) 
+        ) {
+    
+        // Connexion à la base de données.
+        require('./model/connectionDBModel.php');
+    
+        // Variables.
+        $modifySchool3End = htmlspecialchars($_POST['school3End']);
+        $userId             = $_SESSION['id'];
+    
+        // Sélection de l'ID.
+        $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+        $r->execute([$userId]);
+        $userModifiedId = $r->fetchColumn();
+    
+        // Modification des modifications dans la base de données.
+        $req = $bdd->prepare('UPDATE marital_status SET school_3_end = ? WHERE id = ?');
+        $req->execute([$modifySchool3End, $userModifiedId]);
+    
+        // Redirection.
+        header('location: index.php?page=dashboard');
+        exit();
+    } 
+    
+    if(
+        isset($_FILES['school3Doc']) 
+        ) {
+    
+        // Connexion à la base de données.
+        require('./model/connectionDBModel.php');
+    
+        // Sélection de l'ID.
+        $userId = $_SESSION['id'];
+        $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+        $r->execute([$userId]);
+        $userModifiedId = $r->fetchColumn();
+    
+        // Suppression de l'ancienne image de profil.
+        $req = $bdd->prepare("SELECT school_3_doc FROM `marital_status` WHERE id = ?");
+        $req->execute([$userId]);
+        $school3Doc = $req->fetchColumn();
+        unlink('./public/assets/school3Doc/'.$school2Doc);
+    
+        // Pour les images du véhicule de face.
+        $school3DocName    = $_FILES['school3Doc']['name'];
+        $school3DocTmpName = $_FILES['school3Doc']['tmp_name'];
+        $school3DocSize    = $_FILES['school3Doc']['size'];
+        $school3DocError   = $_FILES['school3Doc']['error'];
+    
+        // Récupérer l'extension des images.
+        $tabExtension = explode('.', $school3DocName);
+    
+        // Mise en minuscule de cette extendion.
+        $extension = strtolower(end($tabExtension));
+    
+        //Tableau des extensions que l'on accepte pour les images.
+        $extensions = ['jpg', 'png', 'jpeg', 'webp', 'pdf', 'doc', 'docx', 'odt', 'txt', 'rtf'];
+        //Taille max que l'on accepte pour les images.
+        $maxSize = 50000000;
+    
+        // Vérification de l'extension et de la taille de l'image de profil.
+        if(in_array($extension, $extensions) && $school3DocSize <= $maxSize && $school3DocError == 0){
+            $uniqId = uniqid('', true);
+            // Création d'un uniqid.
+            $school3Doc = $uniqId.".".$extension;
+            // Enregistrement de l'image dans le dossier 'school1Doc'.
+            move_uploaded_file($school3DocTmpName, './public/assets/school3Doc/'.$school3Doc);
+    
+            // Ajout d'un véhicule avec toutes les informations si les images ont étés validées.
+            $req = $bdd->prepare('UPDATE marital_status SET school_3_doc = ? WHERE id = ?');
+            $req->execute([$school3Doc, $userModifiedId]);
+            // Redirection avec message de validation.
+            header('location: index.php?page=dashboard');
+    
+        } else {
+            header('location: index.php?page=dashboard');
+        };
+    };
+
 ?>
