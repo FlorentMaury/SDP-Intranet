@@ -4,6 +4,8 @@ arrowUp2   = document.querySelector('#arrowUp2');
 arrowDown2 = document.querySelector('#arrowDown2');
 arrowUp3   = document.querySelector('#arrowUp3');
 arrowDown3 = document.querySelector('#arrowDown3');
+arrowUp4   = document.querySelector('#arrowUp4');
+arrowDown4 = document.querySelector('#arrowDown4');
 
 employeesList = document.querySelector('#employeesList');
 newUser       = document.querySelector('#newUser');

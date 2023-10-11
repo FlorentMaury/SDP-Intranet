@@ -1435,3 +1435,35 @@
         </div>
     </div>
 </div>
+
+
+    <!-- MODALES DE MODIFICATIONS DES CONTRATS EMPLOYES -->
+
+
+<!-- Modale de modification du champ des types de contrats. -->
+<div class="modal fade" id="modifyContract" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier le type de contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user">
+                <p class="form-floating m-2">
+                    <select name="userContract" class="form-select" id="userContract" class="form-select" aria-label="Select contract">
+                        <option selected value="CDI">CDI</option>
+                        <option value="CDD">CDD</option>
+                        <option value="Stage">Stage</option>
+                        <option value="Alternance">Alternance</option>
+                    </select>
+                </p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="index.php?page=user&id=<?= $data['id'] ?>">Modifier</a>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

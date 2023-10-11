@@ -14,17 +14,20 @@
         require('model/addNewUserModel.php');
 
             // Modifications des informations utilisateurs.
-            require('model/modifyInformationsModels/modifyUserInformations.php');
+            require('model/modifyInformationsModels/modifyUserInformationsModel.php');
             require('model/modifyInformationsModels/modifySchoolModel.php');
             require('model/modifyInformationsModels/modifyJobModel.php');
 
         require('view/dashboardView.php');
+        require('view/modalsView.php');
     };
 
     // Dans la page employée.
     function user() {
         require('model/connectionDBModel.php');
+        require('model/modifyInformationsModels/modifyUserContractModel.php');
         require('view/getUserInfosView.php');
+        require('view/modalsView.php');
     };
 
     // Dans la fonction de déconnexion.
