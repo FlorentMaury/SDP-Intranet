@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Suppression des informations du véhicule de la base de donnée.
-    $req = $bdd->prepare('SELECT * FROM marital_status WHERE id = ?');
+    $req = $bdd->prepare('SELECT * FROM user WHERE id = ?');
     $req->execute([$id]);
     $data = $req->fetch();
 

@@ -26,7 +26,7 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
     }
 
     // L'adresse email est-elle en doublon ?
-    $req = $bdd->prepare('SELECT COUNT(*) as numberEmail FROM marital_status WHERE email = ?');
+    $req = $bdd->prepare('SELECT COUNT(*) as numberEmail FROM user WHERE email = ?');
     $req->execute([$email]);
 
     // Vérification d'un éventuel doublon.
@@ -45,7 +45,7 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
     $secret = sha1($secret).time();
 
     // Ajouter un utilisateur.
-    $req = $bdd->prepare('INSERT INTO marital_status(name, surname, email, password, secret) VALUES(?, ?, ?, ?, ?)');
+    $req = $bdd->prepare('INSERT INTO user(name, surname, email, password, secret) VALUES(?, ?, ?, ?, ?)');
     $req->execute([$name, $surname, $email, $password, $secret]);
 
     // Redirection.

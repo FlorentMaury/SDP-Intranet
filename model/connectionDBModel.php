@@ -7,6 +7,6 @@
         die('Erreur : ' .$e->getMessage());
     };
 
-    $users = $bdd->query('SELECT * FROM marital_status');
+    $users = $bdd->query('SELECT * FROM user');
     
 ?>

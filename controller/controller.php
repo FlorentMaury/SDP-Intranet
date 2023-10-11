@@ -14,26 +14,9 @@
         require('model/addNewUserModel.php');
 
             // Modifications des informations utilisateurs.
-            require('model/modifyInformationsModels/modifyNameModel.php');
-            require('model/modifyInformationsModels/modifySurnameModel.php');
-            require('model/modifyInformationsModels/modifyBirthModel.php');
-            require('model/modifyInformationsModels/modifyNumberModel.php');
-            require('model/modifyInformationsModels/modifyInsuranceNumberModel.php');
-            require('model/modifyInformationsModels/modifyIdNumberModel.php');
-            require('model/modifyInformationsModels/modifyBirthCityModel.php');
-            require('model/modifyInformationsModels/modifyBirthCountryModel.php');
-            require('model/modifyInformationsModels/modifyCurrentStreetNumberModel.php');
-            require('model/modifyInformationsModels/modifyCurrentStreetName.php');
-            require('model/modifyInformationsModels/modifyCurrentCity.php');
-            require('model/modifyInformationsModels/modifyZipCode.php');
-            require('model/modifyInformationsModels/modifyCurrentCountry.php');
-            require('model/modifyInformationsModels/modifyInsuranceCardModel.php');
-            require('model/modifyInformationsModels/modifyIdCardModel.php');
+            require('model/modifyInformationsModels/modifyUserInformations.php');
             require('model/modifyInformationsModels/modifySchoolModel.php');
             require('model/modifyInformationsModels/modifyJobModel.php');
-
-            // Images.
-            require('model/modifyInformationsModels/modifyProfilePictureModel.php');
 
         require('view/dashboardView.php');
     };

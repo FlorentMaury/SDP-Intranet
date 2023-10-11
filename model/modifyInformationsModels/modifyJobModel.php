@@ -13,12 +13,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_1 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_1 = ? WHERE id = ?');
     $req->execute([$modifyJob1, $userModifiedId]);
 
     // Redirection.
@@ -39,12 +39,12 @@ if(
     $userId          = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_1_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_1_start = ? WHERE id = ?');
     $req->execute([$modifyJob1Start, $userModifiedId]);
 
     // Redirection.
@@ -65,12 +65,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_1_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_1_end = ? WHERE id = ?');
     $req->execute([$modifyJob1End, $userModifiedId]);
 
     // Redirection.
@@ -91,12 +91,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_1_exp = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_1_exp = ? WHERE id = ?');
     $req->execute([$modifyJob1Exp, $userModifiedId]);
 
     // Redirection.
@@ -117,12 +117,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_2 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_2 = ? WHERE id = ?');
     $req->execute([$modifyJob2, $userModifiedId]);
 
     // Redirection.
@@ -143,12 +143,12 @@ if(
     $userId          = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_2_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_2_start = ? WHERE id = ?');
     $req->execute([$modifyJob2Start, $userModifiedId]);
 
     // Redirection.
@@ -169,12 +169,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_2_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_2_end = ? WHERE id = ?');
     $req->execute([$modifyJob2End, $userModifiedId]);
 
     // Redirection.
@@ -195,12 +195,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_2_exp = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_2_exp = ? WHERE id = ?');
     $req->execute([$modifyJob2Exp, $userModifiedId]);
 
     // Redirection.
@@ -221,12 +221,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_3 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_3 = ? WHERE id = ?');
     $req->execute([$modifyJob3, $userModifiedId]);
 
     // Redirection.
@@ -247,12 +247,12 @@ if(
     $userId          = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_3_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_3_start = ? WHERE id = ?');
     $req->execute([$modifyJob3Start, $userModifiedId]);
 
     // Redirection.
@@ -273,12 +273,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_3_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_3_end = ? WHERE id = ?');
     $req->execute([$modifyJob3End, $userModifiedId]);
 
     // Redirection.
@@ -299,12 +299,12 @@ if(
     $userId        = $_SESSION['id'];
 
     // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `marital_status` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE marital_status SET job_3_exp = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET job_3_exp = ? WHERE id = ?');
     $req->execute([$modifyJob3Exp, $userModifiedId]);
 
     // Redirection.

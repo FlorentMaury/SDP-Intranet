@@ -58,7 +58,7 @@ nav ul li a {
     height: 150px;
 }
 
-.schoolsGrid {
+.schoolsGrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
@@ -73,15 +73,18 @@ nav ul li a {
     grid-column: 2 / 3;
 }
 
-.school1 {
+.school1,
+.job1 {
     grid-column: 1 / 2;
 }
 
-.school2 {
+.school2,
+.job2 {
     grid-column: 2 / 3;
 }
 
-.school3 {
+.school3,
+.job3 {
     grid-column: 3 / 4;
 }
 

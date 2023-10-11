@@ -7,7 +7,7 @@
 
     require('view/modalsView.php');
 
-    $req = $bdd->prepare('SELECT * FROM marital_status WHERE id = ?');
+    $req = $bdd->prepare('SELECT * FROM user WHERE id = ?');
     $req->execute([$_SESSION['id']]);
     $data = $req->fetch();
 
@@ -395,7 +395,7 @@
     >
     <h2 id="experiences">Diplômes</h2>
     
-    <div id="schoolsGrid">
+    <div class="schoolsGrid">
 
         <div class="school1 border rounded mt-3 p-3">
             <div class="expItems">
@@ -442,7 +442,7 @@
             if($data['school_1']) {
         ?>
 
-        <div id="school2 border rounded mt-3 p-3">
+        <div class="school2 border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Seconde école : <?php if(empty($data['school_2'])) {echo 'A completer';} else { echo $data['school_2'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -483,7 +483,7 @@
             </div>
         </div>
 
-        <div class="schoolButtons">
+        <!-- <div class="schoolButtons">
             <div id="addSchool" class="expItems">
                 <button type="button" class="btn btn-dark me-2">
                     Ajouter un diplôme scolaire
@@ -495,7 +495,7 @@
                     Annuler
                 </button>
             </div>  
-        </div>
+        </div> -->
 
         <?php
             }
@@ -505,7 +505,7 @@
             if($data['school_2']) {
         ?>
 
-        <div id="school3 border rounded mt-3 p-3">
+        <div class="school3 border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Troisième école : <?php if(empty($data['school_3'])) {echo 'A completer';} else { echo $data['school_3'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -554,120 +554,165 @@
 
     <h2 id="experiences">Expérience professionelle</h2>
 
-    <div id="schoolsGrid">
+    <div class="schoolsGrid">
 
-    <div class="job1 border rounded mt-3 p-3">
-        <div class="expItems">
-            <p>Expérience professionelle : <?php if(empty($data['job_1'])) {echo 'A completer';} else { echo $data['job_1'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1">Modifier</a>
-            </button>
+        <div class="job1 border rounded mt-3 p-3">
+            <div class="expItems">
+                <p>Expérience professionelle : <?php if(empty($data['job_1'])) {echo 'A completer';} else { echo $data['job_1'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de début : <?php if(empty($data['job_1_start'])) {echo 'A completer';} else { echo $data['job_1_start'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1Start">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de fin : <?php if(empty($data['job_1_end'])) {echo 'A completer';} else { echo $data['job_1_end'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1End">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Missions : <?php if(empty($data['job_1_exp'])) {echo 'A completer';} else { echo $data['job_1_exp'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1Exp">Modifier</a>
+                </button>
+            </div>
         </div>
-        <div class="expItems">
-            <p>Date de début : <?php if(empty($data['job_1_start'])) {echo 'A completer';} else { echo $data['job_1_start'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1Start">Modifier</a>
-            </button>
+
+        <?php
+            if($data['job_1']) {
+        ?>
+
+        <div class="job2 border rounded mt-3 p-3">
+            <div class="expItems">
+                <p>Seconde expérience professionelle : <?php if(empty($data['job_2'])) {echo 'A completer';} else { echo $data['job_2'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de début : <?php if(empty($data['job_2_start'])) {echo 'A completer';} else { echo $data['job_2_start'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2Start">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de fin : <?php if(empty($data['job_2_end'])) {echo 'A completer';} else { echo $data['job_2_end'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2End">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Missions : <?php if(empty($data['job_2_exp'])) {echo 'A completer';} else { echo $data['job_2_exp'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2Exp">Modifier</a>
+                </button>
+            </div>
         </div>
-        <div class="expItems">
-            <p>Date de fin : <?php if(empty($data['job_1_end'])) {echo 'A completer';} else { echo $data['job_1_end'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1End">Modifier</a>
-            </button>
+
+        <!-- <div class="jobButtons">
+            <div id="addJob" class="expItems">
+                <button type="button" class="btn btn-dark me-2">
+                    Ajouter une expérience professionelle
+                </button>
+            </div>
+
+            <div id="cancel" class="expItems">
+                <button type="button" href="" class="btn btn-dark me-2">
+                    Annuler
+                </button>
+            </div>  
+        </div> -->
+
+        <?php
+            }
+        ?>
+
+        <?php
+            if($data['job_2']) {
+        ?>
+
+        <div class="job3 border rounded mt-3 p-3">
+            <div class="expItems">
+                <p>Troisième école : <?php if(empty($data['job_3'])) {echo 'A completer';} else { echo $data['job_3'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de début : <?php if(empty($data['job_3_start'])) {echo 'A completer';} else { echo $data['job_3_start'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Date de fin : <?php if(empty($data['job_3_end'])) {echo 'A completer';} else { echo $data['job_3_end'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3End">Modifier</a>
+                </button>
+            </div>
+            <div class="expItems">
+                <p>Missions : <?php if(empty($data['job_3_exp'])) {echo 'A completer';} else { echo $data['job_3_exp'];} ?></p>
+                <button class="btn btn-md btn-dark p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Exp">Modifier</a>
+                </button>
+            </div>
         </div>
-        <div class="expItems">
-            <p>Missions : <?php if(empty($data['job_1_exp'])) {echo 'A completer';} else { echo $data['job_1_exp'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1Exp">Modifier</a>
-            </button>
+
+        <div class="jobButtons">
+            <div id="addJob" class="expItems">
+                <button type="button" class="btn btn-dark me-2">
+                    Ajouter une expérience professionelle
+                </button>
+            </div>
+
+            <div id="cancel" class="expItems">
+                <button type="button" href="" class="btn btn-dark me-2">
+                    Annuler
+                </button>
+            </div>  
         </div>
+
+        <?php
+            }
+        ?>
+
     </div>
+</div>
 
-    <?php
-        if($data['job_1']) {
-    ?>
 
-    <div id="school2 border rounded mt-3 p-3">
-        <div class="expItems">
-            <p>Seconde expérience professionelle : <?php if(empty($data['job_2'])) {echo 'A completer';} else { echo $data['job_2'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2">Modifier</a>
-            </button>
-        </div>
-        <div class="expItems">
-            <p>Date de début : <?php if(empty($data['job_2_start'])) {echo 'A completer';} else { echo $data['job_2_start'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2Start">Modifier</a>
-            </button>
-        </div>
-        <div class="expItems">
-            <p>Date de fin : <?php if(empty($data['job_2_end'])) {echo 'A completer';} else { echo $data['job_2_end'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2End">Modifier</a>
-            </button>
-        </div>
-        <div class="expItems">
-            <p>Missions : <?php if(empty($data['job_2_exp'])) {echo 'A completer';} else { echo $data['job_2_exp'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2Exp">Modifier</a>
-            </button>
-        </div>
+<!-- CONTRAT CHEZ STUDIO DES PARFUMS -->
+
+<div class="border rounded mt-3 p-3">
+    <img 
+        id="arrowUp4"
+        style="width: 15px" 
+        src="./public/assets/arrow_up.svg" 
+        alt="Fléche vers le haut"
+    >
+    <img 
+        id="arrowDown4"
+        style="width: 15px" 
+        src="./public/assets/arrow_down.svg" 
+        alt="Fléche vers le bas"
+    >
+
+    <h2 id="experiences">Studio des parfums</h2>
+
+    <div class="contract border rounded mt-3 p-3">
+
+    <!-- Type de contrat -->
+    <div>
+        <p>Type de contrat : <?php if(empty($data['current_country'])) {echo 'A completer';} else { echo $data['current_country'];} ?></p>
+        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCountry">Modifier</a>
+        </button>
     </div>
-
-    <div class="jobButtons">
-        <div id="addJob" class="expItems">
-            <button type="button" class="btn btn-dark me-2">
-                Ajouter une expérience professionelle
-            </button>
-        </div>
-
-        <div id="cancel" class="expItems">
-            <button type="button" href="" class="btn btn-dark me-2">
-                Annuler
-            </button>
-        </div>  
-    </div>
-
-    <?php
-        }
-    ?>
-
-    <?php
-        if($data['job_2']) {
-    ?>
-
-    <div id="job2 border rounded mt-3 p-3">
-        <div class="expItems">
-            <p>Troisième école : <?php if(empty($data['job_3'])) {echo 'A completer';} else { echo $data['job_3'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3">Modifier</a>
-            </button>
-        </div>
-        <div class="expItems">
-            <p>Date de début : <?php if(empty($data['job_3_start'])) {echo 'A completer';} else { echo $data['job_3_start'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
-            </button>
-        </div>
-        <div class="expItems">
-            <p>Date de fin : <?php if(empty($data['job_3_end'])) {echo 'A completer';} else { echo $data['job_3_end'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3End">Modifier</a>
-            </button>
-        </div>
-        <div class="expItems">
-            <p>Missions : <?php if(empty($data['job_3_exp'])) {echo 'A completer';} else { echo $data['job_3_exp'];} ?></p>
-            <button class="btn btn-md btn-dark p-2" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Exp">Modifier</a>
-            </button>
-        </div>
-    </div>
-
-    <?php
-        }
-    ?>
-
-    </div>
+    
 
 </div>
 

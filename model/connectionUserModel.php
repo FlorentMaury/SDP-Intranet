@@ -17,7 +17,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
     $password = "zk32".sha1($password ."486")."345";
 
     // L'adresse email est-elle bien utilisée ?
-    $req = $bdd->prepare('SELECT COUNT(*) as numberEmail FROM marital_status WHERE email = ?');
+    $req = $bdd->prepare('SELECT COUNT(*) as numberEmail FROM user WHERE email = ?');
     $req->execute([$email]);
 
     // Si l'email n'est pas reconnu.
@@ -29,7 +29,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
     }
 
     // Connexion si le mot de passe est le bon.
-    $req = $bdd->prepare('SELECT * FROM marital_status WHERE email = ?');
+    $req = $bdd->prepare('SELECT * FROM user WHERE email = ?');
     $req->execute([$email]);
 
     while($user = $req->fetch()) {
