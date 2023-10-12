@@ -5,6 +5,10 @@
     // Début d'enregistrement du HTML.
     ob_start();
 
+    // Script pour réinitialiser les données
+    // $sql = file_get_contents('../src/resetSQL/reset_weekly.sql');
+    // $conn->query($sql);
+
 ?>
 
     <!-- Message de validation ou d'erreur -->

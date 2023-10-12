@@ -1,101 +1,85 @@
-arrowUp1   = document.querySelector('#arrowUp1');
-arrowDown1 = document.querySelector('#arrowDown1');
-arrowUp2   = document.querySelector('#arrowUp2');
-arrowDown2 = document.querySelector('#arrowDown2');
-arrowUp3   = document.querySelector('#arrowUp3');
-arrowDown3 = document.querySelector('#arrowDown3');
-arrowUp4   = document.querySelector('#arrowUp4');
-arrowDown4 = document.querySelector('#arrowDown4');
+    // Menu Dynamique.
 
-employeesList = document.querySelector('#employeesList');
-newUser       = document.querySelector('#newUser');
-userInfos1    = document.querySelector('#userInfos1');
-userInfos2    = document.querySelector('#userInfos2');
-userExp       = document.querySelector('#userExp');
+// Variables.
+let managerViewGridButton;
+let generalInfosButton;
+let experiencesButton;
+let contractButton;
+let timeBankButton;
 
-arrowUp1.style.cursor = 'pointer';
-arrowUp2.style.cursor = 'pointer';
-arrowUp3.style.cursor = 'pointer';
-arrowUp4.style.cursor = 'pointer';
-arrowDown1.style.cursor = 'pointer';
-arrowDown2.style.cursor = 'pointer';
-arrowDown3.style.cursor = 'pointer';
-arrowDown4.style.cursor = 'pointer';
+let managerViewGrid;
+let generalInfos;
+let experiences;
+let contract;
+let timeBank;
 
-arrowDown1.style.display = 'none';
-arrowDown2.style.display = 'none';
-arrowDown3.style.display = 'none';
-arrowDown4.style.display = 'none';
+// Boutons.
+managerViewGridButton = document.querySelector('#managerViewGridButton');
+generalInfosButton    = document.querySelector('#generalInfosButton');
+experiencesButton     = document.querySelector('#experiencesButton');
+contractButton        = document.querySelector('#contractButton');
+timeBankButton        = document.querySelector('#timeBankButton');
 
-arrowUp1.addEventListener('click', () => {
-    employeesList.style.display = 'none';
-    arrowUp1.style.display = 'none';
-    arrowDown1.style.display = 'block';
-});  
+// Conteneurs.
+managerViewGrid = document.querySelector('#managerViewGrid');
+generalInfos    = document.querySelector('#generalInfos');
+experiences     = document.querySelector('#experiences');
+contract        = document.querySelector('#contract');
+timeBank        = document.querySelector('#timeBank');
 
-arrowDown1.addEventListener('click', () => {
-    employeesList.style.display = 'block';
-    arrowUp1.style.display = 'block';
-    arrowDown1.style.display = 'none';
+// Affichage par défaut.
+managerViewGrid.style.display = 'block';
+generalInfos.style.display    = 'none';
+experiences.style.display     = 'none';
+contract.style.display        = 'none';
+timeBank.style.display        = 'none';
+
+// Apparence.
+managerViewGridButton.style.cursor = 'pointer';
+generalInfosButton.style.cursor    = 'pointer';
+experiencesButton.style.cursor     = 'pointer';
+contractButton.style.cursor        = 'pointer';
+timeBankButton.style.cursor        = 'pointer';
+
+// Gestion des boutons.
+managerViewGridButton.addEventListener('click', () => {
+    managerViewGrid.style.display = 'block';
+    generalInfos.style.display    = 'none';
+    experiences.style.display     = 'none';
+    contract.style.display        = 'none';
+    timeBank.style.display        = 'none';
 });
 
-arrowUp2.addEventListener('click', () => {
-    newUser.style.display = 'none';
-    arrowUp2.style.display = 'none';
-    arrowDown2.style.display = 'block';
-});  
-
-arrowDown2.addEventListener('click', () => {
-    newUser.style.display = 'block';
-    arrowUp2.style.display = 'block';
-    arrowDown2.style.display = 'none';
+generalInfosButton.addEventListener('click', () => {
+    managerViewGrid.style.display = 'none';
+    generalInfos.style.display    = 'block';
+    experiences.style.display     = 'none';
+    contract.style.display        = 'none';
+    timeBank.style.display        = 'none';
 });
 
-arrowUp3.addEventListener('click', () => {
-    userInfos1.style.display = 'none';
-    userInfos2.style.display = 'none';
-    arrowUp3.style.display = 'none';
-    arrowDown3.style.display = 'block';
-});  
-
-arrowDown3.addEventListener('click', () => {
-    userInfos1.style.display = 'block';
-    userInfos2.style.display = 'block';
-    arrowUp3.style.display = 'block';
-    arrowDown3.style.display = 'none';
+experiencesButton.addEventListener('click', () => {
+    managerViewGrid.style.display = 'none';
+    generalInfos.style.display    = 'none';
+    experiences.style.display     = 'block';
+    contract.style.display        = 'none';
+    timeBank.style.display        = 'none';
 });
 
-arrowUp4.addEventListener('click', () => {
-    userExp.style.display = 'none';
-    arrowUp4.style.display = 'none';
-    arrowDown4.style.display = 'block';
-});  
-
-arrowDown4.addEventListener('click', () => {
-    userExp.style.display = 'block';
-    arrowUp4.style.display = 'block';
-    arrowDown4.style.display = 'none';
+contractButton.addEventListener('click', () => {
+    managerViewGrid.style.display = 'none';
+    generalInfos.style.display    = 'none';
+    experiences.style.display     = 'none';
+    contract.style.display        = 'block';
+    timeBank.style.display        = 'none';
 });
 
-// Ajouter une expérience scolaire
-
-addSchool = document.querySelector('#addSchool');
-school2   = document.querySelector('#school2');
-cancel    = document.querySelector('#cancel');
-
-addSchool.style.cursor = 'pointer';
-cancel.style.cursor = 'pointer';
-cancel.style.display = 'none';
-school2.display = 'none';
-
-addSchool.addEventListener('click', () => {
-    school2.style.display = 'block';
-    cancel.style.display = 'block';
-    addSchool.style.display = 'none';
+timeBankButton.addEventListener('click', () => {
+    managerViewGrid.style.display = 'none';
+    generalInfos.style.display    = 'none';
+    experiences.style.display     = 'none';
+    contract.style.display        = 'none';
+    timeBank.style.display        = 'block';
 });
 
-cancel.addEventListener('click', () => {
-    school2.style.display = 'none';
-    cancel.style.display = 'none';
-    addSchool.style.display = 'block';
-});
+console.log('Script chargé !');

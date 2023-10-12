@@ -1663,3 +1663,69 @@
         </div>
     </div>
 </div>
+
+<!-- Modale de décalartion de retard. -->
+<div class="modal fade" id="modifyDelayInfo" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Déclarer un retard</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="number" name="userDelayInfo" class="form-control" id="userDelayInfo">
+                    <label for="userDelayInfo">Déclarer un retard</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de décalartion d'absence. -->
+<div class="modal fade" id="modifyAbsenceInfo" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Déclarer une absence</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="number" name="userAbsenceInfo" class="form-control" id="userAbsenceInfo">
+                    <label for="userAbsenceInfo">Déclarer une absence</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de décalartion d'heures supplémentaires. -->
+<div class="modal fade" id="modifyExtraTimeInfo" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Déclarer des heures supplémentaires</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="number" name="userExtraTimeInfo" class="form-control" id="userExtraTimeInfo">
+                    <label for="userExtraTimeInfo">Déclarer des heures supplémentaires</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>

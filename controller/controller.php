@@ -17,6 +17,7 @@
             require('model/modifyInformationsModels/modifyUserInformationsModel.php');
             require('model/modifyInformationsModels/modifySchoolModel.php');
             require('model/modifyInformationsModels/modifyJobModel.php');
+            require('model/modifyInformationsModels/modifyTimeAccountModel.php');
 
         require('view/dashboardView.php');
         require('view/modalsView.php');

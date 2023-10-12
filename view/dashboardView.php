@@ -19,33 +19,23 @@
         <?php
             if($_SESSION['id'] == 1) {
         ?>
-        <li>
-            <a class="a" href="#collabList">
+        <li id="managerViewGridButton">
                 Ajouter / Voir collaborateurs
-            </a>
         </li>
         <?php
             }
         ?>
-        <li>
-            <a href="#userInfos">
+        <li id="generalInfosButton">
                 Informations personnelles
-            </a>
         </li>
-        <li>
-            <a href="#experiences">
+        <li id="experiencesButton">
                 Expériences
-            </a>
         </li>
-        <li>
-            <a href="#statut">
+        <li id="contractButton">
                 Poste au studio
-            </a>
         </li>
-        <li>
-            <a href="#events">
+        <li id="timeBankButton">
                 Compte de temps
-            </a>
         </li>
     </ul>
 </nav>
@@ -55,20 +45,9 @@
 ?>
 
 <!-- Grille administrateur -->
-<div class="managerViewGrid">
+<div id="managerViewGrid">
     <div class="border rounded p-3">
-        <img 
-            id="arrowUp1"
-            style="width: 15px" 
-            src="./public/assets/arrow_up.svg" 
-            alt="Fléche vers le haut"
-        >
-        <img 
-            id="arrowDown1"
-            style="width: 15px" 
-            src="./public/assets/arrow_down.svg" 
-            alt="Fléche vers le bas"
-        >
+
         <h2 id="collabList">Liste des collaborateurs</h2>
 
         <div id="employeesList">
@@ -180,7 +159,7 @@
 <!-- Grille générale -->
 
 <!-- Informations personnelles -->
-<div class="border rounded mt-3 p-3">
+<div id="generalInfos" class="border rounded mt-3 p-3">
     <img 
         id="arrowUp3"
         style="width: 15px" 
@@ -387,7 +366,7 @@
 </div>
 
 <!-- Expériences -->
-<div class="border rounded mt-3 p-3">
+<div id="experiences" class="border rounded mt-3 p-3">
     <img 
         id="arrowUp4"
         style="width: 15px" 
@@ -694,7 +673,7 @@
 
 <!-- CONTRAT CHEZ STUDIO DES PARFUMS -->
 
-<div class="border rounded mt-3 p-3">
+<div id="contract" class="border rounded mt-3 p-3">
     <img 
         id="arrowUp4"
         style="width: 15px" 
@@ -766,7 +745,7 @@
 
 <!-- COMPTE DE TEMPS -->
 
-<div class="border rounded mt-3 p-3">
+<div id="timeBank" class="border rounded mt-3 p-3">
     <img 
         id="arrowUp4"
         style="width: 15px" 
@@ -788,10 +767,28 @@
         require('./model/timeAccountModel.php')
     ?>
 
+    <div class="dashboardItems">
+        <p>Déclarer un retard</p>
+        <button class="btn btn-md btn-dark p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDelayInfo">Modifier</a>
+        </button>
+    </div>
+
+    <div class="dashboardItems">
+        <p>Déclarer une absence</p>
+        <button class="btn btn-md btn-dark p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo">Modifier</a>
+        </button>
+    </div>
+
+    <div class="dashboardItems">
+        <p>Déclarer des heures supplémentaires</p>
+        <button class="btn btn-md btn-dark p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyExtraTimeInfo">Modifier</a>
+        </button>
+    </div>
+
 </div>
-
-
-
 
 <?php 
 
