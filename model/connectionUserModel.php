@@ -57,6 +57,8 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             $_SESSION['contract_coef']          = $user['contract_coef'];
             $_SESSION['contract_remuneration']  = $user['contract_remuneration'];
             $_SESSION['contract_weekly']        = $user['contract_weekly'];
+            $_SESSION['user_absence']      = $user['user_absence'];
+            $_SESSION['user_delay']        = $user['user_delay'];
 
             // Validation de la connexion.
             header('location: index.php?page=dashboard');

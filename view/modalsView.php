@@ -1560,15 +1560,15 @@
         <div class="modal-content p-3 mt-0">
             <!-- Titre de la modale. -->
             <div class="modal-header">
-                <h5 class="modal-title">Rémunération du contrat</h5>
+                <h5 class="modal-title">Rémunération du contrat (à l'heure)</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
             <!-- Corps de la modale. -->
             <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
                 <p class="form-floating m-2">
-                    <input type="text" name="userContractRemuneration" class="form-control" id="userContractRemuneration">
-                    <label for="userContractRemuneration">Rémunération du contrat</label>
+                    <input type="number" name="userContractRemuneration" class="form-control" id="userContractRemuneration">
+                    <label for="userContractRemuneration">Rémunération du contrat (à l'heure)</label>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>

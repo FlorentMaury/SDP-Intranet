@@ -8,8 +8,6 @@
     $req = $bdd->prepare('SELECT * FROM user WHERE id = ?');
     $req->execute([$_SESSION['id']]);
     $data = $req->fetch();
-
-    var_dump($_SESSION);
 ?>
 
 <h1 class="text-center">

@@ -381,7 +381,7 @@ if (isset($_GET['id'])) {
 
     <!-- Rémunération -->
     <div class="expItems">
-        <p>Rémunération : <?php if(empty($data['contract_remuneration'])) {echo 'En attente';} else { echo $data['contract_remuneration'];} ?></p>
+        <p>Rémunération à l'heure : <?php if(empty($data['contract_remuneration'])) {echo 'En attente';} else { echo $data['contract_remuneration'].'€ / Heure';} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractRemuneration">Modifier</a>
         </button>
