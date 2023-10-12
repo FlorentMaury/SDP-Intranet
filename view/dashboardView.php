@@ -9,6 +9,7 @@
     $req->execute([$_SESSION['id']]);
     $data = $req->fetch();
 
+    var_dump($_SESSION);
 ?>
 
 <h1 class="text-center">
@@ -36,6 +37,16 @@
         <li>
             <a href="#experiences">
                 Expériences
+            </a>
+        </li>
+        <li>
+            <a href="#statut">
+                Poste au studio
+            </a>
+        </li>
+        <li>
+            <a href="#events">
+                Compte de temps
             </a>
         </li>
     </ul>
@@ -699,7 +710,7 @@
         alt="Fléche vers le bas"
     >
 
-    <h2 id="experiences">Studio des parfums</h2>
+    <h2 id="statut">Studio des parfums</h2>
 
     <div class="contract border rounded mt-3 p-3">
 
@@ -753,6 +764,34 @@
         <p>Navigo : <?php if(empty($data['contract_transports'])) {echo 'En attente';} else { echo $data['contract_transports'];} ?></p>
     </div>
 </div>
+
+
+<!-- COMPTE DE TEMPS -->
+
+<div class="border rounded mt-3 p-3">
+    <img 
+        id="arrowUp4"
+        style="width: 15px" 
+        src="./public/assets/arrow_up.svg" 
+        alt="Fléche vers le haut"
+    >
+    <img 
+        id="arrowDown4"
+        style="width: 15px" 
+        src="./public/assets/arrow_down.svg" 
+        alt="Fléche vers le bas"
+    >
+
+    <h2 id="events">Compte de temps</h2>
+
+    <div class="contract border rounded mt-3 p-3">
+
+    <?php
+        require('./model/timeAccountModel.php')
+    ?>
+
+</div>
+
 
 
 

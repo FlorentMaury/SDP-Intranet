@@ -53,6 +53,10 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             $_SESSION['id_number']              = $user['id_number'];
             $_SESSION['social_security_number'] = $user['social_security_number'];
             $_SESSION['creation_date']          = $user['creation_date'];
+            $_SESSION['contract_level']         = $user['contract_level'];
+            $_SESSION['contract_coef']          = $user['contract_coef'];
+            $_SESSION['contract_remuneration']  = $user['contract_remuneration'];
+            $_SESSION['contract_weekly']        = $user['contract_weekly'];
 
             // Validation de la connexion.
             header('location: index.php?page=dashboard');
