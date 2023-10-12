@@ -1451,7 +1451,7 @@
                 </button>
             </div>
             <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=user">
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
                 <p class="form-floating m-2">
                     <select name="userContract" class="form-select" id="userContract" class="form-select" aria-label="Select contract">
                         <option selected value="CDI">CDI</option>
@@ -1460,9 +1460,205 @@
                         <option value="Alternance">Alternance</option>
                     </select>
                 </p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="index.php?page=user&id=<?= $data['id'] ?>">Modifier</a>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification de date de début du contrat. -->
+<div class="modal fade" id="modifyContractStart" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Date de début du contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="date" name="userContractStart" class="form-control" id="userContractStart">
+                    <label for="userContractStart">Date de début</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification de date de fin du contrat. -->
+<div class="modal fade" id="modifyContractEnd" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Date de fin du contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="date" name="userContractEnd" class="form-control" id="userContractEnd">
+                    <label for="userContractEnd">Date de fin</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification de niveau du contrat. -->
+<div class="modal fade" id="modifyContractLevel" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Niveau du contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="text" name="userContractLevel" class="form-control" id="userContractLevel">
+                    <label for="userContractLevel">Niveau du contrat</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification de coefficient du contrat. -->
+<div class="modal fade" id="modifyContractCoef" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Coefficient du contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="text" name="userContractCoef" class="form-control" id="userContractCoef">
+                    <label for="userContractCoef">Coefficient du contrat</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification de rémunération du contrat. -->
+<div class="modal fade" id="modifyContractRemuneration" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Rémunération du contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="text" name="userContractRemuneration" class="form-control" id="userContractRemuneration">
+                    <label for="userContractRemuneration">Rémunération du contrat</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification de la mutuelle du contrat. -->
+<div class="modal fade" id="modifyContractInsurance" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Mutuelle du contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="text" name="userContractInsurance" class="form-control" id="userContractInsurance">
+                    <label for="userContractInsurance">Mutuelle du contrat</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification du numéro de la mutuelle du contrat. -->
+<div class="modal fade" id="modifyContractInsuranceNumber" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Numéro de mutuelle du contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="number" name="userContractInsuranceNumber" class="form-control" id="userContractInsuranceNumber">
+                    <label for="userContractInsuranceNumber">Numéro de mutuelle du contrat</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification des heures hebdomadaires du contrat. -->
+<div class="modal fade" id="modifyContractWeekly" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Heures hebdomadaires du contrat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="number" name="userContractWeekly" class="form-control" id="userContractWeekly">
+                    <label for="userContractWeekly">Heures hebdomadaires du contrat</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de modification de la carte Navigo. -->
+<div class="modal fade" id="modifyContractTransport" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Carte Navigo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+                <p class="form-floating m-2">
+                    <input type="number" name="userContractTransports" class="form-control" id="userContractTransports">
+                    <label for="userContractTransports">Carte Navigo</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>
         </div>
     </div>

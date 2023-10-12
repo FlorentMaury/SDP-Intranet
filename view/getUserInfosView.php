@@ -349,9 +349,9 @@ if (isset($_GET['id'])) {
 
     <!-- Date de début -->
     <div class="expItems">
-        <p>Date de début du contrat : <?php if(empty($data['contract_start'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
+        <p>Date de début du contrat : <?php if(empty($data['contract_start'])) {echo 'En attente';} else { echo $data['contract_start'];} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractStart">Modifier</a>
         </button>
     </div>
 
@@ -359,7 +359,7 @@ if (isset($_GET['id'])) {
     <div class="expItems">
         <p>Date de fin du contrat : <?php if(empty($data['contract_end'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractEnd">Modifier</a>
         </button>
     </div>
 
@@ -367,7 +367,7 @@ if (isset($_GET['id'])) {
     <div class="expItems">
         <p>Niveau : <?php if(empty($data['contract_level'])) {echo 'En attente';} else { echo $data['contract_level'];} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractLevel">Modifier</a>
         </button>
     </div>
 
@@ -375,7 +375,7 @@ if (isset($_GET['id'])) {
     <div class="expItems">
         <p>Coef : <?php if(empty($data['contract_coef'])) {echo 'En attente';} else { echo $data['contract_coef'];} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractCoef">Modifier</a>
         </button>
     </div>
 
@@ -383,7 +383,7 @@ if (isset($_GET['id'])) {
     <div class="expItems">
         <p>Rémunération : <?php if(empty($data['contract_remuneration'])) {echo 'En attente';} else { echo $data['contract_remuneration'];} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractRemuneration">Modifier</a>
         </button>
     </div>
 
@@ -391,7 +391,7 @@ if (isset($_GET['id'])) {
     <div class="expItems">
         <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'En attente';} else { echo $data['contract_insurance'];} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractInsurance">Modifier</a>
         </button>
     </div>
 
@@ -399,15 +399,15 @@ if (isset($_GET['id'])) {
     <div class="expItems">
         <p>Numéro de mutuelle : <?php if(empty($data['contract_insurance_number'])) {echo 'En attente';} else { echo $data['contract_insurance_number'];} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractInsuranceNumber">Modifier</a>
         </button>
     </div>
 
     <!-- Heures hebdomadaires -->
     <div class="expItems">
-        <p>Heures hebdomadaires : <?php if(empty($data['contract_weekly'])) {echo 'En attente';} else { echo $data['contract_weekly'];} ?></p>
+        <p>Heures hebdomadaires : <?php if(empty($data['contract_weekly'])) {echo 'En attente';} else { echo $data['contract_weekly']. 'h / semaines';} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractWeekly">Modifier</a>
         </button>
     </div>
 
@@ -415,7 +415,7 @@ if (isset($_GET['id'])) {
     <div class="expItems">
         <p>Navigo : <?php if(empty($data['contract_transports'])) {echo 'En attente';} else { echo $data['contract_transports'];} ?></p>
         <button class="btn btn-md btn-dark p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractTransport">Modifier</a>
         </button>
     </div>
 </div>
