@@ -47,7 +47,7 @@
             </p>
         </li>
         <li id="timeBankButton">
-            <img src="./public/assets/time.svg" alt="Poste">
+            <img src="./public/assets/time.svg" alt="Time Bank">
             <p>
                 Compte de temps
             </p>
@@ -149,8 +149,10 @@
                         class="w-25"    
                     >
                 </p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyProfilePicture">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyProfilePicture">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
@@ -160,88 +162,110 @@
             <!-- Prénom -->
             <div class="dashboardItems">
                 <p>Prénom : <?= $data['name'] ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyNameInfo">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyNameInfo">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Nom de famille -->
             <div class="dashboardItems">
                 <p>Nom de famille : <?= $data['surname'] ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySurnameInfo">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySurnameInfo">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Date de naissance -->
             <div class="dashboardItems">
                 <p>Date de naissance : <?php if(empty($data['birth_date'])) {echo 'A completer';} else { echo $data['birth_date'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyBirthInfo">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyBirthInfo">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Numéro de téléphone -->
             <div class="dashboardItems">
                 <p>Numéro de téléphone : <?php if(empty($data['phone_number'])) {echo 'A completer';} else { echo $data['phone_number'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPhoneInfo">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPhoneInfo">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Ville de naissance -->
             <div class="dashboardItems">
                 <p>Ville de naissance : <?php if(empty($data['birth_city'])) {echo 'A completer';} else { echo $data['birth_city'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCity">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCity">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Pays de naissance -->
             <div class="dashboardItems">
                 <p>Pays de naissance : <?php if(empty($data['birth_country'])) {echo 'A completer';} else { echo $data['birth_country'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCountry">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCountry">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Numéro de rue actuelle -->
             <div class="dashboardItems">
                 <p>Numéro de rue actuelle : <?php if(empty($data['current_street_number'])) {echo 'A completer';} else { echo $data['current_street_number'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetNumber">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetNumber">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Nom de rue actuelle -->
             <div class="dashboardItems">
                 <p>Nom de rue actuelle : <?php if(empty($data['current_city_street'])) {echo 'A completer';} else { echo $data['current_city_street'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetName">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetName">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Ville actuelle -->
             <div class="dashboardItems">
                 <p>Ville actuelle : <?php if(empty($data['current_city'])) {echo 'A completer';} else { echo $data['current_city'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCity">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCity">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Code postal -->
             <div class="dashboardItems">
                 <p>Code postal : <?php if(empty($data['current_zip_code'])) {echo 'A completer';} else { echo $data['current_zip_code'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyZipCode">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyZipCode">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
             <!-- Pays actuel -->
             <div class="dashboardItems">
                 <p>Pays actuel : <?php if(empty($data['current_country'])) {echo 'A completer';} else { echo $data['current_country'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCountry">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCountry">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
         </div>
@@ -251,8 +275,10 @@
             <!-- Numéro de sécurité sociale -->
             <div class="dashboardItems">
             <p>Numéro de carte vitale : <?php if(empty($data['social_security_number'])) {echo 'A completer';} else { echo $data['social_security_number'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#socialSecurityNumber">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#socialSecurityNumber">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
@@ -264,7 +290,9 @@
                         alt="Carte vitale de face à télécharger"
                     >
                     <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardFace">Modifier</a>
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardFace">
+                            Modifier
+                        </a>
                     </button>
                 </p>
 
@@ -275,7 +303,9 @@
                         alt="Carte vitale de dos à télécharger"
                     >
                     <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardBack">Modifier</a>
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardBack">
+                            Modifier
+                        </a>
                     </button>
                 </p>
             </div>
@@ -283,8 +313,10 @@
             <!-- Numéro de carte d'identité -->
             <div class="dashboardItems">
                 <p>Numéro de carte d'identité : <?php if(empty($data['id_number'])) {echo 'A completer';} else { echo $data['id_number'];} ?></p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#idNumber">Modifier</a>
+                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#idNumber">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
 
@@ -296,7 +328,9 @@
                         alt="Carte d'identité de face à télécharger"
                     >
                     <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardFace">Modifier</a>
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardFace">
+                            Modifier
+                        </a>
                     </button>
                 </p>
 
@@ -307,7 +341,9 @@
                         alt="Carte d'identité de dos à télécharger"
                     >
                     <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardBack">Modifier</a>
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardBack">
+                            Modifier
+                        </a>
                     </button>
                 </p>
             </div>
@@ -330,20 +366,26 @@
         <div class="expFirstItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Ecole : <?php if(empty($data['school_1'])) {echo 'A completer';} else { echo $data['school_1'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de début : <?php if(empty($data['school_1_start'])) {echo 'A completer';} else { echo $data['school_1_start'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1Start">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1Start">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de fin : <?php if(empty($data['school_1_end'])) {echo 'A completer';} else { echo $data['school_1_end'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1End">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1End">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
@@ -362,8 +404,10 @@
                         }
                     ?>
                 </p>            
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1Doc">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool1Doc">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
         </div>
@@ -375,20 +419,26 @@
         <div class="expSecondItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Seconde école : <?php if(empty($data['school_2'])) {echo 'A completer';} else { echo $data['school_2'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de début : <?php if(empty($data['school_2_start'])) {echo 'A completer';} else { echo $data['school_2_start'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2Start">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2Start">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de fin : <?php if(empty($data['school_2_end'])) {echo 'A completer';} else { echo $data['school_2_end'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2End">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2End">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
@@ -407,8 +457,10 @@
                         }
                     ?>
                 </p>            
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2Doc">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2Doc">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
         </div>
@@ -438,20 +490,26 @@
         <div class="expThirdItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Troisième école : <?php if(empty($data['school_3'])) {echo 'A completer';} else { echo $data['school_3'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de début : <?php if(empty($data['school_3_start'])) {echo 'A completer';} else { echo $data['school_3_start'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2Start">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2Start">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de fin : <?php if(empty($data['school_3_end'])) {echo 'A completer';} else { echo $data['school_3_end'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2End">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool2End">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
@@ -470,8 +528,10 @@
                         }
                     ?>
                 </p>            
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool3Doc">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySchool3Doc">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
         </div>
@@ -489,26 +549,34 @@
         <div class="expFirstItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Expérience professionelle : <?php if(empty($data['job_1'])) {echo 'A completer';} else { echo $data['job_1'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de début : <?php if(empty($data['job_1_start'])) {echo 'A completer';} else { echo $data['job_1_start'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1Start">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1Start">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de fin : <?php if(empty($data['job_1_end'])) {echo 'A completer';} else { echo $data['job_1_end'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1End">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1End">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Missions : <?php if(empty($data['job_1_exp'])) {echo 'A completer';} else { echo $data['job_1_exp'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1Exp">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob1Exp">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
         </div>
@@ -520,26 +588,34 @@
         <div class="expSecondItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Seconde expérience professionelle : <?php if(empty($data['job_2'])) {echo 'A completer';} else { echo $data['job_2'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de début : <?php if(empty($data['job_2_start'])) {echo 'A completer';} else { echo $data['job_2_start'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2Start">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2Start">
+                        <img src="./public/assets/settings.svg" alt="Modifier"> 
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de fin : <?php if(empty($data['job_2_end'])) {echo 'A completer';} else { echo $data['job_2_end'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2End">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2End">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Missions : <?php if(empty($data['job_2_exp'])) {echo 'A completer';} else { echo $data['job_2_exp'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2Exp">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob2Exp">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
         </div>
@@ -569,26 +645,34 @@
         <div class="expThirdItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Troisième expérience professionelle : <?php if(empty($data['job_3'])) {echo 'A completer';} else { echo $data['job_3'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de début : <?php if(empty($data['job_3_start'])) {echo 'A completer';} else { echo $data['job_3_start'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Start">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Date de fin : <?php if(empty($data['job_3_end'])) {echo 'A completer';} else { echo $data['job_3_end'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3End">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3End">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
             <div class="expItems">
                 <p>Missions : <?php if(empty($data['job_3_exp'])) {echo 'A completer';} else { echo $data['job_3_exp'];} ?></p>
-                <button class="btn btn-md btn-dark p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Exp">Modifier</a>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyJob3Exp">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
                 </button>
             </div>
         </div>
@@ -689,22 +773,28 @@
 
     <div class="dashboardItems">
         <p>Déclarer un retard</p>
-        <button class="btn btn-md btn-dark p-2" type="submit">
-            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDelayInfo">Modifier</a>
+        <button class="btn btn-md btn-light p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDelayInfo">
+                <img src="./public/assets/settings.svg" alt="Modifier">
+            </a>
         </button>
     </div>
 
     <div class="dashboardItems">
         <p>Déclarer une absence</p>
-        <button class="btn btn-md btn-dark p-2" type="submit">
-            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo">Modifier</a>
+        <button class="btn btn-md btn-light p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo">
+                <img src="./public/assets/settings.svg" alt="Modifier">
+            </a>
         </button>
     </div>
 
     <div class="dashboardItems">
         <p>Déclarer des heures supplémentaires</p>
-        <button class="btn btn-md btn-dark p-2" type="submit">
-            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyExtraTimeInfo">Modifier</a>
+        <button class="btn btn-md btn-light p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyExtraTimeInfo">
+                <img src="./public/assets/settings.svg" alt="Modifier">
+            </a>
         </button>
     </div>
 
