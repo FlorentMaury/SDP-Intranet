@@ -1,24 +1,28 @@
-nav ul li a {
-    text-decoration: none;
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.managerViewGrid {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 10px;
-    height: auto;
+nav ul li {
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li:hover {
+    background: #f5f5f5;
+    transition: all 0.2s ease-in-out;
 }
 
 #employeesList {
     height: 80%;
     overflow-y: scroll;
     scrollbar-width: thin;
-}
-
-.userInfosGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
 }
 
 .dashboardItems,
@@ -58,36 +62,20 @@ nav ul li a {
     height: 150px;
 }
 
-.schoolsGrid{
+.userExpGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
 }
 
-.userInfosSchool1 {
+.expFirstItem {
     grid-column: 1 / 2;
 }
 
-.userInfosSchool2 {
+.expSecondItem {
     grid-column: 2 / 3;
 }
 
-.school1,
-.job1 {
-    grid-column: 1 / 2;
-}
-
-.school2,
-.job2 {
-    grid-column: 2 / 3;
-}
-
-.school3,
-.job3 {
+.expThirdItem {
     grid-column: 3 / 4;
-}
-
-.schoolButtons {
-    grid-column: 2 / 3;
 }

@@ -10,32 +10,52 @@
     $data = $req->fetch();
 ?>
 
-<h1 class="text-center">
+<h1 class="text-center display-4">
     Tableau de bord de <?= $_SESSION['name'].' '.$_SESSION['surname'] ?>
 </h1>
 
-<nav>
+<nav class="m-3">
     <ul>
         <?php
             if($_SESSION['id'] == 1) {
         ?>
         <li id="managerViewGridButton">
-                Ajouter / Voir collaborateurs
+            <img src="./public/assets/add.svg" alt="Ajouter">
+            <p>
+                Collaborateurs
+            </p>
         </li>
         <?php
             }
         ?>
         <li id="generalInfosButton">
+            <img src="./public/assets/infosUser.svg" alt="Informations">
+            <p>
                 Informations personnelles
+            </p>
         </li>
         <li id="experiencesButton">
+            <img src="./public/assets/work.svg" alt="Experiences">
+            <p>
                 Expériences
+            </p>
         </li>
         <li id="contractButton">
+            <img src="./public/assets/place.svg" alt="Poste">
+            <p>
                 Poste au studio
+            </p>
         </li>
         <li id="timeBankButton">
+            <img src="./public/assets/time.svg" alt="Poste">
+            <p>
                 Compte de temps
+            </p>
+        </li>
+        <li>
+            <button type="button" href="" class="btn btn-dark">
+                <a class="text-decoration-none text-white p-2" href="index.php?page=logout">Déconnexion</a>
+            </button>
         </li>
     </ul>
 </nav>
@@ -45,10 +65,9 @@
 ?>
 
 <!-- Grille administrateur -->
-<div id="managerViewGrid">
-    <div class="border rounded p-3">
-
-        <h2 id="collabList">Liste des collaborateurs</h2>
+<div class="managerView" id="managerViewGrid">
+    <div class="employeesList border rounded p-3 my-3">
+        <h2 class="display-6" id="collabList">Liste des collaborateurs</h2>
 
         <div id="employeesList">
             <div class="table-responsive">
@@ -102,53 +121,9 @@
             </div>
         </div>
 
-    </div>
-
-    <div class="border rounded p-3">
-        <img 
-            id="arrowUp2"
-            style="width: 15px" 
-            src="./public/assets/arrow_up.svg" 
-            alt="Fléche vers le haut"
-        >
-        <img 
-            id="arrowDown2"
-            style="width: 15px" 
-            src="./public/assets/arrow_down.svg" 
-            alt="Fléche vers le bas"
-        >
-        <h2>Nouveau collaborateur</h2>
-
-        <div id="newUser">
-            <!-- Formulaire d'enregistrement d'un nouvel employé. -->
-            <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
-
-                <!-- Formulaire. -->
-                <p class="form-floating m-2">
-                    <input type="text" name="surname" class="form-control" id="surname" placeholder="Nom de famille">
-                    <label for="surname">Nom de famille</label>
-                </p>
-                <p class="form-floating m-2">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Prénom">
-                    <label for="name">Prénom</label>
-                </p>
-                <p class="form-floating m-2">
-                    <input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">
-                    <label for="email">Email</label>
-                </p>
-                <p class="form-floating m-2">
-                    <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
-                    <label for="password">Mot de passe</label>
-                </p>
-                <p class="form-floating m-2">
-                    <input type="password" name="passwordTwo" class="form-control" id="passwordTwo" placeholder="Confirmez votre mot de passe">
-                    <label for="passwordTwo">Confirmez le mot de passe</label>
-                </p>
-                
-                <button class="btn btn-md btn-dark mt-4 p-2 align-self-end" type="submit">Enregister</button>
-
-            </form>
-        </div>
+        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAddUser">Ajouter</a>
+        </button>
     </div>
 </div>
 
@@ -160,23 +135,11 @@
 
 <!-- Informations personnelles -->
 <div id="generalInfos" class="border rounded mt-3 p-3">
-    <img 
-        id="arrowUp3"
-        style="width: 15px" 
-        src="./public/assets/arrow_up.svg" 
-        alt="Fléche vers le haut"
-    >
-    <img 
-        id="arrowDown3"
-        style="width: 15px" 
-        src="./public/assets/arrow_down.svg" 
-        alt="Fléche vers le bas"
-    >
-    <h2 id="userInfos">Informations personnelles</h2>
+
+    <h2 class="display-6" id="userInfos">Informations personnelles</h2>
     
     <div class="userInfosGrid">
         <div class="1" id="userInfos1">
-
             <!-- Image de profil -->
             <div class="dashboardItems">
                 <p>
@@ -293,32 +256,28 @@
                 </button>
             </div>
 
-            <!-- Carte vitale de face -->
-            <div class="dashboardItems">
-                <p>
+            <div class="userInfosInsuranceCards">
+                <!-- Carte vitale de face -->
+                <p class="userInfosInsuranceCard">
                     <img 
                         src="<?= './public/assets/insuranceCardFace/'.$data['insurance_card_face'] ?>" 
                         alt="Carte vitale de face à télécharger"
-                        class="w-25"    
                     >
+                    <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardFace">Modifier</a>
+                    </button>
                 </p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardFace">Modifier</a>
-                </button>
-            </div>
 
-            <!-- Carte vitale de dos -->
-            <div class="dashboardItems">
-                <p>
+                <!-- Carte vitale de dos -->
+                <p class="userInfosInsuranceCard">
                     <img 
                         src="<?= './public/assets/insuranceCardBack/'.$data['insurance_card_back'] ?>" 
                         alt="Carte vitale de dos à télécharger"
-                        class="w-25"    
                     >
+                    <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardBack">Modifier</a>
+                    </button>
                 </p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyInsuranceCardBack">Modifier</a>
-                </button>
             </div>
 
             <!-- Numéro de carte d'identité -->
@@ -329,32 +288,28 @@
                 </button>
             </div>
 
-            <!-- Carte d'identité de face -->
-            <div class="dashboardItems">
-                <p>
+            <div class="userInfosIdCards">
+                <!-- Carte d'identité de face -->
+                <p class="userInfosIdCard">
                     <img 
                         src="<?= './public/assets/idCardFace/'.$data['id_card_face'] ?>" 
                         alt="Carte d'identité de face à télécharger"
-                        class="w-25"    
                     >
+                    <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardFace">Modifier</a>
+                    </button>
                 </p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardFace">Modifier</a>
-                </button>
-            </div>
 
-            <!-- Carte d'identité de dos -->
-            <div class="dashboardItems">
-                <p>
+                <!-- Carte d'identité de dos -->
+                <p class="userInfosIdCard">
                     <img 
                         src="<?= './public/assets/idCardBack/'.$data['id_card_back'] ?>" 
                         alt="Carte d'identité de dos à télécharger"
-                        class="w-25"    
                     >
+                    <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardBack">Modifier</a>
+                    </button>
                 </p>
-                <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyIdCardBack">Modifier</a>
-                </button>
             </div>
 
             <!-- Date d'inscription -->
@@ -367,23 +322,12 @@
 
 <!-- Expériences -->
 <div id="experiences" class="border rounded mt-3 p-3">
-    <img 
-        id="arrowUp4"
-        style="width: 15px" 
-        src="./public/assets/arrow_up.svg" 
-        alt="Fléche vers le haut"
-    >
-    <img 
-        id="arrowDown4"
-        style="width: 15px" 
-        src="./public/assets/arrow_down.svg" 
-        alt="Fléche vers le bas"
-    >
-    <h2 id="experiences">Diplômes</h2>
-    
-    <div class="schoolsGrid">
 
-        <div class="school1 border rounded mt-3 p-3">
+    <h2 class="display-6" id="experiences">Diplômes</h2>
+    
+    <div class="userExpGrid">
+
+        <div class="expFirstItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Ecole : <?php if(empty($data['school_1'])) {echo 'A completer';} else { echo $data['school_1'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -428,7 +372,7 @@
             if($data['school_1']) {
         ?>
 
-        <div class="school2 border rounded mt-3 p-3">
+        <div class="expSecondItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Seconde école : <?php if(empty($data['school_2'])) {echo 'A completer';} else { echo $data['school_2'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -491,7 +435,7 @@
             if($data['school_2']) {
         ?>
 
-        <div class="school3 border rounded mt-3 p-3">
+        <div class="expThirdItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Troisième école : <?php if(empty($data['school_3'])) {echo 'A completer';} else { echo $data['school_3'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -540,9 +484,9 @@
 
     <h2 id="experiences">Expérience professionelle</h2>
 
-    <div class="schoolsGrid">
+    <div class="userExpGrid">
 
-        <div class="job1 border rounded mt-3 p-3">
+        <div class="expFirstItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Expérience professionelle : <?php if(empty($data['job_1'])) {echo 'A completer';} else { echo $data['job_1'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -573,7 +517,7 @@
             if($data['job_1']) {
         ?>
 
-        <div class="job2 border rounded mt-3 p-3">
+        <div class="expSecondItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Seconde expérience professionelle : <?php if(empty($data['job_2'])) {echo 'A completer';} else { echo $data['job_2'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -622,7 +566,7 @@
             if($data['job_2']) {
         ?>
 
-        <div class="job3 border rounded mt-3 p-3">
+        <div class="expThirdItem border rounded mt-3 p-3">
             <div class="expItems">
                 <p>Troisième expérience professionelle : <?php if(empty($data['job_3'])) {echo 'A completer';} else { echo $data['job_3'];} ?></p>
                 <button class="btn btn-md btn-dark p-2" type="submit">
@@ -674,20 +618,8 @@
 <!-- CONTRAT CHEZ STUDIO DES PARFUMS -->
 
 <div id="contract" class="border rounded mt-3 p-3">
-    <img 
-        id="arrowUp4"
-        style="width: 15px" 
-        src="./public/assets/arrow_up.svg" 
-        alt="Fléche vers le haut"
-    >
-    <img 
-        id="arrowDown4"
-        style="width: 15px" 
-        src="./public/assets/arrow_down.svg" 
-        alt="Fléche vers le bas"
-    >
 
-    <h2 id="statut">Studio des parfums</h2>
+    <h2 class="display-6" id="statut">Studio des parfums</h2>
 
     <div class="contract border rounded mt-3 p-3">
 
@@ -746,20 +678,8 @@
 <!-- COMPTE DE TEMPS -->
 
 <div id="timeBank" class="border rounded mt-3 p-3">
-    <img 
-        id="arrowUp4"
-        style="width: 15px" 
-        src="./public/assets/arrow_up.svg" 
-        alt="Fléche vers le haut"
-    >
-    <img 
-        id="arrowDown4"
-        style="width: 15px" 
-        src="./public/assets/arrow_down.svg" 
-        alt="Fléche vers le bas"
-    >
 
-    <h2 id="events">Compte de temps</h2>
+    <h2 class="display-6" id="events">Compte de temps</h2>
 
     <div class="contract border rounded mt-3 p-3">
 
