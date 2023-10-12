@@ -11,7 +11,7 @@
 ?>
 
 <h1 class="text-center display-4">
-    Tableau de bord de <?= $_SESSION['name'].' '.$_SESSION['surname'] ?>
+    Bienvenue <?= $_SESSION['name']?>
 </h1>
 
 <nav class="m-3">

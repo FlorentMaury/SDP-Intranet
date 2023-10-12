@@ -398,8 +398,6 @@ if (isset($_GET['id'])) {
 
     <h2 class="display-6" id="experiences">Studio des parfums</h2>
 
-    <div class="contract border rounded mt-3 p-3">
-
     <!-- Type de contrat -->
     <div class="expItems">
         <p>Type de contrat : <?php if(empty($data['contract_type'])) {echo 'En attente';} else { echo $data['contract_type'];} ?></p>
@@ -500,18 +498,15 @@ if (isset($_GET['id'])) {
         </button>
     </div>
 </div>
-</div>
 
-<div class="container my-4 d-flex">
-    <button type="button" href="" class="btn btn-dark me-2">
-        <a class="text-decoration-none text-white p-2" href="index.php?page=dashboard">Retour au tableau de bord</a>
-    </button>
-</div>
+<!-- COMPTE DE TEMPS -->
 
 <div class="userTimeBank">
-
 </div>
 
+<button type="button" href="" class="btn btn-dark m-2">
+    <a class="text-decoration-none text-white p-2" href="index.php?page=dashboard">Retour au tableau de bord</a>
+</button>
 
 <?php 
 
