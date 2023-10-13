@@ -15,7 +15,7 @@
 </h1>
 
 <nav class="m-3 my-5">
-    <ul>
+    <ul class="d-flex flex-column flex-md-row">
         <?php
             if($_SESSION['id'] == 1) {
         ?>
