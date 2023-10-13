@@ -15,7 +15,7 @@
 </h1>
 
 <nav class="m-3 my-5">
-    <ul class="d-flex flex-column flex-md-row">
+    <ul class="d-flex justify-content-between flex-column flex-md-row">
         <?php
             if($_SESSION['id'] == 1) {
         ?>
@@ -75,7 +75,7 @@
                     <thead>
                         <th>Prénom</th>
                         <th>Nom</th>
-                        <th>Date d'inscription</th>
+                        <th class="creationDate">Date d'inscription</th>
                         <th>Plus d'infos</th>
                         <th>Supprimer</th>
                     </thead>
@@ -87,7 +87,7 @@
                         <tr>
                             <td><?= $user['name'] ?></td>
                             <td><?= $user['surname'] ?></td>
-                            <td><?= $user['creation_date'] ?></td>
+                            <td class="creationDate"><?= $user['creation_date'] ?></td>
                             <td>
                                 <a 
                                 href='index.php?page=user&id=<?=$user["id"]?>' 

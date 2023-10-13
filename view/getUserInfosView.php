@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
 <h1 class="mb-3 display-4 text-center mt-3">Profil de <?= $data['name'] ?> <?= $data['surname'] ?></h1>
 
 <nav class="m-3 my-5">
-    <ul class="d-flex flex-column flex-md-row">
+    <ul class="d-flex justify-content-between flex-column flex-md-row">
         <li id="generalUserInfosButton">
             <img src="./public/assets/infosUser.svg" alt="Informations">
             <p>
