@@ -1,14 +1,14 @@
 <?php
     // Définition des données de l'employé.
-    $hourRate = $data['contract_remuneration']; // Taux horaire en euros.
-    $weekRate = $data['contract_weekly']; // Nombre d'heures par semaine.
+    $hourRate = floatval($data['contract_remuneration']); // Taux horaire en euros.
+    $weekRate = floatval($data['contract_weekly']); // Nombre d'heures par semaine.
 
     // Définir les absence et les delay de l'employé
-    $absence = $data['user_absence']; // Nombre de jours d'absence.
-    $delay = $data['user_delay']; // Nombre de fois en delay (en minutes).
+    $absence = floatval($data['user_absence']); // Nombre de jours d'absence.
+    $delay = floatval($data['user_delay']); // Nombre de fois en retard (en minutes).
 
     // Définir les heures supplémentaires de l'employé.
-    $extraTime = $data['user_extra_time']; // Nombre d'heures supplémentaires.
+    $extraTime = floatval($data['user_extra_time']); // Nombre d'heures supplémentaires.
 
     // Calculer les totaux
     $salaryBase = (($hourRate * $weekRate)); // Salaire de base pour 40 heures par semaine.

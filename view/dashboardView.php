@@ -67,7 +67,7 @@
 <!-- Grille administrateur -->
 <div class="managerView" id="managerViewGrid">
     <div class="employeesList border rounded p-3 my-3">
-        <h2 class="display-6" id="collabList">Liste des collaborateurs</h2>
+        <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs</h2>
 
         <div id="employeesList">
             <div class="table-responsive">
@@ -136,7 +136,7 @@
 <!-- Informations personnelles -->
 <div id="generalInfos" class="border rounded mt-3 p-3">
 
-    <h2 class="display-6" id="userInfos">Informations personnelles</h2>
+    <h2 class="display-6 text-center" id="userInfos">Informations personnelles</h2>
     
     <div class="userInfosGrid">
         <div class="1" id="userInfos1">
@@ -359,7 +359,7 @@
 <!-- Expériences -->
 <div id="experiences" class="border rounded mt-3 p-3">
 
-    <h2 class="display-6" id="experiences">Diplômes</h2>
+    <h2 class="display-6 text-center" id="experiences">Diplômes</h2>
     
     <div class="userExpGrid">
 
@@ -542,7 +542,7 @@
 
     </div>
 
-    <h2 id="experiences">Expérience professionelle</h2>
+    <h2 id="experiences display-6 text-center">Expérience professionelle</h2>
 
     <div class="userExpGrid">
 
@@ -703,7 +703,7 @@
 
 <div id="contract" class="border rounded mt-3 p-3">
 
-    <h2 class="display-6" id="statut">Studio des parfums</h2>
+    <h2 class="display-6 text-center" id="statut">Studio des parfums</h2>
 
     <div class="contract border rounded mt-3 p-3">
 
@@ -763,7 +763,7 @@
 
 <div id="timeBank" class="border rounded mt-3 p-3">
 
-    <h2 class="display-6" id="events">Compte de temps</h2>
+    <h2 class="display-6 text-center" id="events">Compte de temps</h2>
 
     <div class="contract border rounded mt-3 p-3">
 
@@ -772,28 +772,21 @@
     ?>
 
     <div class="dashboardItems">
-        <p>Déclarer un retard</p>
-        <button class="btn btn-md btn-light p-2" type="submit">
-            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDelayInfo">
-                <img src="./public/assets/settings.svg" alt="Modifier">
-            </a>
-        </button>
-    </div>
-
-    <div class="dashboardItems">
-        <p>Déclarer une absence</p>
-        <button class="btn btn-md btn-light p-2" type="submit">
+        <button class="btn btn-md btn-dark p-2" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo">
-                <img src="./public/assets/settings.svg" alt="Modifier">
+                Déclarer une absence
             </a>
         </button>
-    </div>
 
-    <div class="dashboardItems">
-        <p>Déclarer des heures supplémentaires</p>
-        <button class="btn btn-md btn-light p-2" type="submit">
+        <button class="btn btn-md btn-dark p-2" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDelayInfo">
+                Déclarer un retard
+            </a>
+        </button>
+        
+        <button class="btn btn-md btn-dark p-2" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyExtraTimeInfo">
-                <img src="./public/assets/settings.svg" alt="Modifier">
+                Déclarer des heures supplémentaires
             </a>
         </button>
     </div>

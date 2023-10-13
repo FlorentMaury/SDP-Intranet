@@ -1670,7 +1670,7 @@
         <div class="modal-content p-3 mt-0">
             <!-- Titre de la modale. -->
             <div class="modal-header">
-                <h5 class="modal-title">Déclarer un retard</h5>
+                <h5 class="modal-title">Déclarer un retard (en minutes)</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
@@ -1678,7 +1678,7 @@
             <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
                     <input type="number" name="userDelayInfo" class="form-control" id="userDelayInfo">
-                    <label for="userDelayInfo">Déclarer un retard</label>
+                    <label for="userDelayInfo">Déclarer un retard (en minutes)</label>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>
@@ -1692,7 +1692,7 @@
         <div class="modal-content p-3 mt-0">
             <!-- Titre de la modale. -->
             <div class="modal-header">
-                <h5 class="modal-title">Déclarer une absence</h5>
+                <h5 class="modal-title">Déclarer une absence (en jours)</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
@@ -1700,7 +1700,7 @@
             <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
                     <input type="number" name="userAbsenceInfo" class="form-control" id="userAbsenceInfo">
-                    <label for="userAbsenceInfo">Déclarer une absence</label>
+                    <label for="userAbsenceInfo">Déclarer une absence (en jours)</label>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>

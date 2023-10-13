@@ -394,7 +394,7 @@ if (isset($_GET['id'])) {
 
 <!-- CONTRAT CHEZ STUDIO DES PARFUMS -->
 
-<div class="userContract border rounded mt-3 p-3">
+<div class="userContract border rounded m-2 p-3 text-center">
 
     <h2 class="display-6" id="experiences">Studio des parfums</h2>
 
@@ -501,7 +501,13 @@ if (isset($_GET['id'])) {
 
 <!-- COMPTE DE TEMPS -->
 
-<div class="userTimeBank">
+<div class="userTimeBank border rounded m-2 p-3">
+
+    <h2 class="display-6 text-center" id="experiences">Compte temps</h2>
+
+    <?php
+            require('./model/timeAccountModel.php')
+        ?>
 </div>
 
 <button type="button" href="" class="btn btn-dark m-2">
