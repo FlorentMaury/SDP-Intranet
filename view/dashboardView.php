@@ -707,54 +707,55 @@
 
     <div class="contract border rounded mt-3 p-3">
 
-    <!-- Type de contrat -->
-    <div>
-        <p>Type de contrat : <?php if(empty($data['contract_type'])) {echo 'En attente';} else { echo $data['contract_type'];} ?></p>
-    </div>
+        <!-- Type de contrat -->
+        <div>
+            <p>Type de contrat : <?php if(empty($data['contract_type'])) {echo 'En attente';} else { echo $data['contract_type'];} ?></p>
+        </div>
 
-    <!-- Date de début -->
-    <div>
-        <p>Date de début du contrat : <?php if(empty($data['contract_start'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
-    </div>
+        <!-- Date de début -->
+        <div>
+            <p>Date de début du contrat : <?php if(empty($data['contract_start'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
+        </div>
 
-    <!-- Date de fin -->
-    <div>
-        <p>Date de fin du contrat : <?php if(empty($data['contract_end'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
-    </div>
+        <!-- Date de fin -->
+        <div>
+            <p>Date de fin du contrat : <?php if(empty($data['contract_end'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
+        </div>
 
-    <!-- Niveau -->
-    <div>
-        <p>Niveau : <?php if(empty($data['contract_level'])) {echo 'En attente';} else { echo $data['contract_level'];} ?></p>
-    </div>
+        <!-- Niveau -->
+        <div>
+            <p>Niveau : <?php if(empty($data['contract_level'])) {echo 'En attente';} else { echo $data['contract_level'];} ?></p>
+        </div>
 
-    <!-- Coef -->
-    <div>
-        <p>Coef : <?php if(empty($data['contract_coef'])) {echo 'En attente';} else { echo $data['contract_coef'];} ?></p>
-    </div>
+        <!-- Coef -->
+        <div>
+            <p>Coef : <?php if(empty($data['contract_coef'])) {echo 'En attente';} else { echo $data['contract_coef'];} ?></p>
+        </div>
 
-    <!-- Rémunération -->
-    <div>
-        <p>Rémunération : <?php if(empty($data['contract_remuneration'])) {echo 'En attente';} else { echo $data['contract_remuneration'];} ?></p>
-    </div>
+        <!-- Rémunération -->
+        <div>
+            <p>Rémunération : <?php if(empty($data['contract_remuneration'])) {echo 'En attente';} else { echo $data['contract_remuneration'];} ?></p>
+        </div>
 
-    <!-- Mutuelle -->
-    <div>
-        <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'En attente';} else { echo $data['contract_insurance'];} ?></p>
-    </div>
+        <!-- Mutuelle -->
+        <div>
+            <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'En attente';} else { echo $data['contract_insurance'];} ?></p>
+        </div>
 
-    <!-- Numéro de mutuelle -->
-    <div>
-        <p>Numéro de mutuelle : <?php if(empty($data['contract_insurance_number'])) {echo 'En attente';} else { echo $data['contract_insurance_number'];} ?></p>
-    </div>
+        <!-- Numéro de mutuelle -->
+        <div>
+            <p>Numéro de mutuelle : <?php if(empty($data['contract_insurance_number'])) {echo 'En attente';} else { echo $data['contract_insurance_number'];} ?></p>
+        </div>
 
-    <!-- Heures hebdomadaires -->
-    <div>
-        <p>Heures hebdomadaires : <?php if(empty($data['contract_weekly'])) {echo 'En attente';} else { echo $data['contract_weekly'];} ?></p>
-    </div>
+        <!-- Heures hebdomadaires -->
+        <div>
+            <p>Heures hebdomadaires : <?php if(empty($data['contract_weekly'])) {echo 'En attente';} else { echo $data['contract_weekly'];} ?></p>
+        </div>
 
-    <!-- Navigo -->
-    <div>
-        <p>Navigo : <?php if(empty($data['contract_transports'])) {echo 'En attente';} else { echo $data['contract_transports'];} ?></p>
+        <!-- Navigo -->
+        <div>
+            <p>Navigo : <?php if(empty($data['contract_transports'])) {echo 'En attente';} else { echo $data['contract_transports'];} ?></p>
+        </div>
     </div>
 </div>
 
@@ -763,7 +764,7 @@
 
 <div id="timeBank" class="border rounded mt-3 p-3">
 
-    <h2 class="display-6 text-center" id="events">Compte de temps</h2>
+    <h2  class="display-6 text-center" id="events">Compte de temps</h2>
 
     <div class="contract border rounded mt-3 p-3">
 
@@ -792,6 +793,9 @@
     </div>
 
 </div>
+
+<script type="text/javascript" src="./src/scriptDashboard.js"></script>
+
 
 <?php 
 

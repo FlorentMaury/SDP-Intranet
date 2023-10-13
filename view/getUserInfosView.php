@@ -60,7 +60,7 @@ if (isset($_GET['id'])) {
     </ul>
 </nav>
 
-<div class="generalUserInfosButton border rounded m-2 p-3 text-center">
+<div id="generalUserInfos" class="generalUserInfos border rounded m-2 p-3 text-center">
     <h2 class="display-6">Informations générales</h2>
 
     <div class="userInfosGrid">
@@ -211,7 +211,7 @@ if (isset($_GET['id'])) {
 </div>
 
 
-<div class="userSchool border rounded m-2 p-3 text-center">
+<div id="userSchool" class="border rounded m-2 p-3 text-center">
 
     <h2 class="display-6">Niveau scolaire</h2>
 
@@ -339,7 +339,7 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 
-<div class="userExp border rounded m-2 p-3 text-center">
+<div id="userExp" class="border rounded m-2 p-3 text-center">
 
     <h2 class="display-6">Expérience professionelle</h2>
 
@@ -394,7 +394,7 @@ if (isset($_GET['id'])) {
 
 <!-- CONTRAT CHEZ STUDIO DES PARFUMS -->
 
-<div class="userContract border rounded m-2 p-3 text-center">
+<div id="userContract" class="border rounded m-2 p-3 text-center">
 
     <h2 class="display-6" id="experiences">Studio des parfums</h2>
 
@@ -501,7 +501,7 @@ if (isset($_GET['id'])) {
 
 <!-- COMPTE DE TEMPS -->
 
-<div class="userTimeBank border rounded m-2 p-3">
+<div id="userTimeBank" class="border rounded m-2 p-3">
 
     <h2 class="display-6 text-center" id="experiences">Compte temps</h2>
 
@@ -513,6 +513,8 @@ if (isset($_GET['id'])) {
 <button type="button" href="" class="btn btn-dark m-2">
     <a class="text-decoration-none text-white p-2" href="index.php?page=dashboard">Retour au tableau de bord</a>
 </button>
+
+<script type="text/javascript" src="./src/scriptUserInfos.js"></script>
 
 <?php 
 

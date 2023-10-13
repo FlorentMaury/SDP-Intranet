@@ -63,8 +63,6 @@
         ?>  
 
     </footer>
-
-    <script type="text/javascript" src="./src/script.js"></script>
-
+    
 </body>
 </html>
