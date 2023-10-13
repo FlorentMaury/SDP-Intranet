@@ -1697,7 +1697,7 @@
                 </button>
             </div>
             <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+            <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
                     <input type="number" name="userAbsenceInfo" class="form-control" id="userAbsenceInfo">
                     <label for="userAbsenceInfo">Déclarer une absence</label>
@@ -1719,55 +1719,13 @@
                 </button>
             </div>
             <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=user&id=<?=$data['id']?>">
+            <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
                     <input type="number" name="userExtraTimeInfo" class="form-control" id="userExtraTimeInfo">
                     <label for="userExtraTimeInfo">Déclarer des heures supplémentaires</label>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modale de décalartion d'heures supplémentaires. -->
-<div class="modal fade" id="modifyAddUser" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-3 mt-0">
-            <!-- Titre de la modale. -->
-            <div class="modal-header">
-                <h5 class="modal-title">Ajouter un collaborateur</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                </button>
-            </div>
-            <!-- Corps de la modale. -->
-           <!-- Formulaire d'enregistrement d'un nouvel employé. -->
-           <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
-
-            <!-- Formulaire. -->
-            <p class="form-floating m-2">
-                <input type="text" name="surname" class="form-control" id="surname" placeholder="Nom de famille">
-                <label for="surname">Nom de famille</label>
-            </p>
-            <p class="form-floating m-2">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Prénom">
-                <label for="name">Prénom</label>
-            </p>
-            <p class="form-floating m-2">
-                <input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">
-                <label for="email">Email</label>
-            </p>
-            <p class="form-floating m-2">
-                <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
-                <label for="password">Mot de passe</label>
-            </p>
-            <p class="form-floating m-2">
-                <input type="password" name="passwordTwo" class="form-control" id="passwordTwo" placeholder="Confirmez votre mot de passe">
-                <label for="passwordTwo">Confirmez le mot de passe</label>
-            </p>
-
-            <button class="btn btn-md btn-dark mt-4 p-2 align-self-end" type="submit">Enregister</button>
-
         </div>
     </div>
 </div>

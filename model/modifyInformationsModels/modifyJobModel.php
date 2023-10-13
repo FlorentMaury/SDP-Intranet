@@ -10,7 +10,7 @@ if(
 
     // Variables.
     $modifyJob1 = htmlspecialchars($_POST['job1']);
-    $userId        = $_SESSION['id'];
+    $userId     = $_SESSION['id'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
