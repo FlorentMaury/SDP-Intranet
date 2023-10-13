@@ -542,7 +542,7 @@
 
     </div>
 
-    <h2 id="experiences display-6 text-center">Expérience professionelle</h2>
+    <h2 class="display-6 text-center">Expérience professionelle</h2>
 
     <div class="userExpGrid">
 
@@ -794,7 +794,18 @@
 
 </div>
 
-<script type="text/javascript" src="./src/scriptDashboard.js"></script>
+
+<?php
+    if($_SESSION['id'] == 1) {
+        ?>
+            <script type="text/javascript" src="./src/scriptDashboard.js"></script>
+        <?php
+    } else {
+        ?>
+            <script type="text/javascript" src="./src/scriptDashboardUsers.js"></script>
+        <?php
+    };
+?>
 
 
 <?php 
