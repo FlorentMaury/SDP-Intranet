@@ -23,7 +23,7 @@
 
     <header class="text-center">
         <a href="index.php?page=home">
-            <img style="width: 30vh; height: 13vh; margin: 2% 0" src="./public/assets/logo.webp" alt="Logo Studio Des Parfums">
+            <img class="w-25 my-4" src="./public/assets/logo.webp" alt="Logo Studio Des Parfums">
         </a>
     </header>
 

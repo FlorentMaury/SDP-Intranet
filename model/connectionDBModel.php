@@ -7,7 +7,7 @@ try {
     die('Erreur : ' .$e->getMessage());
 };
 
-$users = $bdd->query('SELECT * FROM user');
+$users = $bdd->query('SELECT * FROM user ORDER BY surname');
 
 $resetA = $bdd->prepare('UPDATE user SET user_absence = 0 WHERE DAYOFMONTH(NOW()) = ?');
 $resetA->execute([1]);

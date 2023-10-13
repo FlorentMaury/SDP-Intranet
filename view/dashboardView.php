@@ -10,11 +10,11 @@
     $data = $req->fetch();
 ?>
 
-<h1 class="text-center display-4">
+<h1 class="text-center display-4 mt-3">
     Bienvenue <?= $_SESSION['name']?>
 </h1>
 
-<nav class="m-3">
+<nav class="m-3 my-5">
     <ul>
         <?php
             if($_SESSION['id'] == 1) {
