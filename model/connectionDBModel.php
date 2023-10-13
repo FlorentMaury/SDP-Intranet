@@ -9,13 +9,15 @@
 
     $users = $bdd->query('SELECT * FROM user ORDER BY surname');
 
-    $resetA = $bdd->prepare('UPDATE user SET user_absence = 0 WHERE DAYOFMONTH(NOW()) = ?');
-    $resetA->execute([1]);
+    // Accorder les privilèges EVENT et TRIGGER à l'utilisateur 'user' sur la base de données 'intranet_sdp'
+    $bdd->query("GRANT EVENT, TRIGGER ON intranet_sdp.* TO '%'@'localhost';");
 
-    $resetB = $bdd->prepare('UPDATE user SET user_delay = 0 WHERE DAYOFMONTH(NOW()) = ?');
-    $resetB->execute([1]);
-
-    $resetC = $bdd->prepare('UPDATE user SET user_extra_time = 0 WHERE DAYOFMONTH(NOW()) = ?');
-    $resetC->execute([1]);
+    $query = "CREATE EVENT resetUserTimeBank
+    ON SCHEDULE EVERY 1 MONTH
+    STARTS '2023-10-14 00:00:0'
+    DO
+    UPDATE user SET user_extra_time = 0, user_delay = 0, user_absence = 0;";
+    
+// $bdd->query($query);
 
 ?>

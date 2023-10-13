@@ -2,7 +2,6 @@ nav ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -84,8 +83,7 @@ nav ul li:hover {
 
 @media all and (max-width: 800px) {
     nav ul {
-        /* display: flex;
-        flex-direction: column; */
+        flex-direction: column;
         background: red;
     };
 };
