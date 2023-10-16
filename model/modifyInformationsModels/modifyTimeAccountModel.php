@@ -71,7 +71,7 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille du document.
-    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $profilePictureError == 0){
+    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0){
         $uniqId = uniqid('', true);
         // Création d'un uniqid
         $medicalJustif = $uniqId.".".$extension;
