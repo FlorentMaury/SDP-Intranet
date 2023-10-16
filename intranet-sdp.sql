@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 13 oct. 2023 à 15:20
+-- Généré le : lun. 16 oct. 2023 à 11:56
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -96,8 +96,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `surname`, `email`, `secret`, `password`, `birth_date`, `sex`, `phone_number`, `birth_city`, `birth_country`, `current_street_number`, `current_city_street`, `current_city`, `current_zip_code`, `current_country`, `id_number`, `social_security_number`, `creation_date`, `profile_picture`, `insurance_card_face`, `insurance_card_back`, `id_card_face`, `id_card_back`, `school_1`, `school_1_start`, `school_1_end`, `school_1_doc`, `school_2`, `school_2_start`, `school_2_end`, `school_2_doc`, `school_3`, `school_3_start`, `school_3_end`, `school_3_doc`, `job_1`, `job_1_start`, `job_1_end`, `job_1_exp`, `job_2`, `job_2_start`, `job_2_end`, `job_2_exp`, `job_3`, `job_3_start`, `job_3_end`, `job_3_exp`, `contract_type`, `contract_start`, `contract_end`, `contract_level`, `contract_coef`, `contract_remuneration`, `contract_insurance`, `contract_insurance_number`, `contract_weekly`, `contract_transports`, `user_absence`, `user_delay`, `user_extra_time`) VALUES
-(1, 'Florent', 'Maury', 'e@e.ee', 'bfd53533fbd80993fe5a6d80c7fc2675fdb8a6d91695905527', 'zk32a253b835f3ac4fe27137d4a142440e6ba36620c8345', '1994-06-03', 'Homme', '0612121212', 'Londres', 'Royaume_Uni', '18', 'Rue Saint Antoine', 'Paris', '75004', 'France', '599454644', '1949494052560', '2023-09-28 12:52:07', '6523cc2edd76e9.44144468.webp', '6523e114439f09.87868524.png', '6523d16a5612a5.30537818.jpg', '6523d143ef1753.98244907.webp', '6523d14a1d30c4.20544675.jpg', 'Cloud Campus', '2023-09-01', '2025-09-01', '65252d96962d64.06868687.png', 'Believemy', '2021-12-01', '2023-10-25', '6525637970d291.31234013.png', '', NULL, NULL, '', 'SDP', '2023-09-25', '2024-10-01', 'Lorem ipsum.', 'Sea Sheperd', '2020-05-01', '2023-10-26', 'Lorem ipsum.', 'Lorem', '2023-10-13', '2023-10-27', 'Lorem Ipsum.', 'CDD', NULL, NULL, '', '', 13, '', '', '35', '', 0, 0, 0),
-(20, 'Karim', 'Doe', 'o@o.oo', '52660f6b103c6f63b62134c7a831dec4a828d1511697122766', 'zk3272f3175835e6b65b315b2a00357f9b9d229dae38345', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2023-10-12 14:59:26', '', '', '', '', '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', 0, '', '', '', '', 0, 0, 0);
+(1, 'Florent', 'Maury', 'e@e.ee', 'bfd53533fbd80993fe5a6d80c7fc2675fdb8a6d91695905527', 'zk32a253b835f3ac4fe27137d4a142440e6ba36620c8345', '1994-06-03', 'Homme', '0612121212', 'Londres', 'Royaume_Uni', '18', 'Rue Saint Antoine', 'Paris', '75004', 'France', '599454644', '1949494052560', '2023-09-28 12:52:07', '6523cc2edd76e9.44144468.webp', '6523e114439f09.87868524.png', '6523d16a5612a5.30537818.jpg', '6523d143ef1753.98244907.webp', '6523d14a1d30c4.20544675.jpg', 'Cloud Campus', '2023-09-01', '2025-09-01', '65252d96962d64.06868687.png', 'Believemy', '2021-12-01', '2023-10-25', '6525637970d291.31234013.png', '', NULL, NULL, '', 'SDP', '2023-09-25', '2024-10-01', 'Lorem ipsum.', 'Sea Sheperd', '2020-05-01', '2023-10-26', 'Lorem ipsum.', 'Lorem', '2023-10-13', '2023-10-27', 'Lorem Ipsum.', 'CDD', NULL, NULL, '', '', 13, '', '', '35', '', 0, 3, 3),
+(20, 'John', 'Doe', 'o@o.oo', '52660f6b103c6f63b62134c7a831dec4a828d1511697122766', 'zk3272f3175835e6b65b315b2a00357f9b9d229dae38345', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2023-10-12 14:59:26', '', '', '', '', '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', 0, '', '', '', '', 0, 0, 0);
 
 --
 -- Index pour les tables déchargées
@@ -118,14 +118,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
-DELIMITER $$
---
--- Évènements
---
-CREATE DEFINER=`root`@`localhost` EVENT `resetUserTimeBank` ON SCHEDULE EVERY 1 SECOND STARTS '2023-10-13 13:16:24' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE user SET user_extra_time = 0, user_delay = 0, user_absence = 0$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

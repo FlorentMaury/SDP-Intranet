@@ -26,14 +26,18 @@
 
 ?>
 
-<!-- Afficher les résultats. -->
-<p>Salaire de base: <?=$salaryBase?></p>
-<p>Perte de salaire due aux absences: <?=$salaryAbsence?></p>
-<p>Perte de salaire due aux retards: <?=$salaryDelay?></p>
-<p>Salaire pour les heures supplémentaires: <?=$salaryExtraTime?></p>
-<p>Salaire total par semaines: <?=$totalSalary?></p>
+<div class="border rounded mt-3 p-3">
+    <!-- Afficher les résultats. -->
+    <p>Salaire de base: <?=$salaryBase?></p>
+    <p>Perte de salaire due aux absences: <?=$salaryAbsence?></p>
+    <p>Perte de salaire due aux retards: <?=$salaryDelay?></p>
+    <p>Salaire pour les heures supplémentaires: <?=$salaryExtraTime?></p>
+    <p>Salaire total par semaines: <?=$totalSalary?></p>
+</div>
 
-<!-- Afficher la banque de temps. -->
-<p>Temps de la semaine à récupérer: <?=$extraTimeBank?> minutes</p>
-<p>Temps de la semaine à rattraper: <?=$delayTimeBank?> minutes</p>
-<p>Temps total: <?= $totalTimeBank ?> minutes</p>
+<div class="border rounded mt-3 p-3">
+    <!-- Afficher la banque de temps. -->
+    <p>Temps supplémentaire effectué: <?=$extraTimeBank?> minutes</p>
+    <p>Temps de la semaine à rattraper: <?=$delayTimeBank?> minutes</p>
+    <p>Temps total: <?= $totalTimeBank ?> minutes</p>
+</div>

@@ -772,7 +772,7 @@
         require('./model/timeAccountModel.php')
     ?>
 
-    <div class="dashboardItems">
+    <div class="dashboardItems mt-4">
         <button class="btn btn-md btn-dark p-2" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDelayInfo">
                 Déclarer un retard
