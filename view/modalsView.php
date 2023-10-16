@@ -1710,7 +1710,7 @@
                 </button>
             </div>
             <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=dashboard">
+            <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
                 <p class="form-floating m-2">
                     <select type="number" name="userAbsenceInfo" class="form-control" id="userAbsenceInfo">
                     <label for="userAbsenceInfo">Déclarer une absence</label>
@@ -1722,6 +1722,10 @@
                     <option value="6">6 jours</option>
                     <option value="7">Une semaine</option>
                     </select>
+                </p>
+                <p>
+                    <label for="medicalJustification">Arrêt de travail</label>
+                    <input type="file" name="medicalJustification" class="form-control" id="medicalJustification">
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>

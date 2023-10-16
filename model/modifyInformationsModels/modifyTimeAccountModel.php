@@ -31,7 +31,8 @@ if(
 
 // Vérification du formulaire de déclaration d'absence.
 if(
-    !empty($_POST['userAbsenceInfo'])
+    !empty($_POST['userAbsenceInfo']) &&
+    isset($_FILES['medicalJustification']) 
     ) {
 
     // Connexion à la base de données.
