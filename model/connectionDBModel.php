@@ -7,16 +7,18 @@
         die('Erreur : ' .$e->getMessage());
     };
 
-    $users = $bdd->query('SELECT * FROM user ORDER BY surname');
+    $users        = $bdd->query('SELECT * FROM user ORDER BY surname');
+    $usersInvalid = $bdd->query('SELECT * FROM user WHERE active = 0');
+    $usersValid   = $bdd->query('SELECT * FROM user WHERE active = 1');
 
     // Accorder les privilèges EVENT et TRIGGER à l'utilisateur 'user' sur la base de données 'intranet_sdp'
-    $bdd->query("GRANT EVENT, TRIGGER ON intranet_sdp.* TO '%'@'localhost';");
+    // $bdd->query("GRANT EVENT, TRIGGER ON intranet_sdp.* TO '%'@'localhost';");
 
-    $query = "CREATE EVENT resetUserTimeBank
-    ON SCHEDULE EVERY 1 DAY
-    STARTS '2023-10-13 00:00:0'
-    DO
-    UPDATE user SET user_extra_time = 0, user_delay = 0, user_absence = 0;";
+    // $query = "CREATE EVENT resetUserTimeBank
+    // ON SCHEDULE EVERY 1 DAY
+    // STARTS '2023-10-13 00:00:0'
+    // DO
+    // UPDATE user SET user_extra_time = 0, user_delay = 0, user_absence = 0;";
     
     // $bdd->query($query);
 

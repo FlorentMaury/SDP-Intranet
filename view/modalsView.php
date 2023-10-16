@@ -1765,3 +1765,43 @@
         </div>
     </div>
 </div>
+
+<!-- Modale d'ajout d'un nouvel employé. -->
+<div class="modal fade" id="modifyAddUser" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Ajout d'un collaborateur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <p>
+                        <label for="name">Prénom</label>
+                        <input type="text" name="name" class="form-control" id="name">
+                    </p>
+                    <p>
+                        <label for="surname">Nom</label>
+                        <input type="text" name="surname" class="form-control" id="surname">
+                    </p>
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control" id="email">
+                    </p>
+                    <p>
+                        <label for="password">Mot de passe</label>
+                        <input type="text" name="password" class="form-control" id="password">
+                    </p>
+                    <p>
+                        <label for="passwordTwo">Confirmation du mot de passe</label>
+                        <input type="text" name="passwordTwo" class="form-control" id="passwordTwo">
+                    </p>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Ajouter</button>
+            </form>
+        </div>
+    </div>
+</div>

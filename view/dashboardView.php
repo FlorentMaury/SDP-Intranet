@@ -60,14 +60,15 @@
     </ul>
 </nav>
 
+<!-- Grille administrateur -->
+
 <?php
     if($_SESSION['id'] == 1) {
 ?>
 
-<!-- Grille administrateur -->
 <div class="managerView" id="managerViewGrid">
     <div class="employeesList border rounded p-3 my-3">
-        <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs</h2>
+        <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs actifs</h2>
 
         <div id="employeesList">
             <div class="table-responsive">
@@ -82,7 +83,61 @@
                     <tbody>
                         <?php
                             require('./model/connectionDBModel.php');
-                            while($user = $users->fetch()) {
+                            while($user = $usersValid->fetch()) {
+                        ?>
+                        <tr>
+                            <td><?= $user['name'] ?></td>
+                            <td><?= $user['surname'] ?></td>
+                            <td class="creationDate"><?= $user['creation_date'] ?></td>
+                            <td>
+                                <a 
+                                href='index.php?page=user&id=<?=$user["id"]?>' 
+                                type="button" 
+                                class="btn btn-info">
+                                    <img 
+                                        style="width: 15px" 
+                                        src="./public/assets/infos.svg" 
+                                        alt="Informations"
+                                    >
+                                </a>
+                            </td>
+                            <td>
+                                <a 
+                                href='./model/deleteUserModel.php?id=<?=$user["id"]?>' 
+                                type="button" 
+                                class="btn btn-danger">
+                                    <img 
+                                        style="width: 15px" 
+                                        src="./public/assets/cross.svg" 
+                                        alt="Image de suppression"
+                                    >
+                                </a>
+                            </td>
+                        </tr>
+                        <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs inactifs</h2>
+
+        <div id="employeesList">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th class="creationDate">Date d'inscription</th>
+                        <th>Plus d'infos</th>
+                        <th>Supprimer</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                            require('./model/connectionDBModel.php');
+                            while($user = $usersInvalid->fetch()) {
                         ?>
                         <tr>
                             <td><?= $user['name'] ?></td>
@@ -130,8 +185,6 @@
 <?php
     }
 ?>
-
-<!-- Grille générale -->
 
 <!-- Informations personnelles -->
 <div id="generalInfos" class="border rounded mt-3 p-3">

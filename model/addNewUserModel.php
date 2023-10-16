@@ -45,8 +45,8 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
     $secret = sha1($secret).time();
 
     // Ajouter un utilisateur.
-    $req = $bdd->prepare('INSERT INTO user(name, surname, email, password, secret) VALUES(?, ?, ?, ?, ?)');
-    $req->execute([$name, $surname, $email, $password, $secret]);
+    $req = $bdd->prepare('INSERT INTO user(active, name, surname, email, password, secret) VALUES(?, ?, ?, ?, ?, ?)');
+    $req->execute([1, $name, $surname, $email, $password, $secret]);
 
     // Redirection.
     header('location: index.php?page=dashboard&success=1');
