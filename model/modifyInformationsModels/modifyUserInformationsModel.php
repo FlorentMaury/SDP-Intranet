@@ -506,7 +506,7 @@ if(
     $profileImg = $req->fetchColumn();
     unlink('./public/assets/usersImg/'.$profileImg);
 
-    // Pour les images du véhicule de face.
+    // Images de la photo de profil.
     $profilePictureName    = $_FILES['profilePicture']['name'];
     $profilePictureTmpName = $_FILES['profilePicture']['tmp_name'];
     $profilePictureSize    = $_FILES['profilePicture']['size'];
@@ -531,7 +531,7 @@ if(
         // Enregistrement de l'image dans le dossier 'usersImg'.
         move_uploaded_file($profilePictureTmpName, './public/assets/usersImg/'.$profilePicture);
 
-        // Ajout d'un véhicule avec toutes les informations si les images ont étés validées.
+        // Ajout de l'image avec toutes les informations si les images ont étés validées.
         $req = $bdd->prepare('UPDATE user SET profile_picture = ? WHERE id = ?');
         $req->execute([$profilePicture, $userModifiedId]);
         // Redirection avec message de validation.
