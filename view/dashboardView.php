@@ -361,7 +361,7 @@
 
     <h2 class="display-6 text-center" id="experiences">Diplômes</h2>
     
-    <div class="userExpGrid">
+    <div class="userExpGrid d-flex flex-column flex-md-row">
 
         <div class="expFirstItem border rounded mt-3 p-3">
             <div class="expItems">
@@ -544,7 +544,7 @@
 
     <h2 class="display-6 text-center">Expérience professionelle</h2>
 
-    <div class="userExpGrid">
+    <div class="userExpGrid d-flex flex-column flex-md-row">
 
         <div class="expFirstItem border rounded mt-3 p-3">
             <div class="expItems">

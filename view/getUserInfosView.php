@@ -215,7 +215,7 @@ if (isset($_GET['id'])) {
 
     <h2 class="display-6">Niveau scolaire</h2>
 
-    <div class="userExpGrid">
+    <div class="userExpGrid d-flex flex-column flex-md-row">
         <div class="expFirstItem border rounded m-1 p-3">
             <p>Première école : <?php if(empty($data['school_1'])) {echo 'A completer';} else { echo $data['school_1'];} ?>
             </p>
@@ -343,7 +343,7 @@ if (isset($_GET['id'])) {
 
     <h2 class="display-6">Expérience professionelle</h2>
 
-<div class="userExpGrid">
+<div class="userExpGrid d-flex flex-column flex-md-row">
     <div class="expFirstItem border rounded m-1 p-3">
         <p>Première expérience : <?php if(empty($data['job_1'])) {echo 'A completer';} else { echo $data['job_1'];} ?>
         </p>
