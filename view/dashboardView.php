@@ -14,7 +14,7 @@
     Bienvenue <?= $_SESSION['name']?>
 </h1>
 
-<nav class="m-3 my-5">
+<nav class="m-3 my-5 text-center">
     <ul class="d-flex justify-content-between flex-column flex-md-row">
         <?php
             if($_SESSION['id'] == 1) {
