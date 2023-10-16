@@ -1677,8 +1677,21 @@
             <!-- Corps de la modale. -->
             <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
-                    <input type="number" name="userDelayInfo" class="form-control" id="userDelayInfo">
-                    <label for="userDelayInfo">Déclarer un retard (en minutes)</label>
+                    <select type="number" name="userDelayInfo" class="form-control" id="userDelayInfo">
+                    <label for="userDelayInfo">Déclarer un retard</label>
+                    <option value="0.25">15 minutes </option>
+                    <option value="0.50">30 minutes </option>
+                    <option value="0.75">45 minutes </option>
+                    <option value="1">1 heure </option>
+                    <option value="1.25">1 heure 15 minutes </option>
+                    <option value="1.50">1 heure 30 minutes </option>
+                    <option value="1.75">1 heure 45 minutes </option>
+                    <option value="2">2 heures </option>
+                    <option value="2.25">2 heures 15 minutes </option>
+                    <option value="2.50">2 heures 30 minutes </option>
+                    <option value="2.75">2 heures 45 minutes </option>
+                    <option value="3">3 heures </option>
+                    </select>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>
@@ -1699,8 +1712,16 @@
             <!-- Corps de la modale. -->
             <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
-                    <input type="number" name="userAbsenceInfo" class="form-control" id="userAbsenceInfo">
-                    <label for="userAbsenceInfo">Déclarer une absence (en jours)</label>
+                    <select type="number" name="userAbsenceInfo" class="form-control" id="userAbsenceInfo">
+                    <label for="userAbsenceInfo">Déclarer une absence</label>
+                    <option value="1">1 jour</option>
+                    <option value="2">2 jours</option>
+                    <option value="3">3 jours</option>
+                    <option value="4">4 jours</option>
+                    <option value="5">5 jours</option>
+                    <option value="6">6 jours</option>
+                    <option value="7">Une semaine</option>
+                    </select>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>
@@ -1714,15 +1735,30 @@
         <div class="modal-content p-3 mt-0">
             <!-- Titre de la modale. -->
             <div class="modal-header">
-                <h5 class="modal-title">Déclarer des heures supplémentaires</h5>
+                <h5 class="modal-title">Déclarer du temps supplémentaires</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
             <!-- Corps de la modale. -->
             <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
-                    <input type="number" name="userExtraTimeInfo" class="form-control" id="userExtraTimeInfo">
-                    <label for="userExtraTimeInfo">Déclarer des heures supplémentaires</label>
+                    <!-- <input type="number" name="userExtraTimeInfo" class="form-control" id="userExtraTimeInfo">
+                    <label for="userExtraTimeInfo">Déclarer des heures supplémentaires</label> -->
+                    <select type="number" name="userExtraTimeInfo" class="form-control" id="userExtraTimeInfo">
+                    <label for="userExtraTimeInfo">Nombre de minutes</label>
+                    <option value="0.25">15 minutes </option>
+                    <option value="0.50">30 minutes </option>
+                    <option value="0.75">45 minutes </option>
+                    <option value="1">1 heure </option>
+                    <option value="1.25">1 heure 15 minutes </option>
+                    <option value="1.50">1 heure 30 minutes </option>
+                    <option value="1.75">1 heure 45 minutes </option>
+                    <option value="2">2 heures </option>
+                    <option value="2.25">2 heures 15 minutes </option>
+                    <option value="2.50">2 heures 30 minutes </option>
+                    <option value="2.75">2 heures 45 minutes </option>
+                    <option value="3">3 heures </option>
+                </select>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>

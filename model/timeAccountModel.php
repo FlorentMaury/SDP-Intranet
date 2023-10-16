@@ -19,6 +19,11 @@
     // Calculer le salaire total.
     $totalSalary = $salaryBase - $salaryAbsence - $salaryDelay + $salaryExtraTime;
 
+    // Banque de temps.
+    $extraTimeBank = $extraTime * 60;
+    $delayTimeBank = $delay * 60;
+    $totalTimeBank = ($extraTimeBank - $delayTimeBank);
+
 ?>
 
 <!-- Afficher les résultats. -->
@@ -27,3 +32,8 @@
 <p>Perte de salaire due aux retards: <?=$salaryDelay?></p>
 <p>Salaire pour les heures supplémentaires: <?=$salaryExtraTime?></p>
 <p>Salaire total par semaines: <?=$totalSalary?></p>
+
+<!-- Afficher la banque de temps. -->
+<p>Temps de la semaine à récupérer: <?=$extraTimeBank?> minutes</p>
+<p>Temps de la semaine à rattraper: <?=$delayTimeBank?> minutes</p>
+<p>Temps total: <?= $totalTimeBank ?> minutes</p>

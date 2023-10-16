@@ -69,12 +69,15 @@ if(
     // Variables.
     $modifyUserExtraTimeInfo = htmlspecialchars($_POST['userExtraTimeInfo']);
     $userId                  = $_SESSION['id'];
-    $previousUserExtraTime   = $_SESSION['user_extra_time'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT user_extra_time FROM `user` WHERE id = ?");
+    $r->execute([$userModifiedId]);
+    $previousUserExtraTime = $r->fetchColumn();
 
     $totalsOfExtraTime = floatval($modifyUserExtraTimeInfo) + floatval($previousUserExtraTime);
 

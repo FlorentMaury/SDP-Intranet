@@ -20,21 +20,23 @@
     }
     ?>
 
-    <form class="text-center" method="POST" action="index.php?page=home">
+    <div class="d-flex justify-content-between connection">
+        <div></div>
+        <form class="w-50 text-center" method="POST" action="index.php?page=home">
+            <p class="form-floating m-2">
+                <input type="email" name="email" class="form-control" id="email">
+                <label for="email">Email</label>
+            </p>
 
-        <p class="form-floating m-2">
-            <input type="email" name="email" class="form-control" id="email">
-            <label for="email">Email</label>
-        </p>
-        
-        <p class="form-floating m-2">
-            <input type="password" name="password" class="form-control" id="password">
-            <label for="password">Mot de passe</label>
-        </p>
+            <p class="form-floating m-2">
+                <input type="password" name="password" class="form-control" id="password">
+                <label for="password">Mot de passe</label>
+            </p>
+            <button class="w-50 btn btn-lg btn-dark" type="submit">Connexion</button>
 
-        <button class="w-50 btn btn-lg btn-dark" type="submit">Connexion</button>
-
-    </form>
+        </form>
+        <div></div>
+    </div>
 
 
     <?php

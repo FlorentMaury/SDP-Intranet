@@ -13,8 +13,8 @@
     $bdd->query("GRANT EVENT, TRIGGER ON intranet_sdp.* TO '%'@'localhost';");
 
     $query = "CREATE EVENT resetUserTimeBank
-    ON SCHEDULE EVERY 1 MONTH
-    STARTS '2023-10-14 00:00:0'
+    ON SCHEDULE EVERY 1 DAY
+    STARTS '2023-10-13 00:00:0'
     DO
     UPDATE user SET user_extra_time = 0, user_delay = 0, user_absence = 0;";
     
