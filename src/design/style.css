@@ -85,8 +85,4 @@ nav ul li:hover {
     nav ul p {
         display: none;
     };
-
-    .creationDate {
-        display: none;
-    };
 };

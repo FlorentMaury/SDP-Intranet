@@ -1,0 +1,8 @@
+# Active les liens symboliques.
+Options +FollowSymlinks
+
+# Active le module de réecriture.
+RewriteEngine On
+
+# Règles de réecritures.
+RewriteRule ^([a-z0-9]+)$ /index.php?page=$1 [L]

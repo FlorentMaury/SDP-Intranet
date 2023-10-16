@@ -772,20 +772,20 @@
         require('./model/timeAccountModel.php')
     ?>
 
-    <div class="dashboardItems mt-4">
-        <button class="btn btn-md btn-dark p-2" type="submit">
+    <div class="dashboardItems mt-4 d-flex flex-column flex-md-row">
+        <button class="btn btn-md btn-dark p-2 m-3" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDelayInfo">
                 Déclarer un retard
             </a>
         </button>
         
-        <button class="btn btn-md btn-dark p-2" type="submit">
+        <button class="btn btn-md btn-dark p-2 m-3" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyExtraTimeInfo">
                 Déclarer des heures supplémentaires
             </a>
         </button>
 
-        <button class="btn btn-md btn-danger p-2" type="submit">
+        <button class="btn btn-md btn-danger p-2 m-3" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo">
                 Déclarer une absence
             </a>
