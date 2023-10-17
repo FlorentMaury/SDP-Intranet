@@ -976,9 +976,9 @@
                 <p>
                     <?php 
                         if($data['holiday1_response'] == 0) {
-                            echo '<p class="p-1 border rounded bg-info">En attente de validation.</p>';
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
                         } else {
-                            echo '<p class="p-1 border rounded bg-success">Dates validées !</p>';
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
                         };
                     ?>
                 </p>
