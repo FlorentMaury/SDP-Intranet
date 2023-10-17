@@ -42,4 +42,20 @@
     <p>Temps supplémentaire effectué: <?=$extraTimeBank?> minutes</p>
     <p>Temps de la semaine à rattraper: <?=$delayTimeBank?> minutes</p>
     <p>Temps total: <?= $totalTimeBank ?> minutes</p>
+
+    <!-- Boutons de déclarations. -->
+    <div class="dashboardItems mt-4 d-flex flex-column flex-md-row">
+    <button class="btn btn-md btn-dark p-2 m-3" type="submit">
+        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDelayInfo">
+            Déclarer un retard
+        </a>
+    </button>
+    
+    <button class="btn btn-md btn-dark p-2 m-3" type="submit">
+        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyExtraTimeInfo">
+            Déclarer des heures supplémentaires
+        </a>
+    </button>
+</div>
+
 </div>
