@@ -7,9 +7,10 @@
         die('Erreur : ' .$e->getMessage());
     };
 
-    $users        = $bdd->query('SELECT * FROM user ORDER BY surname');
-    $usersInvalid = $bdd->query('SELECT * FROM user WHERE active = 0');
-    $usersValid   = $bdd->query('SELECT * FROM user WHERE active = 1');
+    $users         = $bdd->query('SELECT * FROM user ORDER BY surname');
+    $usersInvalid  = $bdd->query('SELECT * FROM user WHERE active = 0');
+    $usersValid    = $bdd->query('SELECT * FROM user WHERE active = 1');
+    $usersHoliday1 = $bdd->query('SELECT * FROM user WHERE holiday1_response = 0');
 
     // Accorder les privilèges EVENT et TRIGGER à l'utilisateur 'user' sur la base de données 'intranet_sdp'
     // $bdd->query("GRANT EVENT, TRIGGER ON intranet_sdp.* TO '%'@'localhost';");

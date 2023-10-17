@@ -180,11 +180,38 @@
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAddUser">Ajouter</a>
         </button>
     </div>
-</div>
 
-<?php
-    }
-?>
+    <div>
+        <div class="employeesList border rounded p-3 my-3">
+            <h2 class="display-6 text-center" id="collabList">Vacances à modérer</h2>
+
+            <?php
+                require('./model/connectionDBModel.php');
+                while($user = $usersHoliday1->fetch()) {
+                        ?>
+                            <p> 
+                                <?= $user['name'] .' ' .$user['surname'] ?> 
+                                souhaite des vacances du 
+                                <?= $user['holiday1_start'] ?> au <?= $user['holiday1_end'] ?>
+                            </p>
+                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAcceptHoliday1Response">
+                                    Accepter
+                                </a>
+                            </button>
+                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyRefuseHoliday1Response">
+                                    Refuser
+                                </a>
+                            </button>
+                        <?php
+                    }
+                }
+            ?>
+
+        </div>
+    </div>
+</div>
 
 <!-- Informations personnelles -->
 <div id="generalInfos" class="border rounded mt-3 p-3">
@@ -977,9 +1004,11 @@
                     <?php 
                         if($data['holiday1_response'] == 0) {
                             echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else {
+                        } else if($data['holiday1_response'] == 1) {
                             echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        };
+                        } else if($data['holiday1_response'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
                     ?>
                 </p>
             </div>

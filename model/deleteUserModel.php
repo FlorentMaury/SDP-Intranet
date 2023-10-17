@@ -56,7 +56,7 @@ if (isset($_GET['id'])) {
     $school3Doc = $r->fetchColumn();
     unlink('../public/assets/school3Doc/'.$school3Doc);
 
-    // Suppression des informations du véhicule de la base de donnée.
+    // Suppression des informations de la base de donnée.
     $req = $bdd->prepare('DELETE FROM user WHERE id = ?');
     $req->execute([$id]);
 

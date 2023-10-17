@@ -7,7 +7,7 @@
 
 ?>
 
-    <h1>Une erreur est survenue</h1>
+    <h1 class="display-6 text-center">Une erreur est survenue</h1>
 
 <?php 
 

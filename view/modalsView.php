@@ -1896,7 +1896,7 @@
         <div class="modal-content p-3 mt-0">
             <!-- Titre de la modale. -->
             <div class="modal-header">
-                <h5 class="modal-title">Heures hebdomadaires du contrat</h5>
+                <h5 class="modal-title">Modification de demande de vacances</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
