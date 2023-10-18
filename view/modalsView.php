@@ -1915,29 +1915,3 @@
         </div>
     </div>
 </div>
-
-<!-- Modale acceptation de la demande de vacances -->
-<div class="modal fade" id="modifyHoliday1Response" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-3 mt-0">
-            <!-- Titre de la modale. -->
-            <div class="modal-header">
-                <h5 class="modal-title">Réponse à la demande de vacances</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                </button>
-            </div>
-            <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=dashboard&id=<?=$data['id']?>">
-                <p class="form-floating m-2">
-                    <!-- Select option 1 ou 0 -->
-                    <select type="number" name="holiday1Request" class="form-control" id="holiday1Request">
-                        <label for="holiday1Request">Réponse</label>
-                        <option value="1">Accepter</option>
-                        <option value="2">Refuser</option>
-                    </select>
-                </p>
-                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-            </form>
-        </div>
-    </div>
-</div>

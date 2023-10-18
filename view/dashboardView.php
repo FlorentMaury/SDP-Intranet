@@ -186,19 +186,46 @@
             <h2 class="display-6 text-center" id="collabList">Vacances à modérer</h2>
 
             <?php
-                foreach ($usersHoliday1 as $user) {
-                    if ($user['holiday1_start'] != NULL) {
+                foreach ($usersHoliday1 as $usersHoliday1) {
+                    if ($usersHoliday1['holiday1_start'] != NULL) {
                         ?>
                         <p> 
-                            <?= $user['name'] .' ' .$user['surname'] ?> 
+                            <?= $usersHoliday1['name'] .' ' .$usersHoliday1['surname'] ?> 
                             souhaite des vacances du 
-                            <?= $user['holiday1_start'] ?> au <?= $user['holiday1_end'] ?>
+                            <?= $usersHoliday1['holiday1_start'] ?> au <?= $usersHoliday1['holiday1_end'] ?>
                         </p>
                         <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday1Response">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday1Response<?=$usersHoliday1['id']?>">
                                 Répondre
                             </a>
                         </button>
+
+                        <!-- Modale acceptation de la demande de vacances -->
+                        <div class="modal fade" id="modifyHoliday1Response<?=$usersHoliday1['id']?>" data-bs-backdrop="static">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content p-3 mt-0">
+                                    <!-- Titre de la modale. -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Réponse à la demande de vacances <?=$usersHoliday1['id']?></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                        </button>
+                                    </div>
+                                    <!-- Corps de la modale. -->
+                                    <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday1['id']?>">
+                                        <p class="form-floating m-2">
+                                            <!-- Select option 1 ou 0 -->
+                                            <select type="text" name="holiday1Request" class="form-control" id="holiday1Request">
+                                                <label for="holiday1Request">Réponse</label>
+                                                <option value="1">Accepter</option>
+                                                <option value="2">Refuser</option>
+                                            </select>
+                                        </p>
+                                        <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                         <?php
                     }
                 }
