@@ -646,16 +646,81 @@ if (isset($_GET['id'])) {
             }
         ?>
 
-        <div class="contract border rounded mt-3 p-3">
+<div class="contract border rounded mt-3 p-3">
             <h4 class="my-3">Congés</h4>
-            <!-- Vacances -->
-            <p>Demande de vacances : <?= $data['user_absence'] ?> jours</p>
-            <img
-            src="<?= './public/assets/illnessJustif/'.$data['illness_justif'] ?>" 
-                            alt="Arrêt de travail"
-                            class="w-25"    
-            >
-            <p>Date de l'arrêt de travail : <?= $data['illness_date'] ?></p>
+
+            <!-- vacances -->
+
+            <?php
+                if($data['holiday1_start'])
+                {
+            ?>
+
+            <div class="userExpGrid d-flex flex-column flex-md-row">
+
+                <div class="expFirstItem border rounded m-1 p-3">
+                    <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
+                    <p>
+                        <?php 
+                            if($data['holiday1_response'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if($data['holiday1_response'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if($data['holiday1_response'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
+                        ?>
+                    </p>
+                </div>
+
+                <?php
+                    if($data['holiday2_start'])
+                    {
+                ?>
+
+                    <div class="expFirstItem border rounded m-1 p-3">
+                        <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
+                        <p>
+                            <?php 
+                                if($data['holiday2_response'] == 0) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                } else if($data['holiday2_response'] == 1) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                } else if($data['holiday2_response'] == 2) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                }
+                            ?>
+                        </p>
+                    </div>
+
+                    <?php
+                        }
+                        if($data['holiday3_start'])
+                        {
+                    ?>
+
+                        <div class="expFirstItem border rounded m-1 p-3">
+                            <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
+                            <p>
+                                <?php 
+                                    if($data['holiday2_response'] == 0) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                    } else if($data['holiday3_response'] == 1) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                    } else if($data['holiday3_response'] == 2) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                    }
+                                ?>
+                            </p>
+                        </div>
+
+                <?php 
+                    }}
+                    else {
+                        echo ('<p>Aucune demande de congés</p>');
+                    }
+                ?>
+            </div>
         </div>
     </div>
 

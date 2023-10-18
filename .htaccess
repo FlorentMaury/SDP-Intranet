@@ -6,4 +6,3 @@ RewriteEngine On
 
 # Règles de réecritures.
 RewriteRule ^([a-z0-9]+)$ /index.php?page=$1 [L]
-
