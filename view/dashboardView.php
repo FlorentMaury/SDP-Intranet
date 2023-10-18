@@ -68,9 +68,13 @@
 
 <div class="managerView" id="managerViewGrid">
     <div class="employeesList border rounded p-3 my-3">
-        <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs actifs</h2>
+        <div class="text-end mb-3">
+            <button class="activeButton btn btn-md btn-light mt-1 p-2">Collaborateurs actifs</button>
+            <button class="inactiveButton btn btn-md btn-light mt-1 p-2">Collaborateurs inactifs</button>
+        </div>
 
         <div id="employeesList">
+            <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs actifs</h2>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -122,9 +126,8 @@
             </div>
         </div>
 
-        <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs inactifs</h2>
-
-        <div id="employeesList">
+        <div id="employeesListInactive">
+            <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs inactifs</h2>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
