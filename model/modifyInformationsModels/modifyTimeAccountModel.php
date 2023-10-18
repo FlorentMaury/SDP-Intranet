@@ -280,7 +280,7 @@ if(
 
 // DEMANDE DE VACANCES.
 
-// Vérification du formulaire de demande d'heures supplémentaires.
+// Vérification du formulaire de première demande de CA.
 if(
     !empty($_POST['holidayRequest1Start']) &&
     !empty($_POST['holidayRequest1End'])
@@ -306,6 +306,71 @@ if(
     $req->execute([$holidayRequest1Start, $userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET holiday1_end = ? WHERE id = ?');
     $req->execute([$holidayRequest1End, $userModifiedId]);
+
+    // Redirection.
+    header('location: index.php?page=dashboard');
+    exit();
+};
+
+
+// Vérification du formulaire de seconde demande de CA.
+if(
+    !empty($_POST['holidayRequest2Start']) &&
+    !empty($_POST['holidayRequest2End'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $holidayRequest2Start = htmlspecialchars($_POST['holidayRequest2Start']);
+    $holidayRequest2End   = htmlspecialchars($_POST['holidayRequest2End']);
+    $userId               = $_SESSION['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user SET holiday2_response = 0 WHERE id = ?');
+    $req->execute([$userModifiedId]);
+    $req = $bdd->prepare('UPDATE user SET holiday2_start = ? WHERE id = ?');
+    $req->execute([$holidayRequest2Start, $userModifiedId]);
+    $req = $bdd->prepare('UPDATE user SET holiday2_end = ? WHERE id = ?');
+    $req->execute([$holidayRequest2End, $userModifiedId]);
+
+    // Redirection.
+    header('location: index.php?page=dashboard');
+    exit();
+};
+
+// Vérification du formulaire de troisième demande de CA.
+if(
+    !empty($_POST['holidayRequest3Start']) &&
+    !empty($_POST['holidayRequest3End'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $holidayRequest3Start = htmlspecialchars($_POST['holidayRequest3Start']);
+    $holidayRequest3End   = htmlspecialchars($_POST['holidayRequest3End']);
+    $userId               = $_SESSION['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user SET holiday3_response = 0 WHERE id = ?');
+    $req->execute([$userModifiedId]);
+    $req = $bdd->prepare('UPDATE user SET holiday3_start = ? WHERE id = ?');
+    $req->execute([$holidayRequest3Start, $userModifiedId]);
+    $req = $bdd->prepare('UPDATE user SET holiday3_end = ? WHERE id = ?');
+    $req->execute([$holidayRequest3End, $userModifiedId]);
 
     // Redirection.
     header('location: index.php?page=dashboard');

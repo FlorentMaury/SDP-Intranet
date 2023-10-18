@@ -80,7 +80,7 @@
                     <thead>
                         <th>Prénom</th>
                         <th>Nom</th>
-                        <th class="creationDate">Date d'inscription</th>
+                        <th class="creationDate">Date d'entrée</th>
                         <th>Plus d'infos</th>
                         <th>Supprimer</th>
                     </thead>
@@ -92,7 +92,7 @@
                         <tr>
                             <td><?= $user['name'] ?></td>
                             <td><?= $user['surname'] ?></td>
-                            <td class="creationDate"><?= $user['creation_date'] ?></td>
+                            <td class="creationDate"><?= $user['contract_start'] ?></td>
                             <td>
                                 <a 
                                 href='index.php?page=user&id=<?=$user["id"]?>' 
@@ -233,8 +233,6 @@
                     }
                 }
             ?>
-
-            </div>
         </div>
     </div>
 
@@ -1018,7 +1016,7 @@
         <div class="contract border rounded mt-3 p-3">
             <h4 class="my-3">Congés</h4>
 
-            <!-- Arrêt -->
+            <!-- vacances -->
 
         <?php
             if($data['holiday1_start'])
@@ -1053,6 +1051,18 @@
             <button class="btn btn-md btn-danger p-2 m-3" type="submit">
                 <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest1">
                     Faire une demande de vacances
+                </a>
+            </button>
+
+            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
+                    Faire une seconde demande de vacances
+                </a>
+            </button>
+
+            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
+                    Faire une troisième demande de vacances
                 </a>
             </button>
         </div>

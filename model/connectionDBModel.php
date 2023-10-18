@@ -11,6 +11,8 @@
     $usersInvalid  = $bdd->query('SELECT * FROM user WHERE active = 0');
     $usersValid    = $bdd->query('SELECT * FROM user WHERE active = 1');
     $usersHoliday1 = $bdd->query('SELECT * FROM user WHERE holiday1_response = 0');
+    $usersHoliday2 = $bdd->query('SELECT * FROM user WHERE holiday2_response = 0');
+    $usersHoliday3 = $bdd->query('SELECT * FROM user WHERE holiday3_response = 0');
 
     // Accorder les privilèges EVENT et TRIGGER à l'utilisateur 'user' sur la base de données 'intranet_sdp'
     // $bdd->query("GRANT EVENT, TRIGGER ON intranet_sdp.* TO '%'@'localhost';");
