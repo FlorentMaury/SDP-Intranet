@@ -1,5 +1,4 @@
 <?php
-
     // Modification du titre de la page.
     $title = 'Tableau De Bord';
     // Début d'enregistrement du HTML.
@@ -11,7 +10,7 @@
 ?>
 
 <h1 class="text-center display-4 mt-3">
-    Bienvenue <?= $data['name']?>
+    Bienvenue <?= $data['name'] ?>
 </h1>
 
 <nav class="m-3 my-5 text-center">
@@ -1127,11 +1126,9 @@
 
 
 <?php 
-
     // Fin de l'enregistrement du HTML.
     $content = ob_get_clean();
 
     // Intégration à base.php.
     require('base.php');
-
 ?>
