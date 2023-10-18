@@ -186,32 +186,31 @@
             <h2 class="display-6 text-center" id="collabList">Vacances à modérer</h2>
 
             <?php
-                require('./model/connectionDBModel.php');
-                while($user = $usersHoliday1->fetch()) {
+                foreach ($usersHoliday1 as $user) {
+                    if ($user['holiday1_start'] != NULL) {
                         ?>
-                            <p> 
-                                <?= $user['name'] .' ' .$user['surname'] ?> 
-                                souhaite des vacances du 
-                                <?= $user['holiday1_start'] ?> au <?= $user['holiday1_end'] ?>
-                            </p>
-                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAcceptHoliday1Response">
-                                    Accepter
-                                </a>
-                            </button>
-                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyRefuseHoliday1Response">
-                                    Refuser
-                                </a>
-                            </button>
+                        <p> 
+                            <?= $user['name'] .' ' .$user['surname'] ?> 
+                            souhaite des vacances du 
+                            <?= $user['holiday1_start'] ?> au <?= $user['holiday1_end'] ?>
+                        </p>
+                        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday1Response">
+                                Répondre
+                            </a>
+                        </button>
                         <?php
                     }
                 }
             ?>
 
+            </div>
         </div>
     </div>
-</div>
+
+<?php
+    }
+?>
 
 <!-- Informations personnelles -->
 <div id="generalInfos" class="border rounded mt-3 p-3">
