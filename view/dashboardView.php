@@ -265,7 +265,9 @@
             </div>
 
             <!-- Email -->
-            <p>Email : <?= $data['email'] ?></p>
+            <div class="dashboardItems">
+                <p>Email : <?= $data['email'] ?></p>
+            </div>
 
             <!-- Prénom -->
             <div class="dashboardItems">
