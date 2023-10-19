@@ -132,7 +132,7 @@
                     <thead>
                         <th>Prénom</th>
                         <th>Nom</th>
-                        <th class="creationDate">Date d'inscription</th>
+                        <th class="creationDate">Date de sortie</th>
                         <th>Plus d'infos</th>
                         <th>Supprimer</th>
                     </thead>
@@ -144,7 +144,7 @@
                         <tr>
                             <td><?= $user['name'] ?></td>
                             <td><?= $user['surname'] ?></td>
-                            <td class="creationDate"><?= $user['creation_date'] ?></td>
+                            <td class="creationDate"><?= $user['contract_end'] ?></td>
                             <td>
                                 <a 
                                 href='index.php?page=user&id=<?=$user["id"]?>' 
