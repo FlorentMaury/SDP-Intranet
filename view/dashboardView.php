@@ -233,7 +233,7 @@
                 }
             ?>
 
-<?php
+            <?php
                 foreach ($usersHoliday2 as $usersHoliday2) {
                     if ($usersHoliday2['holiday2_start'] != NULL) {
                         ?>
@@ -243,13 +243,13 @@
                             <?= $usersHoliday2['holiday2_start'] ?> au <?= $usersHoliday2['holiday2_end'] ?>
                         </p>
                         <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday1Response<?=$usersHoliday2['id']?>">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday2Response<?=$usersHoliday2['id']?>">
                                 Répondre
                             </a>
                         </button>
 
                         <!-- Modale acceptation de la demande de vacances -->
-                        <div class="modal fade" id="modifyHoliday1Response<?=$usersHoliday2['id']?>" data-bs-backdrop="static">
+                        <div class="modal fade" id="modifyHoliday2Response<?=$usersHoliday2['id']?>" data-bs-backdrop="static">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content p-3 mt-0">
                                     <!-- Titre de la modale. -->
@@ -264,6 +264,52 @@
                                             <!-- Select option 1 ou 0 -->
                                             <select type="text" name="holiday2Request" class="form-control" id="holiday2Request">
                                                 <label for="holiday2Request">Réponse</label>
+                                                <option value="1">Accepter</option>
+                                                <option value="2">Refuser</option>
+                                            </select>
+                                        </p>
+                                        <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php
+                    }
+                }
+            ?>
+
+            <?php
+                foreach ($usersHoliday3 as $usersHoliday3) {
+                    if ($usersHoliday3['holiday3_start'] != NULL) {
+                        ?>
+                        <p> 
+                            <?= $usersHoliday3['name'] .' ' .$usersHoliday3['surname'] ?> 
+                            souhaite des vacances du 
+                            <?= $usersHoliday3['holiday3_start'] ?> au <?= $usersHoliday3['holiday3_end'] ?>
+                        </p>
+                        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday3Response<?=$usersHoliday3['id']?>">
+                                Répondre
+                            </a>
+                        </button>
+
+                        <!-- Modale acceptation de la demande de vacances -->
+                        <div class="modal fade" id="modifyHoliday3Response<?=$usersHoliday3['id']?>" data-bs-backdrop="static">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content p-3 mt-0">
+                                    <!-- Titre de la modale. -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Réponse à la demande de vacances</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                        </button>
+                                    </div>
+                                    <!-- Corps de la modale. -->
+                                    <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday3['id']?>">
+                                        <p class="form-floating m-2">
+                                            <!-- Select option 1 ou 0 -->
+                                            <select type="text" name="holiday3Request" class="form-control" id="holiday3Request">
+                                                <label for="holiday3Request">Réponse</label>
                                                 <option value="1">Accepter</option>
                                                 <option value="2">Refuser</option>
                                             </select>
@@ -1118,7 +1164,7 @@
                             <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
                             <p>
                                 <?php 
-                                    if($data['holiday2_response'] == 0) {
+                                    if($data['holiday3_response'] == 0) {
                                         echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
                                     } else if($data['holiday3_response'] == 1) {
                                         echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
