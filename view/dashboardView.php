@@ -1120,6 +1120,9 @@
             <div class="userExpGrid d-flex flex-column flex-md-row">
 
                 <div class="expFirstItem border rounded m-1 p-3">
+                    <button class="btn btn-md btn-light p-2 mb-4" >
+                        Supprimer la demande
+                    </button>
                     <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
                     <p>
                         <?php 
@@ -1140,6 +1143,9 @@
                 ?>
 
                     <div class="expFirstItem border rounded m-1 p-3">
+                        <button class="btn btn-md btn-light p-2 mb-4" >
+                            Supprimer la demande
+                        </button>
                         <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
                         <p>
                             <?php 
@@ -1161,6 +1167,9 @@
                     ?>
 
                         <div class="expFirstItem border rounded m-1 p-3">
+                            <button class="btn btn-md btn-light p-2 mb-4" >
+                                Supprimer la demande
+                            </button>
                             <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
                             <p>
                                 <?php 
