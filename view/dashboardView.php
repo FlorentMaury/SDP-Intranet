@@ -59,8 +59,7 @@
     </ul>
 </nav>
 
-<!-- Grille administrateur -->
-
+<!-- GRILLE ADMINISTRATEUR -->
 <?php
     if($_SESSION['id'] == 1) {
 ?>
@@ -332,7 +331,7 @@
     }
 ?>
 
-<!-- Informations personnelles -->
+<!-- INFORMATIONS PERSONNELLES -->
 <div id="generalInfos" class="border rounded mt-3 p-3">
 
     <h2 class="display-6 text-center" id="userInfos">Informations personnelles</h2>
@@ -557,7 +556,7 @@
     </div>
 </div>
 
-<!-- Expériences -->
+<!-- EXPERIENCES -->
 <div id="experiences" class="border rounded mt-3 p-3">
 
     <h2 class="display-6 text-center" id="experiences">Diplômes</h2>
@@ -901,7 +900,6 @@
 
 
 <!-- CONTRAT CHEZ STUDIO DES PARFUMS -->
-
 <div id="contract" class="border rounded mt-3 p-3">
 
     <h2 class="display-6 text-center" id="statut">Studio des parfums</h2>
@@ -962,7 +960,6 @@
 
 
 <!-- COMPTE DE TEMPS -->
-
 <div id="timeBank" class="border rounded mt-3 p-3">
 
     <h2  class="display-6 text-center" id="events">Compte de temps</h2>
@@ -1130,8 +1127,14 @@
             <div class="userExpGrid d-flex flex-column flex-md-row">
 
                 <div class="expFirstItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light p-2 mb-4" >
-                        Supprimer la demande
+                    <button class="btn btn-md btn-light mb-4" >
+                        <a 
+                            href='./model/deleteHolidayRequest.php?id=<?=$user["id"]?>&holiday1=<?=$data['holiday1_start']?>'
+                            type="button" 
+                            class="btn btn-infos"
+                        >
+                            Supprimer la demande
+                        </a>
                     </button>
                     <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
                     <p>
@@ -1153,8 +1156,14 @@
                 ?>
 
                     <div class="expFirstItem border rounded m-1 p-3">
-                        <button class="btn btn-md btn-light p-2 mb-4" >
-                            Supprimer la demande
+                        <button class="btn btn-md btn-light mb-4" >
+                            <a 
+                                href='./model/deleteHolidayRequest.php?id=<?=$user["id"]?>&holiday2=<?=$data['holiday2_start']?>'
+                                type="button" 
+                                class="btn btn-infos"
+                            >
+                                Supprimer la demande
+                            </a>
                         </button>
                         <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
                         <p>
@@ -1177,8 +1186,14 @@
                     ?>
 
                         <div class="expFirstItem border rounded m-1 p-3">
-                            <button class="btn btn-md btn-light p-2 mb-4" >
-                                Supprimer la demande
+                            <button class="btn btn-md btn-light mb-4" >
+                                <a 
+                                    href='./model/deleteHolidayRequest.php?id=<?=$user["id"]?>&holiday3=<?=$data['holiday3_start']?>'
+                                    type="button" 
+                                    class="btn btn-infos"
+                                >
+                                    Supprimer la demande
+                                </a>
                             </button>
                             <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
                             <p>
