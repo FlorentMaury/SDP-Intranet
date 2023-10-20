@@ -254,6 +254,78 @@ if(
     };
 };
 
+// Vérification du formulaire de déclaration d'une quatrième absence.
+if(
+    !empty($_POST['userAbsenceInfo4']) &&
+    !empty($_POST['userAbsenceDate4']) &&
+    isset($_FILES['medicalJustification4']) 
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyUserAbsenceInfo = htmlspecialchars($_POST['userAbsenceInfo4']);
+    $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate4']);
+    $userId                = $_SESSION['id'];
+    $previousUserAbsences  = $_SESSION['user_absence'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    $userName    = $userId['name'];
+    $userSurname = $userId['surname'];
+
+    // Document de l'arrêt maladie.
+    $medicalJustificationName    = $_FILES['medicalJustification4']['name'];
+    $medicalJustificationTmpName = $_FILES['medicalJustification4']['tmp_name'];
+    $medicalJustificationSize    = $_FILES['medicalJustification4']['size'];
+    $medicalJustificationError   = $_FILES['medicalJustification4']['error'];
+
+    $totalsOfAbsences = floatval($modifyUserAbsenceInfo) + floatval($previousUserAbsences);
+
+    // Récupérer l'extension des images.
+    $tabExtension = explode('.', $medicalJustificationName);
+
+    // Mise en minuscule de cette extendion.
+    $extension = strtolower(end($tabExtension));
+
+    //Tableau des extensions que l'on accepte pour les images.
+    $extensions = ['jpg', 'png', 'jpeg', 'webp', 'pdf', 'doc', 'docx', 'odt', 'txt', 'rtf'];
+    //Taille max que l'on accepte pour les images.
+    $maxSize = 50000000;
+
+    // Vérification de l'extension et de la taille du document.
+    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0){
+        $uniqId = uniqid('', true);
+        // Création d'un uniqid
+        $medicalJustif = $uniqId.".".$extension;
+        // Enregistrement de l'image dans le dossier 'medicalJustif'.
+        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif4/'.$medicalJustif);
+
+        // Modification des modifications dans la base de données.
+        $req = $bdd->prepare('UPDATE user SET user_absence4 = ? WHERE id = ?');
+        $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+        // Ajout de toutes les informations si le document a été validé.
+        $req = $bdd->prepare('UPDATE user SET illness_justif4 = ? WHERE id = ?');
+        $req->execute([$medicalJustif, $userModifiedId]);
+
+        // Ajout de la date de l'arrêt.
+        $req = $bdd->prepare('UPDATE user SET illness_date4 = ? WHERE id = ?');
+        $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+
+        // Redirection avec message de validation.
+        header('location: index.php?page=dashboard');
+
+    } else {
+        // Redirection.
+        header('location: index.php?page=dashboard');
+    };
+};
+
 // Vérification du formulaire de déclaration d'heures supplémentaires.
 if(
     !empty($_POST['userExtraTimeInfo'])

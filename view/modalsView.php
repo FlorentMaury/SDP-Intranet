@@ -1775,7 +1775,7 @@
     </div>
 </div>
 
-<!-- Modale de décalartion d'une troisième absence. -->
+<!-- Modale de déclaration d'une troisième absence. -->
 <div class="modal fade" id="modifyAbsenceInfo3" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -1813,7 +1813,45 @@
     </div>
 </div>
 
-<!-- Modale de décalartion d'heures supplémentaires. -->
+<!-- Modale de déclaration d'une quatrième absence. -->
+<div class="modal fade" id="modifyAbsenceInfo4" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Déclarer une absence</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
+                <p class="form-floating m-2">
+                    <select type="number" name="userAbsenceInfo4" class="form-control" id="userAbsenceInfo4">
+                    <label for="userAbsenceInfo4">Déclarer une absence</label>
+                    <option value="1">1 jour</option>
+                    <option value="2">2 jours</option>
+                    <option value="3">3 jours</option>
+                    <option value="4">4 jours</option>
+                    <option value="5">5 jours</option>
+                    <option value="6">6 jours</option>
+                    <option value="7">Une semaine</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="medicalJustification4">Arrêt de travail</label>
+                    <input type="file" name="medicalJustification4" class="form-control" id="medicalJustification4">
+                </p>
+                <p class="form-floating m-2">
+                    <input type="date" name="userAbsenceDate4" class="form-control" id="userAbsenceDate4">
+                    <label for="userAbsenceDate4">Date du début de l'arrêt</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modale de déclaration d'heures supplémentaires. -->
 <div class="modal fade" id="modifyExtraTimeInfo" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">

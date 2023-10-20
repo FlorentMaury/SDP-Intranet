@@ -1071,39 +1071,43 @@
         <?php 
             if(!$data['user_absence'])
             {
-        ?>
-
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo">
-                    Déclarer une absence
-                </a>
-            </button>
-
-        <?php
+                ?>
+                    <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo">
+                            Déclarer une absence
+                        </a>
+                    </button>
+                <?php
             }
-            if($data['user_absence'])
+            else if($data['user_absence'])
             {
-        ?>
-
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo2">
-                    Déclarer une seconde absence
-                </a>
-            </button>
-
-        <?php
+                ?>
+                    <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo2">
+                            Déclarer une absence
+                        </a>
+                    </button>
+                <?php
             }
-            if($data['user_absence2'])
+            else if($data['user_absence2'])
             {
-        ?>
-
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo3">
-                    Déclarer une troisième absence
-                </a>
-            </button>
-
-        <?php
+                ?>
+                    <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo3">
+                            Déclarer une absence
+                        </a>
+                    </button>
+                <?php
+            }
+            else if($data['user_absence3'])
+            {
+                ?>
+                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo4">
+                        Déclarer une absence
+                    </a>
+                </button>
+                <?php
             }
         ?>
 
@@ -1198,23 +1202,39 @@
                 ?>
             </div>
 
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest1">
-                    Faire une demande de vacances
-                </a>
-            </button>
+            <?php
+                if(!$data['holiday1_start'])
+                {       
+            ?>
+                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest1">
+                        Faire une demande de vacances
+                    </a>
+                </button>
+            <?php
+                }
+                else if($data['holiday1_start'])
+                {
+            ?>
+                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
+                        Faire une seconde demande de vacances
+                    </a>
+                </button>
 
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
-                    Faire une seconde demande de vacances
-                </a>
-            </button>
-
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
-                    Faire une troisième demande de vacances
-                </a>
-            </button>
+            <?php
+                }
+                else if($data['holiday2_start'])
+                {
+            ?>
+                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
+                        Faire une troisième demande de vacances
+                    </a>
+                </button>
+            <?php
+                }
+            ?>
         </div>
 </div>
 
