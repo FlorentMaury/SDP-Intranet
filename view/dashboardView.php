@@ -1151,6 +1151,7 @@
                 </div>
 
                 <?php
+                    }
                     if($data['holiday2_start'])
                     {
                 ?>
@@ -1158,7 +1159,7 @@
                     <div class="expFirstItem border rounded m-1 p-3">
                         <button class="btn btn-md btn-light mb-4" >
                             <a 
-                                href='./model/deleteHolidayRequest.php?id=<?=$user["id"]?>&holiday2=<?=$data['holiday2_start']?>'
+                                href='./model/deleteHolidayRequest.php?id=<?=$data["id"]?>&holiday2=<?=$data['holiday2_start']?>'
                                 type="button" 
                                 class="btn btn-infos"
                             >
@@ -1188,7 +1189,7 @@
                         <div class="expFirstItem border rounded m-1 p-3">
                             <button class="btn btn-md btn-light mb-4" >
                                 <a 
-                                    href='./model/deleteHolidayRequest.php?id=<?=$user["id"]?>&holiday3=<?=$data['holiday3_start']?>'
+                                    href='./model/deleteHolidayRequest.php?id=<?=$data["id"]?>&holiday3=<?=$data['holiday3_start']?>'
                                     type="button" 
                                     class="btn btn-infos"
                                 >
@@ -1210,8 +1211,8 @@
                         </div>
 
                 <?php 
-                    }}
-                    else {
+                    }
+                    else if (!$data['holiday1_start'] && !$data['holiday2_start'] && !$data['holiday3_start']) {
                         echo ('<p>Aucune demande de congés</p>');
                     }
                 ?>
