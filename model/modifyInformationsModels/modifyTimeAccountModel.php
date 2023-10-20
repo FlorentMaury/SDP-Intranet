@@ -388,6 +388,26 @@ if(
     $req = $bdd->prepare('UPDATE user SET holiday1_end = ? WHERE id = ?');
     $req->execute([$holidayRequest1End, $userModifiedId]);
 
+        // FONCTION MAILTO.
+
+        // Variables.
+        $userName      = htmlspecialchars($userId['name']);
+        $userSurname   = htmlspecialchars($userId['surname']);
+        $userMessage   = `Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.`;
+        $to            = 'contact@florent-maury.fr';
+        $subject       = `Demande de vacances | $userName $userSurname`;
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $userMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+
+        mail($to, $subject, $customerMessage, $header);
+
+
     // Redirection.
     header('location: index.php?page=dashboard');
     exit();
@@ -421,6 +441,25 @@ if(
     $req = $bdd->prepare('UPDATE user SET holiday2_end = ? WHERE id = ?');
     $req->execute([$holidayRequest2End, $userModifiedId]);
 
+            // FONCTION MAILTO.
+
+        // Variables.
+        $userName      = htmlspecialchars($userId['name']);
+        $userSurname   = htmlspecialchars($userId['surname']);
+        $userMessage   = `Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest2Start au $holidayRequest2End.`;
+        $to            = 'contact@florent-maury.fr';
+        $subject       = `Demande de vacances | $userName $userSurname`;
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $userMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+        
+        mail($to, $subject, $customerMessage, $header);
+
     // Redirection.
     header('location: index.php?page=dashboard');
     exit();
@@ -452,6 +491,25 @@ if(
     $req->execute([$holidayRequest3Start, $userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET holiday3_end = ? WHERE id = ?');
     $req->execute([$holidayRequest3End, $userModifiedId]);
+
+                // FONCTION MAILTO.
+
+        // Variables.
+        $userName      = htmlspecialchars($userId['name']);
+        $userSurname   = htmlspecialchars($userId['surname']);
+        $userMessage   = `Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest3Start au $holidayRequest3End.`;
+        $to            = 'contact@florent-maury.fr';
+        $subject       = `Demande de vacances | $userName $userSurname`;
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $userMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+        
+        mail($to, $subject, $customerMessage, $header);
 
     // Redirection.
     header('location: index.php?page=dashboard');
