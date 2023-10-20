@@ -1699,7 +1699,7 @@
     </div>
 </div>
 
-<!-- Modale de déclartion d'absence. -->
+<!-- Modale de déclaration d'absence. -->
 <div class="modal fade" id="modifyAbsenceInfo" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">

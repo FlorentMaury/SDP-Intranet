@@ -1111,11 +1111,11 @@
             }
         ?>
 
-            <!-- <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAddAbsence">
-                    Ajouter une absence
-                </a>
-            </button> -->
+        <!-- <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAddAbsence">
+                Ajouter une absence
+            </a>
+        </button> -->
 
         <div class="contract border rounded mt-3 p-3">
             <h4 class="my-3">Congés</h4>
