@@ -1129,7 +1129,7 @@
                 <div class="expFirstItem border rounded m-1 p-3">
                     <button class="btn btn-md btn-light mb-4" >
                         <a 
-                            href='./model/deleteHolidayRequest.php?id=<?=$user["id"]?>&holiday1=<?=$data['holiday1_start']?>'
+                            href='./model/deleteHolidayRequest.php?id=<?=$data["id"]?>&holiday1=1'
                             type="button" 
                             class="btn btn-infos"
                         >
