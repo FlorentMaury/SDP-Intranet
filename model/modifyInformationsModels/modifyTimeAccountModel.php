@@ -386,4 +386,131 @@ if(
     exit();
 };
 
+
+
+    // EN COURS DE REALISATION 
+
+
+// Vérification du formulaire de déclaration d'absence.
+if(
+    !empty($_POST['userAddAbsenceInfo']) &&
+    !empty($_POST['userAddAbsenceDate']) &&
+    isset($_FILES['medicalAddJustification']) 
+    ) {
+
+    // Pseudo-code pour ALTER TABLE d'ajout des déclarations d'absences.
+    // ALTER TABLE user ADD user_absence2 FLOAT(5,2) NOT NULL DEFAULT 0 AFTER user_absence;
+    // ALTER TABLE user ADD user_absence3 FLOAT(5,2) NOT NULL DEFAULT 0 AFTER user_absence2;
+    // ALTER TABLE user ADD illness_justif2 VARCHAR(255) NOT NULL DEFAULT 'Aucun document' AFTER illness_justif;
+    // ALTER TABLE user ADD illness_justif3 VARCHAR(255) NOT NULL DEFAULT 'Aucun document' AFTER illness_justif2;
+    // ALTER TABLE user ADD illness_date2 VARCHAR(255) NOT NULL DEFAULT 'Aucune date' AFTER illness_date;
+    // ALTER TABLE user ADD illness_date3 VARCHAR(255) NOT NULL DEFAULT 'Aucune date' AFTER illness_date2;
+
+    if($_SESSION['user_absence']) {
+        if($_SESSION['user_absence2']) {
+            if($_SESSION['user_absence3']) {
+                if($_SESSION['user_absence4']) {
+                    if($_SESSION['user_absence5']) {
+                        if($_SESSION['user_absence6']) {
+                            if($_SESSION['user_absence7']) {
+                                if($_SESSION['user_absence8']) {
+                                    if($_SESSION['user_absence9']) {
+                                        if($_SESSION['user_absence10']) {
+                                            $userAbsence = 11;
+                                        } else {
+                                            $userAbsence = 10;
+                                        }
+                                    } else {
+                                        $userAbsence = 9;
+                                    }
+                                } else {
+                                    $userAbsence = 8;
+                                }
+                            } else {
+                                $userAbsence = 7;
+                            }
+                        } else {
+                            $userAbsence = 6;
+                        }
+                    } else {
+                        $userAbsence = 5;
+                    }
+                } else {
+                    $userAbsence = 4;
+                }
+            } else {
+                $userAbsence = 2;
+            }
+        } else {
+            $userAbsence = 1;
+        }
+    } else {
+        $userAbsence = 0;
+    }
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyUserAbsenceInfo = htmlspecialchars($_POST['userAbsenceInfo']);
+    $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate']);
+    $userId                = $_SESSION['id'];
+    $previousUserAbsences  = $_SESSION['user_absence'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    $userName    = $userId['name'];
+    $userSurname = $userId['surname'];
+
+    // Document de l'arrêt maladie.
+    $medicalJustificationName    = $_FILES['medicalJustification']['name'];
+    $medicalJustificationTmpName = $_FILES['medicalJustification']['tmp_name'];
+    $medicalJustificationSize    = $_FILES['medicalJustification']['size'];
+    $medicalJustificationError   = $_FILES['medicalJustification']['error'];
+
+    $totalsOfAbsences = floatval($modifyUserAbsenceInfo) + floatval($previousUserAbsences);
+
+    // Récupérer l'extension des images.
+    $tabExtension = explode('.', $medicalJustificationName);
+
+    // Mise en minuscule de cette extendion.
+    $extension = strtolower(end($tabExtension));
+
+    //Tableau des extensions que l'on accepte pour les images.
+    $extensions = ['jpg', 'png', 'jpeg', 'webp', 'pdf', 'doc', 'docx', 'odt', 'txt', 'rtf'];
+    //Taille max que l'on accepte pour les images.
+    $maxSize = 50000000;
+
+    // Vérification de l'extension et de la taille du document.
+    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0){
+        $uniqId = uniqid('', true);
+        // Création d'un uniqid
+        $medicalJustif = $uniqId.".".$extension;
+        // Enregistrement de l'image dans le dossier 'medicalJustif'.
+        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+        // Modification des modifications dans la base de données.
+        $req = $bdd->prepare('UPDATE user SET user_absence = ? WHERE id = ?');
+        $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+        // Ajout de toutes les informations si le document a été validé.
+        $req = $bdd->prepare('UPDATE user SET illness_justif = ? WHERE id = ?');
+        $req->execute([$medicalJustif, $userModifiedId]);
+
+        // Ajout de la date de l'arrêt.
+        $req = $bdd->prepare('UPDATE user SET illness_date = ? WHERE id = ?');
+        $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+
+        // Redirection avec message de validation.
+        header('location: index.php?page=dashboard');
+
+    } else {
+        // Redirection.
+        header('location: index.php?page=dashboard');
+    };
+};
+
 ?>

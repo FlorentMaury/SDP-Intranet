@@ -1967,3 +1967,50 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+    <!-- EN COURS DE REALISATION -->
+
+
+
+
+<!-- Modale de déclaration des ajouts des absences sans limites. -->
+<div class="modal fade" id="modifyAddAbsence" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Déclarer une absence</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
+                <p class="form-floating m-2">
+                    <select type="number" name="userAddAbsenceInfo" class="form-control" id="userAddAbsenceInfo">
+                    <label for="userAddAbsenceInfo">Déclarer une absence</label>
+                    <option value="1">1 jour</option>
+                    <option value="2">2 jours</option>
+                    <option value="3">3 jours</option>
+                    <option value="4">4 jours</option>
+                    <option value="5">5 jours</option>
+                    <option value="6">6 jours</option>
+                    <option value="7">Une semaine</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="medicalAddJustification">Arrêt de travail</label>
+                    <input type="file" name="medicalAddJustification" class="form-control" id="medicalAddJustification">
+                </p>
+                <p class="form-floating m-2">
+                    <input type="date" name="userAddAbsenceDate" class="form-control" id="userAddAbsenceDate">
+                    <label for="userAddAbsenceDate">Date du début de l'arrêt</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
