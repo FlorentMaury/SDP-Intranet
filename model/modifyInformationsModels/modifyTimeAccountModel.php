@@ -391,126 +391,484 @@ if(
     // EN COURS DE REALISATION 
 
 
-// Vérification du formulaire de déclaration d'absence.
-if(
-    !empty($_POST['userAddAbsenceInfo']) &&
-    !empty($_POST['userAddAbsenceDate']) &&
-    isset($_FILES['medicalAddJustification']) 
-    ) {
+// // Vérification du formulaire de déclaration d'absence.
+// if(
+//     !empty($_POST['userAddAbsenceInfo']) &&
+//     !empty($_POST['userAddAbsenceDate']) &&
+//     isset($_FILES['medicalAddJustification']) 
+//     ) {
 
-    // Pseudo-code pour ALTER TABLE d'ajout des déclarations d'absences.
-    // ALTER TABLE user ADD user_absence2 FLOAT(5,2) NOT NULL DEFAULT 0 AFTER user_absence;
-    // ALTER TABLE user ADD user_absence3 FLOAT(5,2) NOT NULL DEFAULT 0 AFTER user_absence2;
-    // ALTER TABLE user ADD illness_justif2 VARCHAR(255) NOT NULL DEFAULT 'Aucun document' AFTER illness_justif;
-    // ALTER TABLE user ADD illness_justif3 VARCHAR(255) NOT NULL DEFAULT 'Aucun document' AFTER illness_justif2;
-    // ALTER TABLE user ADD illness_date2 VARCHAR(255) NOT NULL DEFAULT 'Aucune date' AFTER illness_date;
-    // ALTER TABLE user ADD illness_date3 VARCHAR(255) NOT NULL DEFAULT 'Aucune date' AFTER illness_date2;
+//     // Pseudo-code pour ALTER TABLE d'ajout des déclarations d'absences.
+//     // ALTER TABLE user ADD user_absence2 FLOAT(5,2) NOT NULL DEFAULT 0 AFTER user_absence;
+//     // ALTER TABLE user ADD user_absence3 FLOAT(5,2) NOT NULL DEFAULT 0 AFTER user_absence2;
+//     // ALTER TABLE user ADD illness_justif2 VARCHAR(255) NOT NULL DEFAULT 'Aucun document' AFTER illness_justif;
+//     // ALTER TABLE user ADD illness_justif3 VARCHAR(255) NOT NULL DEFAULT 'Aucun document' AFTER illness_justif2;
+//     // ALTER TABLE user ADD illness_date2 VARCHAR(255) NOT NULL DEFAULT 'Aucune date' AFTER illness_date;
+//     // ALTER TABLE user ADD illness_date3 VARCHAR(255) NOT NULL DEFAULT 'Aucune date' AFTER illness_date2;
 
-    if($_SESSION['user_absence']) {
-        if($_SESSION['user_absence2']) {
-            if($_SESSION['user_absence3']) {
-                if($_SESSION['user_absence4']) {
-                    if($_SESSION['user_absence5']) {
-                        if($_SESSION['user_absence6']) {
-                            if($_SESSION['user_absence7']) {
-                                if($_SESSION['user_absence8']) {
-                                    if($_SESSION['user_absence9']) {
-                                        if($_SESSION['user_absence10']) {
-                                            $userAbsence = 11;
-                                        } else {
-                                            $userAbsence = 10;
-                                        }
-                                    } else {
-                                        $userAbsence = 9;
-                                    }
-                                } else {
-                                    $userAbsence = 8;
-                                }
-                            } else {
-                                $userAbsence = 7;
-                            }
-                        } else {
-                            $userAbsence = 6;
-                        }
-                    } else {
-                        $userAbsence = 5;
-                    }
-                } else {
-                    $userAbsence = 4;
-                }
-            } else {
-                $userAbsence = 2;
-            }
-        } else {
-            $userAbsence = 1;
-        }
-    } else {
-        $userAbsence = 0;
-    }
+//     // Connexion à la base de données.
+//     require('./model/connectionDBModel.php');
 
-    // Connexion à la base de données.
-    require('./model/connectionDBModel.php');
+//     // Variables.
+//     $userAddAbsenceInfo = htmlspecialchars($_POST['userAddAbsenceInfo']);
+//     $userAddAbsenceDate = htmlspecialchars($_POST['userAddAbsenceDate']);
+//     $userId                = $_SESSION['id'];
+//     $previousUserAbsences  = $_SESSION['user_absence'];
 
-    // Variables.
-    $modifyUserAbsenceInfo = htmlspecialchars($_POST['userAbsenceInfo']);
-    $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate']);
-    $userId                = $_SESSION['id'];
-    $previousUserAbsences  = $_SESSION['user_absence'];
+//     // Sélection de l'ID.
+//     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+//     $r->execute([$userId]);
+//     $userModifiedId = $r->fetchColumn();
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
+//     $userName    = $_SESSION['name'];
+//     $userSurname = $_SESSION['surname'];
 
-    $userName    = $userId['name'];
-    $userSurname = $userId['surname'];
+//     // Document de l'arrêt maladie.
+//     $medicalAddJustificationName    = $_FILES['medicalAddJustification']['name'];
+//     $medicalAddJustificationTmpName = $_FILES['medicalAddJustification']['tmp_name'];
+//     $medicalAddJustificationSize    = $_FILES['medicalAddJustification']['size'];
+//     $medicalAddJustificationError   = $_FILES['medicalAddJustification']['error'];
 
-    // Document de l'arrêt maladie.
-    $medicalJustificationName    = $_FILES['medicalJustification']['name'];
-    $medicalJustificationTmpName = $_FILES['medicalJustification']['tmp_name'];
-    $medicalJustificationSize    = $_FILES['medicalJustification']['size'];
-    $medicalJustificationError   = $_FILES['medicalJustification']['error'];
+//     $totalsOfAbsences = floatval($userAddAbsenceInfo) + floatval($previousUserAbsences);
 
-    $totalsOfAbsences = floatval($modifyUserAbsenceInfo) + floatval($previousUserAbsences);
+//     // Récupérer l'extension des images.
+//     $tabExtension = explode('.', $medicalAddJustificationName);
 
-    // Récupérer l'extension des images.
-    $tabExtension = explode('.', $medicalJustificationName);
+//     // Mise en minuscule de cette extendion.
+//     $extension = strtolower(end($tabExtension));
 
-    // Mise en minuscule de cette extendion.
-    $extension = strtolower(end($tabExtension));
+//     //Tableau des extensions que l'on accepte pour les images.
+//     $extensions = ['jpg', 'png', 'jpeg', 'webp', 'pdf', 'doc', 'docx', 'odt', 'txt', 'rtf'];
+//     //Taille max que l'on accepte pour les images.
+//     $maxSize = 50000000;
 
-    //Tableau des extensions que l'on accepte pour les images.
-    $extensions = ['jpg', 'png', 'jpeg', 'webp', 'pdf', 'doc', 'docx', 'odt', 'txt', 'rtf'];
-    //Taille max que l'on accepte pour les images.
-    $maxSize = 50000000;
+//     if($_SESSION['user_absence']) {
+//         if($_SESSION['user_absence2']) {
+//             if($_SESSION['user_absence3']) {
+//                 if($_SESSION['user_absence4']) {
+//                     if($_SESSION['user_absence5']) {
+//                         if($_SESSION['user_absence6']) {
+//                             if($_SESSION['user_absence7']) {
+//                                 if($_SESSION['user_absence8']) {
+//                                     if($_SESSION['user_absence9']) {
+//                                         if($_SESSION['user_absence10']) {
+//                                                 // Vérification de l'extension et de la taille du document.
+//                                                 if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                                                     $uniqId = uniqid('', true);
+//                                                     // Création d'un uniqid
+//                                                     $medicalJustif = $uniqId.".".$extension;
+//                                                     // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                                                     move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
 
-    // Vérification de l'extension et de la taille du document.
-    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0){
-        $uniqId = uniqid('', true);
-        // Création d'un uniqid
-        $medicalJustif = $uniqId.".".$extension;
-        // Enregistrement de l'image dans le dossier 'medicalJustif'.
-        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+//                                                     // Modification des modifications dans la base de données.
+//                                                     $req = $bdd->prepare('ALTER TABLE user ADD user_absence11 FLOAT(5,2) AFTER user_absence10');
+//                                                     $req->execute();
+//                                                     $req = $bdd->prepare('UPDATE user SET user_absence11 = ? WHERE id = ?');
+//                                                     $req->execute([$totalsOfAbsences, $userModifiedId]);
 
-        // Modification des modifications dans la base de données.
-        $req = $bdd->prepare('UPDATE user SET user_absence = ? WHERE id = ?');
-        $req->execute([$totalsOfAbsences, $userModifiedId]);
+//                                                     // Ajout de toutes les informations si le document a été validé.
+//                                                     $req = $bdd->prepare('ALTER TABLE user ADD illness_justif11 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif10');
+//                                                     $req->execute();
+//                                                     $req = $bdd->prepare('UPDATE user SET illness_justif11 = ? WHERE id = ?');
+//                                                     $req->execute([$medicalJustif, $userModifiedId]);
 
-        // Ajout de toutes les informations si le document a été validé.
-        $req = $bdd->prepare('UPDATE user SET illness_justif = ? WHERE id = ?');
-        $req->execute([$medicalJustif, $userModifiedId]);
+//                                                     // Ajout de la date de l'arrêt.
+//                                                     $req = $bdd->prepare('ALTER TABLE user ADD illness_date11 NULL AFTER illness_date10');
+//                                                     $req->execute();
+//                                                     $req = $bdd->prepare('UPDATE user SET illness_date11 = ? WHERE id = ?');
+//                                                     $req->execute([$userAddAbsenceDate, $userModifiedId]);
 
-        // Ajout de la date de l'arrêt.
-        $req = $bdd->prepare('UPDATE user SET illness_date = ? WHERE id = ?');
-        $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+//                                                     // Redirection avec message de validation.
+//                                                     header('location: index.php?page=dashboard');
 
-        // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+//                                                 } else {
+//                                                     // Redirection.
+//                                                     header('location: index.php?page=dashboard');
+//                                                 };
+//                                         } else {
+//                                             // Vérification de l'extension et de la taille du document.
+//                                             if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                                                 $uniqId = uniqid('', true);
+//                                                 // Création d'un uniqid
+//                                                 $medicalJustif = $uniqId.".".$extension;
+//                                                 // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                                                 move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
 
-    } else {
-        // Redirection.
-        header('location: index.php?page=dashboard');
-    };
-};
+//                                                 // Modification des modifications dans la base de données.
+//                                                 $req = $bdd->prepare('ALTER TABLE user ADD user_absence10 FLOAT(5,2) AFTER user_absence9');
+//                                                 $req->execute();
+//                                                 $req = $bdd->prepare('UPDATE user SET user_absence10 = ? WHERE id = ?');
+//                                                 $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                                                 // Ajout de toutes les informations si le document a été validé.
+//                                                 $req = $bdd->prepare('ALTER TABLE user ADD illness_justif10 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif9');
+//                                                 $req->execute();
+//                                                 $req = $bdd->prepare('UPDATE user SET illness_justif10 = ? WHERE id = ?');
+//                                                 $req->execute([$medicalJustif, $userModifiedId]);
+
+//                                                 // Ajout de la date de l'arrêt.
+//                                                 $req = $bdd->prepare('ALTER TABLE user ADD illness_date10 NULL AFTER illness_date9');
+//                                                 $req->execute();
+//                                                 $req = $bdd->prepare('UPDATE user SET illness_date10 = ? WHERE id = ?');
+//                                                 $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                                                 // Redirection avec message de validation.
+//                                                 header('location: index.php?page=dashboard');
+
+//                                             } else {
+//                                                 // Redirection.
+//                                                 header('location: index.php?page=dashboard');
+//                                             };
+//                                         }
+//                                     } else {
+//                                         // Vérification de l'extension et de la taille du document.
+//                                         if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                                             $uniqId = uniqid('', true);
+//                                             // Création d'un uniqid
+//                                             $medicalJustif = $uniqId.".".$extension;
+//                                             // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                                             move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//                                             // Modification des modifications dans la base de données.
+//                                             $req = $bdd->prepare('ALTER TABLE user ADD user_absence9 FLOAT(5,2) AFTER user_absence8');
+//                                             $req->execute();
+//                                             $req = $bdd->prepare('UPDATE user SET user_absence9 = ? WHERE id = ?');
+//                                             $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                                             // Ajout de toutes les informations si le document a été validé.
+//                                             $req = $bdd->prepare('ALTER TABLE user ADD illness_justif9 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif8');
+//                                             $req->execute();
+//                                             $req = $bdd->prepare('UPDATE user SET illness_justif9 = ? WHERE id = ?');
+//                                             $req->execute([$medicalJustif, $userModifiedId]);
+
+//                                             // Ajout de la date de l'arrêt.
+//                                             $req = $bdd->prepare('ALTER TABLE user ADD illness_date9 NULL AFTER illness_date8');
+//                                             $req->execute();
+//                                             $req = $bdd->prepare('UPDATE user SET illness_date9 = ? WHERE id = ?');
+//                                             $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                                             // Redirection avec message de validation.
+//                                             header('location: index.php?page=dashboard');
+
+//                                         } else {
+//                                             // Redirection.
+//                                             header('location: index.php?page=dashboard');
+//                                         };
+//                                     }
+//                                 } else {
+//                                     // Vérification de l'extension et de la taille du document.
+//                                     if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                                         $uniqId = uniqid('', true);
+//                                         // Création d'un uniqid
+//                                         $medicalJustif = $uniqId.".".$extension;
+//                                         // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                                         move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//                                         // Modification des modifications dans la base de données.
+//                                         $req = $bdd->prepare('ALTER TABLE user ADD user_absence8 FLOAT(5,2) AFTER user_absence7');
+//                                         $req->execute();
+//                                         $req = $bdd->prepare('UPDATE user SET user_absence8 = ? WHERE id = ?');
+//                                         $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                                         // Ajout de toutes les informations si le document a été validé.
+//                                         $req = $bdd->prepare('ALTER TABLE user ADD illness_justif8 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif7');
+//                                         $req->execute();
+//                                         $req = $bdd->prepare('UPDATE user SET illness_justif8 = ? WHERE id = ?');
+//                                         $req->execute([$medicalJustif, $userModifiedId]);
+
+//                                         // Ajout de la date de l'arrêt.
+//                                         $req = $bdd->prepare('ALTER TABLE user ADD illness_date8 NULL AFTER illness_date7');
+//                                         $req->execute();
+//                                         $req = $bdd->prepare('UPDATE user SET illness_date8 = ? WHERE id = ?');
+//                                         $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                                         // Redirection avec message de validation.
+//                                         header('location: index.php?page=dashboard');
+
+//                                     } else {
+//                                         // Redirection.
+//                                         header('location: index.php?page=dashboard');
+//                                     };
+//                                 }
+//                             } else {
+//                                 // Vérification de l'extension et de la taille du document.
+//                                 if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                                     $uniqId = uniqid('', true);
+//                                     // Création d'un uniqid
+//                                     $medicalJustif = $uniqId.".".$extension;
+//                                     // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                                     move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//                                     // Modification des modifications dans la base de données.
+//                                     $req = $bdd->prepare('ALTER TABLE user ADD user_absence7 FLOAT(5,2) AFTER user_absence6');
+//                                     $req->execute();
+//                                     $req = $bdd->prepare('UPDATE user SET user_absence7 = ? WHERE id = ?');
+//                                     $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                                     // Ajout de toutes les informations si le document a été validé.
+//                                     $req = $bdd->prepare('ALTER TABLE user ADD illness_justif7 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif6');
+//                                     $req->execute();
+//                                     $req = $bdd->prepare('UPDATE user SET illness_justif7 = ? WHERE id = ?');
+//                                     $req->execute([$medicalJustif, $userModifiedId]);
+
+//                                     // Ajout de la date de l'arrêt.
+//                                     $req = $bdd->prepare('ALTER TABLE user ADD illness_date7 NULL AFTER illness_date6');
+//                                     $req->execute();
+//                                     $req = $bdd->prepare('UPDATE user SET illness_date7 = ? WHERE id = ?');
+//                                     $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                                     // Redirection avec message de validation.
+//                                     header('location: index.php?page=dashboard');
+
+//                                 } else {
+//                                         // Redirection.
+//                                         header('location: index.php?page=dashboard');
+//                                     };
+//                             }
+//                             } else {
+//                                 // Vérification de l'extension et de la taille du document.
+//                                 if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                                     $uniqId = uniqid('', true);
+//                                     // Création d'un uniqid
+//                                     $medicalJustif = $uniqId.".".$extension;
+//                                     // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                                     move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//                                     // Modification des modifications dans la base de données.
+//                                     $req = $bdd->prepare('ALTER TABLE user ADD user_absence6 FLOAT(5,2) AFTER user_absence5');
+//                                     $req->execute();
+//                                     $req = $bdd->prepare('UPDATE user SET user_absence6 = ? WHERE id = ?');
+//                                     $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                                     // Ajout de toutes les informations si le document a été validé.
+//                                     $req = $bdd->prepare('ALTER TABLE user ADD illness_justif6 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif5');
+//                                     $req->execute();
+//                                     $req = $bdd->prepare('UPDATE user SET illness_justif6 = ? WHERE id = ?');
+//                                     $req->execute([$medicalJustif, $userModifiedId]);
+
+//                                     // Ajout de la date de l'arrêt.
+//                                     $req = $bdd->prepare('ALTER TABLE user ADD illness_date6 NULL AFTER illness_date5');
+//                                     $req->execute();
+//                                     $req = $bdd->prepare('UPDATE user SET illness_date6 = ? WHERE id = ?');
+//                                     $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                                     // Redirection avec message de validation.
+//                                     header('location: index.php?page=dashboard');
+
+//                                 } else {
+//                                     // Redirection.
+//                                     header('location: index.php?page=dashboard');
+//                                 };
+//                             }
+//                         } else {
+//                             // Vérification de l'extension et de la taille du document.
+//                             if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                                 $uniqId = uniqid('', true);
+//                                 // Création d'un uniqid
+//                                 $medicalJustif = $uniqId.".".$extension;
+//                                 // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                                 move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//                                 // Modification des modifications dans la base de données.
+//                                 $req = $bdd->prepare('ALTER TABLE user ADD user_absence5 FLOAT(5,2) AFTER user_absence4');
+//                                 $req->execute();
+//                                 $req = $bdd->prepare('UPDATE user SET user_absence5 = ? WHERE id = ?');
+//                                 $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                                 // Ajout de toutes les informations si le document a été validé.
+//                                 $req = $bdd->prepare('ALTER TABLE user ADD illness_justif5 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif4');
+//                                 $req->execute();
+//                                 $req = $bdd->prepare('UPDATE user SET illness_justif5 = ? WHERE id = ?');
+//                                 $req->execute([$medicalJustif, $userModifiedId]);
+
+//                                 // Ajout de la date de l'arrêt.
+//                                 $req = $bdd->prepare('ALTER TABLE user ADD illness_date5 NULL AFTER illness_date4');
+//                                 $req->execute();
+//                                 $req = $bdd->prepare('UPDATE user SET illness_date5 = ? WHERE id = ?');
+//                                 $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                                 // Redirection avec message de validation.
+//                                 header('location: index.php?page=dashboard');
+
+//                             } else {
+//                                 // Redirection.
+//                                 header('location: index.php?page=dashboard');
+//                             };
+//                         }
+//                     } else {
+//                         // Vérification de l'extension et de la taille du document.
+//                         if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                             $uniqId = uniqid('', true);
+//                             // Création d'un uniqid
+//                             $medicalJustif = $uniqId.".".$extension;
+//                             // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                             move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//                             // Modification des modifications dans la base de données.
+//                             $req = $bdd->prepare('ALTER TABLE user ADD user_absence4 FLOAT(5,2) AFTER user_absence3');
+//                             $req->execute();
+//                             $req = $bdd->prepare('UPDATE user SET user_absence4 = ? WHERE id = ?');
+//                             $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                             // Ajout de toutes les informations si le document a été validé.
+//                             $req = $bdd->prepare('ALTER TABLE user ADD illness_justif4 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif3');
+//                             $req->execute();
+//                             $req = $bdd->prepare('UPDATE user SET illness_justif4 = ? WHERE id = ?');
+//                             $req->execute([$medicalJustif, $userModifiedId]);
+
+//                             // Ajout de la date de l'arrêt.
+//                             $req = $bdd->prepare('ALTER TABLE user ADD illness_date4 NULL AFTER illness_date3');
+//                             $req->execute();
+//                             $req = $bdd->prepare('UPDATE user SET illness_date4 = ? WHERE id = ?');
+//                             $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                             // Redirection avec message de validation.
+//                             header('location: index.php?page=dashboard');
+
+//                         } else {
+//                             // Redirection.
+//                             header('location: index.php?page=dashboard');
+//                         };
+//                     }
+//                 } else {
+//                     // Vérification de l'extension et de la taille du document.
+//                     if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                         $uniqId = uniqid('', true);
+//                         // Création d'un uniqid
+//                         $medicalJustif = $uniqId.".".$extension;
+//                         // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                         move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//                         // Modification des modifications dans la base de données.
+//                         $req = $bdd->prepare('ALTER TABLE user ADD user_absence3 FLOAT(5,2) AFTER user_absence2');
+//                         $req->execute();
+//                         $req = $bdd->prepare('UPDATE user SET user_absence3 = ? WHERE id = ?');
+//                         $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                         // Ajout de toutes les informations si le document a été validé.
+//                         $req = $bdd->prepare('ALTER TABLE user ADD illness_justif3 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif2');
+//                         $req->execute();
+//                         $req = $bdd->prepare('UPDATE user SET illness_justif3 = ? WHERE id = ?');
+//                         $req->execute([$medicalJustif, $userModifiedId]);
+
+//                         // Ajout de la date de l'arrêt.
+//                         $req = $bdd->prepare('ALTER TABLE user ADD illness_date3 NULL AFTER illness_date2');
+//                         $req->execute();
+//                         $req = $bdd->prepare('UPDATE user SET illness_date3 = ? WHERE id = ?');
+//                         $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                         // Redirection avec message de validation.
+//                         header('location: index.php?page=dashboard');
+
+//                     } else {
+//                         // Redirection.
+//                         header('location: index.php?page=dashboard');
+//                     };
+//             }
+//         } else {
+//             // Vérification de l'extension et de la taille du document.
+//             if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//                 $uniqId = uniqid('', true);
+//                 // Création d'un uniqid
+//                 $medicalJustif = $uniqId.".".$extension;
+//                 // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//                 move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//                 // Modification des modifications dans la base de données.
+//                 $req = $bdd->prepare('ALTER TABLE user ADD user_absence2 FLOAT(5,2) AFTER user_absence1');
+//                 $req->execute();
+//                 $req = $bdd->prepare('UPDATE user SET user_absence2 = ? WHERE id = ?');
+//                 $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//                 // Ajout de toutes les informations si le document a été validé.
+//                 $req = $bdd->prepare('ALTER TABLE user ADD illness_justif2 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif1');
+//                 $req->execute();
+//                 $req = $bdd->prepare('UPDATE user SET illness_justif2 = ? WHERE id = ?');
+//                 $req->execute([$medicalJustif, $userModifiedId]);
+
+//                 // Ajout de la date de l'arrêt.
+//                 $req = $bdd->prepare('ALTER TABLE user ADD illness_date2 NULL AFTER illness_date1');
+//                 $req->execute();
+//                 $req = $bdd->prepare('UPDATE user SET illness_date2 = ? WHERE id = ?');
+//                 $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//                 // Redirection avec message de validation.
+//                 header('location: index.php?page=dashboard');
+
+//             } else {
+//                 // Redirection.
+//                 header('location: index.php?page=dashboard');
+//             };
+//         }
+//     } else {
+//         // Vérification de l'extension et de la taille du document.
+//         if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//             $uniqId = uniqid('', true);
+//             // Création d'un uniqid
+//             $medicalJustif = $uniqId.".".$extension;
+//             // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//             move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//             // Modification des modifications dans la base de données.
+//             $req = $bdd->prepare('ALTER TABLE user ADD user_absence1 FLOAT(5,2) AFTER user_absence');
+//             $req->execute();
+//             $req = $bdd->prepare('UPDATE user SET user_absence1 = ? WHERE id = ?');
+//             $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//             // Ajout de toutes les informations si le document a été validé.
+//             $req = $bdd->prepare('ALTER TABLE user ADD illness_justif1 TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER illness_justif');
+//             $req->execute();
+//             $req = $bdd->prepare('UPDATE user SET illness_justif1 = ? WHERE id = ?');
+//             $req->execute([$medicalJustif, $userModifiedId]);
+
+//             // Ajout de la date de l'arrêt.
+//             $req = $bdd->prepare('ALTER TABLE user ADD illness_date1 NULL AFTER illness_date');
+//             $req->execute();
+//             $req = $bdd->prepare('UPDATE user SET illness_date1 = ? WHERE id = ?');
+//             $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//             // Redirection avec message de validation.
+//             header('location: index.php?page=dashboard');
+
+//         } else {
+//             // Redirection.
+//             header('location: index.php?page=dashboard');
+//         };
+//     }
+// } else {
+//     // Vérification de l'extension et de la taille du document.
+//     if(in_array($extension, $extensions) && $medicalAddJustificationSize <= $maxSize && $medicalAddJustificationError == 0){
+//         $uniqId = uniqid('', true);
+//         // Création d'un uniqid
+//         $medicalJustif = $uniqId.".".$extension;
+//         // Enregistrement de l'image dans le dossier 'medicalJustif'.
+//         move_uploaded_file($medicalAddJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+
+//         // Modification des modifications dans la base de données.
+//         $req = $bdd->prepare('ALTER TABLE user ADD user_absence FLOAT(5,2) AFTER user_extra_time');
+//         $req->execute();
+//         $req = $bdd->prepare('UPDATE user SET user_absence = ? WHERE id = ?');
+//         $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+//         // Ajout de toutes les informations si le document a été validé.
+//         $req = $bdd->prepare('ALTER TABLE user ADD illness_justif TEXT(255) NOT NULL DEFAULT "Aucun document" AFTER user_absence');
+//         $req->execute();
+//         $req = $bdd->prepare('UPDATE user SET illness_justif = ? WHERE id = ?');
+//         $req->execute([$medicalJustif, $userModifiedId]);
+
+//         // Ajout de la date de l'arrêt.
+//         $req = $bdd->prepare('ALTER TABLE user ADD illness_date NULL AFTER illness_justif');
+//         $req->execute();
+//         $req = $bdd->prepare('UPDATE user SET illness_date = ? WHERE id = ?');
+//         $req->execute([$userAddAbsenceDate, $userModifiedId]);
+
+//         // Redirection avec message de validation.
+//         header('location: index.php?page=dashboard');
+
+//     } else {
+//         // Redirection.
+//         header('location: index.php?page=dashboard');
+//     };
+// };
 
 ?>
