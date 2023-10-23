@@ -11,12 +11,16 @@ if(
     // Variables.
     $modifyUserDelayInfo = htmlspecialchars($_POST['userDelayInfo']);
     $userId              = $_SESSION['id'];
-    $previousUserDelays  = $_SESSION['user_delay'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    // Selection du précédent retard.
+    $r = $bdd->prepare("SELECT user_delay FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousUserDelays = $r->fetchColumn();
 
     $totalsOfDelays = floatval($modifyUserDelayInfo) + floatval($previousUserDelays);
 
@@ -52,12 +56,16 @@ if(
     $modifyUserAbsenceInfo = htmlspecialchars($_POST['userAbsenceInfo']);
     $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate']);
     $userId                = $_SESSION['id'];
-    $previousUserAbsences  = $_SESSION['user_absence'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    // Selection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousUserAbsences = $r->fetchColumn();
 
     $userName    = $userId['name'];
     $userSurname = $userId['surname'];
@@ -124,12 +132,16 @@ if(
     $modifyUserAbsenceInfo = htmlspecialchars($_POST['userAbsenceInfo2']);
     $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate2']);
     $userId                = $_SESSION['id'];
-    $previousUserAbsences  = $_SESSION['user_absence'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    // Selection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousUserAbsences = $r->fetchColumn();
 
     $userName    = $userId['name'];
     $userSurname = $userId['surname'];
@@ -196,12 +208,16 @@ if(
     $modifyUserAbsenceInfo = htmlspecialchars($_POST['userAbsenceInfo3']);
     $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate3']);
     $userId                = $_SESSION['id'];
-    $previousUserAbsences  = $_SESSION['user_absence'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    // Selection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousUserAbsences = $r->fetchColumn();
 
     $userName    = $userId['name'];
     $userSurname = $userId['surname'];
@@ -268,12 +284,16 @@ if(
     $modifyUserAbsenceInfo = htmlspecialchars($_POST['userAbsenceInfo4']);
     $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate4']);
     $userId                = $_SESSION['id'];
-    $previousUserAbsences  = $_SESSION['user_absence'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    // Selection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousUserAbsences = $r->fetchColumn();
 
     $userName    = $userId['name'];
     $userSurname = $userId['surname'];

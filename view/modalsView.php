@@ -1670,7 +1670,7 @@
         <div class="modal-content p-3 mt-0">
             <!-- Titre de la modale. -->
             <div class="modal-header">
-                <h5 class="modal-title">Déclarer un retard (en minutes)</h5>
+                <h5 class="modal-title">Déclarer un retard</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
