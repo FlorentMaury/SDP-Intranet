@@ -202,7 +202,7 @@ if(
     $idCardFaceImg = $req->fetchColumn();
     unlink('./public/assets/idCardFace/'.$idCardFaceImg);
 
-    // Pour les images du véhicule de face.
+    // Pour l'images de face.
     $idFacePictureName    = $_FILES['idCardFace']['name'];
     $idFacePictureTmpName = $_FILES['idCardFace']['tmp_name'];
     $idFacePictureSize    = $_FILES['idCardFace']['size'];
@@ -259,7 +259,7 @@ if(
     $idCardBackImg = $req->fetchColumn();
     unlink('./public/assets/idCardBack/'.$idCardBackImg);
 
-    // Pour les images du véhicule de face.
+    // Pour l'image de dos.
     $idBackPictureName    = $_FILES['idCardBack']['name'];
     $idBackPictureTmpName = $_FILES['idCardBack']['tmp_name'];
     $idBackPictureSize    = $_FILES['idCardBack']['size'];
@@ -341,7 +341,7 @@ if(
     $insuranceCardFaceImg = $req->fetchColumn();
     unlink('./public/assets/insuranceCardFace/'.$insuranceCardFaceImg);
 
-    // Pour les images du véhicule de face.
+    // Pour l'image de face.
     $insuranceFacePictureName    = $_FILES['insuranceCardFace']['name'];
     $insuranceFacePictureTmpName = $_FILES['insuranceCardFace']['tmp_name'];
     $insuranceFacePictureSize    = $_FILES['insuranceCardFace']['size'];
@@ -398,7 +398,7 @@ if(
     $insuranceCardBackImg = $req->fetchColumn();
     unlink('./public/assets/insuranceCardBack/'.$insuranceCardBackImg);
 
-    // Pour les images du véhicule de face.
+    // Pour l'image de dos.
     $insuranceBackPictureName    = $_FILES['insuranceCardBack']['name'];
     $insuranceBackPictureTmpName = $_FILES['insuranceCardBack']['tmp_name'];
     $insuranceBackPictureSize    = $_FILES['insuranceCardBack']['size'];

@@ -94,7 +94,7 @@ if(
         $uniqId = uniqid('', true);
         // Création d'un uniqid
         $medicalJustif = $uniqId.".".$extension;
-        // Enregistrement de l'image dans le dossier 'medicalJustif'.
+        // Enregistrement de l'image dans le dossier 'illnessJustif'.
         move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
@@ -170,7 +170,7 @@ if(
         $uniqId = uniqid('', true);
         // Création d'un uniqid
         $medicalJustif = $uniqId.".".$extension;
-        // Enregistrement de l'image dans le dossier 'medicalJustif'.
+        // Enregistrement de l'image dans le dossier 'illnessJustif2'.
         move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif2/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
@@ -246,7 +246,7 @@ if(
         $uniqId = uniqid('', true);
         // Création d'un uniqid
         $medicalJustif = $uniqId.".".$extension;
-        // Enregistrement de l'image dans le dossier 'medicalJustif'.
+        // Enregistrement de l'image dans le dossier 'illnessJustif3'.
         move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif3/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
@@ -322,7 +322,7 @@ if(
         $uniqId = uniqid('', true);
         // Création d'un uniqid
         $medicalJustif = $uniqId.".".$extension;
-        // Enregistrement de l'image dans le dossier 'medicalJustif'.
+        // Enregistrement de l'image dans le dossier 'illnessJustif3'.
         move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif4/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.

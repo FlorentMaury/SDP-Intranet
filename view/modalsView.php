@@ -1,4 +1,4 @@
-<!-- Modale de modification du Prénom. -->
+<!-- Modale de modification du prénom. -->
 <div class="modal fade" id="modifyNameInfo" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -516,7 +516,7 @@
     </div>
 </div>
 
-<!-- Modale de modification de la ville actuelle. -->
+<!-- Modale de modification du code postal actuel. -->
 <div class="modal fade" id="modifyZipCode" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -1348,7 +1348,7 @@
     </div>
 </div>
 
-<!-- Modale de modification du trosième champ expérience professionelle. -->
+<!-- Modale de modification du troisième champ expérience professionelle. -->
 <div class="modal fade" id="modifyJob3" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -1370,7 +1370,7 @@
     </div>
 </div>
 
-<!-- Modale de modification du trosième champ expérience professionelle (date de début). -->
+<!-- Modale de modification du troisième champ expérience professionelle (date de début). -->
 <div class="modal fade" id="modifyJob3Start" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -1392,7 +1392,7 @@
     </div>
 </div>
 
-<!-- Modale de modification du trosième champ expérience professionelle (date de fin). -->
+<!-- Modale de modification du troisième champ expérience professionelle (date de fin). -->
 <div class="modal fade" id="modifyJob3End" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -1414,7 +1414,7 @@
     </div>
 </div>
 
-<!-- Modale de modification du trosième champ expérience professionelle (missions). -->
+<!-- Modale de modification du troisième champ expérience professionelle (missions). -->
 <div class="modal fade" id="modifyJob3Exp" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -1664,7 +1664,7 @@
     </div>
 </div>
 
-<!-- Modale de décalartion de retard. -->
+<!-- Modale de déclaration de retard. -->
 <div class="modal fade" id="modifyDelayInfo" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -1928,7 +1928,7 @@
     </div>
 </div>
 
-<!-- Modale de modification de demande de vacances. -->
+<!-- Modale de modification de première demande de vacances. -->
 <div class="modal fade" id="modifyHolidayRequest1" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
@@ -1954,7 +1954,7 @@
     </div>
 </div>
 
-<!-- Modale de modification de demande de vacances. -->
+<!-- Modale de modification de seconde demande de vacances. -->
 <div class="modal fade" id="modifyHolidayRequest2" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">

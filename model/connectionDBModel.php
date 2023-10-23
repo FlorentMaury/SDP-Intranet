@@ -7,6 +7,8 @@
         die('Erreur : ' .$e->getMessage());
     };
 
+    // Récupération des données de la table 'user'.
+    // Création des différentes variables necessaires.
     $users         = $bdd->query('SELECT * FROM user ORDER BY surname');
     $usersInvalid  = $bdd->query('SELECT * FROM user WHERE active = 0');
     $usersValid    = $bdd->query('SELECT * FROM user WHERE active = 1');
