@@ -1269,12 +1269,12 @@
                 </button>
             <?php
                 }
-                else if($data['holiday1_start'])
+                else if($data['holiday1_start'] && !$data['holiday2_start'])
                 {
             ?>
                 <button class="btn btn-md btn-danger p-2 m-3" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
-                        Faire une seconde demande de vacances
+                        Faire une demande de vacances
                     </a>
                 </button>
 
@@ -1285,7 +1285,7 @@
             ?>
                 <button class="btn btn-md btn-danger p-2 m-3" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
-                        Faire une troisième demande de vacances
+                        Faire une demande de vacances
                     </a>
                 </button>
             <?php
