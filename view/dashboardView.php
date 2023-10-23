@@ -65,12 +65,16 @@
 ?>
 
 <div class="managerView" id="managerViewGrid">
+    <!-- MODERATION COLLABORATEURS -->
     <div class="employeesList border rounded p-3 my-3">
+
+        <!-- Boutons d'affichage des collaborateurs actifs et inactif. -->
         <div class="text-end mb-3">
             <button class="activeButton btn btn-md btn-light mt-1 p-2">Collaborateurs actifs</button>
             <button class="inactiveButton btn btn-md btn-light mt-1 p-2">Collaborateurs inactifs</button>
         </div>
 
+        <!-- Liste des collaborateurs actifs. -->
         <div id="employeesList">
             <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs actifs</h2>
             <div class="table-responsive">
@@ -78,7 +82,7 @@
                     <thead>
                         <th>Prénom</th>
                         <th>Nom</th>
-                        <th class="creationDate">Date d'entrée</th>
+                        <th class="creationDate">Compte de temps</th>
                         <th>Plus d'infos</th>
                         <th>Supprimer</th>
                     </thead>
@@ -90,7 +94,16 @@
                         <tr>
                             <td><?= $user['name'] ?></td>
                             <td><?= $user['surname'] ?></td>
-                            <td class="creationDate"><?= $user['contract_start'] ?></td>
+                            <td class="creationDate">
+                                <?php
+                                    if((floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)) >= 0)
+                                        {
+                                            echo '<p class="text-success">' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). '</p>';
+                                        } else {
+                                            echo '<p class="text-danger">' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). '</p>';
+                                        };
+                                 ?>
+                            </td>
                             <td>
                                 <a 
                                 href='index.php?page=user&id=<?=$user["id"]?>' 
@@ -124,6 +137,7 @@
             </div>
         </div>
 
+        <!-- Liste des collaborateurs inactifs. -->
         <div id="employeesListInactive">
             <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs inactifs</h2>
             <div class="table-responsive">
@@ -182,6 +196,7 @@
         </button>
     </div>
 
+    <!-- MODERATION VACANCES -->
     <div>
         <div class="employeesList border rounded p-3 my-3">
             <h2 class="display-6 text-center" id="collabList">Vacances à modérer</h2>
