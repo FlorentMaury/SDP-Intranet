@@ -41,26 +41,28 @@
         <img src="./public/assets/arrow_up.svg" alt="Retour haut de page">
     </a>
 
+    <!-- Contenu de la page. -->
     <main>
         <?= $content ?>
     </main>
 
     <footer>
 
-        <?php
-            if($_SESSION) {
-        ?>
+    <!-- Condition de connexion pour permettre une déconnexion. -->
+    <?php
+        if($_SESSION) {
+    ?>
 
-        <!-- Bouton de déconnexion. -->
-        <div class="container my-4 d-flex justify-content-end">
-            <button type="button" href="" class="btn btn-dark m-2">
-                <a class="text-decoration-none text-white p-2" href="index.php?page=logout">Déconnexion</a>
-            </button>
-        </div>
+    <!-- Bouton de déconnexion. -->
+    <div class="container my-4 d-flex justify-content-end">
+        <button type="button" href="" class="btn btn-danger m-2">
+            <a class="text-decoration-none text-white p-2" href="index.php?page=logout">Déconnexion</a>
+        </button>
+    </div>
 
-        <?php
-            }
-        ?>  
+    <?php
+        }
+    ?>  
 
     </footer>
     

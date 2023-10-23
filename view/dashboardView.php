@@ -9,10 +9,12 @@
     $data = $req->fetch();
 ?>
 
+<!-- Titre dynamique. -->
 <h1 class="text-center display-4 mt-3">
     Bienvenue <?= $data['name'] ?>
 </h1>
 
+<!-- Navigation dynamique. -->
 <nav class="m-3 my-5 text-center">
     <ul class="d-flex justify-content-between flex-column flex-md-row">
         <?php
@@ -52,20 +54,21 @@
             </p>
         </li>
         <li>
-            <button type="button" href="" class="btn btn-dark">
+            <button type="button" href="" class="btn btn-danger">
                 <a class="text-decoration-none text-white p-2" href="index.php?page=logout">Déconnexion</a>
             </button>
         </li>
     </ul>
 </nav>
 
-<!-- GRILLE ADMINISTRATEUR -->
+<!-- Grille administrateur. -->
 <?php
     if($_SESSION['id'] == 1) {
 ?>
 
+<!-- Compte administrateur. -->
 <div class="managerView" id="managerViewGrid">
-    <!-- MODERATION COLLABORATEURS -->
+    <!-- Modérayion collaborateurs. -->
     <div class="employeesList border rounded p-3 my-3">
 
         <!-- Boutons d'affichage des collaborateurs actifs et inactif. -->
@@ -178,16 +181,18 @@
             </div>
         </div>
 
+        <!-- Ajout d'un nouveau collaborateur. -->
         <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAddUser">Ajouter</a>
         </button>
     </div>
 
-    <!-- MODERATION VACANCES -->
+    <!-- Modération vacances. -->
     <div>
         <div class="employeesList border rounded p-3 my-3">
             <h2 class="display-6 text-center" id="collabList">Vacances à modérer</h2>
 
+            <!-- Première tranche. -->
             <?php
                 foreach ($usersHoliday1 as $usersHoliday1) {
                     if ($usersHoliday1['holiday1_start'] != NULL) {
@@ -234,6 +239,7 @@
                 }
             ?>
 
+            <!-- Seconde tranche. -->
             <?php
                 foreach ($usersHoliday2 as $usersHoliday2) {
                     if ($usersHoliday2['holiday2_start'] != NULL) {
@@ -280,6 +286,7 @@
                 }
             ?>
 
+            <!-- Troisième tranche. -->
             <?php
                 foreach ($usersHoliday3 as $usersHoliday3) {
                     if ($usersHoliday3['holiday3_start'] != NULL) {
@@ -334,7 +341,7 @@
     }
 ?>
 
-<!-- INFORMATIONS PERSONNELLES -->
+<!-- Informations personnelles. -->
 <div id="generalInfos" class="border rounded mt-3 p-3">
 
     <h2 class="display-6 text-center" id="userInfos">Informations personnelles</h2>
@@ -587,7 +594,7 @@
     </div>
 </div>
 
-<!-- EXPERIENCES -->
+<!-- Expériences. -->
 <div id="experiences" class="border rounded mt-3 p-3">
 
     <h2 class="display-6 text-center" id="experiences">Diplômes</h2>
@@ -934,59 +941,59 @@
 </div>
 
 
-<!-- CONTRAT CHEZ STUDIO DES PARFUMS -->
+<!-- Contrat dans l'entreprise. -->
 <div id="contract" class="border rounded mt-3 p-3">
 
     <h2 class="display-6 text-center" id="statut">Studio des parfums</h2>
 
     <div class="contract border rounded mt-3 p-3">
 
-        <!-- Type de contrat -->
+        <!-- Type de contrat. -->
         <div>
             <p>Type de contrat : <?php if(empty($data['contract_type'])) {echo 'En attente';} else { echo $data['contract_type'];} ?></p>
         </div>
 
-        <!-- Date de début -->
+        <!-- Date de début. -->
         <div>
             <p>Date de début du contrat : <?php if(empty($data['contract_start'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
         </div>
 
-        <!-- Date de fin -->
+        <!-- Date de fin. -->
         <div>
             <p>Date de fin du contrat : <?php if(empty($data['contract_end'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
         </div>
 
-        <!-- Niveau -->
+        <!-- Niveau. -->
         <div>
             <p>Niveau : <?php if(empty($data['contract_level'])) {echo 'En attente';} else { echo $data['contract_level'];} ?></p>
         </div>
 
-        <!-- Coef -->
+        <!-- Coef. -->
         <div>
             <p>Coef : <?php if(empty($data['contract_coef'])) {echo 'En attente';} else { echo $data['contract_coef'];} ?></p>
         </div>
 
-        <!-- Rémunération -->
+        <!-- Rémunération. -->
         <div>
             <p>Rémunération : <?php if(empty($data['contract_remuneration'])) {echo 'En attente';} else { echo $data['contract_remuneration'];} ?></p>
         </div>
 
-        <!-- Mutuelle -->
+        <!-- Mutuelle. -->
         <div>
             <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'En attente';} else { echo $data['contract_insurance'];} ?></p>
         </div>
 
-        <!-- Numéro de mutuelle -->
+        <!-- Numéro de mutuelle. -->
         <div>
             <p>Numéro de mutuelle : <?php if(empty($data['contract_insurance_number'])) {echo 'En attente';} else { echo $data['contract_insurance_number'];} ?></p>
         </div>
 
-        <!-- Heures hebdomadaires -->
+        <!-- Heures hebdomadaires. -->
         <div>
             <p>Heures hebdomadaires : <?php if(empty($data['contract_weekly'])) {echo 'En attente';} else { echo $data['contract_weekly'];} ?></p>
         </div>
 
-        <!-- Navigo -->
+        <!-- Navigo. -->
         <div>
             <p>Navigo : <?php if(empty($data['contract_transports'])) {echo 'En attente';} else { echo $data['contract_transports'];} ?></p>
         </div>
@@ -994,7 +1001,7 @@
 </div>
 
 
-<!-- COMPTE DE TEMPS -->
+<!-- Compte de temps. -->
 <div id="timeBank" class="border rounded mt-3 p-3">
 
     <h2  class="display-6 text-center" id="events">Compte de temps</h2>
@@ -1006,7 +1013,7 @@
     <div class="contract border rounded mt-3 p-3">
         <h4 class="my-3">Absences</h4>
 
-        <!-- Arrêt -->
+        <!-- Arrêt. -->
         <?php 
             if(!$data['user_absence'])
             {
@@ -1152,7 +1159,7 @@
         <div class="contract border rounded mt-3 p-3">
             <h4 class="my-3">Congés</h4>
 
-            <!-- vacances -->
+            <!-- Vacances. -->
 
             <?php
                 if($data['holiday1_start'])
