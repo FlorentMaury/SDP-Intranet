@@ -83,8 +83,7 @@
                         <th>Prénom</th>
                         <th>Nom</th>
                         <th class="creationDate">Compte de temps</th>
-                        <th>Plus d'infos</th>
-                        <th>Supprimer</th>
+                        <th>Infos</th>
                     </thead>
                     <tbody>
                         <?php
@@ -102,29 +101,17 @@
                                         } else {
                                             echo '<p class="text-danger">' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). '</p>';
                                         };
-                                 ?>
+                                ?>
                             </td>
                             <td>
-                                <a 
+                            <a 
                                 href='index.php?page=user&id=<?=$user["id"]?>' 
                                 type="button" 
-                                class="btn btn-info">
+                                class="btn btn-info m-1">
                                     <img 
                                         style="width: 15px" 
                                         src="./public/assets/infos.svg" 
                                         alt="Informations"
-                                    >
-                                </a>
-                            </td>
-                            <td>
-                                <a 
-                                href='./model/deleteUserModel.php?id=<?=$user["id"]?>' 
-                                type="button" 
-                                class="btn btn-danger">
-                                    <img 
-                                        style="width: 15px" 
-                                        src="./public/assets/cross.svg" 
-                                        alt="Image de suppression"
                                     >
                                 </a>
                             </td>
@@ -906,25 +893,29 @@
             </div>
         </div>
 
-        <div class="jobButtons">
-            <div id="addJob" class="expItems">
-                <button type="button" class="btn btn-dark me-2">
-                    Ajouter une expérience professionelle
-                </button>
-            </div>
-
-            <div id="cancel" class="expItems">
-                <button type="button" href="" class="btn btn-dark me-2">
-                    Annuler
-                </button>
-            </div>  
-        </div>
 
         <?php
             }
         ?>
 
     </div>
+
+            
+    <div class="jobButtons">
+        <div id="addJob" class="expItems">
+            <button type="button" class="btn btn-dark me-2">
+                Ajouter une expérience professionelle
+            </button>
+        </div>
+
+        <div id="cancel" class="expItems">
+            <button type="button" href="" class="btn btn-dark me-2">
+                Annuler
+            </button>
+        </div>  
+    </div>
+
+
 </div>
 
 

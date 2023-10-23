@@ -22,7 +22,16 @@
     <!-- Afficher la banque de temps. -->
     <p>Temps supplémentaire effectué: <?=$extraTimeBank?> minutes</p>
     <p>Temps de la semaine à rattraper: <?=$delayTimeBank?> minutes</p>
-    <p>Temps total: <?= $totalTimeBank ?> minutes</p>
+    <p>Temps total: 
+        <?php
+            if($totalTimeBank >= 0)
+                {
+                    echo '<span class="text-success">' .$totalTimeBank. ' minutes</span>';
+                } else {
+                    echo '<span class="text-danger">' .$totalTimeBank. ' minutes</span>';
+                };
+        ?>
+    </p>
 
     <!-- Boutons de déclarations. -->
     <div class="dashboardItems mt-4 d-flex flex-column flex-md-row">
