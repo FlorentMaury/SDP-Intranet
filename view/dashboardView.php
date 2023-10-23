@@ -188,152 +188,150 @@
     </div>
 
     <!-- Modération vacances. -->
-    <div>
-        <div class="employeesList border rounded p-3 my-3">
-            <h2 class="display-6 text-center" id="collabList">Vacances à modérer</h2>
+    <div class="employeesList border rounded p-3 my-3">
+        <h2 class="display-6 text-center" id="collabList">Vacances à modérer</h2>
 
-            <!-- Première tranche. -->
-            <?php
-                foreach ($usersHoliday1 as $usersHoliday1) {
-                    if ($usersHoliday1['holiday1_start'] != NULL) {
-                        ?>
-                        <p class="dashboardItems"> 
-                            <?= $usersHoliday1['name'] .' ' .$usersHoliday1['surname'] ?> 
-                                souhaite des vacances du 
-                            <?= $usersHoliday1['holiday1_start'] ?> au <?= $usersHoliday1['holiday1_end'] ?>
-                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday1Response<?=$usersHoliday1['id']?>">
-                                    Répondre
-                                </a>
-                            </button>
-                        </p>
+        <!-- Première tranche. -->
+        <?php
+            foreach ($usersHoliday1 as $usersHoliday1) {
+                if ($usersHoliday1['holiday1_start'] != NULL) {
+                    ?>
+                    <p class="dashboardItems"> 
+                        <?= $usersHoliday1['name'] .' ' .$usersHoliday1['surname'] ?> 
+                            souhaite des vacances du 
+                        <?= $usersHoliday1['holiday1_start'] ?> au <?= $usersHoliday1['holiday1_end'] ?>
+                        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday1Response<?=$usersHoliday1['id']?>">
+                                Répondre
+                            </a>
+                        </button>
+                    </p>
 
-                        <!-- Modale acceptation de la demande de vacances -->
-                        <div class="modal fade" id="modifyHoliday1Response<?=$usersHoliday1['id']?>" data-bs-backdrop="static">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content p-3 mt-0">
-                                    <!-- Titre de la modale. -->
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Réponse à la demande de vacances</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                        </button>
-                                    </div>
-                                    <!-- Corps de la modale. -->
-                                    <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday1['id']?>">
-                                        <p class="form-floating m-2">
-                                            <!-- Select option 1 ou 0 -->
-                                            <select type="text" name="holiday1Request" class="form-control" id="holiday1Request">
-                                                <label for="holiday1Request">Réponse</label>
-                                                <option value="1">Accepter</option>
-                                                <option value="2">Refuser</option>
-                                            </select>
-                                        </p>
-                                        <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-                                    </form>
+                    <!-- Modale acceptation de la demande de vacances -->
+                    <div class="modal fade" id="modifyHoliday1Response<?=$usersHoliday1['id']?>" data-bs-backdrop="static">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content p-3 mt-0">
+                                <!-- Titre de la modale. -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Réponse à la demande de vacances</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                    </button>
                                 </div>
+                                <!-- Corps de la modale. -->
+                                <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday1['id']?>">
+                                    <p class="form-floating m-2">
+                                        <!-- Select option 1 ou 0 -->
+                                        <select type="text" name="holiday1Request" class="form-control" id="holiday1Request">
+                                            <label for="holiday1Request">Réponse</label>
+                                            <option value="1">Accepter</option>
+                                            <option value="2">Refuser</option>
+                                        </select>
+                                    </p>
+                                    <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                        <?php
-                    }
+                    <?php
                 }
-            ?>
+            }
+        ?>
 
-            <!-- Seconde tranche. -->
-            <?php
-                foreach ($usersHoliday2 as $usersHoliday2) {
-                    if ($usersHoliday2['holiday2_start'] != NULL) {
-                        ?>
-                        <p class="dashboardItems"> 
-                            <?= $usersHoliday2['name'] .' ' .$usersHoliday2['surname'] ?> 
-                                souhaite des vacances du 
-                            <?= $usersHoliday2['holiday2_start'] ?> au <?= $usersHoliday2['holiday2_end'] ?>
-                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday2Response<?=$usersHoliday2['id']?>">
-                                    Répondre
-                                </a>
-                            </button>
-                        </p>
+        <!-- Seconde tranche. -->
+        <?php
+            foreach ($usersHoliday2 as $usersHoliday2) {
+                if ($usersHoliday2['holiday2_start'] != NULL) {
+                    ?>
+                    <p class="dashboardItems"> 
+                        <?= $usersHoliday2['name'] .' ' .$usersHoliday2['surname'] ?> 
+                            souhaite des vacances du 
+                        <?= $usersHoliday2['holiday2_start'] ?> au <?= $usersHoliday2['holiday2_end'] ?>
+                        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday2Response<?=$usersHoliday2['id']?>">
+                                Répondre
+                            </a>
+                        </button>
+                    </p>
 
-                        <!-- Modale acceptation de la demande de vacances -->
-                        <div class="modal fade" id="modifyHoliday2Response<?=$usersHoliday2['id']?>" data-bs-backdrop="static">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content p-3 mt-0">
-                                    <!-- Titre de la modale. -->
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Réponse à la demande de vacances</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                        </button>
-                                    </div>
-                                    <!-- Corps de la modale. -->
-                                    <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday2['id']?>">
-                                        <p class="form-floating m-2">
-                                            <!-- Select option 1 ou 0 -->
-                                            <select type="text" name="holiday2Request" class="form-control" id="holiday2Request">
-                                                <label for="holiday2Request">Réponse</label>
-                                                <option value="1">Accepter</option>
-                                                <option value="2">Refuser</option>
-                                            </select>
-                                        </p>
-                                        <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-                                    </form>
+                    <!-- Modale acceptation de la demande de vacances -->
+                    <div class="modal fade" id="modifyHoliday2Response<?=$usersHoliday2['id']?>" data-bs-backdrop="static">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content p-3 mt-0">
+                                <!-- Titre de la modale. -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Réponse à la demande de vacances</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                    </button>
                                 </div>
+                                <!-- Corps de la modale. -->
+                                <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday2['id']?>">
+                                    <p class="form-floating m-2">
+                                        <!-- Select option 1 ou 0 -->
+                                        <select type="text" name="holiday2Request" class="form-control" id="holiday2Request">
+                                            <label for="holiday2Request">Réponse</label>
+                                            <option value="1">Accepter</option>
+                                            <option value="2">Refuser</option>
+                                        </select>
+                                    </p>
+                                    <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                        <?php
-                    }
+                    <?php
                 }
-            ?>
+            }
+        ?>
 
-            <!-- Troisième tranche. -->
-            <?php
-                foreach ($usersHoliday3 as $usersHoliday3) {
-                    if ($usersHoliday3['holiday3_start'] != NULL) {
-                        ?>
-                        <p class="dashboardItems"> 
-                            <?= $usersHoliday3['name'] .' ' .$usersHoliday3['surname'] ?> 
-                                souhaite des vacances du 
-                            <?= $usersHoliday3['holiday3_start'] ?> au <?= $usersHoliday3['holiday3_end'] ?>
-                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday3Response<?=$usersHoliday3['id']?>">
-                                    Répondre
-                                </a>
-                            </button>
-                        </p>
+        <!-- Troisième tranche. -->
+        <?php
+            foreach ($usersHoliday3 as $usersHoliday3) {
+                if ($usersHoliday3['holiday3_start'] != NULL) {
+                    ?>
+                    <p class="dashboardItems"> 
+                        <?= $usersHoliday3['name'] .' ' .$usersHoliday3['surname'] ?> 
+                            souhaite des vacances du 
+                        <?= $usersHoliday3['holiday3_start'] ?> au <?= $usersHoliday3['holiday3_end'] ?>
+                        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday3Response<?=$usersHoliday3['id']?>">
+                                Répondre
+                            </a>
+                        </button>
+                    </p>
 
-                        <!-- Modale acceptation de la demande de vacances -->
-                        <div class="modal fade" id="modifyHoliday3Response<?=$usersHoliday3['id']?>" data-bs-backdrop="static">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content p-3 mt-0">
-                                    <!-- Titre de la modale. -->
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Réponse à la demande de vacances</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                        </button>
-                                    </div>
-                                    <!-- Corps de la modale. -->
-                                    <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday3['id']?>">
-                                        <p class="form-floating m-2">
-                                            <!-- Select option 1 ou 0 -->
-                                            <select type="text" name="holiday3Request" class="form-control" id="holiday3Request">
-                                                <label for="holiday3Request">Réponse</label>
-                                                <option value="1">Accepter</option>
-                                                <option value="2">Refuser</option>
-                                            </select>
-                                        </p>
-                                        <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-                                    </form>
+                    <!-- Modale acceptation de la demande de vacances -->
+                    <div class="modal fade" id="modifyHoliday3Response<?=$usersHoliday3['id']?>" data-bs-backdrop="static">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content p-3 mt-0">
+                                <!-- Titre de la modale. -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Réponse à la demande de vacances</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                    </button>
                                 </div>
+                                <!-- Corps de la modale. -->
+                                <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday3['id']?>">
+                                    <p class="form-floating m-2">
+                                        <!-- Select option 1 ou 0 -->
+                                        <select type="text" name="holiday3Request" class="form-control" id="holiday3Request">
+                                            <label for="holiday3Request">Réponse</label>
+                                            <option value="1">Accepter</option>
+                                            <option value="2">Refuser</option>
+                                        </select>
+                                    </p>
+                                    <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
+                                </form>
                             </div>
                         </div>
+                    </div>
 
-                        <?php
-                    }
+                    <?php
                 }
-            ?>
+            }
+        ?>
 
-        </div>
     </div>
 </div>
 
