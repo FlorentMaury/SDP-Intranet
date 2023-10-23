@@ -342,11 +342,24 @@
             <!-- Image de profil -->
             <div class="dashboardItems">
                 <p>
+                    <?php
+                        if(empty($data['profile_picture'])) {
+                    ?>
+                        <img 
+                            src="./public/assets/usersImg/userBlankImg/user_blank.webp" 
+                            alt="Photo de profil à modifier"
+                            class="w-25"    
+                        >
+                    <?php
+                    ?>
                     <img 
                         src="<?= './public/assets/usersImg/'.$data['profile_picture'] ?>" 
                         alt="Photo de profil à télécharger"
                         class="w-25"    
                     >
+                    <?php
+                        } 
+                    ?>
                 </p>
                 <button class="btn btn-md btn-light p-2" type="submit">
                     <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyProfilePicture">
