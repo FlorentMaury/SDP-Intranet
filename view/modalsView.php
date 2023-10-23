@@ -2006,6 +2006,28 @@
     </div>
 </div>
 
+<!-- Modale de modification du Curriculum Vitae (document). -->
+<div class="modal fade" id="modifyCurriculumVitae" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Curriculim vitae</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
+                <p class="form-floating m-2">
+                    <input type="file" name="userCV" class="form-control" id="userCV">
+                    <label for="userCV">Curriculum vitae</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 
 

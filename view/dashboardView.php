@@ -95,11 +95,11 @@
                             <td><?= $user['surname'] ?></td>
                             <td class="creationDate">
                                 <?php
-                                    if((floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)) >= 0)
+                                    if((floatval($user['user_extra_time'] * 60) - floatval($user['user_delay'] * 60)) >= 0)
                                         {
-                                            echo '<p class="text-success">' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). '</p>';
+                                            echo '<p class="text-success">' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). ' minutes</p>';
                                         } else {
-                                            echo '<p class="text-danger">' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). '</p>';
+                                            echo '<p class="text-danger"> -' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). ' minutes</p>';
                                         };
                                 ?>
                             </td>
@@ -192,7 +192,7 @@
                 foreach ($usersHoliday1 as $usersHoliday1) {
                     if ($usersHoliday1['holiday1_start'] != NULL) {
                         ?>
-                        <p> 
+                        <p class="dashboardItems"> 
                             <?= $usersHoliday1['name'] .' ' .$usersHoliday1['surname'] ?> 
                                 souhaite des vacances du 
                             <?= $usersHoliday1['holiday1_start'] ?> au <?= $usersHoliday1['holiday1_end'] ?>
@@ -238,7 +238,7 @@
                 foreach ($usersHoliday2 as $usersHoliday2) {
                     if ($usersHoliday2['holiday2_start'] != NULL) {
                         ?>
-                        <p> 
+                        <p class="dashboardItems"> 
                             <?= $usersHoliday2['name'] .' ' .$usersHoliday2['surname'] ?> 
                                 souhaite des vacances du 
                             <?= $usersHoliday2['holiday2_start'] ?> au <?= $usersHoliday2['holiday2_end'] ?>
@@ -284,7 +284,7 @@
                 foreach ($usersHoliday3 as $usersHoliday3) {
                     if ($usersHoliday3['holiday3_start'] != NULL) {
                         ?>
-                        <p> 
+                        <p class="dashboardItems"> 
                             <?= $usersHoliday3['name'] .' ' .$usersHoliday3['surname'] ?> 
                                 souhaite des vacances du 
                             <?= $usersHoliday3['holiday3_start'] ?> au <?= $usersHoliday3['holiday3_end'] ?>
@@ -487,6 +487,21 @@
         </div>
 
         <div class="2" id="userInfos2">
+
+            <!-- Curriculum vitæ -->
+            <div class="userInfosInsuranceCard">
+                <p>
+                    <img 
+                        src="<?= './public/assets/curriculumVitae/'.$data['curriculum_vitae'] ?>" 
+                        alt="Curriculum vitæ à télécharger"
+                    >
+                    <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurriculumVitae">
+                            Modifier
+                        </a>
+                    </button>
+                </p>
+            </div>
 
             <!-- Numéro de sécurité sociale -->
             <div class="dashboardItems">

@@ -594,4 +594,61 @@ if(
     exit();
 };
 
+
+// Vérification du formulaire de modification du CV.
+if(
+    isset($_FILES['userCV']) 
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Sélection de l'ID.
+    $userId = $_SESSION['id'];
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Suppression de l'ancienne image de profil.
+    $req = $bdd->prepare("SELECT curriculum_vitae FROM `user` WHERE id = ?");
+    $req->execute([$userId]);
+    $cvImg = $req->fetchColumn();
+    unlink('./public/assets/curriculumVitae/'.$cvImg);
+
+    // Images du CV.
+    $userCVName    = $_FILES['userCV']['name'];
+    $userCVTmpName = $_FILES['userCV']['tmp_name'];
+    $userCVSize    = $_FILES['userCV']['size'];
+    $userCVError   = $_FILES['userCV']['error'];
+
+    // Récupérer l'extension des images.
+    $tabExtension = explode('.', $userCVName);
+
+    // Mise en minuscule de cette extendion.
+    $extension = strtolower(end($tabExtension));
+
+    //Tableau des extensions que l'on accepte pour les images.
+    $extensions = ['jpg', 'png', 'jpeg', 'webp', 'pdf', 'doc', 'docx', 'odt', 'txt', 'rtf'];
+    //Taille max que l'on accepte pour les images.
+    $maxSize = 50000000;
+
+    // Vérification de l'extension et de la taille du document.
+    if(in_array($extension, $extensions) && $userCVSize <= $maxSize && $userCVError == 0){
+        $uniqId = uniqid('', true);
+        // Création d'un uniqid
+        $cvImg = $uniqId.".".$extension;
+        // Enregistrement de l'image dans le dossier 'usersImg'.
+        move_uploaded_file($userCVTmpName, './public/assets/curriculumVitae/'.$cvImg);
+
+        // Ajout de l'image avec toutes les informations si les images ont étés validées.
+        $req = $bdd->prepare('UPDATE user SET curriculum_vitae = ? WHERE id = ?');
+        $req->execute([$cvImg, $userModifiedId]);
+        // Redirection avec message de validation.
+        header('location: index.php?page=dashboard');
+
+    } else {
+        header('location: index.php?page=dashboard');
+    };
+};
+
 ?>
