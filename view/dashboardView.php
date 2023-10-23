@@ -97,9 +97,9 @@
                                 <?php
                                     if((floatval($user['user_extra_time'] * 60) - floatval($user['user_delay'] * 60)) >= 0)
                                         {
-                                            echo '<p class="text-success">' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). ' minutes</p>';
+                                            echo '<p class="text-success">' .(floatval($user['user_extra_time'] * 60) - floatval($user['user_delay'] * 60)). ' minutes</p>';
                                         } else {
-                                            echo '<p class="text-danger"> -' .(floatval($user['user_delay'] * 60) - floatval($user['user_extra_time'] * 60)). ' minutes</p>';
+                                            echo '<p class="text-danger">' .(floatval($user['user_extra_time'] * 60) - floatval($user['user_delay'] * 60)). ' minutes</p>';
                                         };
                                 ?>
                             </td>
