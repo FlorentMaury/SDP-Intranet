@@ -192,14 +192,14 @@
                         ?>
                         <p> 
                             <?= $usersHoliday1['name'] .' ' .$usersHoliday1['surname'] ?> 
-                            souhaite des vacances du 
+                                souhaite des vacances du 
                             <?= $usersHoliday1['holiday1_start'] ?> au <?= $usersHoliday1['holiday1_end'] ?>
+                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday1Response<?=$usersHoliday1['id']?>">
+                                    Répondre
+                                </a>
+                            </button>
                         </p>
-                        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday1Response<?=$usersHoliday1['id']?>">
-                                Répondre
-                            </a>
-                        </button>
 
                         <!-- Modale acceptation de la demande de vacances -->
                         <div class="modal fade" id="modifyHoliday1Response<?=$usersHoliday1['id']?>" data-bs-backdrop="static">
@@ -238,14 +238,14 @@
                         ?>
                         <p> 
                             <?= $usersHoliday2['name'] .' ' .$usersHoliday2['surname'] ?> 
-                            souhaite des vacances du 
+                                souhaite des vacances du 
                             <?= $usersHoliday2['holiday2_start'] ?> au <?= $usersHoliday2['holiday2_end'] ?>
+                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday2Response<?=$usersHoliday2['id']?>">
+                                    Répondre
+                                </a>
+                            </button>
                         </p>
-                        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday2Response<?=$usersHoliday2['id']?>">
-                                Répondre
-                            </a>
-                        </button>
 
                         <!-- Modale acceptation de la demande de vacances -->
                         <div class="modal fade" id="modifyHoliday2Response<?=$usersHoliday2['id']?>" data-bs-backdrop="static">
@@ -284,14 +284,14 @@
                         ?>
                         <p> 
                             <?= $usersHoliday3['name'] .' ' .$usersHoliday3['surname'] ?> 
-                            souhaite des vacances du 
+                                souhaite des vacances du 
                             <?= $usersHoliday3['holiday3_start'] ?> au <?= $usersHoliday3['holiday3_end'] ?>
+                            <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
+                                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday3Response<?=$usersHoliday3['id']?>">
+                                    Répondre
+                                </a>
+                            </button>
                         </p>
-                        <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
-                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHoliday3Response<?=$usersHoliday3['id']?>">
-                                Répondre
-                            </a>
-                        </button>
 
                         <!-- Modale acceptation de la demande de vacances -->
                         <div class="modal fade" id="modifyHoliday3Response<?=$usersHoliday3['id']?>" data-bs-backdrop="static">
@@ -323,6 +323,7 @@
                     }
                 }
             ?>
+
         </div>
     </div>
 </div>
