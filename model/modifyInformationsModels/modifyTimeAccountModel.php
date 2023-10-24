@@ -573,14 +573,14 @@ if(
 
 // Vérification du formulaire de première demande de jour de repos.
 if(
-    !empty($_POST['dayOffRequest11Start'])
+    !empty($_POST['modifyDayOffRequest1'])
     ) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $dayOffRequest11Start = htmlspecialchars($_POST['dayOffRequest11Start']);
+    $modifyDayOffRequest1 = htmlspecialchars($_POST['modifyDayOffRequest1']);
     $userId               = $_SESSION['id'];
 
     // Sélection de l'ID.
@@ -592,14 +592,110 @@ if(
     $req = $bdd->prepare('UPDATE user SET day_off_response1 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET day_off1 = ? WHERE id = ?');
-    $req->execute([$dayOffRequest11Start, $userModifiedId]);
+    $req->execute([$modifyDayOffRequest1, $userModifiedId]);
 
         // FONCTION MAILTO.
 
         // Variables.
         $userName      = htmlspecialchars($userId['name']);
         $userSurname   = htmlspecialchars($userId['surname']);
-        $userMessage   = `Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $dayOffRequest11Start.`;
+        $userMessage   = `Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest1.`;
+        $to            = 'contact@florent-maury.fr';
+        $subject       = `Demande de repos | $userName $userSurname`;
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $userMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+
+        mail($to, $subject, $customerMessage, $header);
+
+
+    // Redirection.
+    header('location: index.php?page=dashboard');
+    exit();
+};
+
+// Vérification du formulaire de seconde demande de jour de repos.
+if(
+    !empty($_POST['modifyDayOffRequest2'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyDayOffRequest2 = htmlspecialchars($_POST['modifyDayOffRequest2']);
+    $userId               = $_SESSION['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user SET day_off_response2 = 0 WHERE id = ?');
+    $req->execute([$userModifiedId]);
+    $req = $bdd->prepare('UPDATE user SET day_off2 = ? WHERE id = ?');
+    $req->execute([$modifyDayOffRequest2, $userModifiedId]);
+
+        // FONCTION MAILTO.
+
+        // Variables.
+        $userName      = htmlspecialchars($userId['name']);
+        $userSurname   = htmlspecialchars($userId['surname']);
+        $userMessage   = `Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest2.`;
+        $to            = 'contact@florent-maury.fr';
+        $subject       = `Demande de repos | $userName $userSurname`;
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $userMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+
+        mail($to, $subject, $customerMessage, $header);
+
+
+    // Redirection.
+    header('location: index.php?page=dashboard');
+    exit();
+};
+
+// Vérification du formulaire de troisième demande de jour de repos.
+if(
+    !empty($_POST['modifyDayOffRequest3'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyDayOffRequest3 = htmlspecialchars($_POST['modifyDayOffRequest3']);
+    $userId               = $_SESSION['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user SET day_off_response3 = 0 WHERE id = ?');
+    $req->execute([$userModifiedId]);
+    $req = $bdd->prepare('UPDATE user SET day_off3 = ? WHERE id = ?');
+    $req->execute([$modifyDayOffRequest3, $userModifiedId]);
+
+        // FONCTION MAILTO.
+
+        // Variables.
+        $userName      = htmlspecialchars($userId['name']);
+        $userSurname   = htmlspecialchars($userId['surname']);
+        $userMessage   = `Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest3.`;
         $to            = 'contact@florent-maury.fr';
         $subject       = `Demande de repos | $userName $userSurname`;
 

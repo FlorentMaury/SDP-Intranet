@@ -1,6 +1,6 @@
 <?php
 
-// Demande de suppression d'un compte employé.
+// Demande de suppression d'une demande de vacances.
 if (isset($_GET['id']) && isset($_GET['holiday1'])) {
 
     $id = $_GET['id'];
@@ -17,7 +17,7 @@ if (isset($_GET['id']) && isset($_GET['holiday1'])) {
     exit();
 }
 
-// Demande de suppression d'un compte employé.
+// Demande de suppression d'une demande de vacances.
 if (isset($_GET['id']) && isset($_GET['holiday2'])) {
 
     $id = $_GET['id'];
@@ -34,7 +34,7 @@ if (isset($_GET['id']) && isset($_GET['holiday2'])) {
     exit();
 }
 
-// Demande de suppression d'un compte employé.
+// Demande de suppression d'une demande de vacances.
 if (isset($_GET['id']) && isset($_GET['holiday3'])) {
 
     $id = $_GET['id'];
