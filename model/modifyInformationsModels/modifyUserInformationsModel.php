@@ -1,5 +1,42 @@
 <?php
 
+// Vérification du formulaire de modification du mot de passe.
+if(
+    !empty($_POST['modifyPassword1']) &&
+    !empty($_POST['modifyPassword2'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyPassword1 = htmlspecialchars($_POST['modifyPassword1']);
+    $modifyPassword2 = htmlspecialchars($_POST['modifyPassword2']);
+    $userId          = $_SESSION['id'];
+
+    // Les mots de passe sont-ils identiques ?
+    if($modifyPassword1 != $modifyPassword2) {
+        header('location: index.php?error=1&message=Les mots de passe ne sont pas identiques.');
+        exit();
+    }
+
+    // Chiffrement du mot de passe.
+    $modifyPassword1 = "zk32".sha1($modifyPassword1 ."486")."345";
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user SET password = ? WHERE id = ?');
+    $req->execute([$modifyPassword1, $userModifiedId]);
+
+    // Redirection.
+    header('location: index.php?page=dashboard');
+    exit();
+} 
+
 // Vérification du formulaire de modification de la ville de naissance.
 if(
     !empty($_POST['birthCity']) 

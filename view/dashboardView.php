@@ -412,6 +412,16 @@
                 <p>Email : <?= $data['email'] ?></p>
             </div>
 
+            <!-- Email -->
+            <div class="dashboardItems">
+                <p>Modifier mot de passe</p>
+                <button class="btn btn-md btn-light p-2" type="submit">
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPasswordInfo">
+                        <img src="./public/assets/settings.svg" alt="Modifier">
+                    </a>
+                </button>
+            </div>
+            
             <!-- Prénom -->
             <div class="dashboardItems">
                 <p>Prénom : <?= $data['name'] ?></p>

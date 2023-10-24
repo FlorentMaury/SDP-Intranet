@@ -1,3 +1,29 @@
+<!-- Modale de modification du mot de passe. -->
+<div class="modal fade" id="modifyPasswordInfo" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier le mot de passe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="password" name="modifyPassword1" class="form-control" id="modifyPassword1" placeholder="Nouveau mot de passe">
+                    <label for="modifyPassword1">Nouveau mot de passe</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="password" name="modifyPassword2" class="form-control" id="modifyPassword2" placeholder="Confirmer nouveau mot de passe">
+                    <label for="modifyPassword2">Confirmer mot de passe</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Modale de modification du prénom. -->
 <div class="modal fade" id="modifyNameInfo" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
