@@ -7,6 +7,6 @@
     session_destroy(); // Détruire
 
     setcookie('auth', '', time() - 1);
-    header('location: index.php?page=home');
+    header('location: index.php?page=home&logout=1');
     exit();
 ?>

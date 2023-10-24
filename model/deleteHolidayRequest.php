@@ -13,9 +13,13 @@ if (isset($_GET['id']) && isset($_GET['holiday1'])) {
     $req->execute([null, null, null, $id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard');
+    header('location: ../index.php?page=dashboard&removal=1');
     exit();
-}
+} else {
+    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
+    exit();
+};
+
 
 // Demande de suppression d'une demande de vacances.
 if (isset($_GET['id']) && isset($_GET['holiday2'])) {
@@ -30,9 +34,13 @@ if (isset($_GET['id']) && isset($_GET['holiday2'])) {
     $req->execute([null, null, null, $id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard');
+    header('location: ../index.php?page=dashboard&removal=1');
     exit();
-}
+} else {
+    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
+    exit();
+};
+
 
 // Demande de suppression d'une demande de vacances.
 if (isset($_GET['id']) && isset($_GET['holiday3'])) {
@@ -47,8 +55,12 @@ if (isset($_GET['id']) && isset($_GET['holiday3'])) {
     $req->execute([null, null, null, $id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard');
+    header('location: ../index.php?page=dashboard&removal=1');
     exit();
-}
+} else {
+    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
+    exit();
+};
+
 
 ?>

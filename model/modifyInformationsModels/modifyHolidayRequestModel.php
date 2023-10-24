@@ -1,6 +1,6 @@
 <?php
 
-    // Fonction qui permet l'acceptation ou non d'une demande de CA.
+// Fonction qui permet l'acceptation ou non d'une demande de CA.
     if(
         !empty($_POST['holiday1Request'])
     ) {
@@ -22,11 +22,13 @@
    $req->execute([$holiday1Request, $userModifiedId]);
 
    // Redirection.
-   header('location: index.php?page=dashboard');
+   header('location: index.php?page=dashboard&holidayResponse=1');
    exit();
-    }
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+};
 
-    // Fonction qui permet l'acceptation ou non d'une seconde demande de CA.
+// Fonction qui permet l'acceptation ou non d'une seconde demande de CA.
     if(
         !empty($_POST['holiday2Request'])
     ) {
@@ -48,9 +50,11 @@
     $req->execute([$holiday2Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&holidayResponse=1');
     exit();
-    }
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+};
 
     // Fonction qui permet l'acceptation ou non d'une troisième demande de CA.
     if(
@@ -74,13 +78,15 @@
     $req->execute([$holiday3Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&holidayResponse=1');
     exit();
-    }
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+};
 
         // Fonction qui permet l'acceptation ou non d'une demande de RTT.
 
-    // Fonction qui permet l'acceptation ou non d'une première demande de RTT.
+// Fonction qui permet l'acceptation ou non d'une première demande de RTT.
     if(
         !empty($_POST['dayOff1Request'])
     ) {
@@ -112,11 +118,13 @@
     $req->execute([$dayOff1Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&dayOffResponse=1');
     exit();
-    }
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+};
 
-    // Fonction qui permet l'acceptation ou non d'une seconde demande de RTT.
+// Fonction qui permet l'acceptation ou non d'une seconde demande de RTT.
     if(
         !empty($_POST['dayOff2Request'])
     ) {
@@ -148,11 +156,13 @@
     $req->execute([$dayOff2Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&dayOffResponse=1');
     exit();
-    }
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+};
 
-    // Fonction qui permet l'acceptation ou non d'une troisième demande de RTT.
+// Fonction qui permet l'acceptation ou non d'une troisième demande de RTT.
     if(
         !empty($_POST['dayOff3Request'])
     ) {
@@ -184,8 +194,10 @@
     $req->execute([$dayOff3Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&dayOffResponse=1');
     exit();
-    }
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+};
 
 ?>

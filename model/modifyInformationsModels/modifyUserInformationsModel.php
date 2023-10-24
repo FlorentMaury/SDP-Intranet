@@ -33,9 +33,12 @@ if(
     $req->execute([$modifyPassword1, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier les mots de passe.');
+    exit();
+}
 
 // Vérification du formulaire de modification de la ville de naissance.
 if(
@@ -59,9 +62,12 @@ if(
     $req->execute([$modifyBirthCity, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la ville de naissance.');
+    exit();
+}
 
 // Vérification du formulaire de modification du pays de naissance.
 if(
@@ -85,9 +91,12 @@ if(
     $req->execute([$modifyBirthCountry, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le pays de naissance.');
+    exit();
+}
 
 // Vérification du formulaire de modification de la date de naissance.
 if(
@@ -111,9 +120,12 @@ if(
     $req->execute([$modifyBirth, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la date de naissance.');
+    exit();
+}
 
 // Vérification du formulaire de modification de la ville actuelle.
 if(
@@ -137,9 +149,12 @@ if(
     $req->execute([$currentCity, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la ville actuelle.');
+    exit();
+}
 
 // Vérification du formulaire de modification du pays actuel.
 if(
@@ -163,9 +178,12 @@ if(
     $req->execute([$currentCountry, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le pays actuel.');
+    exit();
+}
 
 // Vérification du formulaire de modification de la rue actuelle.
 if(
@@ -189,9 +207,12 @@ if(
     $req->execute([$currentStreetName, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la rue actuelle.');
+    exit();
+}
 
 // Vérification du formulaire de modification du numéro de la rue actuelle.
 if(
@@ -215,9 +236,12 @@ if(
     $req->execute([$currentStreetNumber, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le numéro de la rue actuelle.');
+    exit();
+}
 
 // Vérification du formulaire d'ajout ou de modification de la carte d'identité de face.
 if(
@@ -268,11 +292,13 @@ if(
         $req = $bdd->prepare('UPDATE user SET id_card_face = ? WHERE id = ?');
         $req->execute([$idCardFacePicture, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\' ou \'webp\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la carte d\'identité.');
 };
 
 
@@ -325,11 +351,13 @@ if(
         $req = $bdd->prepare('UPDATE user SET id_card_back = ? WHERE id = ?');
         $req->execute([$idCardBackPicture, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\', \'webp\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la carte d\'identité.');
 };
 
 // Vérification du formulaire de modification du numéro de carte d'identité.
@@ -354,9 +382,12 @@ if(
     $req->execute([$idNumber, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-};
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le numéro de carte d\'identité.');
+    exit();
+}
 
 // Vérification du formulaire d'ajout ou de modification de la carte vitale de face.
 if(
@@ -407,11 +438,13 @@ if(
         $req = $bdd->prepare('UPDATE user SET insurance_card_face = ? WHERE id = ?');
         $req->execute([$insuranceCardFacePicture, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\', \'webp\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la carte vitale.');
 };
 
 
@@ -464,12 +497,14 @@ if(
         $req = $bdd->prepare('UPDATE user SET insurance_card_back = ? WHERE id = ?');
         $req->execute([$insuranceCardBackPicture, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\', \'webp\'.');
     };
-};
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la carte vitale.');
+}
 
 // Vérification du formulaire de modification du numéro de carte vitale.
 if(
@@ -493,9 +528,12 @@ if(
     $req->execute([$socialSecurityNumber, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-};
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le numéro de carte vitale.');
+    exit();
+}
 
 // Vérification du formulaire de modification du prénom.
 if(
@@ -519,7 +557,10 @@ if(
     $req->execute([$modifyName, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le prénom.');
     exit();
 };
 
@@ -572,11 +613,13 @@ if(
         $req = $bdd->prepare('UPDATE user SET profile_picture = ? WHERE id = ?');
         $req->execute([$profilePicture, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\' ou \'webp\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la photo de profil.');
 };
 
 // Vérification du formulaire de modification du nom de famille.
@@ -601,7 +644,10 @@ if(
     $req->execute([$modifySurname, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le nom de famille.');
     exit();
 };
 
@@ -627,7 +673,10 @@ if(
     $req->execute([$currentZipCode, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le code postal.');
     exit();
 };
 
@@ -681,11 +730,13 @@ if(
         $req = $bdd->prepare('UPDATE user SET curriculum_vitae = ? WHERE id = ?');
         $req->execute([$cvImg, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le CV.');
 };
 
 ?>

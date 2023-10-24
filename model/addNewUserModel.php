@@ -21,7 +21,7 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
 
     // L'adresse email est-elle correcte ?
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('location: index.php?error=1&L\'adresse email est invalide.');
+        header('location: index.php?error=1&message=L\'adresse email est invalide.');
         exit();
     }
 
@@ -49,9 +49,11 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
     $req->execute([1, $name, $surname, $email, $password, $secret]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&success=1');
+    header('location: index.php?page=dashboard&newUser=1');
     exit();
-
- }
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible d\enregistrer ce collaborateur.');
+    exit();
+};
 
 ?>

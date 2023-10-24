@@ -27,6 +27,41 @@
         </a>
     </header>
 
+    <!-- Message de validation de la connexion utilisateur. -->
+    <?php
+        if(isset($_GET['connexion'])) {
+            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Connexion réalisée avec succès.</p></div>';
+        }
+
+        if(isset($_GET['error']) && !empty($_GET['message'])) {
+            echo '<div class=\'container\'><p class="mt-3 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p></div>';
+        }
+
+        if(isset($_GET['newUser'])) {
+            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Nouveau collaborateur enregistré avec succès.</p></div>';
+        }
+
+        if(isset($_GET['modification'])) {
+            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Modification réalisée avec succès.</p></div>';
+        }
+
+        if(isset($_GET['removal'])) {
+            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Information supprimée avec succès.</p></div>';
+        }
+
+        if(isset($_GET['holidayResponse'])) {
+            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Réponse à la demande de vacances enregistrée avec succès.</p></div>';
+        }
+
+        if(isset($_GET['dayOffResponse'])) {
+            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Réponse à la demande de repos enregistrée avec succès.</p></div>';
+        }
+
+        if(isset($_GET['timeBankModification'])) {
+            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Compte de temps ajusté avec succès.</p></div>';
+        }
+    ?>
+
      <!-- Lien de retour en haut de page. -->
      <a 
             class="rounded-circle d-flex justify-content-center shadow-sm"

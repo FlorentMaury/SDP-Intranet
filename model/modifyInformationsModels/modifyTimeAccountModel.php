@@ -29,9 +29,11 @@ if(
     $req->execute([$totalsOfDelays, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
-};
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ce retard.');
+}
 
 // Vérification du formulaire de déclaration d'absence.
 if(
@@ -110,13 +112,16 @@ if(
         $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&timeBankModification=1');
 
     } else {
         // Redirection.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
 };
+
 
 // Vérification du formulaire de déclaration d'une seconde absence.
 if(
@@ -186,13 +191,16 @@ if(
         $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&timeBankModification=1');
 
     } else {
         // Redirection.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
 };
+
 
 // Vérification du formulaire de déclaration d'une troisème absence.
 if(
@@ -262,12 +270,14 @@ if(
         $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&timeBankModification=1');
 
     } else {
         // Redirection.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
 };
 
 // Vérification du formulaire de déclaration d'une quatrième absence.
@@ -338,13 +348,16 @@ if(
         $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&timeBankModification=1');
 
     } else {
         // Redirection.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
 };
+
 
 // Vérification du formulaire de déclaration d'heures supplémentaires.
 if(
@@ -374,8 +387,10 @@ if(
     $req->execute([$totalsOfExtraTime, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ces heures supplémentaires.');
 };
 
 
@@ -429,8 +444,10 @@ if(
 
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
 };
 
 
@@ -481,9 +498,12 @@ if(
         mail($to, $subject, $customerMessage, $header);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
 };
+
 
 // Vérification du formulaire de troisième demande de CA.
 if(
@@ -532,8 +552,10 @@ if(
         mail($to, $subject, $customerMessage, $header);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
 };
 
 
@@ -567,9 +589,12 @@ if(
     $req->execute([$totalsOfDayOffBank, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ces jours supplémentaires.');
 };
+
 
 // Vérification du formulaire de première demande de jour de repos.
 if(
@@ -615,9 +640,12 @@ if(
 
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
 };
+
 
 // Vérification du formulaire de seconde demande de jour de repos.
 if(
@@ -663,9 +691,12 @@ if(
 
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
 };
+
 
 // Vérification du formulaire de troisième demande de jour de repos.
 if(
@@ -711,8 +742,10 @@ if(
 
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&timeBankModification=1');
     exit();
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
 };
 
 

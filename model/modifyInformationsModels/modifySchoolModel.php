@@ -22,9 +22,12 @@ if(
     $req->execute([$modifySchool1, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
+
+}
 
 // Vérification du formulaire de modification des dates de début la première école.
 if(
@@ -48,9 +51,11 @@ if(
     $req->execute([$modifySchool1Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+};
 
 // Vérification du formulaire de modification des dates de fin la première école.
 if(
@@ -74,9 +79,11 @@ if(
     $req->execute([$modifySchool1End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+};
 
 // Vérification du formulaire de modification du diplôme de la première école.
 if(
@@ -127,17 +134,17 @@ if(
         $req = $bdd->prepare('UPDATE user SET school_1_doc = ? WHERE id = ?');
         $req->execute([$school1Doc, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');
 };
 
 
-
-
-    // Vérification du formulaire de modification de la seconde école.
+// Vérification du formulaire de modification de la seconde école.
 if(
     !empty($_POST['school2']) 
     ) {
@@ -159,9 +166,12 @@ if(
     $req->execute([$modifySchool2, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
+};
+
 
 // Vérification du formulaire de modification des dates de début la seconde école.
 if(
@@ -185,9 +195,12 @@ if(
     $req->execute([$modifySchool2Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+};
+
 
 // Vérification du formulaire de modification des dates de fin la seconde école.
 if(
@@ -211,9 +224,11 @@ if(
     $req->execute([$modifySchool2End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+};
 
 // Vérification du formulaire de modification du diplôme de la seconde école.
 if(
@@ -264,12 +279,15 @@ if(
         $req = $bdd->prepare('UPDATE user SET school_2_doc = ? WHERE id = ?');
         $req->execute([$school2Doc, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');
 };
+
 
 // Vérification du formulaire de modification de la troisième école.
 if(
@@ -293,9 +311,12 @@ if(
     $req->execute([$modifySchool3, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
+};
+
     
 // Vérification du formulaire de modification des dates de début la trosième école.
 if(
@@ -319,9 +340,12 @@ if(
     $req->execute([$modifySchool3Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+};
+
     
 // Vérification du formulaire de modification des dates de fin la troisième école.
 if(
@@ -345,9 +369,12 @@ if(
     $req->execute([$modifySchool3End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+};
+
     
 // Vérification du formulaire de modification du diplôme de la troisième école.
 if(
@@ -398,11 +425,13 @@ if(
         $req = $bdd->prepare('UPDATE user SET school_3_doc = ? WHERE id = ?');
         $req->execute([$school3Doc, $userModifiedId]);
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&modification=1');
 
     } else {
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
     };
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');
 };
 
 ?>

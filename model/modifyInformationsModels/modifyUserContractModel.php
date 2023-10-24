@@ -22,9 +22,13 @@ if(
     $req->execute([$modifyUserContract, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier le type de ce contrat.');
     exit();
 };
+
 
 // Vérification du formulaire de modification du début de contrat.
 if(
@@ -48,9 +52,13 @@ if(
     $req->execute([$modifyUserContractStart, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier le début de ce contrat.');
     exit();
 };
+
 
 // Vérification du formulaire de modification de fin de contrat.
 if(
@@ -74,9 +82,13 @@ if(
     $req->execute([$modifyUserContractEnd, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier la fin de ce contrat.');
     exit();
 };
+
 
 // Vérification du formulaire de modification de niveau du contrat.
 if(
@@ -100,9 +112,13 @@ if(
     $req->execute([$modifyUserContractLevel, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier le niveau de ce contrat.');
     exit();
 };
+
 
 // Vérification du formulaire de modification du coefficient du contrat.
 if(
@@ -126,7 +142,10 @@ if(
     $req->execute([$modifyUserContractCoef, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier le coefficient de ce contrat.');
     exit();
 };
 
@@ -152,9 +171,13 @@ if(
     $req->execute([$modifyUserContractRemuneration, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier la rémunération de ce contrat.');
     exit();
 };
+
 
 // Vérification du formulaire de modification de la mutuelle du contrat.
 if(
@@ -178,9 +201,13 @@ if(
     $req->execute([$modifyUserContractInsurance, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier la mutuelle de ce contrat.');
     exit();
 };
+
 
 // Vérification du formulaire de modification du numéro de la mutuelle du contrat.
 if(
@@ -204,9 +231,13 @@ if(
     $req->execute([$modifyUserContractInsuranceNumber, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier le numéro de mutuelle de ce contrat.');
     exit();
 };
+
 
 // Vérification du formulaire de modification des heures hebdomadaires du contrat.
 if(
@@ -230,9 +261,13 @@ if(
     $req->execute([$modifyUserContractWeekly, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier les heures hebdomadaires de ce contrat.');
     exit();
 };
+
 
 // Vérification du formulaire de modification de la carte Navigo.
 if(
@@ -256,7 +291,10 @@ if(
     $req->execute([$modifyContractTransports, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'');
+    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+    exit();
+} else {
+    header('location: index.php?page=user&error=1&message=Impossible de modifier la carte Navigo de ce contrat.');
     exit();
 };
 

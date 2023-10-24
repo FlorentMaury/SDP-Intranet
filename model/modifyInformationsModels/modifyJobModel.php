@@ -22,9 +22,11 @@ if(
     $req->execute([$modifyJob1, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+};
 
 // Vérification du formulaire de modification des dates de début la première expérience professionelle.
 if(
@@ -48,9 +50,11 @@ if(
     $req->execute([$modifyJob1Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+};
 
 // Vérification du formulaire de modification des dates de fin la première expérience professionelle.
 if(
@@ -74,9 +78,11 @@ if(
     $req->execute([$modifyJob1End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+};
 
 // Vérification du formulaire de modification des missions de la première expérience professionelle.
 if(
@@ -100,9 +106,11 @@ if(
     $req->execute([$modifyJob1Exp, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
+};
 
 // Vérification du formulaire de modification de la seconde expérience professionelle.
 if(
@@ -126,9 +134,11 @@ if(
     $req->execute([$modifyJob2, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+};
 
 // Vérification du formulaire de modification des dates de début la seconde expérience professionelle.
 if(
@@ -152,9 +162,11 @@ if(
     $req->execute([$modifyJob2Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+};
 
 // Vérification du formulaire de modification des dates de fin la seconde expérience professionelle.
 if(
@@ -178,9 +190,11 @@ if(
     $req->execute([$modifyJob2End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+};
 
 // Vérification du formulaire de modification des missions de la seconde expérience professionelle.
 if(
@@ -204,9 +218,11 @@ if(
     $req->execute([$modifyJob2Exp, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
+};
 
 // Vérification du formulaire de modification de la troisième expérience professionelle.
 if(
@@ -230,9 +246,11 @@ if(
     $req->execute([$modifyJob3, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+};
 
 // Vérification du formulaire de modification des dates de début la troisième expérience professionelle.
 if(
@@ -256,9 +274,11 @@ if(
     $req->execute([$modifyJob3Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+};
 
 // Vérification du formulaire de modification des dates de fin la troisième expérience professionelle.
 if(
@@ -282,9 +302,11 @@ if(
     $req->execute([$modifyJob3End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+};
 
 // Vérification du formulaire de modification des missions de la troisième expérience professionelle.
 if(
@@ -308,8 +330,10 @@ if(
     $req->execute([$modifyJob3Exp, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=dashboard&modification=1');
     exit();
-} 
+} else {
+    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
+};
 
 ?>
