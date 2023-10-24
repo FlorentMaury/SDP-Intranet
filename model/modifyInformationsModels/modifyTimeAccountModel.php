@@ -573,14 +573,14 @@ if(
 
 // Vérification du formulaire de première demande de jour de repos.
 if(
-    !empty($_POST['modifyDayOffRequest1'])
+    !empty($_POST['dayOffRequest1Start'])
     ) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $modifyDayOffRequest1 = htmlspecialchars($_POST['modifyDayOffRequest1']);
+    $modifyDayOffRequest1 = htmlspecialchars($_POST['dayOffRequest1Start']);
     $userId               = $_SESSION['id'];
 
     // Sélection de l'ID.
@@ -621,14 +621,14 @@ if(
 
 // Vérification du formulaire de seconde demande de jour de repos.
 if(
-    !empty($_POST['modifyDayOffRequest2'])
+    !empty($_POST['dayOffRequest2Start'])
     ) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $modifyDayOffRequest2 = htmlspecialchars($_POST['modifyDayOffRequest2']);
+    $modifyDayOffRequest2 = htmlspecialchars($_POST['dayOffRequest2Start']);
     $userId               = $_SESSION['id'];
 
     // Sélection de l'ID.
@@ -669,14 +669,14 @@ if(
 
 // Vérification du formulaire de troisième demande de jour de repos.
 if(
-    !empty($_POST['modifyDayOffRequest3'])
+    !empty($_POST['dayOffRequest3Start'])
     ) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $modifyDayOffRequest3 = htmlspecialchars($_POST['modifyDayOffRequest3']);
+    $modifyDayOffRequest3 = htmlspecialchars($_POST['dayOffRequest3Start']);
     $userId               = $_SESSION['id'];
 
     // Sélection de l'ID.

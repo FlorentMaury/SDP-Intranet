@@ -13,7 +13,7 @@ if (isset($_GET['id']) && isset($_GET['dayOff1'])) {
     $req->execute([null, null, $id]);
 
     // Redirection.
-    header('location: ./index.php?page=dashboard');
+    header('location: ../index.php?page=dashboard');
     exit();
 }
 

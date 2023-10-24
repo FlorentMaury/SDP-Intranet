@@ -1045,23 +1045,46 @@
         <h4 class="my-3">Journées supplémentaires</h4>
 
         <p>Jours supplémentaire effectué: <?=$data['day_off_bank']?> jours</p>
-        <?php 
-            if($data['day_off_bank'] >= 1)
-            {
-                ?>
-                    <button class="btn btn-md btn-dark p-2 m-3" type="submit">
-                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDayOffRequest1">
-                            Faire une demande de repos
-                        </a>
-                    </button>
-                <?php
-            }
-        ?>
+
         <button class="btn btn-md btn-danger p-2 m-3" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDayOffBank">
                 Déclarer un jour supplémentaire
             </a>
         </button>
+
+        <?php 
+            if(!$data['day_off1'] && $data['day_off_bank'] >= 1)
+            {       
+        ?>
+            <button class="btn btn-md btn-dark p-2 m-3" type="submit">
+                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDayOffRequest1">
+                    Faire une demande de repos
+                </a>
+            </button>
+        <?php
+            }
+            else if($data['day_off1'] && !$data['day_off2'] && $data['day_off_bank'] >= 1)
+            {
+        ?>
+            <button class="btn btn-md btn-dark p-2 m-3" type="submit">
+                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDayOffRequest2">
+                    Faire une demande de repos
+                </a>
+            </button>
+
+        <?php
+            }
+            else if($data['day_off2'] && $data['day_off_bank'] >= 1)
+            {
+        ?>
+            <button class="btn btn-md btn-dark p-2 m-3" type="submit">
+                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDayOffRequest3">
+                    Faire une demande de repos
+                </a>
+            </button>
+        <?php
+            }
+        ?>
 
         <!-- Récapitulatif des demandes de RTT. -->
 
