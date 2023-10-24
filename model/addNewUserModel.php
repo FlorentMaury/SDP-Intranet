@@ -52,7 +52,7 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
     header('location: index.php?page=dashboard&newUser=1');
     exit();
 } else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible d\enregistrer ce collaborateur.');
+    header('location: index.php?errorAddnew=1&message=Impossible d\'enregistrer ce collaborateur.');
     exit();
 };
 

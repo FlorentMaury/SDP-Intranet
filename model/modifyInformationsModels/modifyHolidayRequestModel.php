@@ -26,6 +26,7 @@
    exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+    exit();
 };
 
 // Fonction qui permet l'acceptation ou non d'une seconde demande de CA.
@@ -54,6 +55,7 @@
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+    exit();
 };
 
     // Fonction qui permet l'acceptation ou non d'une troisième demande de CA.
@@ -82,6 +84,7 @@
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+    exit();
 };
 
         // Fonction qui permet l'acceptation ou non d'une demande de RTT.
@@ -122,6 +125,7 @@
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+    exit();
 };
 
 // Fonction qui permet l'acceptation ou non d'une seconde demande de RTT.
@@ -160,6 +164,7 @@
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+    exit();
 };
 
 // Fonction qui permet l'acceptation ou non d'une troisième demande de RTT.
@@ -198,6 +203,7 @@
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+    exit();
 };
 
 ?>

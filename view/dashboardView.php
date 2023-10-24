@@ -68,7 +68,7 @@
 
     <!-- Compte administrateur. -->
     <div class="managerView" id="managerViewGrid">
-        <!-- Modérayion collaborateurs. -->
+        <!-- Modération collaborateurs. -->
         <div class="employeesList border rounded p-3 my-3">
 
             <!-- Boutons d'affichage des collaborateurs actifs et inactif. -->

@@ -11,15 +11,6 @@
 
 ?>
 
-    <!-- Message de validation ou d'erreur -->
-    <?php if(isset($_GET['logout'])) {
-    echo '<p class="mt-4 fw-bold text-success">Vous êtes maintenant déconnecté !</p>';
-    }
-    else if(isset($_GET['error']) && !empty($_GET['message'])) {
-    echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
-    }
-    ?>
-
     <div class="d-flex justify-content-between connection">
         <div></div>
         <form class="w-50 text-center" method="POST" action="index.php?page=home">

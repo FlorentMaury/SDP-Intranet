@@ -26,7 +26,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
-
+    exit();
 }
 
 // Vérification du formulaire de modification des dates de début la première école.
@@ -55,6 +55,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+    exit();
 };
 
 // Vérification du formulaire de modification des dates de fin la première école.
@@ -83,6 +84,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+    exit();
 };
 
 // Vérification du formulaire de modification du diplôme de la première école.
@@ -135,12 +137,14 @@ if(
         $req->execute([$school1Doc, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');
+    exit();
 };
 
 
@@ -170,6 +174,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
+    exit();
 };
 
 
@@ -199,6 +204,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+    exit();
 };
 
 
@@ -228,6 +234,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+    exit();
 };
 
 // Vérification du formulaire de modification du diplôme de la seconde école.
@@ -280,12 +287,14 @@ if(
         $req->execute([$school2Doc, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');
+    exit();
 };
 
 
@@ -315,6 +324,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
+    exit();
 };
 
     
@@ -344,6 +354,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+    exit();
 };
 
     
@@ -373,6 +384,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
+    exit();
 };
 
     
@@ -426,12 +438,14 @@ if(
         $req->execute([$school3Doc, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');
+    exit();
 };
 
 ?>

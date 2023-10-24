@@ -250,6 +250,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+    exit();
 };
 
 // Vérification du formulaire de modification des dates de début la troisième expérience professionelle.
@@ -278,6 +279,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+    exit();
 };
 
 // Vérification du formulaire de modification des dates de fin la troisième expérience professionelle.
@@ -306,6 +308,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+    exit();
 };
 
 // Vérification du formulaire de modification des missions de la troisième expérience professionelle.
@@ -334,6 +337,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
+    exit();
 };
 
 ?>

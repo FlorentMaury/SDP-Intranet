@@ -16,7 +16,7 @@ if(
 
     // Les mots de passe sont-ils identiques ?
     if($modifyPassword1 != $modifyPassword2) {
-        header('location: index.php?error=1&message=Les mots de passe ne sont pas identiques.');
+        header('location: index.php?page=dashoard&error=1&message=Les mots de passe ne sont pas identiques.');
         exit();
     }
 
@@ -36,7 +36,7 @@ if(
     header('location: index.php?page=dashboard&modification=1');
     exit();
 } else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier les mots de passe.');
+    header('location: index.php?error=1&message=Impossible de modifier le mot de passe.');
     exit();
 }
 
@@ -293,12 +293,14 @@ if(
         $req->execute([$idCardFacePicture, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\' ou \'webp\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la carte d\'identité.');
+    exit();
 };
 
 
@@ -352,12 +354,14 @@ if(
         $req->execute([$idCardBackPicture, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\', \'webp\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la carte d\'identité.');
+    exit();
 };
 
 // Vérification du formulaire de modification du numéro de carte d'identité.
@@ -439,12 +443,14 @@ if(
         $req->execute([$insuranceCardFacePicture, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\', \'webp\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la carte vitale.');
+    exit();
 };
 
 
@@ -498,12 +504,14 @@ if(
         $req->execute([$insuranceCardBackPicture, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\', \'webp\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la carte vitale.');
+    exit();
 }
 
 // Vérification du formulaire de modification du numéro de carte vitale.
@@ -614,12 +622,14 @@ if(
         $req->execute([$profilePicture, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\' ou \'webp\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier la photo de profil.');
+    exit();
 };
 
 // Vérification du formulaire de modification du nom de famille.
@@ -731,12 +741,14 @@ if(
         $req->execute([$cvImg, $userModifiedId]);
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&modification=1');
-
+        exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Le fichier doit être au format \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de modifier le CV.');
+    exit();
 };
 
 ?>

@@ -33,7 +33,8 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ce retard.');
-}
+    exit();
+};
 
 // Vérification du formulaire de déclaration d'absence.
 if(
@@ -113,13 +114,15 @@ if(
 
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&timeBankModification=1');
-
+        exit();
     } else {
         // Redirection.
         header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
+    exit();
 };
 
 
@@ -192,13 +195,15 @@ if(
 
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&timeBankModification=1');
-
+        exit();
     } else {
         // Redirection.
         header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
+    exit();
 };
 
 
@@ -271,13 +276,15 @@ if(
 
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&timeBankModification=1');
-
+        exit();
     } else {
         // Redirection.
         header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
+    exit();
 };
 
 // Vérification du formulaire de déclaration d'une quatrième absence.
@@ -349,13 +356,15 @@ if(
 
         // Redirection avec message de validation.
         header('location: index.php?page=dashboard&timeBankModification=1');
-
+        exit();
     } else {
         // Redirection.
         header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
     };
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
+    exit();
 };
 
 
@@ -391,6 +400,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ces heures supplémentaires.');
+    exit();
 };
 
 
@@ -448,6 +458,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
+    exit();
 };
 
 
@@ -502,6 +513,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
+    exit();
 };
 
 
@@ -556,6 +568,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
+    exit();
 };
 
 
@@ -593,6 +606,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ces jours supplémentaires.');
+    exit();
 };
 
 
@@ -644,6 +658,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
+    exit();
 };
 
 
@@ -695,6 +710,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
+    exit();
 };
 
 
@@ -746,6 +762,7 @@ if(
     exit();
 } else {
     header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
+    exit();
 };
 
 
