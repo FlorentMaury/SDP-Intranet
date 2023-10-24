@@ -537,6 +537,89 @@ if(
 };
 
 
+    // DEMANDE DE JOUR SUPPLEMENTAIRE.
+
+// Vérification du formulaire de déclaration de jours supplémentaires.
+if(
+    !empty($_POST['addDayOffBank'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyAddDayOffBank = htmlspecialchars($_POST['addDayOffBank']);
+    $userId              = $_SESSION['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
+    $r->execute([$userModifiedId]);
+    $previousAddDayOffBank = $r->fetchColumn();
+
+    $totalsOfDayOffBank = floatval($modifyAddDayOffBank) + floatval($previousAddDayOffBank);
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
+    $req->execute([$totalsOfDayOffBank, $userModifiedId]);
+
+    // Redirection.
+    header('location: index.php?page=dashboard');
+    exit();
+};
+
+// Vérification du formulaire de première demande de jour de repos.
+if(
+    !empty($_POST['dayOffRequest11Start'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $dayOffRequest11Start = htmlspecialchars($_POST['dayOffRequest11Start']);
+    $userId               = $_SESSION['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user SET day_off_response1 = 0 WHERE id = ?');
+    $req->execute([$userModifiedId]);
+    $req = $bdd->prepare('UPDATE user SET day_off1 = ? WHERE id = ?');
+    $req->execute([$dayOffRequest11Start, $userModifiedId]);
+
+        // FONCTION MAILTO.
+
+        // Variables.
+        $userName      = htmlspecialchars($userId['name']);
+        $userSurname   = htmlspecialchars($userId['surname']);
+        $userMessage   = `Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $dayOffRequest11Start.`;
+        $to            = 'contact@florent-maury.fr';
+        $subject       = `Demande de repos | $userName $userSurname`;
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $userMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+
+        mail($to, $subject, $customerMessage, $header);
+
+
+    // Redirection.
+    header('location: index.php?page=dashboard');
+    exit();
+};
+
+
 
     // EN COURS DE REALISATION 
 

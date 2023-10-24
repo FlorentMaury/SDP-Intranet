@@ -2028,7 +2028,53 @@
     </div>
 </div>
 
+<!-- Modale de modification de dépôt de jour supplémentaire. -->
+<div class="modal fade" id="modifyDayOffBank" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Déclaration de journée supplémentaire</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <select type="number" name="addDayOffBank" class="form-control" id="addDayOffBank">
+                    <label for="addDayOffBank">Jour souhaité</label>
+                    <option value="1">1 jour</option>
+                    <option value="2">2 jours</option>
+                    <option value="3">3 jours</option>
+                    </select>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
 
+<!-- Modale de modification de première demande de vacances. -->
+<div class="modal fade" id="modifyDayOffRequest1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Déclaration de demande de repos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard">
+                <p class="form-floating m-2">
+                    <input type="date" name="dayOffRequest11Start" class="form-control" id="dayOffRequest11Start">
+                    <label for="dayOffRequest11Start">Date du jour souhaité</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 
