@@ -308,13 +308,13 @@
             <!-- Seconde tranche. -->
             <?php
                 foreach ($usersDayOff2 as $usersDayOff2) {
-                    if ($usersHoliday2['day_off2'] != NULL) {
+                    if ($usersDayOff2['day_off2'] != NULL) {
                         ?>
                         <div class="dashboardItems"> 
-                            <?= $usersHoliday2['name'] .' ' .$usersHoliday2['surname'] ?> 
+                            <?= $usersDayOff2['name'] .' ' .$usersDayOff2['surname'] ?> 
                                 souhaite un repos à la date du 
-                            <?= $usersHoliday2['day_off2'] ?>
-                            <form method="POST" action="index.php?page=dashboard&id=<?=$usersDayOff1['id']?>">
+                            <?= $usersDayOff2['day_off2'] ?>
+                            <form method="POST" action="index.php?page=dashboard&id=<?=$usersDayOff2['id']?>">
                                 <p class="d-flex form-floating m-2">
                                     <!-- Selectionner option 1 ou 0 -->
                                     <select type="text" name="dayOff2Request" class="form-control" id="dayOff2Request">
@@ -979,7 +979,6 @@
 
 </div>
 
-
 <!-- Contrat dans l'entreprise. -->
 <div id="contract" class="border rounded mt-3 p-3">
 
@@ -1038,7 +1037,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Compte de temps. -->
 <div id="timeBank" class="border rounded mt-3 p-3">
