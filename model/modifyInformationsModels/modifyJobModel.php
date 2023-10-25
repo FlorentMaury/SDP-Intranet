@@ -19,13 +19,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_1 = ? WHERE id = ?');
-    $req->execute([$modifyJob1, $userModifiedId]);
+    $result = $req->execute([$modifyJob1, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des dates de début la première expérience professionelle.
@@ -47,13 +50,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_1_start = ? WHERE id = ?');
-    $req->execute([$modifyJob1Start, $userModifiedId]);
+    $result = $req->execute([$modifyJob1Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des dates de fin la première expérience professionelle.
@@ -75,13 +81,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_1_end = ? WHERE id = ?');
-    $req->execute([$modifyJob1End, $userModifiedId]);
+    $result = $req->execute([$modifyJob1End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des missions de la première expérience professionelle.
@@ -103,13 +112,18 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_1_exp = ? WHERE id = ?');
-    $req->execute([$modifyJob1Exp, $userModifiedId]);
+    $result = $req->execute([$modifyJob1Exp, $userModifiedId]);
 
     // Redirection.
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
+        exit();
+    }
     header('location: index.php?page=dashboard&modification=1');
     exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
 };
 
 // Vérification du formulaire de modification de la seconde expérience professionelle.
@@ -131,13 +145,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_2 = ? WHERE id = ?');
-    $req->execute([$modifyJob2, $userModifiedId]);
+    $result = $req->execute([$modifyJob2, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des dates de début la seconde expérience professionelle.
@@ -159,13 +176,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_2_start = ? WHERE id = ?');
-    $req->execute([$modifyJob2Start, $userModifiedId]);
+    $result = $req->execute([$modifyJob2Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des dates de fin la seconde expérience professionelle.
@@ -187,13 +207,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_2_end = ? WHERE id = ?');
-    $req->execute([$modifyJob2End, $userModifiedId]);
+    $result = $req->execute([$modifyJob2End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des missions de la seconde expérience professionelle.
@@ -215,13 +238,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_2_exp = ? WHERE id = ?');
-    $req->execute([$modifyJob2Exp, $userModifiedId]);
+    $result = $req->execute([$modifyJob2Exp, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification de la troisième expérience professionelle.
@@ -243,14 +269,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_3 = ? WHERE id = ?');
-    $req->execute([$modifyJob3, $userModifiedId]);
+    $result = $req->execute([$modifyJob3, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des dates de début la troisième expérience professionelle.
@@ -272,14 +300,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_3_start = ? WHERE id = ?');
-    $req->execute([$modifyJob3Start, $userModifiedId]);
+    $result = $req->execute([$modifyJob3Start, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des dates de fin la troisième expérience professionelle.
@@ -301,14 +331,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_3_end = ? WHERE id = ?');
-    $req->execute([$modifyJob3End, $userModifiedId]);
+    $result = $req->execute([$modifyJob3End, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de modification des missions de la troisième expérience professionelle.
@@ -330,14 +362,14 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET job_3_exp = ? WHERE id = ?');
-    $req->execute([$modifyJob3Exp, $userModifiedId]);
+    $result = $req->execute([$modifyJob3Exp, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&modification=1');
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
+    }
 };
 
 ?>

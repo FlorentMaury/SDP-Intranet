@@ -5,28 +5,30 @@
         !empty($_POST['holiday1Request'])
     ) {
 
-   // Connexion à la base de données.
-   require('./model/connectionDBModel.php');
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
 
-   // Variables.
-   $holiday1Request = htmlspecialchars($_POST['holiday1Request']);
-   $userId          = $_GET['id'];
+    // Variables.
+    $holiday1Request = htmlspecialchars($_POST['holiday1Request']);
+    $userId          = $_GET['id'];
 
-   // Sélection de l'ID.
-   $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-   $r->execute([$userId]);
-   $userModifiedId = $r->fetchColumn();
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
 
-   // Modification des modifications dans la base de données.
-   $req = $bdd->prepare('UPDATE user SET holiday1_response = ? WHERE id = ?');
-   $req->execute([$holiday1Request, $userModifiedId]);
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user SET holiday1_response = ? WHERE id = ?');
+    $result = $req->execute([$holiday1Request, $userModifiedId]);
 
-   // Redirection.
-   header('location: index.php?page=dashboard&holidayResponse=1');
-   exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-    exit();
+    // Redirection.
+    if($result) {
+        header('location: index.php?page=dashboard&holidayResponse=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+        exit();
+    }
 };
 
 // Fonction qui permet l'acceptation ou non d'une seconde demande de CA.
@@ -48,14 +50,16 @@
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET holiday2_response = ? WHERE id = ?');
-    $req->execute([$holiday2Request, $userModifiedId]);
+    $result = $req->execute([$holiday2Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&holidayResponse=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&holidayResponse=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+        exit();
+    }
 };
 
     // Fonction qui permet l'acceptation ou non d'une troisième demande de CA.
@@ -77,14 +81,16 @@
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET holiday3_response = ? WHERE id = ?');
-    $req->execute([$holiday3Request, $userModifiedId]);
+    $result = $req->execute([$holiday3Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&holidayResponse=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&holidayResponse=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+        exit();
+    }
 };
 
         // Fonction qui permet l'acceptation ou non d'une demande de RTT.
@@ -118,14 +124,16 @@
     }
 
     $req = $bdd->prepare('UPDATE user SET day_off_response1 = ? WHERE id = ?');
-    $req->execute([$dayOff1Request, $userModifiedId]);
+    $result = $req->execute([$dayOff1Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&dayOffResponse=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&holidayResponse=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+        exit();
+    }
 };
 
 // Fonction qui permet l'acceptation ou non d'une seconde demande de RTT.
@@ -157,14 +165,16 @@
     }
 
     $req = $bdd->prepare('UPDATE user SET day_off_response2 = ? WHERE id = ?');
-    $req->execute([$dayOff2Request, $userModifiedId]);
+    $result = $req->execute([$dayOff2Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&dayOffResponse=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&holidayResponse=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+        exit();
+    }
 };
 
 // Fonction qui permet l'acceptation ou non d'une troisième demande de RTT.
@@ -196,14 +206,16 @@
     }
 
     $req = $bdd->prepare('UPDATE user SET day_off_response3 = ? WHERE id = ?');
-    $req->execute([$dayOff3Request, $userModifiedId]);
+    $result = $req->execute([$dayOff3Request, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&dayOffResponse=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&holidayResponse=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+        exit();
+    }
 };
 
 ?>

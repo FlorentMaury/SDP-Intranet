@@ -10,13 +10,17 @@ if (isset($_GET['id']) && isset($_GET['dayOff1'])) {
 
     // Suppression des informations de la base de donnée.
     $req = $bdd->prepare('UPDATE user SET day_off_response1 = ?, day_off1 = ? WHERE id = ?');
-    $req->execute([null, null, $id]);
+    $result = $req->execute([null, null, $id]);
 
     // Redirection.
+    if($result) {
+        header('location: ../index.php?page=dashboard&removal=1');
+        exit();
+    } else {
+        header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');
+        exit();
+    };
     header('location: ../index.php?page=dashboard&removal=1');
-    exit();
-} else {
-    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');
     exit();
 };
 
@@ -31,14 +35,16 @@ if (isset($_GET['id']) && isset($_GET['dayOff2'])) {
 
     // Suppression des informations de la base de donnée.
     $req = $bdd->prepare('UPDATE user SET day_off_response2 = ?, day_off2 = ? WHERE id = ?');
-    $req->execute([null, null, $id]);
+    $result = $req->execute([null, null, $id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard&removal=1');
-    exit();
-} else {
-    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');
-    exit();
+    if($result) {
+        header('location: ../index.php?page=dashboard&removal=1');
+        exit();
+    } else {
+        header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');
+        exit();
+    };
 };
 
 
@@ -52,14 +58,16 @@ if (isset($_GET['id']) && isset($_GET['dayOff3'])) {
 
     // Suppression des informations de la base de donnée.
     $req = $bdd->prepare('UPDATE user SET day_off_response3 = ?, day_off3 = ? WHERE id = ?');
-    $req->execute([null, null, $id]);
+    $result = $req->execute([null, null, $id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard&removal=1');
-    exit();
-} else {
-    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');
-    exit();
+    if($result) {
+        header('location: ../index.php?page=dashboard&removal=1');
+        exit();
+    } else {
+        header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');
+        exit();
+    };
 };
 
 ?>

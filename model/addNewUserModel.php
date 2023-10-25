@@ -15,13 +15,13 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
 
     // Les mots de passe sont-ils identiques ?
     if($password != $passwordTwo) {
-        header('location: index.php?error=1&message=Les mots de passe ne sont pas identiques.');
+        header('location: index.php?errorAddNew=1&messageAddNew=Les mots de passe ne sont pas identiques.');
         exit();
     }
 
     // L'adresse email est-elle correcte ?
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('location: index.php?error=1&message=L\'adresse email est invalide.');
+        header('location: index.php?errorAddNew=1&messageAddNew=L\'adresse email est invalide.');
         exit();
     }
 
@@ -32,7 +32,7 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
     // Vérification d'un éventuel doublon.
     while($emailVerification = $req->fetch()) {
         if($emailVerification['numberEmail'] != 0) {
-            header('location: index.php?page=dashboard&error=1&message=Cette adresse e-mail est déjà utilisée.');
+            header('location: index.php?page=dashboard&errorAddNew=1&messageAddNew=Cette adresse e-mail est déjà utilisée.');
             exit();
         }
     }
@@ -46,14 +46,16 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
 
     // Ajouter un utilisateur.
     $req = $bdd->prepare('INSERT INTO user(active, name, surname, email, password, secret) VALUES(?, ?, ?, ?, ?, ?)');
-    $req->execute([1, $name, $surname, $email, $password, $secret]);
+    $result = $req->execute([1, $name, $surname, $email, $password, $secret]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&newUser=1');
-    exit();
-} else {
-    header('location: index.php?errorAddnew=1&message=Impossible d\'enregistrer ce collaborateur.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&newUser=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorAddNew=1&messageAddNew=Impossible d\'enregistrer ce collaborateur.');
+        exit();
+    };
 };
 
 ?>

@@ -10,14 +10,16 @@ if (isset($_GET['id']) && isset($_GET['holiday1'])) {
 
     // Suppression des informations de la base de donnée.
     $req = $bdd->prepare('UPDATE user SET holiday1_response = ?, holiday1_start = ?, holiday1_end = ? WHERE id = ?');
-    $req->execute([null, null, null, $id]);
+    $result = $req->execute([null, null, null, $id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard&removal=1');
-    exit();
-} else {
-    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
-    exit();
+    if($result) {
+        header('location: ../index.php?page=dashboard&removal=1');
+        exit();
+    } else {
+        header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
+        exit();
+    };
 };
 
 
@@ -31,14 +33,16 @@ if (isset($_GET['id']) && isset($_GET['holiday2'])) {
 
     // Suppression des informations de la base de donnée.
     $req = $bdd->prepare('UPDATE user SET holiday2_response = ?, holiday2_start = ?, holiday2_end = ? WHERE id = ?');
-    $req->execute([null, null, null, $id]);
+    $result = $req->execute([null, null, null, $id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard&removal=1');
-    exit();
-} else {
-    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
-    exit();
+    if($result) {
+        header('location: ../index.php?page=dashboard&removal=1');
+        exit();
+    } else {
+        header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
+        exit();
+    };
 };
 
 
@@ -52,14 +56,16 @@ if (isset($_GET['id']) && isset($_GET['holiday3'])) {
 
     // Suppression des informations de la base de donnée.
     $req = $bdd->prepare('UPDATE user SET holiday3_response = ?, holiday3_start = ?, holiday3_end = ? WHERE id = ?');
-    $req->execute([null, null, null, $id]);
+    $result = $req->execute([null, null, null, $id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard&removal=1');
-    exit();
-} else {
-    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
-    exit();
+    if($result) {
+        header('location: ../index.php?page=dashboard&removal=1');
+        exit();
+    } else {
+        header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
+        exit();
+    };
 };
 
 

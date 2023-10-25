@@ -19,14 +19,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_type = ? WHERE id = ?');
-    $req->execute([$modifyUserContract, $userModifiedId]);
+    $result = $req->execute([$modifyUserContract, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier le type de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le type de ce contrat.');
+        exit();
+    };
 };
 
 
@@ -49,14 +51,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_start = ? WHERE id = ?');
-    $req->execute([$modifyUserContractStart, $userModifiedId]);
+    $result = $req->execute([$modifyUserContractStart, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier le début de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le début de ce contrat.');
+        exit();
+    };
 };
 
 
@@ -79,14 +83,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_end = ? WHERE id = ?');
-    $req->execute([$modifyUserContractEnd, $userModifiedId]);
+    $result = $req->execute([$modifyUserContractEnd, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier la fin de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la fin de ce contrat.');
+        exit();
+    };
 };
 
 
@@ -109,14 +115,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_level = ? WHERE id = ?');
-    $req->execute([$modifyUserContractLevel, $userModifiedId]);
+    $result = $req->execute([$modifyUserContractLevel, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier le niveau de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le niveau de ce contrat.');
+        exit();
+    };
 };
 
 
@@ -139,14 +147,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_coef = ? WHERE id = ?');
-    $req->execute([$modifyUserContractCoef, $userModifiedId]);
+    $result = $req->execute([$modifyUserContractCoef, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier le coefficient de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le coefficient de ce contrat.');
+        exit();
+    };
 };
 
 // Vérification du formulaire de modification de rémunération du contrat.
@@ -168,14 +178,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_remuneration = ? WHERE id = ?');
-    $req->execute([$modifyUserContractRemuneration, $userModifiedId]);
+    $result = $req->execute([$modifyUserContractRemuneration, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier la rémunération de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la rémunération de ce contrat.');
+        exit();
+    };
 };
 
 
@@ -198,14 +210,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_insurance = ? WHERE id = ?');
-    $req->execute([$modifyUserContractInsurance, $userModifiedId]);
+    $result = $req->execute([$modifyUserContractInsurance, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier la mutuelle de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la mutuelle de ce contrat.');
+        exit();
+    };
 };
 
 
@@ -228,14 +242,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_insurance_number = ? WHERE id = ?');
-    $req->execute([$modifyUserContractInsuranceNumber, $userModifiedId]);
+    $result = $req->execute([$modifyUserContractInsuranceNumber, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier le numéro de mutuelle de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le numéro de la mutuelle de ce contrat.');
+        exit();
+    };
 };
 
 
@@ -258,14 +274,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_weekly = ? WHERE id = ?');
-    $req->execute([$modifyUserContractWeekly, $userModifiedId]);
+    $result = $req->execute([$modifyUserContractWeekly, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier les heures hebdomadaires de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier les heures hebdomadaires de ce contrat.');
+        exit();
+    };
 };
 
 
@@ -288,14 +306,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET contract_transports = ? WHERE id = ?');
-    $req->execute([$modifyContractTransports, $userModifiedId]);
+    $result = $req->execute([$modifyContractTransports, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
-    exit();
-} else {
-    header('location: index.php?page=user&error=1&message=Impossible de modifier la carte Navigo de ce contrat.');
-    exit();
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la carte Navigo de ce contrat.');
+        exit();
+    };
 };
 
 ?>

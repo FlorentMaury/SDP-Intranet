@@ -58,14 +58,16 @@ if (isset($_GET['id'])) {
 
     // Suppression des informations de la base de donnée.
     $req = $bdd->prepare('DELETE FROM user WHERE id = ?');
-    $req->execute([$id]);
+    $result = $req->execute([$id]);
 
     // Redirection.
-    header('location: ../index.php?page=dashboard&removal=1');
-    exit();
-} else {
-    header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer ce compte.');
-    exit();
+    if($result) {
+        header('location: ../index.php?page=dashboard&removal=1');
+        exit();
+    } else {
+        header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer ce compte.');
+        exit();
+    };
 };
 
 ?>

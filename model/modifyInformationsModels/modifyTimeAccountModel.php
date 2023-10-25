@@ -26,14 +26,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET user_delay = ? WHERE id = ?');
-    $req->execute([$totalsOfDelays, $userModifiedId]);
+    $result = $req->execute([$totalsOfDelays, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ce retard.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ce retard.');
+        exit();
+    }
 };
 
 // Vérification du formulaire de déclaration d'absence.
@@ -110,19 +112,21 @@ if(
 
         // Ajout de la date de l'arrêt.
         $req = $bdd->prepare('UPDATE user SET illness_date = ? WHERE id = ?');
-        $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+        $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard&timeBankModification=1');
-        exit();
+        if($result) {
+            header('location: index.php?page=dashboard&timeBankModification=1');
+            exit();
+        } else {
+            header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ce retard.');
+            exit();
+        }
     } else {
         // Redirection.
-        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
         exit();
     };
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
-    exit();
 };
 
 
@@ -191,19 +195,21 @@ if(
 
         // Ajout de la date de l'arrêt.
         $req = $bdd->prepare('UPDATE user SET illness_date2 = ? WHERE id = ?');
-        $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+        $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard&timeBankModification=1');
-        exit();
+        if($result) {
+            header('location: index.php?page=dashboard&timeBankModification=1');
+            exit();
+        } else {
+            header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette absence.');
+            exit();
+        }
     } else {
         // Redirection.
-        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
         exit();
     };
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
-    exit();
 };
 
 
@@ -272,19 +278,21 @@ if(
 
         // Ajout de la date de l'arrêt.
         $req = $bdd->prepare('UPDATE user SET illness_date3 = ? WHERE id = ?');
-        $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+        $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard&timeBankModification=1');
-        exit();
+        if($result) {
+            header('location: index.php?page=dashboard&timeBankModification=1');
+            exit();
+        } else {
+            header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette absence.');
+            exit();
+        }
     } else {
         // Redirection.
-        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
         exit();
     };
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
-    exit();
 };
 
 // Vérification du formulaire de déclaration d'une quatrième absence.
@@ -352,19 +360,21 @@ if(
 
         // Ajout de la date de l'arrêt.
         $req = $bdd->prepare('UPDATE user SET illness_date4 = ? WHERE id = ?');
-        $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+        $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
         // Redirection avec message de validation.
-        header('location: index.php?page=dashboard&timeBankModification=1');
-        exit();
+        if($result) {
+            header('location: index.php?page=dashboard&timeBankModification=1');
+            exit();
+        } else {
+            header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette absence.');
+            exit();
+        }
     } else {
         // Redirection.
-        header('location: index.php?page=dashboard&error=1&message=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
         exit();
     };
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette absence.');
-    exit();
 };
 
 
@@ -393,14 +403,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET user_extra_time = ? WHERE id = ?');
-    $req->execute([$totalsOfExtraTime, $userModifiedId]);
+    $result = $req->execute([$totalsOfExtraTime, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ces heures supplémentaires.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ces heures supplémentaires.');
+        exit();
+    };
 };
 
 
@@ -431,7 +443,7 @@ if(
     $req = $bdd->prepare('UPDATE user SET holiday1_start = ? WHERE id = ?');
     $req->execute([$holidayRequest1Start, $userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET holiday1_end = ? WHERE id = ?');
-    $req->execute([$holidayRequest1End, $userModifiedId]);
+    $result = $req->execute([$holidayRequest1End, $userModifiedId]);
 
         // FONCTION MAILTO.
 
@@ -454,11 +466,13 @@ if(
 
 
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
+        exit();
+    }
 };
 
 
@@ -487,7 +501,7 @@ if(
     $req = $bdd->prepare('UPDATE user SET holiday2_start = ? WHERE id = ?');
     $req->execute([$holidayRequest2Start, $userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET holiday2_end = ? WHERE id = ?');
-    $req->execute([$holidayRequest2End, $userModifiedId]);
+    $result = $req->execute([$holidayRequest2End, $userModifiedId]);
 
             // FONCTION MAILTO.
 
@@ -509,11 +523,13 @@ if(
         mail($to, $subject, $customerMessage, $header);
 
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
+        exit();
+    }
 };
 
 
@@ -542,7 +558,7 @@ if(
     $req = $bdd->prepare('UPDATE user SET holiday3_start = ? WHERE id = ?');
     $req->execute([$holidayRequest3Start, $userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET holiday3_end = ? WHERE id = ?');
-    $req->execute([$holidayRequest3End, $userModifiedId]);
+    $result = $req->execute([$holidayRequest3End, $userModifiedId]);
 
                 // FONCTION MAILTO.
 
@@ -564,11 +580,13 @@ if(
         mail($to, $subject, $customerMessage, $header);
 
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de vacances.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
+        exit();
+    }
 };
 
 
@@ -599,14 +617,16 @@ if(
 
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
-    $req->execute([$totalsOfDayOffBank, $userModifiedId]);
+    $result = $req->execute([$totalsOfDayOffBank, $userModifiedId]);
 
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer ces jours supplémentaires.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ces jours supplémentaires.');
+        exit();
+    }
 };
 
 
@@ -631,7 +651,7 @@ if(
     $req = $bdd->prepare('UPDATE user SET day_off_response1 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET day_off1 = ? WHERE id = ?');
-    $req->execute([$modifyDayOffRequest1, $userModifiedId]);
+    $result = $req->execute([$modifyDayOffRequest1, $userModifiedId]);
 
         // FONCTION MAILTO.
 
@@ -654,11 +674,13 @@ if(
 
 
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
+        exit();
+    }
 };
 
 
@@ -683,7 +705,7 @@ if(
     $req = $bdd->prepare('UPDATE user SET day_off_response2 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET day_off2 = ? WHERE id = ?');
-    $req->execute([$modifyDayOffRequest2, $userModifiedId]);
+    $result = $req->execute([$modifyDayOffRequest2, $userModifiedId]);
 
         // FONCTION MAILTO.
 
@@ -704,13 +726,14 @@ if(
 
         mail($to, $subject, $customerMessage, $header);
 
-
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
+        exit();
+    }
 };
 
 
@@ -735,7 +758,7 @@ if(
     $req = $bdd->prepare('UPDATE user SET day_off_response3 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET day_off3 = ? WHERE id = ?');
-    $req->execute([$modifyDayOffRequest3, $userModifiedId]);
+    $result = $req->execute([$modifyDayOffRequest3, $userModifiedId]);
 
         // FONCTION MAILTO.
 
@@ -758,11 +781,13 @@ if(
 
 
     // Redirection.
-    header('location: index.php?page=dashboard&timeBankModification=1');
-    exit();
-} else {
-    header('location: index.php?page=dashboard&error=1&message=Impossible de déclarer cette demande de repos.');
-    exit();
+    if($result) {
+        header('location: index.php?page=dashboard&timeBankModification=1');
+        exit();
+    } else {
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
+        exit();
+    };
 };
 
 
