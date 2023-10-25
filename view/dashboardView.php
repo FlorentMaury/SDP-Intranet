@@ -1019,7 +1019,7 @@
 
         <!-- Mutuelle. -->
         <div>
-            <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'En attente';} else { echo $data['contract_insurance'];} ?></p>
+            <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'Aucune mutuelle n\est renseignée';} else { echo $data['contract_insurance'];} ?></p>
         </div>
 
         <!-- Numéro de mutuelle. -->
