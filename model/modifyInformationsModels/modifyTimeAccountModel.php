@@ -72,8 +72,14 @@ if(
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
 
-    $userName    = $userId['name'];
-    $userSurname = $userId['surname'];
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
 
     // Document de l'arrêt maladie.
     $medicalJustificationName    = $_FILES['medicalJustification']['name'];
@@ -114,6 +120,24 @@ if(
         $req = $bdd->prepare('UPDATE user SET illness_date = ? WHERE id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
+                // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
+        $subject       = "Arrêt de travail | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+
+        mail($to, $subject, $contentMessage, $header);
+
         // Redirection avec message de validation.
         if($result) {
             header('location: index.php?page=dashboard&timeBankModification=1');
@@ -150,13 +174,19 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Selection du retard précédent.
     $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
-
-    $userName    = $userId['name'];
-    $userSurname = $userId['surname'];
 
     // Document de l'arrêt maladie.
     $medicalJustificationName    = $_FILES['medicalJustification2']['name'];
@@ -197,6 +227,24 @@ if(
         $req = $bdd->prepare('UPDATE user SET illness_date2 = ? WHERE id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
+                        // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
+        $subject       = "Arrêt de travail | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+
+        mail($to, $subject, $contentMessage, $header);
+
         // Redirection avec message de validation.
         if($result) {
             header('location: index.php?page=dashboard&timeBankModification=1');
@@ -233,13 +281,19 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Selection du retard précédent.
     $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
-
-    $userName    = $userId['name'];
-    $userSurname = $userId['surname'];
 
     // Document de l'arrêt maladie.
     $medicalJustificationName    = $_FILES['medicalJustification3']['name'];
@@ -280,6 +334,24 @@ if(
         $req = $bdd->prepare('UPDATE user SET illness_date3 = ? WHERE id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
+            // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
+        $subject       = "Arrêt de travail | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+
+        mail($to, $subject, $contentMessage, $header);
+
         // Redirection avec message de validation.
         if($result) {
             header('location: index.php?page=dashboard&timeBankModification=1');
@@ -315,13 +387,19 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Selection du retard précédent.
     $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
-
-    $userName    = $userId['name'];
-    $userSurname = $userId['surname'];
 
     // Document de l'arrêt maladie.
     $medicalJustificationName    = $_FILES['medicalJustification4']['name'];
@@ -361,6 +439,24 @@ if(
         // Ajout de la date de l'arrêt.
         $req = $bdd->prepare('UPDATE user SET illness_date4 = ? WHERE id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+
+            // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
+        $subject       = "Arrêt de travail | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
+
+        mail($to, $subject, $contentMessage, $header);
 
         // Redirection avec message de validation.
         if($result) {
@@ -458,7 +554,8 @@ if(
 
         // Variables.
         $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
-        $to          = 'contact@florent-maury.fr';
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -523,7 +620,8 @@ if(
 
         // Variables.
         $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
-        $to          = 'contact@florent-maury.fr';
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -587,7 +685,8 @@ if(
 
         // Variables.
         $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
-        $to          = 'contact@florent-maury.fr';
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -687,7 +786,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest1.";
-        $to            = 'contact@florent-maury.fr';
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -748,7 +848,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest2.";
-        $to            = 'contact@florent-maury.fr';
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -808,7 +909,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        $to            = 'contact@florent-maury.fr';
+        // $to          = 'contact@florent-maury.fr';
+        $to          = 'pdana@sdp-paris.com';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
