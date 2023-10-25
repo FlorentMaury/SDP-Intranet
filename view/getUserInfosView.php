@@ -60,10 +60,22 @@ if (isset($_GET['id'])) {
     </ul>
 </nav>
 
+<!-- Informations générales du profil. -->
 <div id="generalUserInfos" class="generalUserInfos border rounded m-2 p-3 text-center">
     <h2 class="display-6">Informations générales</h2>
 
     <div class="userInfosGrid">
+        <div>
+            <a 
+                href='./model/deleteUserModel.php?id=<?=$user["id"]?>' 
+                type="button" 
+                class="m-3"
+                >
+                <button class="btn btn-danger text-align-center">
+                    Supprimer
+                </button>
+            </a>
+        </div>
         <div class="dashboardItems">
             <p>
                 <img 
@@ -197,15 +209,6 @@ if (isset($_GET['id'])) {
         </div>
         <div class="dashboardItems">
             <p>Date d'inscription : <?= $_SESSION['creation_date'] ?></p>
-            <a 
-                href='./model/deleteUserModel.php?id=<?=$user["id"]?>' 
-                type="button" 
-                class="m-3"
-                >
-                <button class="btn btn-danger text-align-center">
-                    Supprimer
-                </button>
-            </a>
         </div>
     </div>
 </div>
@@ -293,7 +296,7 @@ if (isset($_GET['id'])) {
             }  
         ?>
 
-<?php 
+        <?php 
             if(!empty($data['school_3'])) {
         ?>
 
@@ -344,52 +347,52 @@ if (isset($_GET['id'])) {
 
     <h2 class="display-6">Expérience professionelle</h2>
 
-<div class="userExpGrid d-flex flex-column flex-md-row">
-    <div class="expFirstItem border rounded m-1 p-3">
-        <p>Première expérience : <?php if(empty($data['job_1'])) {echo 'A completer';} else { echo $data['job_1'];} ?>
-        </p>
-        <p>Date de début : <?php if(empty($data['job_1_start'])) {echo 'A completer';} else { echo $data['job_1_start'];} ?>
-        </p>
-        <p>Date de fin : <?php if(empty($data['job_1_end'])) {echo 'A completer';} else { echo $data['job_1_end'];} ?>
-        </p>
-        <p>Missions : <?php if(empty($data['job_1_exp'])) {echo 'A completer';} else { echo $data['job_1_exp'];} ?></p>
-    </div>
+    <div class="userExpGrid d-flex flex-column flex-md-row">
+        <div class="expFirstItem border rounded m-1 p-3">
+            <p>Première expérience : <?php if(empty($data['job_1'])) {echo 'A completer';} else { echo $data['job_1'];} ?>
+            </p>
+            <p>Date de début : <?php if(empty($data['job_1_start'])) {echo 'A completer';} else { echo $data['job_1_start'];} ?>
+            </p>
+            <p>Date de fin : <?php if(empty($data['job_1_end'])) {echo 'A completer';} else { echo $data['job_1_end'];} ?>
+            </p>
+            <p>Missions : <?php if(empty($data['job_1_exp'])) {echo 'A completer';} else { echo $data['job_1_exp'];} ?></p>
+        </div>
 
-    <?php 
-        if(!empty($data['job_2'])) {
-    ?>
+        <?php 
+            if(!empty($data['job_2'])) {
+        ?>
 
-    <div class="expSecondItem border rounded m-1 p-3">
-        <p>Seconde expérience : <?php if(empty($data['job_2'])) {echo 'A completer';} else { echo $data['job_2'];} ?>
-        </p>
-        <p>Date de début : <?php if(empty($data['job_2_start'])) {echo 'A completer';} else { echo $data['job_2_start'];} ?>
-        </p>
-        <p>Date de fin : <?php if(empty($data['job_2_end'])) {echo 'A completer';} else { echo $data['job_2_end'];} ?>
-        </p>
-        <p>Missions : <?php if(empty($data['job_2_exp'])) {echo 'A completer';} else { echo $data['job_2_exp'];} ?></p>
-    </div>
+        <div class="expSecondItem border rounded m-1 p-3">
+            <p>Seconde expérience : <?php if(empty($data['job_2'])) {echo 'A completer';} else { echo $data['job_2'];} ?>
+            </p>
+            <p>Date de début : <?php if(empty($data['job_2_start'])) {echo 'A completer';} else { echo $data['job_2_start'];} ?>
+            </p>
+            <p>Date de fin : <?php if(empty($data['job_2_end'])) {echo 'A completer';} else { echo $data['job_2_end'];} ?>
+            </p>
+            <p>Missions : <?php if(empty($data['job_2_exp'])) {echo 'A completer';} else { echo $data['job_2_exp'];} ?></p>
+        </div>
 
-    <?php 
-        }  
-    ?>
+        <?php 
+            }  
+        ?>
 
-    <?php 
-        if(!empty($data['job_3'])) {
-    ?>
+        <?php 
+            if(!empty($data['job_3'])) {
+        ?>
 
-    <div class="expThirdItem border rounded m-1 p-3">
-        <p>Troisième expérience : <?php if(empty($data['job_3'])) {echo 'A completer';} else { echo $data['job_3'];} ?>
-        </p>
-        <p>Date de début : <?php if(empty($data['job_3_start'])) {echo 'A completer';} else { echo $data['job_3_start'];} ?>
-        </p>
-        <p>Date de fin : <?php if(empty($data['job_3_end'])) {echo 'A completer';} else { echo $data['job_3_end'];} ?>
-        </p>
-        <p>Missions : <?php if(empty($data['job_3_exp'])) {echo 'A completer';} else { echo $data['job_3_exp'];} ?></p>
-    </div>
+        <div class="expThirdItem border rounded m-1 p-3">
+            <p>Troisième expérience : <?php if(empty($data['job_3'])) {echo 'A completer';} else { echo $data['job_3'];} ?>
+            </p>
+            <p>Date de début : <?php if(empty($data['job_3_start'])) {echo 'A completer';} else { echo $data['job_3_start'];} ?>
+            </p>
+            <p>Date de fin : <?php if(empty($data['job_3_end'])) {echo 'A completer';} else { echo $data['job_3_end'];} ?>
+            </p>
+            <p>Missions : <?php if(empty($data['job_3_exp'])) {echo 'A completer';} else { echo $data['job_3_exp'];} ?></p>
+        </div>
 
-    <?php 
-        }  
-    ?>
+        <?php 
+            }  
+        ?>
     </div>
 </div>
 
@@ -525,85 +528,85 @@ if (isset($_GET['id'])) {
             if($data['user_absence'])
             {
         ?>
-            <div class="userExpGrid d-flex flex-column flex-md-row">
+        <div class="userExpGrid d-flex flex-column flex-md-row">
 
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <p>Arrêt de travail : <?= $data['user_absence'] ?> jours</p>
-                    <p class="userInfosDiplomaCard">
-                        <img
-                            src="<?= './public/assets/illnessJustif/'.$data['illness_justif'] ?>" 
-                            alt="Arrêt de travail"
-                        >
-                        <a
-                            class="text-decoration-none text-white p-2" 
-                            href="<?= './public/assets/illnessJustif/'.$data['illness_justif'] ?>" 
-                            download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
-                        >
-                            <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger                   
-                            </button>
-                        </a>
-                    </p>
-                    <p>Date de l'arrêt de travail : <?= $data['illness_date'] ?></p>
-                </div>
-
-                <?php 
-                    }
-                    if($data['user_absence2'])
-                    {
-                ?>
-
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <p>Arrêt de travail : <?= $data['user_absence2'] ?> jours</p>
-                    <p class="userInfosDiplomaCard">
-                        <img
-                            src="<?= './public/assets/illnessJustif2/'.$data['illness_justif2'] ?>" 
-                            alt="Arrêt de travail"
-                        >
-                        <a
-                            class="text-decoration-none text-white p-2" 
-                            href="<?= './public/assets/illnessJustif2/'.$data['illness_justif2'] ?>" 
-                            download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
-                        >
-                            <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger                   
-                            </button>
-                        </a>
-                    </p>
-                    <p>Date de l'arrêt de travail : <?= $data['illness_date2'] ?></p>
-                </div>
-
-                <?php 
-                    }
-                    if($data['user_absence3'])
-                    {
-                ?>
-
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <p>Arrêt de travail : <?= $data['user_absence3'] ?> jours</p>
-                    <p class="userInfosDiplomaCard">
-                        <img
-                            src="<?= './public/assets/illnessJustif3/'.$data['illness_justif3'] ?>" 
-                            alt="Arrêt de travail"
-                        >
-                        <a
-                            class="text-decoration-none text-white p-2" 
-                            href="<?= './public/assets/illnessJustif3/'.$data['illness_justif3'] ?>" 
-                            download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
-                        >
-                            <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger                   
-                            </button>
-                        </a>
-                    </p>
-                    <p>Date de l'arrêt de travail : <?= $data['illness_date3'] ?></p>
-                </div>
-
-                <?php 
-                    }
-                ?>
-
+            <div class="expFirstItem border rounded m-1 p-3">
+                <p>Arrêt de travail : <?= $data['user_absence'] ?> jours</p>
+                <p class="userInfosDiplomaCard">
+                    <img
+                        src="<?= './public/assets/illnessJustif/'.$data['illness_justif'] ?>" 
+                        alt="Arrêt de travail"
+                    >
+                    <a
+                        class="text-decoration-none text-white p-2" 
+                        href="<?= './public/assets/illnessJustif/'.$data['illness_justif'] ?>" 
+                        download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
+                    >
+                        <button type="button" href="" class="btn btn-dark me-2">
+                            Télécharger                   
+                        </button>
+                    </a>
+                </p>
+                <p>Date de l'arrêt de travail : <?= $data['illness_date'] ?></p>
             </div>
+
+            <?php 
+                }
+                if($data['user_absence2'])
+                {
+            ?>
+
+            <div class="expFirstItem border rounded m-1 p-3">
+                <p>Arrêt de travail : <?= $data['user_absence2'] ?> jours</p>
+                <p class="userInfosDiplomaCard">
+                    <img
+                        src="<?= './public/assets/illnessJustif2/'.$data['illness_justif2'] ?>" 
+                        alt="Arrêt de travail"
+                    >
+                    <a
+                        class="text-decoration-none text-white p-2" 
+                        href="<?= './public/assets/illnessJustif2/'.$data['illness_justif2'] ?>" 
+                        download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
+                    >
+                        <button type="button" href="" class="btn btn-dark me-2">
+                            Télécharger                   
+                        </button>
+                    </a>
+                </p>
+                <p>Date de l'arrêt de travail : <?= $data['illness_date2'] ?></p>
+            </div>
+
+            <?php 
+                }
+                if($data['user_absence3'])
+                {
+            ?>
+
+            <div class="expFirstItem border rounded m-1 p-3">
+                <p>Arrêt de travail : <?= $data['user_absence3'] ?> jours</p>
+                <p class="userInfosDiplomaCard">
+                    <img
+                        src="<?= './public/assets/illnessJustif3/'.$data['illness_justif3'] ?>" 
+                        alt="Arrêt de travail"
+                    >
+                    <a
+                        class="text-decoration-none text-white p-2" 
+                        href="<?= './public/assets/illnessJustif3/'.$data['illness_justif3'] ?>" 
+                        download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
+                    >
+                        <button type="button" href="" class="btn btn-dark me-2">
+                            Télécharger                   
+                        </button>
+                    </a>
+                </p>
+                <p>Date de l'arrêt de travail : <?= $data['illness_date3'] ?></p>
+            </div>
+
+            <?php 
+                }
+            ?>
+
+        </div>
         <?php 
             if(!$data['user_absence'])
             {
