@@ -448,16 +448,16 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userName      = htmlspecialchars($userId['name']);
-        $userSurname   = htmlspecialchars($userId['surname']);
-        $userMessage   = `Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.`;
-        $to            = 'contact@florent-maury.fr';
-        $subject       = `Demande de vacances | $userName $userSurname`;
+        $userName    = htmlspecialchars($userId['name']);
+        $userSurname = htmlspecialchars($userId['surname']);
+        $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
+        $to          = 'contact@florent-maury.fr';
+        $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-        // Personnalisation du conatenu en fonction des variables.
+        // Personnalisation du contenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
@@ -506,20 +506,20 @@ if(
             // FONCTION MAILTO.
 
         // Variables.
-        $userName      = htmlspecialchars($userId['name']);
-        $userSurname   = htmlspecialchars($userId['surname']);
-        $userMessage   = `Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest2Start au $holidayRequest2End.`;
-        $to            = 'contact@florent-maury.fr';
-        $subject       = `Demande de vacances | $userName $userSurname`;
+        $userName    = htmlspecialchars($userId['name']);
+        $userSurname = htmlspecialchars($userId['surname']);
+        $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
+        $to          = 'contact@florent-maury.fr';
+        $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-        // Personnalisation du conatenu en fonction des variables.
+        // Personnalisation du contenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
-        
+
         mail($to, $subject, $contentMessage, $header);
 
     // Redirection.
@@ -563,20 +563,20 @@ if(
                 // FONCTION MAILTO.
 
         // Variables.
-        $userName      = htmlspecialchars($userId['name']);
-        $userSurname   = htmlspecialchars($userId['surname']);
-        $userMessage   = `Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest3Start au $holidayRequest3End.`;
-        $to            = 'contact@florent-maury.fr';
-        $subject       = `Demande de vacances | $userName $userSurname`;
+        $userName    = htmlspecialchars($userId['name']);
+        $userSurname = htmlspecialchars($userId['surname']);
+        $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
+        $to          = 'contact@florent-maury.fr';
+        $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-        // Personnalisation du conatenu en fonction des variables.
+        // Personnalisation du contenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
-        
+
         mail($to, $subject, $contentMessage, $header);
 
     // Redirection.
@@ -658,9 +658,9 @@ if(
         // Variables.
         $userName      = htmlspecialchars($userId['name']);
         $userSurname   = htmlspecialchars($userId['surname']);
-        $userMessage   = `Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest1.`;
+        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest1.";
         $to            = 'contact@florent-maury.fr';
-        $subject       = `Demande de repos | $userName $userSurname`;
+        $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
@@ -712,9 +712,9 @@ if(
         // Variables.
         $userName      = htmlspecialchars($userId['name']);
         $userSurname   = htmlspecialchars($userId['surname']);
-        $userMessage   = `Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest2.`;
+        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest2.";
         $to            = 'contact@florent-maury.fr';
-        $subject       = `Demande de repos | $userName $userSurname`;
+        $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
@@ -765,9 +765,9 @@ if(
         // Variables.
         $userName      = htmlspecialchars($userId['name']);
         $userSurname   = htmlspecialchars($userId['surname']);
-        $userMessage   = `Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest3.`;
+        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest3.";
         $to            = 'contact@florent-maury.fr';
-        $subject       = `Demande de repos | $userName $userSurname`;
+        $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
