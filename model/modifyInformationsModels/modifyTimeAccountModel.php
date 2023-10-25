@@ -686,7 +686,7 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest1.";
+        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest1.";
         $to            = 'contact@florent-maury.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
@@ -747,7 +747,7 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest2.";
+        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest2.";
         $to            = 'contact@florent-maury.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
@@ -807,7 +807,7 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest3.";
+        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
         $to            = 'contact@florent-maury.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
