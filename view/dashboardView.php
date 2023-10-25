@@ -61,39 +61,6 @@
     </ul>
 </nav>
 
-<!-- Messages d'erreurs ou de validation. -->
-<?php
-        if(isset($_GET['newUser'])) {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Nouveau collaborateur enregistré avec succès.</p></div>';
-        } else if(isset($_GET['errorAddnew']) && !empty($_GET['messageAddNew'])) {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-danger">'.htmlspecialchars($_GET['messageAddNew']).'</p></div>';
-        }
-
-        if(isset($_GET['modification'])) {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Modification réalisée avec succès.</p></div>';
-        } else if(isset($_GET['errorMod']) && !empty($_GET['messageMod'])) {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-danger">'.htmlspecialchars($_GET['messageMod']).'</p></div>';
-        }
-
-        if(isset($_GET['removal']))
-        {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Information supprimée avec succès.</p></div>';
-        }
-        
-        if(isset($_GET['holidayResponse'])) 
-        {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Réponse à la demande de vacances enregistrée avec succès.</p></div>';
-        }
-        else if(isset($_GET['dayOffResponse'])) 
-        {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Réponse à la demande de repos enregistrée avec succès.</p></div>';
-        }
-        else if(isset($_GET['timeBankModification'])) 
-        {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Compte de temps ajusté avec succès.</p></div>';
-        }
-?>
-
 <!-- Grille administrateur. -->
 <?php
     if($_SESSION['id'] == 1) {

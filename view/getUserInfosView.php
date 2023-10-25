@@ -393,7 +393,7 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 
-<!-- CONTRAT CHEZ STUDIO DES PARFUMS -->
+<!-- CONTRAT CHEZ STUDIO DES PARFUMS. -->
 
 <div id="userContract" class="border rounded m-2 p-3 text-center">
 
@@ -500,7 +500,7 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 
-<!-- COMPTE DE TEMPS -->
+<!-- COMPTE DE TEMPS. -->
 
 <div id="userTimeBank" class="border rounded m-2 p-3">
 
@@ -510,6 +510,7 @@ if (isset($_GET['id'])) {
             require('./model/timeAccountModel.php')
         ?>
 
+    <!-- Absences. -->
     <div class="contract border rounded mt-3 p-3">
         <h4 class="my-3">Absences</h4>
 
@@ -641,27 +642,50 @@ if (isset($_GET['id'])) {
             }
         ?>
 
-<div class="contract border rounded mt-3 p-3">
-            <h4 class="my-3">Congés</h4>
+    </div>
 
-            <!-- vacances -->
+    <!-- Vacances. -->
+    <div class="contract border rounded mt-3 p-3">
+        <h4 class="my-3">Congés</h4>
+
+        <!-- Vacances. -->
+
+        <?php
+            if($data['holiday1_start'])
+            {
+        ?>
+
+        <div class="userExpGrid d-flex flex-column flex-md-row">
+
+            <div class="expFirstItem border rounded m-1 p-3">
+                <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
+                <p>
+                    <?php 
+                        if($data['holiday1_response'] == 0) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if($data['holiday1_response'] == 1) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                        } else if($data['holiday1_response'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
+                    ?>
+                </p>
+            </div>
 
             <?php
-                if($data['holiday1_start'])
+                if($data['holiday2_start'])
                 {
             ?>
 
-            <div class="userExpGrid d-flex flex-column flex-md-row">
-
                 <div class="expFirstItem border rounded m-1 p-3">
-                    <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
+                    <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
                     <p>
                         <?php 
-                            if($data['holiday1_response'] == 0) {
+                            if($data['holiday2_response'] == 0) {
                                 echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                            } else if($data['holiday1_response'] == 1) {
+                            } else if($data['holiday2_response'] == 1) {
                                 echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                            } else if($data['holiday1_response'] == 2) {
+                            } else if($data['holiday2_response'] == 2) {
                                 echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
                             }
                         ?>
@@ -669,56 +693,109 @@ if (isset($_GET['id'])) {
                 </div>
 
                 <?php
-                    if($data['holiday2_start'])
+                    }
+                    if($data['holiday3_start'])
                     {
                 ?>
 
                     <div class="expFirstItem border rounded m-1 p-3">
-                        <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
+                        <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
                         <p>
                             <?php 
                                 if($data['holiday2_response'] == 0) {
                                     echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                } else if($data['holiday2_response'] == 1) {
+                                } else if($data['holiday3_response'] == 1) {
                                     echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                } else if($data['holiday2_response'] == 2) {
+                                } else if($data['holiday3_response'] == 2) {
                                     echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
                                 }
                             ?>
                         </p>
                     </div>
 
-                    <?php
-                        }
-                        if($data['holiday3_start'])
-                        {
-                    ?>
-
-                        <div class="expFirstItem border rounded m-1 p-3">
-                            <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
-                            <p>
-                                <?php 
-                                    if($data['holiday2_response'] == 0) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                    } else if($data['holiday3_response'] == 1) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                    } else if($data['holiday3_response'] == 2) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                    }
-                                ?>
-                            </p>
-                        </div>
-
-                <?php 
-                    }}
-                    else {
-                        echo ('<p>Aucune demande de congés</p>');
-                    }
-                ?>
-            </div>
+            <?php 
+                }}
+                else {
+                    echo ('<p>Aucune demande de congés</p>');
+                }
+            ?>
         </div>
     </div>
 
+    <!-- Temps supplémentaire. -->
+    <div class="contract border rounded mt-3 p-3">
+        <h4 class="my-3">Temps supplémentaire</h4>
+        <?php
+            if($data['day_off1'])
+            {
+        ?>
+
+        <div class="userExpGrid d-flex flex-column flex-md-row">
+
+            <div class="expFirstItem border rounded m-1 p-3">
+                <p>Dates de la demande : <?= $data['day_off1'] ?></p>
+                <p>
+                    <?php 
+                        if($data['day_off_response1'] == 0) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if($data['day_off_response1'] == 1) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                        } else if($data['day_off_response1'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
+                    ?>
+                </p>
+            </div>
+
+            <?php
+                if($data['day_off2'])
+                {
+            ?>
+
+                <div class="expFirstItem border rounded m-1 p-3">
+                    <p>Dates de la demande : <?= $data['day_off2'] ?></p>
+                    <p>
+                        <?php 
+                            if($data['day_off_response2'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if($data['day_off_response2'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if($data['day_off_response2'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
+                        ?>
+                    </p>
+                </div>
+
+                <?php
+                    }
+                    if($data['day_off3'])
+                    {
+                ?>
+
+                    <div class="expFirstItem border rounded m-1 p-3">
+                        <p>Dates de la demande : <?= $data['day_off3'] ?></p>
+                        <p>
+                            <?php 
+                                if($data['day_off_response3'] == 0) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                } else if($data['day_off_response3'] == 1) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                } else if($data['day_off_response3'] == 2) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                }
+                            ?>
+                        </p>
+                    </div>
+
+            <?php 
+                }}
+                else {
+                    echo ('<p>Aucune demande de repos</p>');
+                }
+            ?>
+        </div>
+    </div>
 </div>
 
 <button type="button" href="" class="btn btn-dark m-2">
