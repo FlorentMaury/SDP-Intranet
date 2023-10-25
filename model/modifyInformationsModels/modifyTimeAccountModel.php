@@ -437,6 +437,15 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET holiday1_response = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -448,8 +457,6 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userName    = htmlspecialchars($userId['name']);
-        $userSurname = htmlspecialchars($userId['surname']);
         $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
         $to          = 'contact@florent-maury.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
@@ -495,6 +502,15 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET holiday2_response = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -506,8 +522,6 @@ if(
             // FONCTION MAILTO.
 
         // Variables.
-        $userName    = htmlspecialchars($userId['name']);
-        $userSurname = htmlspecialchars($userId['surname']);
         $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
         $to          = 'contact@florent-maury.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
@@ -552,6 +566,15 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET holiday3_response = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -563,8 +586,6 @@ if(
                 // FONCTION MAILTO.
 
         // Variables.
-        $userName    = htmlspecialchars($userId['name']);
-        $userSurname = htmlspecialchars($userId['surname']);
         $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
         $to          = 'contact@florent-maury.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
@@ -647,6 +668,15 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET day_off_response1 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -656,8 +686,6 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userName      = htmlspecialchars($userId['name']);
-        $userSurname   = htmlspecialchars($userId['surname']);
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest1.";
         $to            = 'contact@florent-maury.fr';
         $subject       = "Demande de repos | $userName $userSurname";
@@ -701,6 +729,15 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET day_off_response2 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -710,8 +747,6 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userName      = htmlspecialchars($userId['name']);
-        $userSurname   = htmlspecialchars($userId['surname']);
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest2.";
         $to            = 'contact@florent-maury.fr';
         $subject       = "Demande de repos | $userName $userSurname";
@@ -754,6 +789,15 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET day_off_response3 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -763,8 +807,6 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userName      = htmlspecialchars($userId['name']);
-        $userSurname   = htmlspecialchars($userId['surname']);
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname à la date du $modifyDayOffRequest3.";
         $to            = 'contact@florent-maury.fr';
         $subject       = "Demande de repos | $userName $userSurname";
