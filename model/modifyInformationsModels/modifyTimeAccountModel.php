@@ -455,14 +455,14 @@ if(
         $subject       = `Demande de vacances | $userName $userSurname`;
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
-        $userMessage = wordwrap($userMessage, 70, "\r\n");
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
 
-        mail($to, $subject, $customerMessage, $header);
+        mail($to, $subject, $contentMessage, $header);
 
 
     // Redirection.
@@ -513,14 +513,14 @@ if(
         $subject       = `Demande de vacances | $userName $userSurname`;
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
-        $userMessage = wordwrap($userMessage, 70, "\r\n");
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
         
-        mail($to, $subject, $customerMessage, $header);
+        mail($to, $subject, $contentMessage, $header);
 
     // Redirection.
     if($result) {
@@ -570,14 +570,14 @@ if(
         $subject       = `Demande de vacances | $userName $userSurname`;
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
-        $userMessage = wordwrap($userMessage, 70, "\r\n");
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
         
-        mail($to, $subject, $customerMessage, $header);
+        mail($to, $subject, $contentMessage, $header);
 
     // Redirection.
     if($result) {
@@ -663,14 +663,14 @@ if(
         $subject       = `Demande de repos | $userName $userSurname`;
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
-        $userMessage = wordwrap($userMessage, 70, "\r\n");
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
 
-        mail($to, $subject, $customerMessage, $header);
+        mail($to, $subject, $contentMessage, $header);
 
 
     // Redirection.
@@ -717,14 +717,14 @@ if(
         $subject       = `Demande de repos | $userName $userSurname`;
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
-        $userMessage = wordwrap($userMessage, 70, "\r\n");
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
 
-        mail($to, $subject, $customerMessage, $header);
+        mail($to, $subject, $contentMessage, $header);
 
     // Redirection.
     if($result) {
@@ -770,14 +770,14 @@ if(
         $subject       = `Demande de repos | $userName $userSurname`;
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
-        $userMessage = wordwrap($userMessage, 70, "\r\n");
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
 
-        mail($to, $subject, $customerMessage, $header);
+        mail($to, $subject, $contentMessage, $header);
 
 
     // Redirection.
