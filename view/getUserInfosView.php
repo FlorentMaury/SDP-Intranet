@@ -396,8 +396,7 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 
-<!-- CONTRAT CHEZ STUDIO DES PARFUMS. -->
-
+<!-- Contrat au studio des parfums. -->
 <div id="userContract" class="border rounded m-2 p-3 text-center">
 
     <h2 class="display-6" id="experiences">Studio des parfums</h2>
@@ -464,7 +463,7 @@ if (isset($_GET['id'])) {
 
     <!-- Mutuelle -->
     <div class="expItems">
-        <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'En attente';} else { echo $data['contract_insurance'];} ?></p>
+        <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'Aucune mutuelle n\'est renseignée';} else { echo $data['contract_insurance'];} ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractInsurance">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -503,8 +502,7 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 
-<!-- COMPTE DE TEMPS. -->
-
+<!-- Compte de temps. -->
 <div id="userTimeBank" class="border rounded m-2 p-3">
 
     <h2 class="display-6 text-center" id="experiences">Compte temps</h2>
