@@ -79,7 +79,7 @@
                 position: fixed;
                 width: 3vw;
                 height: 5vh;
-                bottom: 50px;
+                bottom: 70px;
                 right: 30px;"
         >
         <img src="./public/assets/arrow_up.svg" alt="Retour haut de page">

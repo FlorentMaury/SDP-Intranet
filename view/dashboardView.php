@@ -201,7 +201,7 @@
                                 souhaite des vacances du 
                             <?= $usersHoliday1['holiday1_start'] ?> au <?= $usersHoliday1['holiday1_end'] ?>
                             <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday1['id']?>">
-                                <p class="d-flex form-floating m-2">
+                                <p class="d-flex flex-column form-floating m-2">
                                     <!-- Select option 1 ou 0 -->
                                     <select type="text" name="holiday1Request" class="form-control" id="holiday1Request">
                                         <label for="holiday1Request">Réponse</label>
@@ -228,7 +228,7 @@
                                 souhaite des vacances du 
                             <?= $usersHoliday2['holiday2_start'] ?> au <?= $usersHoliday2['holiday2_end'] ?>
                             <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday2['id']?>">
-                                <p class="d-flex form-floating m-2">
+                                <p class="d-flex flex-column form-floating m-2">
                                     <!-- Select option 1 ou 0 -->
                                     <select type="text" name="holiday2Request" class="form-control" id="holiday2Request">
                                         <label for="holiday2Request">Réponse</label>
@@ -255,7 +255,7 @@
                                 souhaite des vacances du 
                             <?= $usersHoliday3['holiday3_start'] ?> au <?= $usersHoliday3['holiday3_end'] ?>
                             <form method="POST" action="index.php?page=dashboard&id=<?=$usersHoliday3['id']?>">
-                                <p class="d-flex form-floating m-2">
+                                <p class="d-flex flex-column form-floating m-2">
                                     <!-- Select option 1 ou 0 -->
                                     <select type="text" name="holiday3Request" class="form-control" id="holiday3Request">
                                         <label for="holiday3Request">Réponse</label>
@@ -288,7 +288,7 @@
                                 souhaite un repos à la date du 
                             <?= $usersDayOff1['day_off1'] ?>
                             <form method="POST" action="index.php?page=dashboard&id=<?=$usersDayOff1['id']?>">
-                                <p class="d-flex form-floating m-2">
+                                <p class="d-flex flex-column form-floating m-2">
                                     <!-- Selectionner option 1 ou 0 -->
                                     <select type="text" name="dayOff1Request" class="form-control" id="dayOff1Request">
                                         <label for="dayOff1Request">Réponse</label>
@@ -315,7 +315,7 @@
                                 souhaite un repos à la date du 
                             <?= $usersDayOff2['day_off2'] ?>
                             <form method="POST" action="index.php?page=dashboard&id=<?=$usersDayOff2['id']?>">
-                                <p class="d-flex form-floating m-2">
+                                <p class="d-flex flex-column form-floating m-2">
                                     <!-- Selectionner option 1 ou 0 -->
                                     <select type="text" name="dayOff2Request" class="form-control" id="dayOff2Request">
                                         <label for="dayOff2Request">Réponse</label>
@@ -342,7 +342,7 @@
                                 souhaite un repos à la date du 
                             <?= $usersDayOff3['day_off3'] ?>
                             <form method="POST" action="index.php?page=dashboard&id=<?=$usersDayOff3['id']?>">
-                                <p class="d-flex form-floating m-2">
+                                <p class="d-flex flex-column form-floating m-2">
                                     <!-- Selectionner option 1 ou 0 -->
                                     <select type="text" name="dayOff3Request" class="form-control" id="dayOff3Request">
                                         <label for="dayOff3Request">Réponse</label>
@@ -819,7 +819,7 @@
 
     </div>
 
-    <h2 class="display-6 text-center">Expérience professionelle</h2>
+    <h2 class="display-6 text-center my-3">Expérience professionelle</h2>
 
     <div class="userExpGrid d-flex flex-column flex-md-row">
 
