@@ -153,7 +153,6 @@ if(
     };
 };
 
-
 // Vérification du formulaire de déclaration d'une seconde absence.
 if(
     !empty($_POST['userAbsenceInfo2']) &&

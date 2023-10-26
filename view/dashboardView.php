@@ -669,14 +669,13 @@
             <div class="expItems">
                 <p>
                     <?php 
-                        if(empty($data['school_2_doc'])) {
+                        if(empty($data['school_1_doc'])) {
                             echo 'Diplôme obtenu à télécharger';
                         } else {
                     ?>
                     <img 
                         src="<?= './public/assets/school1Doc/'.$data['school_1_doc'] ?>" 
                         alt="Diplôme obtenu à télécharger"
-                        class="w-25"    
                     >
                     <?php 
                         }
@@ -963,7 +962,7 @@
     </div>
 
             
-    <div class="jobButtons">
+    <!-- <div class="jobButtons">
         <div id="addJob" class="expItems">
             <button type="button" class="btn btn-dark me-2">
                 Ajouter une expérience professionelle
@@ -975,7 +974,7 @@
                 Annuler
             </button>
         </div>  
-    </div>
+    </div> -->
 
 </div>
 
