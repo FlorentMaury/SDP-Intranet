@@ -1093,106 +1093,107 @@
                 Déclarer un jour supplémentaire
             </a>
         </button>
+    </div>
 
-        <!-- Récapitulatif des demandes de RTT. -->
-        <div class="userExpGrid d-flex flex-column flex-md-row">
+    <!-- Récapitulatif des demandes de RTT. -->
+    <div class="userExpGrid d-flex flex-column flex-md-row">
 
-            <?php
-                if($data['day_off1'])
-                {
-            ?>
+        <?php
+            if($data['day_off1'])
+            {
+        ?>
 
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light mb-4" >
-                        <a 
-                            href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff1=<?=$data['day_off1']?>'
-                            type="button" 
-                            class="btn btn-infos"
-                        >
-                            Supprimer la demande
-                        </a>
-                    </button>
-                    <p>Dates de la demande : du <?= $data['day_off1'] ?></p>
-                    <p>
-                        <?php 
-                            if($data['day_off_response1'] == 0) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                            } else if($data['day_off_response1'] == 1) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                            } else if($data['day_off_response1'] == 2) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                            }
-                        ?>
-                    </p>
-                </div>
+            <div class="expFirstItem border rounded m-1 p-3">
+                <button class="btn btn-md btn-light mb-4" >
+                    <a 
+                        href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff1=<?=$data['day_off1']?>'
+                        type="button" 
+                        class="btn btn-infos"
+                    >
+                        Supprimer la demande
+                    </a>
+                </button>
+                <p>Dates de la demande : du <?= $data['day_off1'] ?></p>
+                <p>
+                    <?php 
+                        if($data['day_off_response1'] == 0) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if($data['day_off_response1'] == 1) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                        } else if($data['day_off_response1'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
+                    ?>
+                </p>
+            </div>
 
-            <?php
-                }
-                if($data['day_off2'])
-                {
-            ?>
+        <?php
+            }
+            if($data['day_off2'])
+            {
+        ?>
 
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light mb-4" >
-                        <a 
-                            href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff2=<?=$data['day_off2']?>'
-                            type="button" 
-                            class="btn btn-infos"
-                        >
-                            Supprimer la demande
-                        </a>
-                    </button>
-                    <p>Dates de la demande : du <?= $data['day_off2'] ?></p>
-                    <p>
-                        <?php 
-                            if($data['day_off_response2'] == 0) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                            } else if($data['day_off_response2'] == 1) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                            } else if($data['day_off_response2'] == 2) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                            }
-                        ?>
-                    </p>
-                </div>
+            <div class="expSecondItem border rounded m-1 p-3">
+                <button class="btn btn-md btn-light mb-4" >
+                    <a 
+                        href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff2=<?=$data['day_off2']?>'
+                        type="button" 
+                        class="btn btn-infos"
+                    >
+                        Supprimer la demande
+                    </a>
+                </button>
+                <p>Dates de la demande : du <?= $data['day_off2'] ?></p>
+                <p>
+                    <?php 
+                        if($data['day_off_response2'] == 0) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if($data['day_off_response2'] == 1) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                        } else if($data['day_off_response2'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
+                    ?>
+                </p>
+            </div>
 
-            <?php
-                }
-                if($data['day_off3'])
-                {
-            ?>
+        <?php
+            }
+            if($data['day_off3'])
+            {
+        ?>
 
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light mb-4" >
-                        <a 
-                            href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff3=<?=$data['day_off3']?>'
-                            type="button" 
-                            class="btn btn-infos"
-                        >
-                            Supprimer la demande
-                        </a>
-                    </button>
-                    <p>Dates de la demande : du <?= $data['day_off3'] ?></p>
-                    <p>
-                        <?php 
-                            if($data['day_off_response3'] == 0) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                            } else if($data['day_off_response3'] == 1) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                            } else if($data['day_off_response3'] == 2) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                            }
-                        ?>
-                    </p>
-                </div>
+            <div class="expThirdItem border rounded m-1 p-3">
+                <button class="btn btn-md btn-light mb-4" >
+                    <a 
+                        href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff3=<?=$data['day_off3']?>'
+                        type="button" 
+                        class="btn btn-infos"
+                    >
+                        Supprimer la demande
+                    </a>
+                </button>
+                <p>Dates de la demande : du <?= $data['day_off3'] ?></p>
+                <p>
+                    <?php 
+                        if($data['day_off_response3'] == 0) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if($data['day_off_response3'] == 1) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                        } else if($data['day_off_response3'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
+                    ?>
+                </p>
+            </div>
 
-            <?php 
-                }
-                else if (!$data['day_off1'] && !$data['day_off2'] && !$data['day_off3']) {
-                    echo ('<p>Aucune demande de congés</p>');
-                }
-            ?>
-        </div>
+        <?php 
+            }
+            else if (!$data['day_off1'] && !$data['day_off2'] && !$data['day_off3']) {
+                echo ('<p>Aucune demande de congés</p>');
+            }
+        ?>
+    </div>
 
     <!-- Absences. -->
     <div class="contract border rounded mt-3 p-3">
@@ -1418,7 +1419,7 @@
                 {
             ?>
 
-            <div class="expFirstItem border rounded m-1 p-3">
+            <div class="expSecondItem border rounded m-1 p-3">
                 <button class="btn btn-md btn-light mb-4" >
                     <a 
                         href='./model/deleteHolidayRequest.php?id=<?=$data["id"]?>&holiday2=<?=$data['holiday2_start']?>'
@@ -1448,7 +1449,7 @@
                 {
             ?>
 
-            <div class="expFirstItem border rounded m-1 p-3">
+            <div class="expThirdItem border rounded m-1 p-3">
                 <button class="btn btn-md btn-light mb-4" >
                     <a 
                         href='./model/deleteHolidayRequest.php?id=<?=$data["id"]?>&holiday3=<?=$data['holiday3_start']?>'
