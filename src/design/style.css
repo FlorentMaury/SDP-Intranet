@@ -1,3 +1,7 @@
+main {
+    margin: 0 auto;
+}
+
 nav ul li {
     border-radius: 10px;
     padding: 10px;
@@ -6,6 +10,7 @@ nav ul li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 
 nav ul li:hover {
@@ -75,7 +80,7 @@ nav ul li:hover {
 }
 
 
-@media all and (max-width: 350px) {
+@media all and (max-width: 400px) {
     nav ul p {
         display: none;
     };

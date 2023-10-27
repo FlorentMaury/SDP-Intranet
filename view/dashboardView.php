@@ -16,7 +16,7 @@
 
 <!-- Navigation dynamique. -->
 <nav class="m-3 my-5 text-center">
-    <ul class="d-flex justify-content-between flex-column flex-md-row">
+    <ul class="d-flex justify-content-center align-items-center flex-column flex-md-row">
         <?php
             if($_SESSION['id'] == 1) {
         ?>
@@ -1193,7 +1193,6 @@
                 }
             ?>
         </div>
-    </div>
 
     <!-- Absences. -->
     <div class="contract border rounded mt-3 p-3">
@@ -1343,7 +1342,6 @@
         </button> -->
 
     </div>
-
     <!-- Vacances. -->
     <div class="contract border rounded mt-3 p-3">
         <h4 class="my-3">Congés</h4>
