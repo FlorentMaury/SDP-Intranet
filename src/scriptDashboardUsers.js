@@ -37,7 +37,6 @@ contractButton.style.cursor     = 'pointer';
 timeBankButton.style.cursor     = 'pointer';
 
 // Gestion des boutons.
-
 generalInfosButton.addEventListener('click', () => {
     generalInfos.style.display = 'block';
     experiences.style.display  = 'none';
