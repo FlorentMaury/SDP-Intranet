@@ -54,16 +54,18 @@
         {
             echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Réponse à la demande de vacances enregistrée avec succès.</p></div>';
         }
-        else if(isset($_GET['dayOffResponse'])) 
+
+        if(isset($_GET['dayOffResponse'])) 
         {
             echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Réponse à la demande de repos enregistrée avec succès.</p></div>';
         }
-        else if(isset($_GET['timeBankModification'])) 
+
+        if(isset($_GET['timeBankModification'])) 
         {
             echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Compte de temps ajusté avec succès.</p></div>';
         }
 
-        else if(isset($_GET['logout'])) 
+        if(isset($_GET['logout'])) 
         {
             echo '<p class="mt-4 fw-bold text-success">Vous êtes maintenant déconnecté !</p>';
         }
