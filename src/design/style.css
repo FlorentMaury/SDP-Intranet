@@ -84,7 +84,7 @@ nav ul li:hover {
 }
 
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 450px) {
     nav ul p {
         display: none;
     };
