@@ -29,9 +29,7 @@
 
     <!-- Message de validation de la connexion utilisateur. -->
     <?php
-        if(isset($_GET['connexion'])) {
-            echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Connexion réalisée avec succès.</p></div>';
-        } else if(isset($_GET['error']) && !empty($_GET['message'])) {
+        if(isset($_GET['error']) && !empty($_GET['message'])) {
             echo '<div class=\'container\'><p class="mt-3 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p></div>';
         }
 
