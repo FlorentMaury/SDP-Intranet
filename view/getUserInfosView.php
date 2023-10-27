@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
 
 <!-- Navigation des utilisateurs. -->
 <nav class="m-3 my-5">
-    <ul class="d-flex justify-content-between flex-column flex-md-row">
+    <ul class="d-flex justify-content-center align-items-center flex-wrap flex-sm-row">
         <li id="generalUserInfosButton">
             <img src="./public/assets/infosUser.svg" alt="Informations">
             <p>

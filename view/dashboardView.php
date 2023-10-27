@@ -16,7 +16,7 @@
 
 <!-- Navigation dynamique. -->
 <nav class="m-3 my-5 text-center">
-    <ul class="d-flex justify-content-center align-items-center flex-column flex-md-row">
+    <ul class="d-flex justify-content-center align-items-center flex-wrap flex-sm-row">
         <?php
             if($_SESSION['id'] == 1) {
         ?>
