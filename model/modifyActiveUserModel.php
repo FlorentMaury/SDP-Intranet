@@ -14,10 +14,10 @@ if (isset($_GET['id'])) {
     $userActive = $req->fetch()['active'];
 
     if($userActive == 0) {
-        $req = $bdd->prepare('UPDATE user SET active = 1, contract_end = NOW() WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user SET active = 1 WHERE id = ?');
         $result = $req->execute([$id]);
     } else {
-        $req = $bdd->prepare('UPDATE user SET active = 0, contract_end = NOW() WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user SET active = 0 WHERE id = ?');
         $result = $req->execute([$id]);
     }
 

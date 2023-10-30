@@ -541,6 +541,9 @@
             </div>
         <div class="2" id="userInfos2">
 
+        <div class="border rounded mt-3 p-3">
+            <h4 class="display-6">Documents</h4>
+
             <!-- Curriculum vitæ -->
             <div class="userInfosInsuranceCard">
                 <p> CV: 
@@ -636,6 +639,7 @@
             <div class="dashboardItems">
                 <p>Date d'inscription : <?= $_SESSION['creation_date'] ?></p>
             </div>
+        </div>
         </div>
     </div>
 </div>

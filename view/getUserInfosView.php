@@ -474,7 +474,7 @@ if (isset($_GET['id'])) {
 
     <!-- Mutuelle -->
     <div class="expItems">
-        <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo 'Aucune mutuelle n\'est renseignée';} else { echo $data['contract_insurance'];} ?></p>
+        <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo "Aucune mutuelle n'est renseignée";} else { echo $data['contract_insurance'];} ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractInsurance">
                 <img src="./public/assets/settings.svg" alt="Modifier">
