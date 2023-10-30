@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
         <li id="userTimeBankButton">
             <img src="./public/assets/time.svg" alt="Poste">
             <p>
-                Compte de temps
+                Banque de temps
             </p>
         </li>
         <li>
@@ -401,7 +401,7 @@ if (isset($_GET['id'])) {
 <!-- Contrat au studio des parfums. -->
 <div id="userContract" class="border rounded m-2 p-3 text-center">
 
-    <h2 class="display-6" id="experiences">Studio des parfums</h2>
+    <h2 class="display-6" id="experiences">Poste au Studio des Parfums</h2>
 
     <!-- Type de contrat -->
     <div class="expItems">

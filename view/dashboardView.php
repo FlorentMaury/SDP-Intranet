@@ -50,7 +50,7 @@
         <li id="timeBankButton">
             <img src="./public/assets/time.svg" alt="Time Bank">
             <p>
-                Compte de temps
+                Banque de temps
             </p>
         </li>
         <li>
@@ -378,166 +378,172 @@
     
     <div class="userInfosGrid">
         <div class="1" id="userInfos1">
-            <!-- Image de profil -->
-            <div class="dashboardItems">
-                <p>
-                    <?php
-                        if(empty($data['profile_picture'])) {
-                    ?>
+            <div class="border rounded mt-3 p-3">
+                <h4 class="display-6">Informations générales</h4>
+                <!-- Image de profil -->
+                <div class="dashboardItems">
+                    <p>
+                        <?php
+                            if(empty($data['profile_picture'])) {
+                        ?>
+                            <img 
+                                src="./public/assets/usersImg/userBlankImg/user_blank.webp" 
+                                alt="Photo de profil à modifier"
+                                class="w-25"    
+                            >
+                        <?php
+                        ?>
                         <img 
-                            src="./public/assets/usersImg/userBlankImg/user_blank.webp" 
-                            alt="Photo de profil à modifier"
+                            src="<?= './public/assets/usersImg/'.$data['profile_picture'] ?>" 
+                            alt="Photo de profil à télécharger"
                             class="w-25"    
                         >
-                    <?php
-                    ?>
-                    <img 
-                        src="<?= './public/assets/usersImg/'.$data['profile_picture'] ?>" 
-                        alt="Photo de profil à télécharger"
-                        class="w-25"    
-                    >
-                    <?php
-                        } 
-                    ?>
-                </p>
-                <button class="btn btn-md btn-light p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyProfilePicture">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
+                        <?php
+                            } 
+                        ?>
+                    </p>
+                    <button class="btn btn-md btn-light p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyProfilePicture">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Email -->
+                <div class="dashboardItems">
+                    <p>Email : <?= $data['email'] ?></p>
+                </div>
+
+                <!-- Email -->
+                <div class="dashboardItems">
+                    <p>Modifier mot de passe</p>
+                    <button class="btn btn-md btn-light p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPasswordInfo">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+                
+                <!-- Prénom -->
+                <div class="dashboardItems">
+                    <p>Prénom : <?= $data['name'] ?></p>
+                    <button class="btn btn-md btn-light p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyNameInfo">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Nom de famille -->
+                <div class="dashboardItems">
+                    <p>Nom de famille : <?= $data['surname'] ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySurnameInfo">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Date de naissance -->
+                <div class="dashboardItems">
+                    <p>Date de naissance : <?php if(empty($data['birth_date'])) {echo 'A completer';} else { echo $data['birth_date'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyBirthInfo">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Numéro de téléphone -->
+                <div class="dashboardItems">
+                    <p>Numéro de téléphone : <?php if(empty($data['phone_number'])) {echo 'A completer';} else { echo $data['phone_number'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPhoneInfo">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Ville de naissance -->
+                <div class="dashboardItems">
+                    <p>Ville de naissance : <?php if(empty($data['birth_city'])) {echo 'A completer';} else { echo $data['birth_city'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCity">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Pays de naissance -->
+                <div class="dashboardItems">
+                    <p>Pays de naissance : <?php if(empty($data['birth_country'])) {echo 'A completer';} else { echo $data['birth_country'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCountry">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
             </div>
 
-            <!-- Email -->
-            <div class="dashboardItems">
-                <p>Email : <?= $data['email'] ?></p>
+            <div class="border rounded mt-3 p-3">
+                <h4 class="display-6">Coordonnées</h4>
+                <!-- Numéro de rue actuelle -->
+                <div class="dashboardItems">
+                    <p>Numéro de rue actuelle : <?php if(empty($data['current_street_number'])) {echo 'A completer';} else { echo $data['current_street_number'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetNumber">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Nom de rue actuelle -->
+                <div class="dashboardItems">
+                    <p>Nom de rue actuelle : <?php if(empty($data['current_city_street'])) {echo 'A completer';} else { echo $data['current_city_street'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetName">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Ville actuelle -->
+                <div class="dashboardItems">
+                    <p>Ville actuelle : <?php if(empty($data['current_city'])) {echo 'A completer';} else { echo $data['current_city'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCity">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Code postal -->
+                <div class="dashboardItems">
+                    <p>Code postal : <?php if(empty($data['current_zip_code'])) {echo 'A completer';} else { echo $data['current_zip_code'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyZipCode">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
+
+                <!-- Pays actuel -->
+                <div class="dashboardItems">
+                    <p>Pays actuel : <?php if(empty($data['current_country'])) {echo 'A completer';} else { echo $data['current_country'];} ?></p>
+                    <button class="btn btn-md btn-light mt-1 p-2" type="submit">
+                        <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCountry">
+                            <img src="./public/assets/settings.svg" alt="Modifier">
+                        </a>
+                    </button>
+                </div>
             </div>
 
-            <!-- Email -->
-            <div class="dashboardItems">
-                <p>Modifier mot de passe</p>
-                <button class="btn btn-md btn-light p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPasswordInfo">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
             </div>
-            
-            <!-- Prénom -->
-            <div class="dashboardItems">
-                <p>Prénom : <?= $data['name'] ?></p>
-                <button class="btn btn-md btn-light p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyNameInfo">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Nom de famille -->
-            <div class="dashboardItems">
-                <p>Nom de famille : <?= $data['surname'] ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifySurnameInfo">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Date de naissance -->
-            <div class="dashboardItems">
-                <p>Date de naissance : <?php if(empty($data['birth_date'])) {echo 'A completer';} else { echo $data['birth_date'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyBirthInfo">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Numéro de téléphone -->
-            <div class="dashboardItems">
-                <p>Numéro de téléphone : <?php if(empty($data['phone_number'])) {echo 'A completer';} else { echo $data['phone_number'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPhoneInfo">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Ville de naissance -->
-            <div class="dashboardItems">
-                <p>Ville de naissance : <?php if(empty($data['birth_city'])) {echo 'A completer';} else { echo $data['birth_city'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCity">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Pays de naissance -->
-            <div class="dashboardItems">
-                <p>Pays de naissance : <?php if(empty($data['birth_country'])) {echo 'A completer';} else { echo $data['birth_country'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#birthCountry">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Numéro de rue actuelle -->
-            <div class="dashboardItems">
-                <p>Numéro de rue actuelle : <?php if(empty($data['current_street_number'])) {echo 'A completer';} else { echo $data['current_street_number'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetNumber">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Nom de rue actuelle -->
-            <div class="dashboardItems">
-                <p>Nom de rue actuelle : <?php if(empty($data['current_city_street'])) {echo 'A completer';} else { echo $data['current_city_street'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentStreetName">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Ville actuelle -->
-            <div class="dashboardItems">
-                <p>Ville actuelle : <?php if(empty($data['current_city'])) {echo 'A completer';} else { echo $data['current_city'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCity">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Code postal -->
-            <div class="dashboardItems">
-                <p>Code postal : <?php if(empty($data['current_zip_code'])) {echo 'A completer';} else { echo $data['current_zip_code'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyZipCode">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-
-            <!-- Pays actuel -->
-            <div class="dashboardItems">
-                <p>Pays actuel : <?php if(empty($data['current_country'])) {echo 'A completer';} else { echo $data['current_country'];} ?></p>
-                <button class="btn btn-md btn-light mt-1 p-2" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurrentCountry">
-                        <img src="./public/assets/settings.svg" alt="Modifier">
-                    </a>
-                </button>
-            </div>
-        </div>
-
         <div class="2" id="userInfos2">
 
             <!-- Curriculum vitæ -->
             <div class="userInfosInsuranceCard">
-                <p>
+                <p> CV: 
                     <img 
                         src="<?= './public/assets/curriculumVitae/'.$data['curriculum_vitae'] ?>" 
                         alt="Curriculum vitæ à télécharger"
@@ -981,7 +987,7 @@
 <!-- Contrat dans l'entreprise. -->
 <div id="contract" class="border rounded mt-3 p-3">
 
-    <h2 class="display-6 text-center" id="statut">Studio des parfums</h2>
+    <h2 class="display-6 text-center" id="statut">Poste au Studio des Parfums</h2>
 
     <div class="contract border rounded mt-3 p-3">
 
@@ -1093,106 +1099,107 @@
                 Déclarer un jour supplémentaire
             </a>
         </button>
-    </div>
 
-    <!-- Récapitulatif des demandes de RTT. -->
-    <div class="userExpGrid d-flex flex-column flex-md-row">
 
-        <?php
-            if($data['day_off1'])
-            {
-        ?>
+        <!-- Récapitulatif des demandes de RTT. -->
+        <div class="userExpGrid d-flex flex-column flex-md-row">
 
-            <div class="expFirstItem border rounded m-1 p-3">
-                <button class="btn btn-md btn-light mb-4" >
-                    <a 
-                        href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff1=<?=$data['day_off1']?>'
-                        type="button" 
-                        class="btn btn-infos"
-                    >
-                        Supprimer la demande
-                    </a>
-                </button>
-                <p>Dates de la demande : du <?= $data['day_off1'] ?></p>
-                <p>
-                    <?php 
-                        if($data['day_off_response1'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if($data['day_off_response1'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if($data['day_off_response1'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                        }
-                    ?>
-                </p>
-            </div>
+            <?php
+                if($data['day_off1'])
+                {
+            ?>
 
-        <?php
-            }
-            if($data['day_off2'])
-            {
-        ?>
+                <div class="expFirstItem border rounded m-1 p-3">
+                    <button class="btn btn-md btn-light mb-4" >
+                        <a 
+                            href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff1=<?=$data['day_off1']?>'
+                            type="button" 
+                            class="btn btn-infos"
+                        >
+                            Supprimer la demande
+                        </a>
+                    </button>
+                    <p>Dates de la demande : du <?= $data['day_off1'] ?></p>
+                    <p>
+                        <?php 
+                            if($data['day_off_response1'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if($data['day_off_response1'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if($data['day_off_response1'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
+                        ?>
+                    </p>
+                </div>
 
-            <div class="expSecondItem border rounded m-1 p-3">
-                <button class="btn btn-md btn-light mb-4" >
-                    <a 
-                        href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff2=<?=$data['day_off2']?>'
-                        type="button" 
-                        class="btn btn-infos"
-                    >
-                        Supprimer la demande
-                    </a>
-                </button>
-                <p>Dates de la demande : du <?= $data['day_off2'] ?></p>
-                <p>
-                    <?php 
-                        if($data['day_off_response2'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if($data['day_off_response2'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if($data['day_off_response2'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                        }
-                    ?>
-                </p>
-            </div>
+            <?php
+                }
+                if($data['day_off2'])
+                {
+            ?>
 
-        <?php
-            }
-            if($data['day_off3'])
-            {
-        ?>
+                <div class="expSecondItem border rounded m-1 p-3">
+                    <button class="btn btn-md btn-light mb-4" >
+                        <a 
+                            href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff2=<?=$data['day_off2']?>'
+                            type="button" 
+                            class="btn btn-infos"
+                        >
+                            Supprimer la demande
+                        </a>
+                    </button>
+                    <p>Dates de la demande : du <?= $data['day_off2'] ?></p>
+                    <p>
+                        <?php 
+                            if($data['day_off_response2'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if($data['day_off_response2'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if($data['day_off_response2'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
+                        ?>
+                    </p>
+                </div>
 
-            <div class="expThirdItem border rounded m-1 p-3">
-                <button class="btn btn-md btn-light mb-4" >
-                    <a 
-                        href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff3=<?=$data['day_off3']?>'
-                        type="button" 
-                        class="btn btn-infos"
-                    >
-                        Supprimer la demande
-                    </a>
-                </button>
-                <p>Dates de la demande : du <?= $data['day_off3'] ?></p>
-                <p>
-                    <?php 
-                        if($data['day_off_response3'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if($data['day_off_response3'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if($data['day_off_response3'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                        }
-                    ?>
-                </p>
-            </div>
+            <?php
+                }
+                if($data['day_off3'])
+                {
+            ?>
 
-        <?php 
-            }
-            else if (!$data['day_off1'] && !$data['day_off2'] && !$data['day_off3']) {
-                echo ('<p>Aucune demande de congés</p>');
-            }
-        ?>
+                <div class="expThirdItem border rounded m-1 p-3">
+                    <button class="btn btn-md btn-light mb-4" >
+                        <a 
+                            href='./model/deleteDayOffRequest.php?id=<?=$data["id"]?>&dayOff3=<?=$data['day_off3']?>'
+                            type="button" 
+                            class="btn btn-infos"
+                        >
+                            Supprimer la demande
+                        </a>
+                    </button>
+                    <p>Dates de la demande : du <?= $data['day_off3'] ?></p>
+                    <p>
+                        <?php 
+                            if($data['day_off_response3'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if($data['day_off_response3'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if($data['day_off_response3'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
+                        ?>
+                    </p>
+                </div>
+
+            <?php 
+                }
+                else if (!$data['day_off1'] && !$data['day_off2'] && !$data['day_off3']) {
+                    echo ('<p>Aucune demande de congés</p>');
+                }
+            ?>
+        </div>
     </div>
 
     <!-- Absences. -->
