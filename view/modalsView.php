@@ -1941,11 +1941,11 @@
                     </p>
                     <p>
                         <label for="password">Mot de passe</label>
-                        <input type="text" name="password" class="form-control" id="password">
+                        <input type="password" name="password" class="form-control" id="password">
                     </p>
                     <p>
                         <label for="passwordTwo">Confirmation du mot de passe</label>
-                        <input type="text" name="passwordTwo" class="form-control" id="passwordTwo">
+                        <input type="password" name="passwordTwo" class="form-control" id="passwordTwo">
                     </p>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Ajouter</button>
