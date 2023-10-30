@@ -8,7 +8,7 @@
         require('view/homeView.php');
     };
 
-    // Dans le tableau de bord, pour les employés.
+    // Dans les tableaux de bord.
     function dashboard() {
         require('model/connectionDBModel.php');
         require('model/addNewUserModel.php');
