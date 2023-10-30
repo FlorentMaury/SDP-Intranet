@@ -1,6 +1,6 @@
 <?php
 
-require ('./model/connectionDBModel.php');
+require('./model/connectionDBModel.php');
 
 // Demande d'informations d'un compte employé.
 if (isset($_GET['id'])) {
@@ -55,9 +55,9 @@ if (isset($_GET['id'])) {
             </p>
         </li>
         <li>
-        <button type="button" href="" class="btn btn-dark me-2">
-        <a class="text-decoration-none text-white" href="index.php?page=dashboard">Retour au tableau de bord</a>
-    </button>
+            <button type="button" href="" class="btn btn-dark me-2">
+                <a class="text-decoration-none text-white" href="index.php?page=dashboard">Retour au tableau de bord</a>
+            </button>
         </li>
     </ul>
 </nav>
@@ -69,11 +69,7 @@ if (isset($_GET['id'])) {
     <div class="userInfosGrid">
         <div class="dashboardItems">
             <p>
-                <img 
-                    src="<?= './public/assets/usersImg/'.$data['profile_picture'] ?>" 
-                    alt="Photo de profil à télécharger"
-                    class="w-25"
-                >
+                <img src="<?= './public/assets/usersImg/' . $data['profile_picture'] ?>" alt="Photo de profil à télécharger" class="w-25">
             </p>
         </div>
         <div class="dashboardItems">
@@ -92,108 +88,125 @@ if (isset($_GET['id'])) {
             <p>Nom de famille : <?= $data['surname'] ?></p>
         </div>
         <div class="dashboardItems">
-            <p>Date de naissance : <?php if(empty($data['birth_date'])) {echo 'A completer';} else { echo $data['birth_date'];} ?>
+            <p>Date de naissance : <?php if (empty($data['birth_date'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['birth_date'];
+                                    } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Numéro de téléphone : <?php if(empty($data['phone_number'])) {echo 'A completer';} else { echo $data['phone_number'];} ?>
+            <p>Numéro de téléphone : <?php if (empty($data['phone_number'])) {
+                                            echo 'A completer';
+                                        } else {
+                                            echo $data['phone_number'];
+                                        } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Ville de naissance : <?php if(empty($data['birth_city'])) {echo 'A completer';} else { echo $data['birth_city'];} ?>
+            <p>Ville de naissance : <?php if (empty($data['birth_city'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['birth_city'];
+                                    } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Pays de naissance : <?php if(empty($data['birth_country'])) {echo 'A completer';} else { echo $data['birth_country'];} ?>
+            <p>Pays de naissance : <?php if (empty($data['birth_country'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['birth_country'];
+                                    } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Numéro de rue actuelle : <?php if(empty($data['current_street_number'])) {echo 'A completer';} else { echo $data['current_street_number'];} ?>
+            <p>Numéro de rue actuelle : <?php if (empty($data['current_street_number'])) {
+                                            echo 'A completer';
+                                        } else {
+                                            echo $data['current_street_number'];
+                                        } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Nom de rue actuelle : <?php if(empty($data['current_city_street'])) {echo 'A completer';} else { echo $data['current_city_street'];} ?>
+            <p>Nom de rue actuelle : <?php if (empty($data['current_city_street'])) {
+                                            echo 'A completer';
+                                        } else {
+                                            echo $data['current_city_street'];
+                                        } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Ville actuelle : <?php if(empty($data['current_city'])) {echo 'A completer';} else { echo $data['current_city'];} ?>
+            <p>Ville actuelle : <?php if (empty($data['current_city'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['current_city'];
+                                } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Code postal : <?php if(empty($data['current_zip_code'])) {echo 'A completer';} else { echo $data['current_zip_code'];} ?>
+            <p>Code postal : <?php if (empty($data['current_zip_code'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['current_zip_code'];
+                                } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Pays actuel : <?php if(empty($data['current_country'])) {echo 'A completer';} else { echo $data['current_country'];} ?>
+            <p>Pays actuel : <?php if (empty($data['current_country'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['current_country'];
+                                } ?>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Numéro de carte vitale : <?php if(empty($data['social_security_number'])) {echo 'A completer';} else { echo $data['social_security_number'];} ?>
+            <p>Numéro de carte vitale : <?php if (empty($data['social_security_number'])) {
+                                            echo 'A completer';
+                                        } else {
+                                            echo $data['social_security_number'];
+                                        } ?>
             </p>
         </div>
         <div class="userInfosInsuranceCards">
             <p class="userInfosInsuranceCard">
-                <img 
-                    src="<?= './public/assets/insuranceCardFace/'.$data['insurance_card_face'] ?>" 
-                    alt="Carte vitale recto à télécharger"
-                >
-                <a 
-                    class="text-decoration-none text-white p-2" 
-                    href="<?= './public/assets/insuranceCardFace/'.$data['insurance_card_face'] ?>" 
-                    download="<?= 'CarteVitaleRecto-'.$data['name'].$data['surname'] ?>"
-                >
+                <img src="<?= './public/assets/insuranceCardFace/' . $data['insurance_card_face'] ?>" alt="Carte vitale recto à télécharger">
+                <a class="text-decoration-none text-white p-2" href="<?= './public/assets/insuranceCardFace/' . $data['insurance_card_face'] ?>" download="<?= 'CarteVitaleRecto-' . $data['name'] . $data['surname'] ?>">
                     <button type="button" href="" class="btn btn-dark me-2">
-                        Télécharger                   
+                        Télécharger
                     </button>
-                </a>   
+                </a>
             </p>
             <p class="userInfosInsuranceCard">
-                <img 
-                    src="<?= './public/assets/insuranceCardBack/'.$data['insurance_card_back'] ?>" 
-                    alt="Carte vitale verso à télécharger"
-                >
-                <a class="text-decoration-none text-white p-2" 
-                    href="<?= './public/assets/insuranceCardBack/'.$data['insurance_card_back'] ?>" 
-                    download="<?= 'CarteVitaleVerso-'.$data['name'].$data['surname'] ?>"
-                >
+                <img src="<?= './public/assets/insuranceCardBack/' . $data['insurance_card_back'] ?>" alt="Carte vitale verso à télécharger">
+                <a class="text-decoration-none text-white p-2" href="<?= './public/assets/insuranceCardBack/' . $data['insurance_card_back'] ?>" download="<?= 'CarteVitaleVerso-' . $data['name'] . $data['surname'] ?>">
                     <button type="button" href="" class="btn btn-dark me-2">
-                        Télécharger         
+                        Télécharger
                     </button>
-                </a>  
+                </a>
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Numéro de carte d'identité : <?php if(empty($data['id_number'])) {echo 'A completer';} else { echo $data['id_number'];} ?>
+            <p>Numéro de carte d'identité : <?php if (empty($data['id_number'])) {
+                                                echo 'A completer';
+                                            } else {
+                                                echo $data['id_number'];
+                                            } ?>
             </p>
         </div>
         <div class="userInfosIdCards">
             <p class="userInfosIdCard">
-                <img 
-                    src="<?= './public/assets/idCardFace/'.$data['id_card_face'] ?>" 
-                    alt="Carte d'identité recto à télécharger"
-                >
-                <a 
-                    class="text-decoration-none text-white p-2" 
-                    href="<?= './public/assets/idCardFace/'.$data['id_card_face'] ?>" 
-                    download="<?= 'CarteIdentitéRecto-'.$data['name'].$data['surname'] ?>"
-                >
+                <img src="<?= './public/assets/idCardFace/' . $data['id_card_face'] ?>" alt="Carte d'identité recto à télécharger">
+                <a class="text-decoration-none text-white p-2" href="<?= './public/assets/idCardFace/' . $data['id_card_face'] ?>" download="<?= 'CarteIdentitéRecto-' . $data['name'] . $data['surname'] ?>">
                     <button type="button" href="" class="btn btn-dark me-2">
-                        Télécharger                  
+                        Télécharger
                     </button>
                 </a>
             </p>
             <p class="userInfosIdCard">
-                <img 
-                    src="<?= './public/assets/idCardBack/'.$data['id_card_back'] ?>" 
-                    alt="Carte d'identité verso à télécharger"
-                >
-                <a 
-                    class="text-decoration-none text-white p-2" 
-                    href="<?= './public/assets/idCardBack/'.$data['id_card_back'] ?>" 
-                    download="<?= 'CarteIdentitéVerso-'.$data['name'].$data['surname'] ?>"
-                >
+                <img src="<?= './public/assets/idCardBack/' . $data['id_card_back'] ?>" alt="Carte d'identité verso à télécharger">
+                <a class="text-decoration-none text-white p-2" href="<?= './public/assets/idCardBack/' . $data['id_card_back'] ?>" download="<?= 'CarteIdentitéVerso-' . $data['name'] . $data['surname'] ?>">
                     <button type="button" href="" class="btn btn-dark me-2">
-                        Télécharger                   
+                        Télécharger
                     </button>
                 </a>
             </p>
@@ -202,20 +215,12 @@ if (isset($_GET['id'])) {
             <p>Date d'inscription : <?= $_SESSION['creation_date'] ?></p>
         </div>
         <div>
-            <a 
-                href='./model/deleteUserModel.php?id=<?=$data["id"]?>' 
-                type="button" 
-                class="m-3"
-                >
+            <a href='./model/deleteUserModel.php?id=<?= $data["id"] ?>' type="button" class="m-3">
                 <button class="btn btn-danger text-align-center">
                     Supprimer
                 </button>
             </a>
-            <a 
-                href='./model/modifyActiveUserModel.php?id=<?=$data["id"]?>' 
-                type="button" 
-                class="m-3"
-                >
+            <a href='./model/modifyActiveUserModel.php?id=<?= $data["id"] ?>' type="button" class="m-3">
                 <button class="btn btn-dark text-align-center">
                     Modifier le status
                 </button>
@@ -231,124 +236,139 @@ if (isset($_GET['id'])) {
 
     <div class="userExpGrid d-flex flex-column flex-md-row">
         <div class="expFirstItem border rounded m-1 p-3">
-            <p>Première école : <?php if(empty($data['school_1'])) {echo 'A completer';} else { echo $data['school_1'];} ?>
+            <p>Première école : <?php if (empty($data['school_1'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['school_1'];
+                                } ?>
             </p>
-            <p>Date de début : <?php if(empty($data['school_1_start'])) {echo 'A completer';} else { echo $data['school_1_start'];} ?>
+            <p>Date de début : <?php if (empty($data['school_1_start'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['school_1_start'];
+                                } ?>
             </p>
-            <p>Date de fin : <?php if(empty($data['school_1_end'])) {echo 'A completer';} else { echo $data['school_1_end'];} ?>
+            <p>Date de fin : <?php if (empty($data['school_1_end'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['school_1_end'];
+                                } ?>
             </p>
             <div class="userInfosDiplomaCards">
                 <p class="userInfosDiplomaCard">
                     Diplôme obtenu :
-                    <img 
-                        src="<?= './public/assets/school1Doc/'.$data['school_1_doc'] ?>" 
-                        alt="Diplôme à completer"
-                    >
+                    <img src="<?= './public/assets/school1Doc/' . $data['school_1_doc'] ?>" alt="Diplôme à completer">
                     <?php
-                        if(!empty($data['school_1_doc'])) {
+                    if (!empty($data['school_1_doc'])) {
                     ?>
-                    <a
-                        class="text-decoration-none text-white p-2" 
-                        href="<?= './public/assets/school1Doc/'.$data['school_1_doc'] ?>" 
-                        download="<?= 'Diplome1-'.$data['name'].$data['surname'] ?>"
-                    >
-                        <button type="button" href="" class="btn btn-dark me-2">
-                            Télécharger                   
-                        </button>
-                    </a>
+                        <a class="text-decoration-none text-white p-2" href="<?= './public/assets/school1Doc/' . $data['school_1_doc'] ?>" download="<?= 'Diplome1-' . $data['name'] . $data['surname'] ?>">
+                            <button type="button" href="" class="btn btn-dark me-2">
+                                Télécharger
+                            </button>
+                        </a>
                     <?php
-                        }
+                    }
                     ?>
                 </p>
-            </div> 
+            </div>
         </div>
 
-        <?php 
-            if(!empty($data['school_2'])) {
+        <?php
+        if (!empty($data['school_2'])) {
         ?>
 
-        <div class="expSecondItem border rounded m-1 p-3">
-            <p>Seconde école : <?php if(empty($data['school_2'])) {echo 'A completer';} else { echo $data['school_2'];} ?>
-            </p>
-            <p>Date de début : <?php if(empty($data['school_2_start'])) {echo 'A completer';} else { echo $data['school_2_start'];} ?>
-            </p>
-            <p>Date de fin : <?php if(empty($data['school_2_end'])) {echo 'A completer';} else { echo $data['school_2_end'];} ?>
-            </p>
-            <div class="userInfosDiplomaCards">
-                <p class="userInfosDiplomaCard">
-                    Diplôme obtenu :
-                    <img 
-                        src="<?= './public/assets/school2Doc/'.$data['school_2_doc'] ?>" 
-                        alt="Diplôme à completer"
-                    >
-
-                    <?php 
-                        if(!empty($data['school_2_doc'])) {
-                    ?>
-
-                    <a 
-                        class="text-decoration-none text-white p-2" 
-                        href="<?= './public/assets/school2Doc/'.$data['school_2_doc'] ?>" 
-                        download="<?= 'Diplome2-'.$data['name'].$data['surname'] ?>"
-                    >
-                        <button type="button" href="" class="btn btn-dark me-2">
-                            Télécharger                   
-                        </button>
-                    </a>
-
-                    <?php 
-                        }
-                    ?>
+            <div class="expSecondItem border rounded m-1 p-3">
+                <p>Seconde école : <?php if (empty($data['school_2'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['school_2'];
+                                    } ?>
                 </p>
-            </div> 
-        </div>
-
-        <?php 
-            }  
-        ?>
-
-        <?php 
-            if(!empty($data['school_3'])) {
-        ?>
-
-        <div class="expThirdItem border rounded m-1 p-3">
-            <p>Troisième école : <?php if(empty($data['school_3'])) {echo 'A completer';} else { echo $data['school_3'];} ?>
-            </p>
-            <p>Date de début : <?php if(empty($data['school_3_start'])) {echo 'A completer';} else { echo $data['school_3_start'];} ?>
-            </p>
-            <p>Date de fin : <?php if(empty($data['school_3_end'])) {echo 'A completer';} else { echo $data['school_3_end'];} ?>
-            </p>
-            <div class="userInfosDiplomaCards">
-                <p class="userInfosDiplomaCard">
-                    Diplôme obtenu :
-                    <img 
-                        src="<?= './public/assets/school3Doc/'.$data['school_3_doc'] ?>" 
-                        alt="Diplôme à completer"
-                    >
-
-                    <?php 
-                        if(!empty($data['school_3_doc'])) {
-                    ?>
-
-                    <a 
-                        class="text-decoration-none text-white p-2" 
-                        href="<?= './public/assets/school3Doc/'.$data['school_3_doc'] ?>" 
-                        download="<?= 'Diplome2-'.$data['name'].$data['surname'] ?>"
-                    >
-                        <button type="button" href="" class="btn btn-dark me-2">
-                            Télécharger                   
-                        </button>
-                    </a>
-
-                    <?php 
-                        }
-                    ?>
+                <p>Date de début : <?php if (empty($data['school_2_start'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['school_2_start'];
+                                    } ?>
                 </p>
-            </div> 
-        </div>
+                <p>Date de fin : <?php if (empty($data['school_2_end'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['school_2_end'];
+                                    } ?>
+                </p>
+                <div class="userInfosDiplomaCards">
+                    <p class="userInfosDiplomaCard">
+                        Diplôme obtenu :
+                        <img src="<?= './public/assets/school2Doc/' . $data['school_2_doc'] ?>" alt="Diplôme à completer">
 
-        <?php 
-            }  
+                        <?php
+                        if (!empty($data['school_2_doc'])) {
+                        ?>
+
+                            <a class="text-decoration-none text-white p-2" href="<?= './public/assets/school2Doc/' . $data['school_2_doc'] ?>" download="<?= 'Diplome2-' . $data['name'] . $data['surname'] ?>">
+                                <button type="button" href="" class="btn btn-dark me-2">
+                                    Télécharger
+                                </button>
+                            </a>
+
+                        <?php
+                        }
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+        <?php
+        }
+        ?>
+
+        <?php
+        if (!empty($data['school_3'])) {
+        ?>
+
+            <div class="expThirdItem border rounded m-1 p-3">
+                <p>Troisième école : <?php if (empty($data['school_3'])) {
+                                            echo 'A completer';
+                                        } else {
+                                            echo $data['school_3'];
+                                        } ?>
+                </p>
+                <p>Date de début : <?php if (empty($data['school_3_start'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['school_3_start'];
+                                    } ?>
+                </p>
+                <p>Date de fin : <?php if (empty($data['school_3_end'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['school_3_end'];
+                                    } ?>
+                </p>
+                <div class="userInfosDiplomaCards">
+                    <p class="userInfosDiplomaCard">
+                        Diplôme obtenu :
+                        <img src="<?= './public/assets/school3Doc/' . $data['school_3_doc'] ?>" alt="Diplôme à completer">
+
+                        <?php
+                        if (!empty($data['school_3_doc'])) {
+                        ?>
+
+                            <a class="text-decoration-none text-white p-2" href="<?= './public/assets/school3Doc/' . $data['school_3_doc'] ?>" download="<?= 'Diplome2-' . $data['name'] . $data['surname'] ?>">
+                                <button type="button" href="" class="btn btn-dark me-2">
+                                    Télécharger
+                                </button>
+                            </a>
+
+                        <?php
+                        }
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+        <?php
+        }
         ?>
     </div>
 </div>
@@ -360,49 +380,97 @@ if (isset($_GET['id'])) {
 
     <div class="userExpGrid d-flex flex-column flex-md-row">
         <div class="expFirstItem border rounded m-1 p-3">
-            <p>Première expérience : <?php if(empty($data['job_1'])) {echo 'A completer';} else { echo $data['job_1'];} ?>
+            <p>Première expérience : <?php if (empty($data['job_1'])) {
+                                            echo 'A completer';
+                                        } else {
+                                            echo $data['job_1'];
+                                        } ?>
             </p>
-            <p>Date de début : <?php if(empty($data['job_1_start'])) {echo 'A completer';} else { echo $data['job_1_start'];} ?>
+            <p>Date de début : <?php if (empty($data['job_1_start'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['job_1_start'];
+                                } ?>
             </p>
-            <p>Date de fin : <?php if(empty($data['job_1_end'])) {echo 'A completer';} else { echo $data['job_1_end'];} ?>
+            <p>Date de fin : <?php if (empty($data['job_1_end'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['job_1_end'];
+                                } ?>
             </p>
-            <p>Missions : <?php if(empty($data['job_1_exp'])) {echo 'A completer';} else { echo $data['job_1_exp'];} ?></p>
+            <p>Missions : <?php if (empty($data['job_1_exp'])) {
+                                echo 'A completer';
+                            } else {
+                                echo $data['job_1_exp'];
+                            } ?></p>
         </div>
 
-        <?php 
-            if(!empty($data['job_2'])) {
+        <?php
+        if (!empty($data['job_2'])) {
         ?>
 
-        <div class="expSecondItem border rounded m-1 p-3">
-            <p>Seconde expérience : <?php if(empty($data['job_2'])) {echo 'A completer';} else { echo $data['job_2'];} ?>
-            </p>
-            <p>Date de début : <?php if(empty($data['job_2_start'])) {echo 'A completer';} else { echo $data['job_2_start'];} ?>
-            </p>
-            <p>Date de fin : <?php if(empty($data['job_2_end'])) {echo 'A completer';} else { echo $data['job_2_end'];} ?>
-            </p>
-            <p>Missions : <?php if(empty($data['job_2_exp'])) {echo 'A completer';} else { echo $data['job_2_exp'];} ?></p>
-        </div>
+            <div class="expSecondItem border rounded m-1 p-3">
+                <p>Seconde expérience : <?php if (empty($data['job_2'])) {
+                                            echo 'A completer';
+                                        } else {
+                                            echo $data['job_2'];
+                                        } ?>
+                </p>
+                <p>Date de début : <?php if (empty($data['job_2_start'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['job_2_start'];
+                                    } ?>
+                </p>
+                <p>Date de fin : <?php if (empty($data['job_2_end'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['job_2_end'];
+                                    } ?>
+                </p>
+                <p>Missions : <?php if (empty($data['job_2_exp'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['job_2_exp'];
+                                } ?></p>
+            </div>
 
-        <?php 
-            }  
+        <?php
+        }
         ?>
 
-        <?php 
-            if(!empty($data['job_3'])) {
+        <?php
+        if (!empty($data['job_3'])) {
         ?>
 
-        <div class="expThirdItem border rounded m-1 p-3">
-            <p>Troisième expérience : <?php if(empty($data['job_3'])) {echo 'A completer';} else { echo $data['job_3'];} ?>
-            </p>
-            <p>Date de début : <?php if(empty($data['job_3_start'])) {echo 'A completer';} else { echo $data['job_3_start'];} ?>
-            </p>
-            <p>Date de fin : <?php if(empty($data['job_3_end'])) {echo 'A completer';} else { echo $data['job_3_end'];} ?>
-            </p>
-            <p>Missions : <?php if(empty($data['job_3_exp'])) {echo 'A completer';} else { echo $data['job_3_exp'];} ?></p>
-        </div>
+            <div class="expThirdItem border rounded m-1 p-3">
+                <p>Troisième expérience : <?php if (empty($data['job_3'])) {
+                                                echo 'A completer';
+                                            } else {
+                                                echo $data['job_3'];
+                                            } ?>
+                </p>
+                <p>Date de début : <?php if (empty($data['job_3_start'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['job_3_start'];
+                                    } ?>
+                </p>
+                <p>Date de fin : <?php if (empty($data['job_3_end'])) {
+                                        echo 'A completer';
+                                    } else {
+                                        echo $data['job_3_end'];
+                                    } ?>
+                </p>
+                <p>Missions : <?php if (empty($data['job_3_exp'])) {
+                                    echo 'A completer';
+                                } else {
+                                    echo $data['job_3_exp'];
+                                } ?></p>
+            </div>
 
-        <?php 
-            }  
+        <?php
+        }
         ?>
     </div>
 </div>
@@ -414,7 +482,11 @@ if (isset($_GET['id'])) {
 
     <!-- Type de contrat -->
     <div class="expItems">
-        <p>Type de contrat : <?php if(empty($data['contract_type'])) {echo 'En attente';} else { echo $data['contract_type'];} ?></p>
+        <p>Type de contrat : <?php if (empty($data['contract_type'])) {
+                                    echo 'En attente';
+                                } else {
+                                    echo $data['contract_type'];
+                                } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a href="index.php?page=user" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContract">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -424,7 +496,11 @@ if (isset($_GET['id'])) {
 
     <!-- Date de début -->
     <div class="expItems">
-        <p>Date de début du contrat : <?php if(empty($data['contract_start'])) {echo 'En attente';} else { echo $data['contract_start'];} ?></p>
+        <p>Date de début du contrat : <?php if (empty($data['contract_start'])) {
+                                            echo 'En attente';
+                                        } else {
+                                            echo $data['contract_start'];
+                                        } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractStart">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -434,7 +510,11 @@ if (isset($_GET['id'])) {
 
     <!-- Date de fin -->
     <div class="expItems">
-        <p>Date de fin du contrat : <?php if(empty($data['contract_end'])) {echo 'En attente';} else { echo $data['contract_end'];} ?></p>
+        <p>Date de fin du contrat : <?php if (empty($data['contract_end'])) {
+                                        echo 'En attente';
+                                    } else {
+                                        echo $data['contract_end'];
+                                    } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractEnd">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -444,7 +524,11 @@ if (isset($_GET['id'])) {
 
     <!-- Niveau -->
     <div class="expItems">
-        <p>Niveau : <?php if(empty($data['contract_level'])) {echo 'En attente';} else { echo $data['contract_level'];} ?></p>
+        <p>Niveau : <?php if (empty($data['contract_level'])) {
+                        echo 'En attente';
+                    } else {
+                        echo $data['contract_level'];
+                    } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractLevel">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -454,7 +538,11 @@ if (isset($_GET['id'])) {
 
     <!-- Coef -->
     <div class="expItems">
-        <p>Coef : <?php if(empty($data['contract_coef'])) {echo 'En attente';} else { echo $data['contract_coef'];} ?></p>
+        <p>Coef : <?php if (empty($data['contract_coef'])) {
+                        echo 'En attente';
+                    } else {
+                        echo $data['contract_coef'];
+                    } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractCoef">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -464,7 +552,11 @@ if (isset($_GET['id'])) {
 
     <!-- Rémunération -->
     <div class="expItems">
-        <p>Rémunération à l'heure : <?php if(empty($data['contract_remuneration'])) {echo 'En attente';} else { echo $data['contract_remuneration'].'€ / Heure';} ?></p>
+        <p>Rémunération à l'heure : <?php if (empty($data['contract_remuneration'])) {
+                                        echo 'En attente';
+                                    } else {
+                                        echo $data['contract_remuneration'] . '€ / Heure';
+                                    } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractRemuneration">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -474,7 +566,11 @@ if (isset($_GET['id'])) {
 
     <!-- Mutuelle -->
     <div class="expItems">
-        <p>Mutuelle : <?php if(empty($data['contract_insurance'])) {echo "Aucune mutuelle n'est renseignée";} else { echo $data['contract_insurance'];} ?></p>
+        <p>Mutuelle : <?php if (empty($data['contract_insurance'])) {
+                            echo "Aucune mutuelle n'est renseignée";
+                        } else {
+                            echo $data['contract_insurance'];
+                        } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractInsurance">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -484,7 +580,11 @@ if (isset($_GET['id'])) {
 
     <!-- Numéro de mutuelle -->
     <div class="expItems">
-        <p>Numéro de mutuelle : <?php if(empty($data['contract_insurance_number'])) {echo 'En attente';} else { echo $data['contract_insurance_number'];} ?></p>
+        <p>Numéro de mutuelle : <?php if (empty($data['contract_insurance_number'])) {
+                                    echo 'En attente';
+                                } else {
+                                    echo $data['contract_insurance_number'];
+                                } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractInsuranceNumber">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -494,7 +594,11 @@ if (isset($_GET['id'])) {
 
     <!-- Heures hebdomadaires -->
     <div class="expItems">
-        <p>Heures hebdomadaires : <?php if(empty($data['contract_weekly'])) {echo 'En attente';} else { echo $data['contract_weekly']. 'h / semaines';} ?></p>
+        <p>Heures hebdomadaires : <?php if (empty($data['contract_weekly'])) {
+                                        echo 'En attente';
+                                    } else {
+                                        echo $data['contract_weekly'] . 'h / semaines';
+                                    } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractWeekly">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -504,7 +608,11 @@ if (isset($_GET['id'])) {
 
     <!-- Navigo -->
     <div class="expItems">
-        <p>Navigo : <?php if(empty($data['contract_transports'])) {echo 'En attente';} else { echo $data['contract_transports'];} ?></p>
+        <p>Navigo : <?php if (empty($data['contract_transports'])) {
+                        echo 'En attente';
+                    } else {
+                        echo $data['contract_transports'];
+                    } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractTransport">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -519,7 +627,7 @@ if (isset($_GET['id'])) {
     <h2 class="display-6 text-center" id="experiences">Compte temps</h2>
 
     <?php
-            require('./model/timeAccountModel.php')
+    require('./model/timeAccountModel.php')
     ?>
 
     <!-- Absences. -->
@@ -529,96 +637,70 @@ if (isset($_GET['id'])) {
         <!-- Arrêt -->
         <div class="userExpGrid d-flex flex-column flex-md-row">
 
-            <?php 
-                if(!$data['user_absence'])
-                {
+            <?php
+            if (!$data['user_absence']) {
             ?>
                 <p>Aucun arrêt de travail</p>
             <?php
-                }
-                if($data['user_absence'])
-                {
+            }
+            if ($data['user_absence']) {
             ?>
                 <div class="expFirstItem border rounded m-1 p-3">
                     <p>Arrêt de travail : <?= $data['user_absence'] ?> jours</p>
                     <p class="userInfosDiplomaCard">
-                        <img
-                            src="<?= './public/assets/illnessJustif/'.$data['illness_justif'] ?>" 
-                            alt="Arrêt de travail"
-                        >
-                        <a
-                            class="text-decoration-none text-white p-2" 
-                            href="<?= './public/assets/illnessJustif/'.$data['illness_justif'] ?>" 
-                            download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
-                        >
+                        <img src="<?= './public/assets/illnessJustif/' . $data['illness_justif'] ?>" alt="Arrêt de travail">
+                        <a class="text-decoration-none text-white p-2" href="<?= './public/assets/illnessJustif/' . $data['illness_justif'] ?>" download="<?= 'ArrêtDeTravail-' . $data['name'] . $data['surname'] ?>">
                             <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger                   
+                                Télécharger
                             </button>
                         </a>
                     </p>
                     <p>Date de l'arrêt de travail : <?= $data['illness_date'] ?></p>
                 </div>
 
-                <?php 
-                    }
-                    if($data['user_absence2'])
-                    {
-                ?>
+            <?php
+            }
+            if ($data['user_absence2']) {
+            ?>
 
                 <div class="expFirstItem border rounded m-1 p-3">
                     <p>Arrêt de travail : <?= $data['user_absence2'] ?> jours</p>
                     <p class="userInfosDiplomaCard">
-                        <img
-                            src="<?= './public/assets/illnessJustif2/'.$data['illness_justif2'] ?>" 
-                            alt="Arrêt de travail"
-                        >
-                        <a
-                            class="text-decoration-none text-white p-2" 
-                            href="<?= './public/assets/illnessJustif2/'.$data['illness_justif2'] ?>" 
-                            download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
-                        >
+                        <img src="<?= './public/assets/illnessJustif2/' . $data['illness_justif2'] ?>" alt="Arrêt de travail">
+                        <a class="text-decoration-none text-white p-2" href="<?= './public/assets/illnessJustif2/' . $data['illness_justif2'] ?>" download="<?= 'ArrêtDeTravail-' . $data['name'] . $data['surname'] ?>">
                             <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger                   
+                                Télécharger
                             </button>
                         </a>
                     </p>
                     <p>Date de l'arrêt de travail : <?= $data['illness_date2'] ?></p>
                 </div>
 
-                <?php 
-                    }
-                    if($data['user_absence3'])
-                    {
-                ?>
+            <?php
+            }
+            if ($data['user_absence3']) {
+            ?>
 
                 <div class="expFirstItem border rounded m-1 p-3">
                     <p>Arrêt de travail : <?= $data['user_absence3'] ?> jours</p>
                     <p class="userInfosDiplomaCard">
-                        <img
-                            src="<?= './public/assets/illnessJustif3/'.$data['illness_justif3'] ?>" 
-                            alt="Arrêt de travail"
-                        >
-                        <a
-                            class="text-decoration-none text-white p-2" 
-                            href="<?= './public/assets/illnessJustif3/'.$data['illness_justif3'] ?>" 
-                            download="<?= 'ArrêtDeTravail-'.$data['name'].$data['surname'] ?>"
-                        >
+                        <img src="<?= './public/assets/illnessJustif3/' . $data['illness_justif3'] ?>" alt="Arrêt de travail">
+                        <a class="text-decoration-none text-white p-2" href="<?= './public/assets/illnessJustif3/' . $data['illness_justif3'] ?>" download="<?= 'ArrêtDeTravail-' . $data['name'] . $data['surname'] ?>">
                             <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger                   
+                                Télécharger
                             </button>
                         </a>
                     </p>
                     <p>Date de l'arrêt de travail : <?= $data['illness_date3'] ?></p>
                 </div>
 
-                <?php 
-                    }
-                ?>
+            <?php
+            }
+            ?>
         </div>
-        
-        <?php 
-            if(!$data['user_absence'])
-            {
+
+        <?php
+        if (!$data['user_absence']) {
         ?>
             <button class="btn btn-md btn-danger p-2 m-3" type="submit">
                 <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAbsenceInfo">
@@ -627,9 +709,8 @@ if (isset($_GET['id'])) {
             </button>
 
         <?php
-            }
-            if($data['user_absence'])
-            {
+        }
+        if ($data['user_absence']) {
         ?>
 
             <button class="btn btn-md btn-danger p-2 m-3" type="submit">
@@ -639,9 +720,8 @@ if (isset($_GET['id'])) {
             </button>
 
         <?php
-            }
-            if($data['user_absence2'])
-            {
+        }
+        if ($data['user_absence2']) {
         ?>
 
             <button class="btn btn-md btn-danger p-2 m-3" type="submit">
@@ -651,7 +731,7 @@ if (isset($_GET['id'])) {
             </button>
 
         <?php
-            }
+        }
         ?>
     </div>
 
@@ -661,153 +741,145 @@ if (isset($_GET['id'])) {
 
         <!-- Vacances. -->
         <?php
-            if($data['holiday1_start'])
-            {
+        if ($data['holiday1_start']) {
         ?>
 
-        <div class="userExpGrid d-flex flex-column flex-md-row">
-
-            <div class="expFirstItem border rounded m-1 p-3">
-                <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
-                <p>
-                    <?php 
-                        if($data['holiday1_response'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if($data['holiday1_response'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if($data['holiday1_response'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                        }
-                    ?>
-                </p>
-            </div>
-
-            <?php
-                if($data['holiday2_start'])
-                {
-            ?>
+            <div class="userExpGrid d-flex flex-column flex-md-row">
 
                 <div class="expFirstItem border rounded m-1 p-3">
-                    <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
+                    <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
                     <p>
-                        <?php 
-                            if($data['holiday2_response'] == 0) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                            } else if($data['holiday2_response'] == 1) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                            } else if($data['holiday2_response'] == 2) {
-                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                            }
+                        <?php
+                        if ($data['holiday1_response'] == 0) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if ($data['holiday1_response'] == 1) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                        } else if ($data['holiday1_response'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
                         ?>
                     </p>
                 </div>
 
                 <?php
-                    }
-                    if($data['holiday3_start'])
-                    {
+                if ($data['holiday2_start']) {
+                ?>
+
+                    <div class="expFirstItem border rounded m-1 p-3">
+                        <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
+                        <p>
+                            <?php
+                            if ($data['holiday2_response'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if ($data['holiday2_response'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if ($data['holiday2_response'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
+                            ?>
+                        </p>
+                    </div>
+
+                <?php
+                }
+                if ($data['holiday3_start']) {
                 ?>
 
                     <div class="expFirstItem border rounded m-1 p-3">
                         <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
                         <p>
-                            <?php 
-                                if($data['holiday2_response'] == 0) {
-                                    echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                } else if($data['holiday3_response'] == 1) {
-                                    echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                } else if($data['holiday3_response'] == 2) {
-                                    echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                }
+                            <?php
+                            if ($data['holiday2_response'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if ($data['holiday3_response'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if ($data['holiday3_response'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
                             ?>
                         </p>
                     </div>
 
-            <?php 
+            <?php
                 }
-            }
-            else {
+            } else {
                 echo ('<p>Aucune demande de congés</p>');
             }
             ?>
-        </div>
-
-    <!-- Temps supplémentaire. -->
-    <div class="border rounded mt-3 p-3">
-        <h4 class="my-3">Temps supplémentaire</h4>
-        <?php
-            if($data['day_off1'])
-            {
-        ?>
-
-        <div class="userExpGrid d-flex flex-column flex-md-row">
-
-            <div class="expFirstItem border rounded m-1 p-3">
-                <p>Dates de la demande : <?= $data['day_off1'] ?></p>
-                <p>
-                    <?php 
-                        if($data['day_off_response1'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if($data['day_off_response1'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if($data['day_off_response1'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                        }
-                    ?>
-                </p>
             </div>
 
-            <?php
-                if($data['day_off2'])
-                {
-            ?>
+            <!-- Temps supplémentaire. -->
+            <div class="border rounded mt-3 p-3">
+                <h4 class="my-3">Temps supplémentaire</h4>
+                <?php
+                if ($data['day_off1']) {
+                ?>
 
-            <div class="expFirstItem border rounded m-1 p-3">
-                <p>Dates de la demande : <?= $data['day_off2'] ?></p>
-                <p>
-                    <?php 
-                        if($data['day_off_response2'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if($data['day_off_response2'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if($data['day_off_response2'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                    <div class="userExpGrid d-flex flex-column flex-md-row">
+
+                        <div class="expFirstItem border rounded m-1 p-3">
+                            <p>Dates de la demande : <?= $data['day_off1'] ?></p>
+                            <p>
+                                <?php
+                                if ($data['day_off_response1'] == 0) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                } else if ($data['day_off_response1'] == 1) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                } else if ($data['day_off_response1'] == 2) {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                }
+                                ?>
+                            </p>
+                        </div>
+
+                        <?php
+                        if ($data['day_off2']) {
+                        ?>
+
+                            <div class="expFirstItem border rounded m-1 p-3">
+                                <p>Dates de la demande : <?= $data['day_off2'] ?></p>
+                                <p>
+                                    <?php
+                                    if ($data['day_off_response2'] == 0) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                    } else if ($data['day_off_response2'] == 1) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                    } else if ($data['day_off_response2'] == 2) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+
+                        <?php
                         }
-                    ?>
-                </p>
-            </div>
+                        if ($data['day_off3']) {
+                        ?>
 
-            <?php
-                }
-                if($data['day_off3'])
-                {
-            ?>
+                            <div class="expFirstItem border rounded m-1 p-3">
+                                <p>Dates de la demande : <?= $data['day_off3'] ?></p>
+                                <p>
+                                    <?php
+                                    if ($data['day_off_response3'] == 0) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                    } else if ($data['day_off_response3'] == 1) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                    } else if ($data['day_off_response3'] == 2) {
+                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                    }
+                                    ?>
+                                </p>
+                            </div>
 
-            <div class="expFirstItem border rounded m-1 p-3">
-                <p>Dates de la demande : <?= $data['day_off3'] ?></p>
-                <p>
-                    <?php 
-                        if($data['day_off_response3'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if($data['day_off_response3'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if($data['day_off_response3'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                    <?php
                         }
+                    } else {
+                        echo ('<p>Aucune demande de repos</p>');
+                    }
                     ?>
-                </p>
+                    </div>
             </div>
-
-            <?php 
-                }
-            }
-            else {
-                echo ('<p>Aucune demande de repos</p>');
-            }
-            ?>
-        </div>
     </div>
-</div>
 </div>
 </div>
 
@@ -817,12 +889,12 @@ if (isset($_GET['id'])) {
 
 <script type="text/javascript" src="./src/scriptUserInfos.js"></script>
 
-<?php 
+<?php
 
-    // Fin de l'enregistrement du HTML.
-    $content = ob_get_clean();
+// Fin de l'enregistrement du HTML.
+$content = ob_get_clean();
 
-    // Intégration à base.php.
-    require('base.php');
+// Intégration à base.php.
+require('base.php');
 
 ?>

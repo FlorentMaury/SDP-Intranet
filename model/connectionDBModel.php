@@ -29,5 +29,4 @@
     // UPDATE user SET user_extra_time = 0, user_delay = 0, user_absence = 0;";
     
     // $bdd->query($query);
-
 ?>
