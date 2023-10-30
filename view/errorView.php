@@ -9,6 +9,10 @@
 
     <h1 class="display-6 text-center">Une erreur est survenue</h1>
 
+    <button class="btn btn-dark">
+        <a href="index.php" class="text-decoration-none text-light">Retour à la page de connexion</a>
+    </button>
+
 <?php 
 
 // Fin de l'enregistrement du HTML.

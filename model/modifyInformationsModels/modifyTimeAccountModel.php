@@ -124,8 +124,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        // $to         = 'contact@florent-maury.fr';
-        $to            = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
         $subject       = "Arrêt de travail | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -230,8 +230,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        // $to         = 'contact@florent-maury.fr';
-        $to            = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
         $subject       = "Arrêt de travail | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -337,8 +337,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        // $to         = 'contact@florent-maury.fr';
-        $to            = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
         $subject       = "Arrêt de travail | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -443,8 +443,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        // $to         = 'contact@florent-maury.fr';
-        $to            = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
         $subject       = "Arrêt de travail | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -552,20 +552,40 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = 'pdana@free.fr';
-        $subject     = "Demande de vacances | $userName $userSurname";
-
+        $userMessage = 
+            '<html>
+                <head>
+                    <title>Demande de vacances | ' . $userName . ' ' . $userSurname . '</title>
+                </head>
+                <body>
+                    <p>Bonjour, vous avez une demande de vacances de la part de ' . $userName . ' ' . $userSurname . ' 
+                    du ' . $holidayRequest1Start . ' au ' . $holidayRequest1End . '.</p>
+                    <form method="POST" action="index.php?page=dashboard&id=' . $usersHoliday1['id'] . '">
+                        <p class="d-flex flex-column form-floating m-2">
+                            <!-- Select option 1 ou 0 -->
+                            <select type="text" name="holiday1RequestMail" class="form-control" id="holiday1RequestMail">
+                                <label for="holiday1RequestMail">Réponse</label>
+                                <option value="1">Accepter</option>
+                                <option value="2">Refuser</option>
+                            </select>
+                            <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
+                        </p>
+                    </form>
+                </body>
+            </html>';
+        $to       = 'contact@florent-maury.fr';
+        $subject  = "Demande de vacances | $userName $userSurname";
+        
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
+        
         // Personnalisation du contenu en fonction des variables.
-        $header = [
-            "Name" => $userName
-        ];
-
-        mail($to, $subject, $contentMessage, $header);
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+        
+        mail($to, $subject, $contentMessage, $headers);
 
 
     // Redirection.
@@ -619,8 +639,8 @@ if(
 
         // Variables.
         $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = 'pdana@free.fr';
+        $to       = 'contact@florent-maury.fr';
+        // $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -684,8 +704,8 @@ if(
 
         // Variables.
         $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = 'pdana@free.fr';
+        $to       = 'contact@florent-maury.fr';
+        // $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -785,8 +805,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest1.";
-        // $to         = 'contact@florent-maury.fr';
-        $to            = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -847,8 +867,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest2.";
-        // $to         = 'contact@florent-maury.fr';
-        $to            = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -908,8 +928,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        // $to         = 'contact@florent-maury.fr';
-        $to            = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -1417,5 +1437,3 @@ if(
 //         header('location: index.php?page=dashboard');
 //     };
 // };
-
-?>

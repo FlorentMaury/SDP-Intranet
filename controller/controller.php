@@ -37,4 +37,10 @@
         require('model/logoutModel.php');
     };
 
+    // En provenance d'email.
+    function email() {
+        require('model/connectionDBModel.php');
+        require('view/fromMailView.php');
+    };
+
 ?>

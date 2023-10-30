@@ -26,6 +26,10 @@
             else if ($_GET['page'] == 'user') {
                 user();
             }
+            // Provenance d'email.
+            else if ($_GET['page'] == 'email') {
+                email();
+            }
             // Deconnexion.
             else if ($_GET['page'] == 'logout') {
                 logOut();
