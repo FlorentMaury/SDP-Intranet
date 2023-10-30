@@ -819,7 +819,18 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest1.";
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Demande de journée de repos | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
+                    au $modifyDayOffRequest1.</p>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=1&id=$userId'>Accepter</a>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=2&id=$userId'>Refuser</a>
+                </body>
+            </html>";
         $to         = 'contact@florent-maury.fr';
         // $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
@@ -828,11 +839,12 @@ if(
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
-        $header = [
-            "Name" => $userName
-        ];
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
 
-        mail($to, $subject, $contentMessage, $header);
+        mail($to, $subject, $contentMessage, $headers);
 
 
     // Redirection.
@@ -879,9 +891,20 @@ if(
     $result = $req->execute([$modifyDayOffRequest2, $userModifiedId]);
 
         // FONCTION MAILTO.
-
+        
         // Variables.
-        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest2.";
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Demande de journée de repos | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
+                    au $modifyDayOffRequest2.</p>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=1&id=$userId'>Accepter</a>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=2&id=$userId'>Refuser</a>
+                </body>
+            </html>";
         $to         = 'contact@florent-maury.fr';
         // $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
@@ -890,11 +913,12 @@ if(
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
-        $header = [
-            "Name" => $userName
-        ];
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
 
-        mail($to, $subject, $contentMessage, $header);
+        mail($to, $subject, $contentMessage, $headers);
 
     // Redirection.
     if($result) {
@@ -942,7 +966,18 @@ if(
         // FONCTION MAILTO.
 
         // Variables.
-        $userMessage   = "Bonjour, vous avez une demande de repos de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Demande de journée de repos | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
+                    au $modifyDayOffRequest3.</p>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=1&id=$userId'>Accepter</a>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=2&id=$userId'>Refuser</a>
+                </body>
+            </html>";
         $to         = 'contact@florent-maury.fr';
         // $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
@@ -951,11 +986,12 @@ if(
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du conatenu en fonction des variables.
-        $header = [
-            "Name" => $userName
-        ];
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
 
-        mail($to, $subject, $contentMessage, $header);
+        mail($to, $subject, $contentMessage, $headers);
 
 
     // Redirection.
