@@ -11,7 +11,7 @@
     // Dans le tableau de bord, pour les employés.
     function dashboard() {
         require('model/connectionDBModel.php');
-        // require('model/addNewUserModel.php');
+        require('model/addNewUserModel.php');
 
             // Modifications des informations utilisateurs.
             require('model/modifyInformationsModels/modifyUserInformationsModel.php');

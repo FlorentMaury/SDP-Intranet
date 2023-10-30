@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
     require('../model/connectionDBModel.php');
 
     // Suppression de l'image de profil du serveur.
-    if (isset($id['profile_picture'])) {
+    if(isset($id['profile_picture'])) {
         $r = $bdd->prepare("SELECT profile_picture FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $profilePicture = $r->fetchColumn();
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression de la carte d'identité de face du serveur.
-    if (isset($id['id_card_face'])) {
+    if(isset($id['id_card_face'])) {
         $r = $bdd->prepare("SELECT id_card_face FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $idCardFace = $r->fetchColumn();
@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression de la carte d'identité de dos du serveur.
-    if (isset($id['id_card_back'])) {
+    if(isset($id['id_card_back'])) {
         $r = $bdd->prepare("SELECT id_card_back FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $idCardBack = $r->fetchColumn();
@@ -33,7 +33,7 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression de la carte vitale de face du serveur.
-    if (isset($id['insurance_card_face'])) {
+    if(isset($id['insurance_card_face'])) {
         $r = $bdd->prepare("SELECT insurance_card_face FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $insuranceCardFace = $r->fetchColumn();
@@ -41,7 +41,7 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression de la carte vitale de dos du serveur.
-    if (isset($id['insurance_card_back'])) {
+    if(isset($id['insurance_card_back'])) {
         $r = $bdd->prepare("SELECT insurance_card_back FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $insuranceCardBack = $r->fetchColumn();
@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression du premier diplôme du serveur.
-    if (isset($id['school_1_doc'])) {
+    if(isset($id['school_1_doc'])) {
         $r = $bdd->prepare("SELECT school_1_doc FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $school1Doc = $r->fetchColumn();
@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression du second diplôme du serveur.
-    if (isset($id['school_2_doc'])) {
+    if(isset($id['school_2_doc'])) {
         $r = $bdd->prepare("SELECT school_2_doc FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $school2Doc = $r->fetchColumn();
@@ -65,7 +65,7 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression du troisième diplôme du serveur.
-    if (isset($id['school_3_doc'])) {
+    if(isset($id['school_3_doc'])) {
         $r = $bdd->prepare("SELECT school_3_doc FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $school3Doc = $r->fetchColumn();
@@ -73,28 +73,28 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression des documents d'arrêts maladie du serveur.
-    if (isset($id['illness_justif'])) {
+    if(isset($id['illness_justif'])) {
         $r = $bdd->prepare("SELECT illness_justif FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $sickNote = $r->fetchColumn();
         unlink('../public/assets/illnessJustif/'.$sickNote);
     };
 
-    if (isset($id['illness_justif_2'])) {
+    if(isset($id['illness_justif_2'])) {
         $r = $bdd->prepare("SELECT illness_justif2 FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $sickNote2 = $r->fetchColumn();
         unlink('../public/assets/illnessJustif2/'.$sickNote2);
     };
 
-    if (isset($id['illness_justif_3'])) {
+    if(isset($id['illness_justif_3'])) {
         $r = $bdd->prepare("SELECT illness_justif3 FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $sickNote3 = $r->fetchColumn();
         unlink('../public/assets/illnessJustif3/'.$sickNote3);
     };
 
-    if (isset($id['illness_justif_4'])) {
+    if(isset($id['illness_justif_4'])) {
         $r = $bdd->prepare("SELECT illness_justif4 FROM `user` WHERE id = ?");
         $r->execute([$id]);
         $sickNote4 = $r->fetchColumn();
