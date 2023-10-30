@@ -553,26 +553,17 @@ if(
 
         // Variables.
         $userMessage = 
-            '<html>
-                <head>
-                    <title>Demande de vacances | ' . $userName . ' ' . $userSurname . '</title>
-                </head>
-                <body>
-                    <p>Bonjour, vous avez une demande de vacances de la part de ' . $userName . ' ' . $userSurname . ' 
-                    du ' . $holidayRequest1Start . ' au ' . $holidayRequest1End . '.</p>
-                    <form method="POST" action="index.php?page=dashboard&id=' . $usersHoliday1['id'] . '">
-                        <p class="d-flex flex-column form-floating m-2">
-                            <!-- Select option 1 ou 0 -->
-                            <select type="text" name="holiday1RequestMail" class="form-control" id="holiday1RequestMail">
-                                <label for="holiday1RequestMail">Réponse</label>
-                                <option value="1">Accepter</option>
-                                <option value="2">Refuser</option>
-                            </select>
-                            <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-                        </p>
-                    </form>
-                </body>
-            </html>';
+        "<html>
+            <head>
+                <title>Demande de vacances | $userName $userSurname</title>
+            </head>
+            <body>
+                <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
+                du $holidayRequest1Start au $holidayRequest1End.</p>
+                <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=1&id=$userId'>Accepter</a>
+                <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=2&id=$userId'>Refuser</a>
+            </body>
+        </html>";
         $to       = 'contact@florent-maury.fr';
         $subject  = "Demande de vacances | $userName $userSurname";
         
@@ -638,7 +629,18 @@ if(
             // FONCTION MAILTO.
 
         // Variables.
-        $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
+        $userMessage = 
+            "<html>
+                <head>
+                    <title>Demande de vacances | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
+                    du $holidayRequest2Start au $holidayRequest2End.</p>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=1&id=$userId'>Accepter</a>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=2&id=$userId'>Refuser</a>
+                </body>
+            </html>";
         $to       = 'contact@florent-maury.fr';
         // $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
@@ -647,11 +649,12 @@ if(
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du contenu en fonction des variables.
-        $header = [
-            "Name" => $userName
-        ];
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
 
-        mail($to, $subject, $contentMessage, $header);
+        mail($to, $subject, $contentMessage, $headers);
 
     // Redirection.
     if($result) {
@@ -703,7 +706,18 @@ if(
                 // FONCTION MAILTO.
 
         // Variables.
-        $userMessage = "Bonjour, vous avez une demande de vacances de la part de $userName $userSurname du $holidayRequest1Start au $holidayRequest1End.";
+        $userMessage = 
+            "<html>
+                <head>
+                    <title>Demande de vacances | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
+                    du $holidayRequest3Start au $holidayRequest3End.</p>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=1&id=$userId'>Accepter</a>
+                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=2&id=$userId'>Refuser</a>
+                </body>
+            </html>";
         $to       = 'contact@florent-maury.fr';
         // $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
@@ -712,11 +726,12 @@ if(
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
         // Personnalisation du contenu en fonction des variables.
-        $header = [
-            "Name" => $userName
-        ];
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
 
-        mail($to, $subject, $contentMessage, $header);
+        mail($to, $subject, $contentMessage, $headers);
 
     // Redirection.
     if($result) {

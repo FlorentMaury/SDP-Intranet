@@ -40,6 +40,7 @@
     // En provenance d'email.
     function email() {
         require('model/connectionDBModel.php');
+        require('model/modifyInformationsModels/modifyHolidayRequestFromMail.php');
         require('view/fromMailView.php');
     };
 

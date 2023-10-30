@@ -33,6 +33,10 @@
         echo '<div class=\'container\'><p class="mt-3 fw-bold text-danger">' . htmlspecialchars($_GET['messageAddNew']) . '</p></div>';
     }
 
+    if (isset($_GET['holidayResponse'])) {
+        echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Réponse enregistrée avec succès.</p></div>';
+    }
+
     if (isset($_GET['modification'])) {
         echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Modification réalisée avec succès.</p></div>';
     } else if (isset($_GET['errorMod']) && !empty($_GET['messageMod'])) {
@@ -41,10 +45,6 @@
 
     if (isset($_GET['removal'])) {
         echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Information supprimée avec succès.</p></div>';
-    }
-
-    if (isset($_GET['holidayResponse'])) {
-        echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Réponse à la demande de vacances enregistrée avec succès.</p></div>';
     }
 
     if (isset($_GET['dayOffResponse'])) {
