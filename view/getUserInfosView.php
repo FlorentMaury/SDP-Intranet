@@ -79,12 +79,6 @@ if (isset($_GET['id'])) {
             <p>Prénom : <?= $data['name'] ?></p>
         </div>
         <div class="dashboardItems">
-            <p>Adresse mail : <?= $data['email'] ?></p>
-        </div>
-        <div class="dashboardItems">
-            <p>Adresse mail : <?= $data['email'] ?></p>
-        </div>
-        <div class="dashboardItems">
             <p>Nom de famille : <?= $data['surname'] ?></p>
         </div>
         <div class="dashboardItems">
