@@ -560,8 +560,18 @@ if(
             <body>
                 <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
                 du $holidayRequest1Start au $holidayRequest1End.</p>
-                <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=1&id=$userId'>Accepter</a>
-                <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=2&id=$userId'>Refuser</a>
+                <a 
+                    href='intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=1&id=$userId'
+                    style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
+                >
+                    Accepter
+                </a>
+                <a 
+                    href='intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=2&id=$userId'
+                    style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
+                >
+                    Refuser
+                </a>
             </body>
         </html>";
         $to       = 'contact@florent-maury.fr';
@@ -637,8 +647,18 @@ if(
                 <body>
                     <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
                     du $holidayRequest2Start au $holidayRequest2End.</p>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=1&id=$userId'>Accepter</a>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=2&id=$userId'>Refuser</a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=1&id=$userId'
+                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
+                    >
+                        Accepter
+                    </a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=2&id=$userId'
+                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
+                    >
+                        Refuser
+                    </a>
                 </body>
             </html>";
         $to       = 'contact@florent-maury.fr';
@@ -714,8 +734,18 @@ if(
                 <body>
                     <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
                     du $holidayRequest3Start au $holidayRequest3End.</p>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=1&id=$userId'>Accepter</a>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=2&id=$userId'>Refuser</a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=1&id=$userId'
+                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
+                    >
+                        Accepter
+                    </a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=2&id=$userId'
+                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
+                    >
+                        Refuser
+                    </a>
                 </body>
             </html>";
         $to       = 'contact@florent-maury.fr';
@@ -827,8 +857,18 @@ if(
                 <body>
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest1.</p>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=1&id=$userId'>Accepter</a>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=2&id=$userId'>Refuser</a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=1&id=$userId'
+                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
+                    >
+                        Accepter
+                    </a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=2&id=$userId'
+                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
+                    >
+                        Refuser
+                    </a>
                 </body>
             </html>";
         $to         = 'contact@florent-maury.fr';
@@ -901,8 +941,18 @@ if(
                 <body>
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest2.</p>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=1&id=$userId'>Accepter</a>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=2&id=$userId'>Refuser</a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=1&id=$userId'
+                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
+                    >
+                        Accepter
+                    </a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=2&id=$userId'
+                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
+                    >
+                        Refuser
+                    </a>
                 </body>
             </html>";
         $to         = 'contact@florent-maury.fr';
@@ -974,8 +1024,18 @@ if(
                 <body>
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest3.</p>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=1&id=$userId'>Accepter</a>
-                    <a href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=2&id=$userId'>Refuser</a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=1&id=$userId'
+                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
+                    >
+                        Accepter
+                    </a>
+                    <a 
+                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=2&id=$userId'
+                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
+                    >
+                        Refuser
+                    </a>
                 </body>
             </html>";
         $to         = 'contact@florent-maury.fr';
