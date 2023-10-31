@@ -124,8 +124,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = 'pdana@free.fr';
         $subject       = "Arrêt de travail | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -230,8 +230,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = 'pdana@free.fr';
         $subject       = "Arrêt de travail | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -337,8 +337,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = 'pdana@free.fr';
         $subject       = "Arrêt de travail | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -443,8 +443,8 @@ if(
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = 'pdana@free.fr';
         $subject       = "Arrêt de travail | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -561,21 +561,22 @@ if(
                 <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
                 du $holidayRequest1Start au $holidayRequest1End.</p>
                 <a 
-                    href='intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=1&id=$userId'
+                    href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=1&id=$userId'
                     style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                 >
                     Accepter
                 </a>
                 <a 
-                    href='intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=2&id=$userId'
+                    href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=2&id=$userId'
                     style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                 >
                     Refuser
                 </a>
             </body>
         </html>";
-        $to       = 'contact@florent-maury.fr';
-        $subject  = "Demande de vacances | $userName $userSurname";
+        // $to       = 'contact@florent-maury.fr';
+        $to          = 'pdana@free.fr';
+        $subject     = "Demande de vacances | $userName $userSurname";
         
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
@@ -648,21 +649,21 @@ if(
                     <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
                     du $holidayRequest2Start au $holidayRequest2End.</p>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=1&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                     >
                         Accepter
                     </a>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=2&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=2&id=$userId'
                         style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                     >
                         Refuser
                     </a>
                 </body>
             </html>";
-        $to       = 'contact@florent-maury.fr';
-        // $to          = 'pdana@free.fr';
+        // $to       = 'contact@florent-maury.fr';
+        $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -735,21 +736,21 @@ if(
                     <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
                     du $holidayRequest3Start au $holidayRequest3End.</p>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=1&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                     >
                         Accepter
                     </a>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=2&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=2&id=$userId'
                         style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                     >
                         Refuser
                     </a>
                 </body>
             </html>";
-        $to       = 'contact@florent-maury.fr';
-        // $to          = 'pdana@free.fr';
+        // $to       = 'contact@florent-maury.fr';
+        $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -858,21 +859,21 @@ if(
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest1.</p>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=1&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                     >
                         Accepter
                     </a>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=2&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=2&id=$userId'
                         style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                     >
                         Refuser
                     </a>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -942,22 +943,22 @@ if(
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest2.</p>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=1&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                     >
                         Accepter
                     </a>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=2&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=2&id=$userId'
                         style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                     >
                         Refuser
                     </a>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
-        $subject       = "Demande de repos | $userName $userSurname";
+        // $to         = 'contact@florent-maury.fr';
+        $to         = 'pdana@free.fr';
+        $subject    = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
@@ -1025,21 +1026,21 @@ if(
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest3.</p>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=1&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                     >
                         Accepter
                     </a>
                     <a 
-                        href='intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=2&id=$userId'
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=2&id=$userId'
                         style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                     >
                         Refuser
                     </a>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
