@@ -47,8 +47,8 @@ if(isset($_GET['holiday1ResponseMail'], $_GET['id'])) {
                      du $holiday1Start au $holiday1End vient d'être $holidayRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -124,8 +124,8 @@ if(isset($_GET['holiday2ResponseMail'], $_GET['id'])) {
                      du $holiday2Start au $holiday2End vient d'être $holidayRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -200,8 +200,8 @@ if(isset($_GET['holiday3ResponseMail'], $_GET['id'])) {
                      du $holiday3Start au $holiday3End vient d'être $holidayRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -290,8 +290,8 @@ if(isset($_GET['dayOff1Mail'], $_GET['id'])) {
                     au $modifyDayOffRequest1 vient d'être $dayOffRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -377,8 +377,8 @@ if(isset($_GET['dayOff2Mail'], $_GET['id'])) {
                     au $modifyDayOffRequest2 vient d'être $dayOffRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -463,8 +463,8 @@ if(isset($_GET['dayOff3Mail'], $_GET['id'])) {
                     au $modifyDayOffRequest3 vient d'être $dayOffRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.

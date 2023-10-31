@@ -50,8 +50,8 @@
                      du $holiday1Start au $holiday1End vient d'être $holidayRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -125,8 +125,8 @@
                      du $holiday2Start au $holiday2End vient d'être $holidayRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -200,8 +200,8 @@
                      du $holiday3Start au $holiday3End vient d'être $holidayRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -286,8 +286,8 @@
                     au $modifyDayOffRequest1 vient d'être $dayOffRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -371,8 +371,8 @@
                     au $modifyDayOffRequest2 vient d'être $dayOffRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -455,8 +455,8 @@
                     au $modifyDayOffRequest3 vient d'être $dayOffRes.</p>
                 </body>
             </html>";
-        $to         = 'contact@florent-maury.fr';
-        // $to            = 'pdana@free.fr';
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
