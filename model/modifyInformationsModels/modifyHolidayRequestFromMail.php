@@ -106,12 +106,27 @@ if(isset($_GET['dayOff1Mail'], $_GET['id'])) {
 
     // Variables.
     $dayOff1Mail  = htmlspecialchars($_GET['dayOff1Mail']);
-    $userId          = $_GET['id'];
+    $userId       = $_GET['id'];
+
+    if($dayOff1Mail == 1) {
+        $dayOffRes = 'Acceptée';
+    } else if($dayOff1Mail == 2) {
+        $dayOffRes = 'Refusée';
+    }
 
     // Vérification de l'existence de l'utilisateur.
     $stmt = $bdd->prepare('SELECT id FROM user WHERE id = ?');
     $stmt->execute([$userId]);
     $userModifiedId = $stmt->fetchColumn();
+
+    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
+    $modifyDayOffRequest1 = $user['day_off1'];
 
     // Selection de la banque de repos.
     $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
@@ -128,6 +143,36 @@ if(isset($_GET['dayOff1Mail'], $_GET['id'])) {
         // Modification de la réponse de l'utilisateur dans la base de données.
         $stmt = $bdd->prepare('UPDATE user SET day_off_response1 = ? WHERE id = ?');
         $result = $stmt->execute([$dayOff1Mail, $userModifiedId]);
+
+
+               // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>REéponse à la demande de journée de repos | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, la demande de repos de la part de $userName $userSurname 
+                    au $modifyDayOffRequest1 vient d'être $dayOffRes.</p>
+                </body>
+            </html>";
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
+        $subject       = "Demande de repos | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+
+        mail($to, $subject, $contentMessage, $headers);
+
 
         // Redirection.
         if($result) {

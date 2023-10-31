@@ -2150,6 +2150,45 @@
     </div>
 </div>
 
+<!-- Modale de déclaration d'absence. -->
+<div class="modal fade" id="modifyPlannedAbsenceInfo" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Déclarer une absence prévue</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
+                <p class="form-floating m-2">
+                    <select type="number" name="userAbsenceInfo" class="form-control" id="userAbsenceInfo">
+                        <label for="userAbsenceInfo">Déclarer une absence</label>
+                        <option value="1">1 jour</option>
+                        <option value="2">2 jours</option>
+                        <option value="3">3 jours</option>
+                        <option value="4">4 jours</option>
+                        <option value="5">5 jours</option>
+                        <option value="6">6 jours</option>
+                        <option value="7">Une semaine</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="medicalJustification">Arrêt de travail</label>
+                    <input type="file" name="medicalJustification" class="form-control" id="medicalJustification">
+                </p>
+                <p class="form-floating m-2">
+                    <input type="date" name="userAbsenceDate" class="form-control" id="userAbsenceDate">
+                    <label for="userAbsenceDate">Date du début de l'arrêt</label>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 
 
 <!-- EN COURS DE REALISATION -->

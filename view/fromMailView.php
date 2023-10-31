@@ -21,6 +21,7 @@
         };
     ?>
 
+
 <?php 
 
 // Fin de l'enregistrement du HTML.
