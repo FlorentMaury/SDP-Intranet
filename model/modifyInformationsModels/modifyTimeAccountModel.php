@@ -817,7 +817,8 @@ if(
 
 // Vérification du formulaire de première demande de jour de repos.
 if(
-    !empty($_POST['dayOffRequest1Start'])
+    !empty($_POST['dayOffRequest1Start']) &&
+    !empty($_POST['dayOffRequest1Desc'])
     ) {
 
     // Connexion à la base de données.
@@ -825,6 +826,7 @@ if(
 
     // Variables.
     $modifyDayOffRequest1 = htmlspecialchars($_POST['dayOffRequest1Start']);
+    $dayOffRequest1Desc   = htmlspecialchars($_POST['dayOffRequest1Desc']);
     $userId               = $_SESSION['id'];
 
     // Sélection de l'ID.
@@ -844,6 +846,8 @@ if(
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET day_off_response1 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
+    $req = $bdd->prepare('UPDATE user SET day_off1_desc = ? WHERE id = ?');
+    $req->execute([$dayOffRequest1Desc, $userModifiedId]);
     $req = $bdd->prepare('UPDATE user SET day_off1 = ? WHERE id = ?');
     $result = $req->execute([$modifyDayOffRequest1, $userModifiedId]);
 
@@ -858,6 +862,7 @@ if(
                 <body>
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest1.</p>
+                    <p>Voici le motif de cette demande : $dayOffRequest1Desc</p>
                     <a 
                         href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
@@ -901,7 +906,8 @@ if(
 
 // Vérification du formulaire de seconde demande de jour de repos.
 if(
-    !empty($_POST['dayOffRequest2Start'])
+    !empty($_POST['dayOffRequest2Start']) &&
+    !empty($_POST['dayOffRequest2Desc'])
     ) {
 
     // Connexion à la base de données.
@@ -909,6 +915,7 @@ if(
 
     // Variables.
     $modifyDayOffRequest2 = htmlspecialchars($_POST['dayOffRequest2Start']);
+    $dayOffRequest2Desc   = htmlspecialchars($_POST['dayOffRequest2Desc']);
     $userId               = $_SESSION['id'];
 
     // Sélection de l'ID.
@@ -942,6 +949,7 @@ if(
                 <body>
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest2.</p>
+                    <p>Voici le motif de cette demande : $dayOffRequest2Desc</p>
                     <a 
                         href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
@@ -984,7 +992,8 @@ if(
 
 // Vérification du formulaire de troisième demande de jour de repos.
 if(
-    !empty($_POST['dayOffRequest3Start'])
+    !empty($_POST['dayOffRequest3Start']) &&
+    !empty($_POST['dayOffRequest3Desc'])
     ) {
 
     // Connexion à la base de données.
@@ -992,6 +1001,7 @@ if(
 
     // Variables.
     $modifyDayOffRequest3 = htmlspecialchars($_POST['dayOffRequest3Start']);
+    $dayOffRequest3Desc   = htmlspecialchars($_POST['dayOffRequest3Desc']);
     $userId               = $_SESSION['id'];
 
     // Sélection de l'ID.
@@ -1025,6 +1035,7 @@ if(
                 <body>
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
                     au $modifyDayOffRequest3.</p>
+                    <p>Voici le motif de cette demande : $dayOffRequest3Desc</p>
                     <a 
                         href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'

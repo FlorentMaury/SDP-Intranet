@@ -262,9 +262,13 @@ if ($_SESSION['id'] == 1) {
                 if ($usersDayOff1['day_off1'] != NULL) {
             ?>
                     <div class="dashboardItems">
-                        <?= $usersDayOff1['name'] . ' ' . $usersDayOff1['surname'] ?>
-                        souhaite un repos à la date du
-                        <?= $usersDayOff1['day_off1'] ?>
+                        <p>
+                            <?= $usersDayOff1['name'] . ' ' . $usersDayOff1['surname'] ?>
+                            souhaite un repos à la date du
+                            <?= $usersDayOff1['day_off1'] ?>
+                            </br>
+                            Pour la raison suivante : <?= $usersDayOff1['day_off1_desc'] ?>
+                        </p>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersDayOff1['id'] ?>">
                             <p class="d-flex flex-column form-floating m-2">
                                 <!-- Selectionner option 1 ou 0 -->
@@ -1226,6 +1230,7 @@ if ($_SESSION['id'] == 1) {
                         </a>
                     </button>
                     <p>Dates de la demande : du <?= $data['day_off1'] ?></p>
+                    <p>Raison : <?= $data['day_off1_desc'] ?></p>
                     <p>
                         <?php
                         if ($data['day_off_response1'] == 0) {
@@ -1251,6 +1256,7 @@ if ($_SESSION['id'] == 1) {
                         </a>
                     </button>
                     <p>Dates de la demande : du <?= $data['day_off2'] ?></p>
+                    <p>Raison : <?= $data['day_off2_desc'] ?></p>
                     <p>
                         <?php
                         if ($data['day_off_response2'] == 0) {
@@ -1276,6 +1282,7 @@ if ($_SESSION['id'] == 1) {
                         </a>
                     </button>
                     <p>Dates de la demande : du <?= $data['day_off3'] ?></p>
+                    <p>Raison : <?= $data['day_off3_desc'] ?></p>
                     <p>
                         <?php
                         if ($data['day_off_response3'] == 0) {
@@ -1295,7 +1302,6 @@ if ($_SESSION['id'] == 1) {
             }
             ?>
         </div>
-    </div>
 
     <!-- Absences. -->
     <div class="contract border rounded mt-3 p-3">

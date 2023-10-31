@@ -819,6 +819,7 @@ if (isset($_GET['id'])) {
 
                         <div class="expFirstItem border rounded m-1 p-3">
                             <p>Dates de la demande : <?= $data['day_off1'] ?></p>
+                            <p>Raison : <?= $data['day_off1_desc'] ?></p>
                             <p>
                                 <?php
                                 if ($data['day_off_response1'] == 0) {
@@ -838,6 +839,7 @@ if (isset($_GET['id'])) {
 
                             <div class="expFirstItem border rounded m-1 p-3">
                                 <p>Dates de la demande : <?= $data['day_off2'] ?></p>
+                                <p>Raison : <?= $data['day_off2_desc'] ?></p>
                                 <p>
                                     <?php
                                     if ($data['day_off_response2'] == 0) {
@@ -858,6 +860,7 @@ if (isset($_GET['id'])) {
 
                             <div class="expFirstItem border rounded m-1 p-3">
                                 <p>Dates de la demande : <?= $data['day_off3'] ?></p>
+                                <p>Raison : <?= $data['day_off3_desc'] ?></p>
                                 <p>
                                     <?php
                                     if ($data['day_off_response3'] == 0) {

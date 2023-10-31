@@ -2096,6 +2096,10 @@
                     <input type="date" name="dayOffRequest1Start" class="form-control" id="dayOffRequest1Start">
                     <label for="dayOffRequest1Start">Date du jour souhaité</label>
                 </p>
+                <p class="form-floating m-2">
+                    <input type="text" name="dayOffRequest1Desc" class="form-control" id="dayOffRequest1Desc">
+                    <label for="dayOffRequest1Desc">Raison de la demande</label>
+                </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>
         </div>
