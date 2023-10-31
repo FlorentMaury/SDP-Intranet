@@ -179,7 +179,7 @@ if ($_SESSION['id'] == 1) {
                         souhaite des vacances du
                         <?= $usersHoliday1['holiday1_start'] ?> au <?= $usersHoliday1['holiday1_end'] ?>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday1['id'] ?>">
-                            <p class="d-flex flex-column form-floating m-2">
+                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
                                 <!-- Select option 1 ou 0 -->
                                 <select type="text" name="holiday1Request" class="form-control" id="holiday1Request">
                                     <label for="holiday1Request">Réponse</label>
@@ -206,7 +206,7 @@ if ($_SESSION['id'] == 1) {
                         souhaite des vacances du
                         <?= $usersHoliday2['holiday2_start'] ?> au <?= $usersHoliday2['holiday2_end'] ?>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday2['id'] ?>">
-                            <p class="d-flex flex-column form-floating m-2">
+                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
                                 <!-- Select option 1 ou 0 -->
                                 <select type="text" name="holiday2Request" class="form-control" id="holiday2Request">
                                     <label for="holiday2Request">Réponse</label>
@@ -233,7 +233,7 @@ if ($_SESSION['id'] == 1) {
                         souhaite des vacances du
                         <?= $usersHoliday3['holiday3_start'] ?> au <?= $usersHoliday3['holiday3_end'] ?>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday3['id'] ?>">
-                            <p class="d-flex flex-column form-floating m-2">
+                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
                                 <!-- Select option 1 ou 0 -->
                                 <select type="text" name="holiday3Request" class="form-control" id="holiday3Request">
                                     <label for="holiday3Request">Réponse</label>
@@ -270,7 +270,7 @@ if ($_SESSION['id'] == 1) {
                             Pour la raison suivante : <?= $usersDayOff1['day_off1_desc'] ?>
                         </p>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersDayOff1['id'] ?>">
-                            <p class="d-flex flex-column form-floating m-2">
+                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
                                 <!-- Selectionner option 1 ou 0 -->
                                 <select type="text" name="dayOff1Request" class="form-control" id="dayOff1Request">
                                     <label for="dayOff1Request">Réponse</label>
@@ -297,7 +297,7 @@ if ($_SESSION['id'] == 1) {
                         souhaite un repos à la date du
                         <?= $usersDayOff2['day_off2'] ?>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersDayOff2['id'] ?>">
-                            <p class="d-flex flex-column form-floating m-2">
+                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
                                 <!-- Selectionner option 1 ou 0 -->
                                 <select type="text" name="dayOff2Request" class="form-control" id="dayOff2Request">
                                     <label for="dayOff2Request">Réponse</label>
@@ -324,7 +324,7 @@ if ($_SESSION['id'] == 1) {
                         souhaite un repos à la date du
                         <?= $usersDayOff3['day_off3'] ?>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersDayOff3['id'] ?>">
-                            <p class="d-flex flex-column form-floating m-2">
+                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
                                 <!-- Selectionner option 1 ou 0 -->
                                 <select type="text" name="dayOff3Request" class="form-control" id="dayOff3Request">
                                     <label for="dayOff3Request">Réponse</label>
@@ -338,12 +338,6 @@ if ($_SESSION['id'] == 1) {
 
             <?php
                 }
-            }
-            ?>
-
-            <?php
-            if (!$data['day_off1'] && !$data['day_off2'] && !$data['day_off3']) {
-                echo ('<p>Aucune demande de repos</p>');
             }
             ?>
         </div>
@@ -1208,12 +1202,13 @@ if ($_SESSION['id'] == 1) {
         }
         ?>
 
-
         <button class="btn btn-md btn-dark p-2 m-3" type="submit">
             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDayOffBank">
                 Déclarer un jour supplémentaire
             </a>
         </button>
+
+
 
 
         <!-- Récapitulatif des demandes de RTT. -->
@@ -1302,6 +1297,7 @@ if ($_SESSION['id'] == 1) {
             }
             ?>
         </div>
+    </div>
 
     <!-- Absences. -->
     <div class="contract border rounded mt-3 p-3">
@@ -1373,8 +1369,6 @@ if ($_SESSION['id'] == 1) {
             <?php
         }
             ?>
-
-            </div>
 
             <?php
             if (!$data['user_absence']) {
