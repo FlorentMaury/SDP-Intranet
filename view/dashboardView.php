@@ -1193,9 +1193,9 @@ if ($_SESSION['id'] == 1) {
                         if ($data['day_off_response1'] == 0) {
                             echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
                         } else if ($data['day_off_response1'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Date validée !</p>';
                         } else if ($data['day_off_response1'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Date refusée.</p>';
                         }
                         ?>
                     </p>
@@ -1219,9 +1219,9 @@ if ($_SESSION['id'] == 1) {
                         if ($data['day_off_response2'] == 0) {
                             echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
                         } else if ($data['day_off_response2'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Date validée !</p>';
                         } else if ($data['day_off_response2'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Date refusée.</p>';
                         }
                         ?>
                     </p>
@@ -1245,9 +1245,9 @@ if ($_SESSION['id'] == 1) {
                         if ($data['day_off_response3'] == 0) {
                             echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
                         } else if ($data['day_off_response3'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Date validée !</p>';
                         } else if ($data['day_off_response3'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Date refusée.</p>';
                         }
                         ?>
                     </p>
