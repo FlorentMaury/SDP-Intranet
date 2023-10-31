@@ -12,14 +12,58 @@
     $holiday1Request = htmlspecialchars($_POST['holiday1Request']);
     $userId          = $_GET['id'];
 
+    if($holiday1Request == 1) {
+        $holidayRes = 'Acceptée';
+    } else if($holiday1Request == 2) {
+        $holidayRes = 'Refusée';
+    }
+
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
+    $holiday1Start = $user['holiday1_start'];
+    $holiday1End = $user['holiday1_end'];
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET holiday1_response = ? WHERE id = ?');
     $result = $req->execute([$holiday1Request, $userModifiedId]);
+
+                       // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Réponse à la demande de vacances | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
+                     du $holiday1Start au $holiday1End vient d'être $holidayRes.</p>
+                </body>
+            </html>";
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
+        $subject       = "Réponse à la demande de vacances | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du contenu en fonction des variables.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+
+        mail($to, $subject, $contentMessage, $headers);
 
     // Redirection.
     if($result) {
@@ -43,14 +87,58 @@
     $holiday2Request = htmlspecialchars($_POST['holiday2Request']);
     $userId          = $_GET['id'];
 
+    if($holiday2Request == 1) {
+        $holidayRes = 'Acceptée';
+    } else if($holiday2Request == 2) {
+        $holidayRes = 'Refusée';
+    }
+
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
+    $holiday2Start = $user['holiday2_start'];
+    $holiday2End = $user['holiday2_end'];
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET holiday2_response = ? WHERE id = ?');
     $result = $req->execute([$holiday2Request, $userModifiedId]);
+
+                // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Réponse à la demande de vacances | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
+                     du $holiday2Start au $holiday2End vient d'être $holidayRes.</p>
+                </body>
+            </html>";
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
+        $subject       = "Réponse à la demande de vacances | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du contenu en fonction des variables.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+
+        mail($to, $subject, $contentMessage, $headers);
 
     // Redirection.
     if($result) {
@@ -74,14 +162,58 @@
     $holiday3Request = htmlspecialchars($_POST['holiday3Request']);
     $userId          = $_GET['id'];
 
+    if($holiday3Request == 1) {
+        $holidayRes = 'Acceptée';
+    } else if($holiday3Request == 2) {
+        $holidayRes = 'Refusée';
+    }
+
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
+    $holiday3Start = $user['holiday3_start'];
+    $holiday3End = $user['holiday3_end'];
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET holiday3_response = ? WHERE id = ?');
     $result = $req->execute([$holiday3Request, $userModifiedId]);
+
+                // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Réponse à la demande de vacances | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
+                     du $holiday3Start au $holiday3End vient d'être $holidayRes.</p>
+                </body>
+            </html>";
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
+        $subject       = "Réponse à la demande de vacances | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du contenu en fonction des variables.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+
+        mail($to, $subject, $contentMessage, $headers);
 
     // Redirection.
     if($result) {
@@ -107,10 +239,25 @@
     $dayOff1Request = htmlspecialchars($_POST['dayOff1Request']);
     $userId          = $_GET['id'];
 
+    if($dayOff1Request == 1) {
+        $dayOffRes = 'Acceptée';
+    } else if($dayOff1Request == 2) {
+        $dayOffRes = 'Refusée';
+    }
+
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
+    $modifyDayOffRequest1 = $user['day_off1'];
 
     // Selection de la banque de repos.
     $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
@@ -125,6 +272,35 @@
 
     $req = $bdd->prepare('UPDATE user SET day_off_response1 = ? WHERE id = ?');
     $result = $req->execute([$dayOff1Request, $userModifiedId]);
+
+                   // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Réponse à la demande de journée de repos | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, la demande de repos de la part de $userName $userSurname 
+                    au $modifyDayOffRequest1 vient d'être $dayOffRes.</p>
+                </body>
+            </html>";
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
+        $subject       = "Réponse à la demande de repos | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+
+        mail($to, $subject, $contentMessage, $headers);
+
 
     // Redirection.
     if($result) {
@@ -148,10 +324,25 @@
     $dayOff2Request = htmlspecialchars($_POST['dayOff2Request']);
     $userId          = $_GET['id'];
 
+    if($dayOff2Request == 1) {
+        $dayOffRes = 'Acceptée';
+    } else if($dayOff2Request == 2) {
+        $dayOffRes = 'Refusée';
+    }
+
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
+    $modifyDayOffRequest2 = $user['day_off2'];
 
     // Selection de la banque de repos.
     $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
@@ -166,6 +357,34 @@
 
     $req = $bdd->prepare('UPDATE user SET day_off_response2 = ? WHERE id = ?');
     $result = $req->execute([$dayOff2Request, $userModifiedId]);
+
+                   // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Réponse à la demande de journée de repos | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, la demande de repos de la part de $userName $userSurname 
+                    au $modifyDayOffRequest2 vient d'être $dayOffRes.</p>
+                </body>
+            </html>";
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
+        $subject       = "Réponse à la demande de repos | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du conatenu en fonction des variables.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+
+        mail($to, $subject, $contentMessage, $headers);
 
     // Redirection.
     if($result) {
@@ -187,12 +406,27 @@
 
     // Variables.
     $dayOff3Request = htmlspecialchars($_POST['dayOff3Request']);
-    $userId          = $_GET['id'];
+    $userId         = $_GET['id'];
+
+    if($dayOff3Request == 1) {
+        $dayOffRes = 'Acceptée';
+    } else if($dayOff3Request == 2) {
+        $dayOffRes = 'Refusée';
+    }
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
+
+    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch();
+
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
+    $modifyDayOffRequest3 = $user['day_off3'];
 
     // Selection de la banque de repos.
     $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
@@ -208,6 +442,34 @@
     $req = $bdd->prepare('UPDATE user SET day_off_response3 = ? WHERE id = ?');
     $result = $req->execute([$dayOff3Request, $userModifiedId]);
 
+                           // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   = 
+            "<html>
+                <head>
+                    <title>Réponse à la demande de journée de repos | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, la demande de repos de la part de $userName $userSurname 
+                    au $modifyDayOffRequest3 vient d'être $dayOffRes.</p>
+                </body>
+            </html>";
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
+        $subject       = "Réponse à la demande de repos | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du contenu en fonction des variables.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+
+        mail($to, $subject, $contentMessage, $headers);
+
     // Redirection.
     if($result) {
         header('location: index.php?page=dashboard&holidayResponse=1');
@@ -217,5 +479,3 @@
         exit();
     }
 };
-
-?>

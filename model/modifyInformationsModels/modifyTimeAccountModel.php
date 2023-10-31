@@ -574,8 +574,8 @@ if(
                 </a>
             </body>
         </html>";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = 'pdana@free.fr';
+        $to       = 'contact@florent-maury.fr';
+        // $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
         
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -662,8 +662,8 @@ if(
                     </a>
                 </body>
             </html>";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = 'pdana@free.fr';
+        $to       = 'contact@florent-maury.fr';
+        // $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -749,8 +749,8 @@ if(
                     </a>
                 </body>
             </html>";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = 'pdana@free.fr';
+        $to       = 'contact@florent-maury.fr';
+        // $to          = 'pdana@free.fr';
         $subject     = "Demande de vacances | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -843,6 +843,10 @@ if(
     $r->execute([$userId]);
     $userSurname = $r->fetchColumn();
 
+    $r = $bdd->prepare("SELECT email FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userEmail = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET day_off_response1 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -932,6 +936,10 @@ if(
     $r->execute([$userId]);
     $userSurname = $r->fetchColumn();
 
+    $r = $bdd->prepare("SELECT email FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userEmail = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET day_off_response2 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -964,8 +972,8 @@ if(
                     </a>
                 </body>
             </html>";
-        // $to         = 'contact@florent-maury.fr';
-        $to         = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to         = 'pdana@free.fr';
         $subject    = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -1018,6 +1026,10 @@ if(
     $r->execute([$userId]);
     $userSurname = $r->fetchColumn();
 
+    $r = $bdd->prepare("SELECT email FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userEmail = $r->fetchColumn();
+
     // Modification des modifications dans la base de données.
     $req = $bdd->prepare('UPDATE user SET day_off_response3 = 0 WHERE id = ?');
     $req->execute([$userModifiedId]);
@@ -1050,8 +1062,8 @@ if(
                     </a>
                 </body>
             </html>";
-        // $to         = 'contact@florent-maury.fr';
-        $to            = 'pdana@free.fr';
+        $to         = 'contact@florent-maury.fr';
+        // $to            = 'pdana@free.fr';
         $subject       = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.

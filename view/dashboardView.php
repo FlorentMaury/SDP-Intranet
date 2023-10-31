@@ -1611,8 +1611,11 @@ if ($_SESSION['id'] == 1) {
         } else if (!$data['holiday1_start'] && !$data['holiday2_start'] && !$data['holiday3_start']) {
             echo ('<p>Aucune demande de congés</p>');
         }
+        ?>
 
+        </div>
 
+        <?php
         if (!$data['holiday1_start']) {
         ?>
             <button class="btn btn-md btn-danger p-2 m-3" type="submit">
@@ -1640,7 +1643,7 @@ if ($_SESSION['id'] == 1) {
         <?php
         }
         ?>
-        </div>
+
     </div>
 </div>
 
