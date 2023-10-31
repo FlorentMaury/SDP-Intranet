@@ -113,7 +113,18 @@ if(isset($_GET['dayOff1Mail'], $_GET['id'])) {
     $stmt->execute([$userId]);
     $userModifiedId = $stmt->fetchColumn();
 
+    // Selection de la banque de repos.
+    $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousDaysOffBank = $r->fetchColumn();
+
     if($userModifiedId) {
+
+        if($dayOff1Mail == '1') {
+            $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
+            $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
+        }
+
         // Modification de la réponse de l'utilisateur dans la base de données.
         $stmt = $bdd->prepare('UPDATE user SET day_off_response1 = ? WHERE id = ?');
         $result = $stmt->execute([$dayOff1Mail, $userModifiedId]);
@@ -145,7 +156,18 @@ if(isset($_GET['dayOff2Mail'], $_GET['id'])) {
     $stmt->execute([$userId]);
     $userModifiedId = $stmt->fetchColumn();
 
+        // Selection de la banque de repos.
+    $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousDaysOffBank = $r->fetchColumn();
+
     if($userModifiedId) {
+
+        if($dayOff2Mail == '1') {
+            $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
+            $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
+        }
+
         // Modification de la réponse de l'utilisateur dans la base de données.
         $stmt = $bdd->prepare('UPDATE user SET day_off_response2 = ? WHERE id = ?');
         $result = $stmt->execute([$dayOff2Mail, $userModifiedId]);
@@ -169,7 +191,7 @@ if(isset($_GET['dayOff3Mail'], $_GET['id'])) {
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $dayOff1Mail  = htmlspecialchars($_GET['dayOff3Mail']);
+    $dayOff3Mail  = htmlspecialchars($_GET['dayOff3Mail']);
     $userId          = $_GET['id'];
 
     // Vérification de l'existence de l'utilisateur.
@@ -177,7 +199,18 @@ if(isset($_GET['dayOff3Mail'], $_GET['id'])) {
     $stmt->execute([$userId]);
     $userModifiedId = $stmt->fetchColumn();
 
+    // Selection de la banque de repos.
+    $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousDaysOffBank = $r->fetchColumn();
+
     if($userModifiedId) {
+
+        if($dayOff3Mail == '1') {
+            $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
+            $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
+        }
+
         // Modification de la réponse de l'utilisateur dans la base de données.
         $stmt = $bdd->prepare('UPDATE user SET day_off_response3 = ? WHERE id = ?');
         $result = $stmt->execute([$dayOff3Mail, $userModifiedId]);
