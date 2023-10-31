@@ -131,7 +131,7 @@ if(
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-        // Personnalisation du conatenu en fonction des variables.
+        // Personnalisation du contenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
@@ -237,7 +237,7 @@ if(
         // Retour à la ligne en cas de dépassement des 70 caractères.
         $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-        // Personnalisation du conatenu en fonction des variables.
+        // Personnalisation du contenu en fonction des variables.
         $header = [
             "Name" => $userName
         ];
@@ -1087,6 +1087,230 @@ if(
         exit();
     };
 };
+
+
+// Vérification du formulaire d'une première absence plannifiée.
+if(
+    !empty($_POST['plannedUserAbsenceInfo']) &&
+    !empty($_POST['plannedUserAbsenceDate']) &&
+    isset($_FILES['plannedMedicalJustification']) 
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyUserAbsenceInfo = htmlspecialchars($_POST['plannedUserAbsenceInfo']);
+    $modifyUserAbsenceDate = htmlspecialchars($_POST['plannedUserAbsenceDate']);
+    $userId                = $_SESSION['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Selection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousUserAbsences = $r->fetchColumn();
+
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
+    // Document de l'arrêt maladie.
+    $plannedMedicalJustificationName    = $_FILES['plannedMedicalJustification']['name'];
+    $plannedMedicalJustificationTmpName = $_FILES['plannedMedicalJustification']['tmp_name'];
+    $plannedMedicalJustificationSize    = $_FILES['plannedMedicalJustification']['size'];
+    $plannedMedicalJustificationError   = $_FILES['plannedMedicalJustification']['error'];
+
+    $totalsOfAbsences = floatval($modifyUserAbsenceInfo) + floatval($previousUserAbsences);
+
+    // Récupérer l'extension des images.
+    $tabExtension = explode('.', $plannedMedicalJustificationName);
+
+    // Mise en minuscule de cette extendion.
+    $extension = strtolower(end($tabExtension));
+
+    //Tableau des extensions que l'on accepte pour les images.
+    $extensions = ['jpg', 'png', 'jpeg', 'webp', 'pdf', 'doc', 'docx', 'odt', 'txt', 'rtf'];
+    //Taille max que l'on accepte pour les images.
+    $maxSize = 50000000;
+
+    // Vérification de l'extension et de la taille du document.
+    if(in_array($extension, $extensions) && $plannedMedicalJustificationSize <= $maxSize && $plannedMedicalJustificationError == 0){
+        $uniqId = uniqid('', true);
+        // Création d'un uniqid
+        $medicalJustif = $uniqId.".".$extension;
+        // Enregistrement de l'image dans le dossier 'illnessJustif'.
+        move_uploaded_file($plannedMedicalJustificationTmpName, './public/assets/plannedIllnessJustif1/'.$medicalJustif);
+
+        // Modification des modifications dans la base de données.
+        $req = $bdd->prepare('UPDATE user SET planned_illness_1 = ? WHERE id = ?');
+        $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+        // Ajout de toutes les informations si le document a été validé.
+        $req = $bdd->prepare('UPDATE user SET planned_illness_1_justif = ? WHERE id = ?');
+        $req->execute([$medicalJustif, $userModifiedId]);
+
+        // Ajout de la date de l'arrêt.
+        $req = $bdd->prepare('UPDATE user SET planned_illness_1_date = ? WHERE id = ?');
+        $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+
+                // FONCTION MAILTO.
+
+            // Variables.
+            $userMessage   = "Bonjour, une absence plannifié vient d'être déclaré de la part de $userName $userSurname en date du $modifyUserAbsenceDate.";
+            // $to         = 'contact@florent-maury.fr';
+            $to            = "pdana@free.fr,mrisler@sdp-paris.com";
+            $subject       = "Absence prévue | $userName $userSurname";
+
+            // Retour à la ligne en cas de dépassement des 70 caractères.
+            $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+            // Personnalisation du contenu en fonction des variables.
+            $header = [
+                "Name" => $userName
+            ];
+
+            mail($to, $subject, $contentMessage, $header);
+
+        // Redirection avec message de validation.
+        if($result) {
+            header('location: index.php?page=dashboard&timeBankModification=1');
+            exit();
+        } else {
+            header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ce retard.');
+            exit();
+        }
+    } else {
+        // Redirection.
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
+    };
+};
+
+// Vérification du formulaire d'une seconde absence plannifiée.
+if(
+    !empty($_POST['plannedUserAbsenceInfo2']) &&
+    !empty($_POST['plannedUserAbsenceDate2']) &&
+    isset($_FILES['plannedMedicalJustification2']) 
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyUserAbsenceInfo = htmlspecialchars($_POST['plannedUserAbsenceInfo2']);
+    $modifyUserAbsenceDate = htmlspecialchars($_POST['plannedUserAbsenceDate2']);
+    $userId                = $_SESSION['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Selection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $previousUserAbsences = $r->fetchColumn();
+
+    // Gestion des variables.
+    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userName = $r->fetchColumn();
+
+    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userSurname = $r->fetchColumn();
+
+    // Document de l'arrêt maladie.
+    $plannedMedicalJustificationName    = $_FILES['plannedMedicalJustification2']['name'];
+    $plannedMedicalJustificationTmpName = $_FILES['plannedMedicalJustification2']['tmp_name'];
+    $plannedMedicalJustificationSize    = $_FILES['plannedMedicalJustification2']['size'];
+    $plannedMedicalJustificationError   = $_FILES['plannedMedicalJustification2']['error'];
+
+    $totalsOfAbsences = floatval($modifyUserAbsenceInfo) + floatval($previousUserAbsences);
+
+    // Récupérer l'extension des images.
+    $tabExtension = explode('.', $plannedMedicalJustificationName);
+
+    // Mise en minuscule de cette extendion.
+    $extension = strtolower(end($tabExtension));
+
+    //Tableau des extensions que l'on accepte pour les images.
+    $extensions = ['jpg', 'png', 'jpeg', 'webp', 'pdf', 'doc', 'docx', 'odt', 'txt', 'rtf'];
+    //Taille max que l'on accepte pour les images.
+    $maxSize = 50000000;
+
+    // Vérification de l'extension et de la taille du document.
+    if(in_array($extension, $extensions) && $plannedMedicalJustificationSize <= $maxSize && $plannedMedicalJustificationError == 0){
+        $uniqId = uniqid('', true);
+        // Création d'un uniqid
+        $medicalJustif = $uniqId.".".$extension;
+        // Enregistrement de l'image dans le dossier 'illnessJustif'.
+        move_uploaded_file($plannedMedicalJustificationTmpName, './public/assets/plannedIllnessJustif2/'.$medicalJustif);
+
+        // Modification des modifications dans la base de données.
+        $req = $bdd->prepare('UPDATE user SET planned_illness_2 = ? WHERE id = ?');
+        $req->execute([$totalsOfAbsences, $userModifiedId]);
+
+        // Ajout de toutes les informations si le document a été validé.
+        $req = $bdd->prepare('UPDATE user SET planned_illness_2_justif = ? WHERE id = ?');
+        $req->execute([$medicalJustif, $userModifiedId]);
+
+        // Ajout de la date de l'arrêt.
+        $req = $bdd->prepare('UPDATE user SET planned_illness_2_date = ? WHERE id = ?');
+        $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
+
+                // FONCTION MAILTO.
+
+            // Variables.
+            $userMessage   = "Bonjour, une absence plannifié vient d'être déclaré de la part de $userName $userSurname en date du $modifyUserAbsenceDate.";
+            // $to         = 'contact@florent-maury.fr';
+            $to            = "pdana@free.fr,mrisler@sdp-paris.com";
+            $subject       = "Absence prévue | $userName $userSurname";
+
+            // Retour à la ligne en cas de dépassement des 70 caractères.
+            $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+            // Personnalisation du contenu en fonction des variables.
+            $header = [
+                "Name" => $userName
+            ];
+
+            mail($to, $subject, $contentMessage, $header);
+
+        // Redirection avec message de validation.
+        if($result) {
+            header('location: index.php?page=dashboard&timeBankModification=1');
+            exit();
+        } else {
+            header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ce retard.');
+            exit();
+        }
+    } else {
+        // Redirection.
+        header('location: index.php?page=dashboard&errorMod=1&messageMod=Le document doit être au format  \'jpg\', \'png\', \'jpeg\', \'webp\', \'pdf\', \'doc\', \'docx\', \'odt\', \'txt\' ou \'rtf\'.');
+        exit();
+    };
+};
+
+
+
+
+
+
+
+
+
+
+
 
 
 

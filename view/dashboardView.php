@@ -550,7 +550,7 @@ if ($_SESSION['id'] == 1) {
 
                 <!-- Curriculum vitæ -->
                 <div class="userInfosInsuranceCard">
-                    <p> CV:
+                    <p class="text-center"> CV:
                         <img src="<?= './public/assets/curriculumVitae/' . $data['curriculum_vitae'] ?>" alt="Curriculum vitæ à télécharger">
                         <button class="btn btn-md btn-dark mt-1 p-2" type="submit">
                             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyCurriculumVitae">
@@ -1172,8 +1172,8 @@ if ($_SESSION['id'] == 1) {
 
         <p>Jours supplémentaire effectué: <?= $data['day_off_bank'] ?> jours</p>
 
-            <!-- Récapitulatif des demandes de RTT. -->
-            <div class="userExpGrid d-flex flex-column flex-md-row">
+        <!-- Récapitulatif des demandes de RTT. -->
+        <div class="userExpGrid d-flex flex-column flex-md-row">
 
             <?php
             if ($data['day_off1']) {
@@ -1257,7 +1257,7 @@ if ($_SESSION['id'] == 1) {
                 echo ('<p>Aucune demande de repos</p>');
             }
             ?>
-            </div>
+        </div>
 
         <?php
         if (!$data['day_off1'] && $data['day_off_bank'] >= 1) {
@@ -1366,6 +1366,14 @@ if ($_SESSION['id'] == 1) {
         }
             ?>
 
+            <!-- <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAddAbsence">
+                Ajouter une absence
+            </a>
+        </button> -->
+            </div>
+
+
             <?php
             if (!$data['user_absence']) {
             ?>
@@ -1402,250 +1410,240 @@ if ($_SESSION['id'] == 1) {
             }
             ?>
 
-            <!-- <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAddAbsence">
-                Ajouter une absence
-            </a>
-        </button> -->
 
-    </div>
+            <!-- Absences plannifiées. -->
+            <div class="contract border rounded mt-3 p-3">
+                <h4 class="my-3">Absences plannifiée</h4>
 
+                <!-- Arrêt. -->
+                <?php
+                if (!$data['planned_illness_1']) {
+                ?>
 
-        <!-- Absences. -->
-        <div class="contract border rounded mt-3 p-3">
-        <h4 class="my-3">Absences plannifiée</h4>
+                    <p>Aucune absence n'est plannifiée</p>
 
-        <!-- Arrêt. -->
-        <?php
-        if (!$data['user_absence']) {
-        ?>
+                <?php
+                }
+                if ($data['planned_illness_1']) {
+                ?>
 
-            <p>Aucune absence n'est plannifiée</p>
+                    <div class="userExpGrid d-flex flex-column flex-md-row">
 
-        <?php
-        }
-        if ($data['user_absence']) {
-        ?>
+                        <div class="expFirstItem border rounded m-1 p-3">
+                            <p>Absence prévue : <?= $data['planned_illness_1'] ?> jours</p>
+                            <p class="userInfosDiplomaCard">
+                                <img src="<?= './public/assets/plannedIllnessJustif1/' . $data['planned_illness_1_justif'] ?>" alt="Absence prévue">
+                                <a class="text-decoration-none text-white p-2" href="<?= './public/assets/plannedIllnessJustif1/' . $data['planned_illness_1_justif'] ?>" download="<?= 'AbsencePrevue-' . $data['name'] . $data['surname'] ?>">
+                                    <button type="button" href="" class="btn btn-dark me-2">
+                                        Télécharger
+                                    </button>
+                                </a>
+                            </p>
+                            <p>Date de l'absence prévue : <?= $data['planned_illness_1_date'] ?></p>
+                        </div>
 
-            <div class="userExpGrid d-flex flex-column flex-md-row">
+                    <?php
+                }
+                if ($data['planned_illness_2']) {
+                    ?>
 
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <p>Arrêt de travail : <?= $data['user_absence'] ?> jours</p>
-                    <p class="userInfosDiplomaCard">
-                        <img src="<?= './public/assets/illnessJustif/' . $data['illness_justif'] ?>" alt="Arrêt de travail">
-                        <a class="text-decoration-none text-white p-2" href="<?= './public/assets/illnessJustif/' . $data['illness_justif'] ?>" download="<?= 'ArrêtDeTravail-' . $data['name'] . $data['surname'] ?>">
-                            <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger
-                            </button>
-                        </a>
-                    </p>
-                    <p>Date de l'arrêt de travail : <?= $data['illness_date'] ?></p>
-                </div>
+                        <div class="expFirstItem border rounded m-1 p-3">
+                            <p>Absence prévue : <?= $data['planned_illness_2'] ?> jours</p>
+                            <p class="userInfosDiplomaCard">
+                                <img src="<?= './public/assets/plannedIllnessJustif2/' . $data['planned_illness_2_justif'] ?>" alt="Absence prévue">
+                                <a class="text-decoration-none text-white p-2" href="<?= './public/assets/plannedIllnessJustif2/' . $data['planned_illness_2_justif'] ?>" download="<?= 'AbsencePrevue-' . $data['name'] . $data['surname'] ?>">
+                                    <button type="button" href="" class="btn btn-dark me-2">
+                                        Télécharger
+                                    </button>
+                                </a>
+                            </p>
+                            <p>Date de l'absence prévue : <?= $data['planned_illness_2_date'] ?></p>
+                        </div>
 
-            <?php
-        }
-        if ($data['user_absence2']) {
-            ?>
+                    <?php
+                }
+                if ($data['planned_illness_3']) {
+                    ?>
 
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <p>Arrêt de travail : <?= $data['user_absence2'] ?> jours</p>
-                    <p class="userInfosDiplomaCard">
-                        <img src="<?= './public/assets/illnessJustif2/' . $data['illness_justif2'] ?>" alt="Arrêt de travail">
-                        <a class="text-decoration-none text-white p-2" href="<?= './public/assets/illnessJustif2/' . $data['illness_justif2'] ?>" download="<?= 'ArrêtDeTravail-' . $data['name'] . $data['surname'] ?>">
-                            <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger
-                            </button>
-                        </a>
-                    </p>
-                    <p>Date de l'arrêt de travail : <?= $data['illness_date2'] ?></p>
-                </div>
+                        <div class="expFirstItem border rounded m-1 p-3">
+                            <p>Absence prévue : <?= $data['planned_illness_3'] ?> jours</p>
+                            <p class="userInfosDiplomaCard">
+                                <img src="<?= './public/assets/plannedIllnessJustif3/' . $data['planned_illness_3_justif'] ?>" alt="Absence prévue">
+                                <a class="text-decoration-none text-white p-2" href="<?= './public/assets/plannedIllnessJustif3/' . $data['planned_illness_3_justif'] ?>" download="<?= 'AbsencePrevue-' . $data['name'] . $data['surname'] ?>">
+                                    <button type="button" href="" class="btn btn-dark me-2">
+                                        Télécharger
+                                    </button>
+                                </a>
+                            </p>
+                            <p>Date de l'absence prévue : <?= $data['planned_illness_3_date'] ?></p>
+                        </div>
 
-            <?php
-        }
-        if ($data['user_absence3']) {
-            ?>
+                    <?php
+                }
+                    ?>
 
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <p>Arrêt de travail : <?= $data['user_absence3'] ?> jours</p>
-                    <p class="userInfosDiplomaCard">
-                        <img src="<?= './public/assets/illnessJustif3/' . $data['illness_justif3'] ?>" alt="Arrêt de travail">
-                        <a class="text-decoration-none text-white p-2" href="<?= './public/assets/illnessJustif3/' . $data['illness_justif3'] ?>" download="<?= 'ArrêtDeTravail-' . $data['name'] . $data['surname'] ?>">
-                            <button type="button" href="" class="btn btn-dark me-2">
-                                Télécharger
-                            </button>
-                        </a>
-                    </p>
-                    <p>Date de l'arrêt de travail : <?= $data['illness_date3'] ?></p>
-                </div>
+                    </div>
 
-            <?php
-        }
-            ?>
+                    <?php
+                    if (!$data['planned_illness_1']) {
+                    ?>
+                        <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo">
+                                Plannifier une absence
+                            </a>
+                        </button>
+                    <?php
+                    } else if ($data['planned_illness_1']) {
+                    ?>
+                        <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo2">
+                                Plannifier une absence
+                            </a>
+                        </button>
+                    <?php
+                    } else if ($data['planned_illness_2']) {
+                    ?>
+                        <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo3">
+                                Plannifier une absence
+                            </a>
+                        </button>
+                    <?php
+                    } else if ($data['planned_illness_3']) {
+                    ?>
+                        <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo4">
+                                Plannifier une absence
+                            </a>
+                        </button>
+                    <?php
+                    }
+                    ?>
 
-            <?php
-            if (!$data['user_absence']) {
-            ?>
-                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo">
-                        Plannifier une absence
-                    </a>
-                </button>
-            <?php
-            } else if ($data['user_absence']) {
-            ?>
-                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo2">
-                        Plannifier une absence
-                    </a>
-                </button>
-            <?php
-            } else if ($data['user_absence2']) {
-            ?>
-                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo3">
-                        Plannifier une absence
-                    </a>
-                </button>
-            <?php
-            } else if ($data['user_absence3']) {
-            ?>
-                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo4">
-                        Plannifier une absence
-                    </a>
-                </button>
-            <?php
-            }
-            ?>
+                    <!-- Vacances. -->
+                    <div class="contract border rounded mt-3 p-3">
+                        <h4 class="my-3">Congés</h4>
 
-            <!-- <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyAddAbsence">
-                Ajouter une absence
-            </a>
-        </button> -->
-
-    </div>
-    
-    <!-- Vacances. -->
-    <div class="contract border rounded mt-3 p-3">
-        <h4 class="my-3">Congés</h4>
-
-        <!-- Vacances. -->
-        <?php
-        if ($data['holiday1_start']) {
-        ?>
-
-            <div class="userExpGrid d-flex flex-column flex-md-row">
-
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light mb-4">
-                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday1=<?= $data['holiday1_start'] ?>' type="button" class="btn btn-infos">
-                            Supprimer la demande
-                        </a>
-                    </button>
-                    <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
-                    <p>
+                        <!-- Vacances. -->
                         <?php
-                        if ($data['holiday1_response'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if ($data['holiday1_response'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if ($data['holiday1_response'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                        }
+                        if ($data['holiday1_start']) {
                         ?>
-                    </p>
-                </div>
 
-            <?php
-        }
-        if ($data['holiday2_start']) {
-            ?>
+                            <div class="userExpGrid d-flex flex-column flex-md-row">
 
-                <div class="expSecondItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light mb-4">
-                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday2=<?= $data['holiday2_start'] ?>' type="button" class="btn btn-infos">
-                            Supprimer la demande
-                        </a>
-                    </button>
-                    <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
-                    <p>
-                        <?php
-                        if ($data['holiday2_response'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if ($data['holiday2_response'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if ($data['holiday2_response'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                <div class="expFirstItem border rounded m-1 p-3">
+                                    <button class="btn btn-md btn-light mb-4">
+                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday1=<?= $data['holiday1_start'] ?>' type="button" class="btn btn-infos">
+                                            Supprimer la demande
+                                        </a>
+                                    </button>
+                                    <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
+                                    <p>
+                                        <?php
+                                        if ($data['holiday1_response'] == 0) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                        } else if ($data['holiday1_response'] == 1) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                        } else if ($data['holiday1_response'] == 2) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+
+                            <?php
                         }
-                        ?>
-                    </p>
-                </div>
+                        if ($data['holiday2_start']) {
+                            ?>
 
-            <?php
-        }
-        if ($data['holiday3_start']) {
-            ?>
+                                <div class="expSecondItem border rounded m-1 p-3">
+                                    <button class="btn btn-md btn-light mb-4">
+                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday2=<?= $data['holiday2_start'] ?>' type="button" class="btn btn-infos">
+                                            Supprimer la demande
+                                        </a>
+                                    </button>
+                                    <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
+                                    <p>
+                                        <?php
+                                        if ($data['holiday2_response'] == 0) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                        } else if ($data['holiday2_response'] == 1) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                        } else if ($data['holiday2_response'] == 2) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
 
-                <div class="expThirdItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light mb-4">
-                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday3=<?= $data['holiday3_start'] ?>' type="button" class="btn btn-infos">
-                            Supprimer la demande
-                        </a>
-                    </button>
-                    <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
-                    <p>
-                        <?php
-                        if ($data['holiday3_response'] == 0) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if ($data['holiday3_response'] == 1) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if ($data['holiday3_response'] == 2) {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            <?php
                         }
-                        ?>
-                    </p>
-                </div>
+                        if ($data['holiday3_start']) {
+                            ?>
 
-            <?php
-        } else if (!$data['holiday1_start'] && !$data['holiday2_start'] && !$data['holiday3_start']) {
-            echo ('<p>Aucune demande de congés</p>');
-        }
-        ?>
+                                <div class="expThirdItem border rounded m-1 p-3">
+                                    <button class="btn btn-md btn-light mb-4">
+                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday3=<?= $data['holiday3_start'] ?>' type="button" class="btn btn-infos">
+                                            Supprimer la demande
+                                        </a>
+                                    </button>
+                                    <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
+                                    <p>
+                                        <?php
+                                        if ($data['holiday3_response'] == 0) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                        } else if ($data['holiday3_response'] == 1) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                        } else if ($data['holiday3_response'] == 2) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
 
+                            <?php
+                        } else if (!$data['holiday1_start'] && !$data['holiday2_start'] && !$data['holiday3_start']) {
+                            echo ('<p>Aucune demande de congés</p>');
+                        }
+                            ?>
+
+                            </div>
+
+                            <?php
+                            if (!$data['holiday1_start']) {
+                            ?>
+                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest1">
+                                        Faire une demande de vacances
+                                    </a>
+                                </button>
+                            <?php
+                            } else if ($data['holiday1_start'] && !$data['holiday2_start']) {
+                            ?>
+                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
+                                        Faire une demande de vacances
+                                    </a>
+                                </button>
+
+                            <?php
+                            } else if ($data['holiday2_start']) {
+                            ?>
+                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
+                                        Faire une demande de vacances
+                                    </a>
+                                </button>
+                            <?php
+                            }
+                            ?>
+
+                    </div>
+            </div>
         </div>
-
-        <?php
-        if (!$data['holiday1_start']) {
-        ?>
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest1">
-                    Faire une demande de vacances
-                </a>
-            </button>
-        <?php
-        } else if ($data['holiday1_start'] && !$data['holiday2_start']) {
-        ?>
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
-                    Faire une demande de vacances
-                </a>
-            </button>
-
-        <?php
-        } else if ($data['holiday2_start']) {
-        ?>
-            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
-                    Faire une demande de vacances
-                </a>
-            </button>
-        <?php
-        }
-        ?>
-
     </div>
 </div>
+
 
 
 <!-- Javascript dynamique. -->
