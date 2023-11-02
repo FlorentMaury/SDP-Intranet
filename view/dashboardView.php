@@ -574,7 +574,7 @@ if ($_SESSION['id'] == 1) {
                     </button>
                 </div>
 
-                <div class="userInfosInsuranceCards">
+                <div class="userInfosInsuranceCards d-flex flex-column flex-sm-row">
                     <!-- Carte vitale de face -->
                     <p class="userInfosInsuranceCard">
                         <img src="<?= './public/assets/insuranceCardFace/' . $data['insurance_card_face'] ?>" alt="Carte vitale de face à télécharger">
@@ -610,7 +610,7 @@ if ($_SESSION['id'] == 1) {
                     </button>
                 </div>
 
-                <div class="userInfosIdCards">
+                <div class="userInfosIdCards d-flex flex-column flex-sm-row">
                     <!-- Carte d'identité de face -->
                     <p class="userInfosIdCard">
                         <img src="<?= './public/assets/idCardFace/' . $data['id_card_face'] ?>" alt="Carte d'identité de face à télécharger">

@@ -161,7 +161,7 @@ if (isset($_GET['id'])) {
                                         } ?>
             </p>
         </div>
-        <div class="userInfosInsuranceCards">
+        <div class="userInfosInsuranceCards d-flex flex-column flex-sm-row">
             <p class="userInfosInsuranceCard">
                 <img src="<?= './public/assets/insuranceCardFace/' . $data['insurance_card_face'] ?>" alt="Carte vitale recto à télécharger">
                 <a class="text-decoration-none text-white p-2" href="<?= './public/assets/insuranceCardFace/' . $data['insurance_card_face'] ?>" download="<?= 'CarteVitaleRecto-' . $data['name'] . $data['surname'] ?>">
@@ -187,7 +187,7 @@ if (isset($_GET['id'])) {
                                             } ?>
             </p>
         </div>
-        <div class="userInfosIdCards">
+        <div class="userInfosIdCards d-flex flex-column flex-sm-row">
             <p class="userInfosIdCard">
                 <img src="<?= './public/assets/idCardFace/' . $data['id_card_face'] ?>" alt="Carte d'identité recto à télécharger">
                 <a class="text-decoration-none text-white p-2" href="<?= './public/assets/idCardFace/' . $data['id_card_face'] ?>" download="<?= 'CarteIdentitéRecto-' . $data['name'] . $data['surname'] ?>">
