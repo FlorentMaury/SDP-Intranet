@@ -1525,6 +1525,9 @@ if ($_SESSION['id'] == 1) {
                         <h4 class="my-3">Congés</h4>
 
                         <!-- Vacances. -->
+
+                        <p>Nombre de jours de vacances restants : <?= $data['holidays_total'] ?> jours.</p>
+
                         <?php
                         if ($data['holiday1_start']) {
                         ?>
