@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 23 oct. 2023 à 12:39
+-- Généré le : jeu. 02 nov. 2023 à 11:09
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -35,18 +35,18 @@ CREATE TABLE `user` (
   `email` text NOT NULL,
   `secret` text NOT NULL,
   `password` text NOT NULL,
-  `birth_date` date NOT NULL,
-  `sex` varchar(5) NOT NULL,
-  `phone_number` varchar(10) NOT NULL,
-  `birth_city` text NOT NULL,
-  `birth_country` text NOT NULL,
-  `current_street_number` text NOT NULL,
-  `current_city_street` text NOT NULL,
-  `current_city` text NOT NULL,
-  `current_zip_code` text NOT NULL,
-  `current_country` text NOT NULL,
-  `id_number` varchar(30) NOT NULL,
-  `social_security_number` varchar(30) NOT NULL,
+  `birth_date` date DEFAULT NULL,
+  `sex` varchar(5) DEFAULT NULL,
+  `phone_number` varchar(10) DEFAULT NULL,
+  `birth_city` text DEFAULT NULL,
+  `birth_country` text DEFAULT NULL,
+  `current_street_number` text DEFAULT NULL,
+  `current_city_street` text DEFAULT NULL,
+  `current_city` text DEFAULT NULL,
+  `current_zip_code` text DEFAULT NULL,
+  `current_country` text DEFAULT NULL,
+  `id_number` varchar(30) DEFAULT NULL,
+  `social_security_number` varchar(30) DEFAULT NULL,
   `creation_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `profile_picture` varchar(255) NOT NULL,
   `curriculum_vitae` varchar(255) NOT NULL,
@@ -81,16 +81,26 @@ CREATE TABLE `user` (
   `contract_type` text NOT NULL,
   `contract_start` date DEFAULT NULL,
   `contract_end` date DEFAULT NULL,
-  `contract_level` varchar(10) NOT NULL,
-  `contract_coef` varchar(10) NOT NULL,
-  `contract_remuneration` float NOT NULL,
-  `contract_insurance` varchar(10) NOT NULL,
-  `contract_insurance_number` varchar(30) NOT NULL,
-  `contract_weekly` varchar(10) NOT NULL,
-  `contract_transports` varchar(10) NOT NULL,
+  `contract_level` varchar(10) DEFAULT NULL,
+  `contract_coef` varchar(10) DEFAULT NULL,
+  `contract_remuneration` float DEFAULT NULL,
+  `contract_insurance` varchar(10) DEFAULT NULL,
+  `contract_insurance_number` varchar(30) DEFAULT NULL,
+  `contract_weekly` varchar(10) DEFAULT NULL,
+  `contract_transports` varchar(10) DEFAULT NULL,
   `user_absence` float DEFAULT 0,
   `user_delay` float DEFAULT 0,
   `user_extra_time` float NOT NULL DEFAULT 0,
+  `day_off_bank` varchar(255) NOT NULL DEFAULT '0',
+  `day_off_response1` varchar(2) NOT NULL DEFAULT '0',
+  `day_off1` text DEFAULT NULL,
+  `day_off1_desc` text NOT NULL,
+  `day_off_response2` varchar(2) NOT NULL DEFAULT '0',
+  `day_off2` date DEFAULT NULL,
+  `day_off2_desc` text NOT NULL,
+  `day_off_response3` varchar(2) NOT NULL DEFAULT '0',
+  `day_off3` date DEFAULT NULL,
+  `day_off3_desc` text NOT NULL,
   `illness_justif` text NOT NULL,
   `illness_date` date DEFAULT NULL,
   `user_absence2` float NOT NULL,
@@ -102,6 +112,16 @@ CREATE TABLE `user` (
   `user_absence4` float NOT NULL,
   `illness_justif4` text NOT NULL,
   `illness_date4` date DEFAULT NULL,
+  `planned_illness_1` float NOT NULL,
+  `planned_illness_1_date` date DEFAULT NULL,
+  `planned_illness_1_justif` text NOT NULL,
+  `planned_illness_2` float NOT NULL,
+  `planned_illness_2_date` date DEFAULT NULL,
+  `planned_illness_2_justif` text NOT NULL,
+  `planned_illness_3` float NOT NULL,
+  `planned_illness_3_date` date DEFAULT NULL,
+  `planned_illness_3_justif` text NOT NULL,
+  `holidays_total` tinyint(4) NOT NULL DEFAULT 25,
   `holiday1_response` varchar(2) NOT NULL,
   `holiday1_start` date DEFAULT NULL,
   `holiday1_end` date DEFAULT NULL,
@@ -117,10 +137,10 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `active`, `name`, `surname`, `email`, `secret`, `password`, `birth_date`, `sex`, `phone_number`, `birth_city`, `birth_country`, `current_street_number`, `current_city_street`, `current_city`, `current_zip_code`, `current_country`, `id_number`, `social_security_number`, `creation_date`, `profile_picture`, `curriculum_vitae`, `insurance_card_face`, `insurance_card_back`, `id_card_face`, `id_card_back`, `school_1`, `school_1_start`, `school_1_end`, `school_1_doc`, `school_2`, `school_2_start`, `school_2_end`, `school_2_doc`, `school_3`, `school_3_start`, `school_3_end`, `school_3_doc`, `job_1`, `job_1_start`, `job_1_end`, `job_1_exp`, `job_2`, `job_2_start`, `job_2_end`, `job_2_exp`, `job_3`, `job_3_start`, `job_3_end`, `job_3_exp`, `contract_type`, `contract_start`, `contract_end`, `contract_level`, `contract_coef`, `contract_remuneration`, `contract_insurance`, `contract_insurance_number`, `contract_weekly`, `contract_transports`, `user_absence`, `user_delay`, `user_extra_time`, `illness_justif`, `illness_date`, `user_absence2`, `illness_justif2`, `illness_date2`, `user_absence3`, `illness_justif3`, `illness_date3`, `user_absence4`, `illness_justif4`, `illness_date4`, `holiday1_response`, `holiday1_start`, `holiday1_end`, `holiday2_response`, `holiday2_start`, `holiday2_end`, `holiday3_response`, `holiday3_start`, `holiday3_end`) VALUES
-(1, '1', 'Flo', 'Maury', 'e@e.ee', 'bfd53533fbd80993fe5a6d80c7fc2675fdb8a6d91695905527', 'zk32a253b835f3ac4fe27137d4a142440e6ba36620c8345', '1994-06-03', 'Homme', '0612121212', 'Londres', 'Royaume_Uni', '18', 'Rue Saint Antoine', 'Paris', '75004', 'France', '599454644', '1949494052560', '2023-09-28 12:52:07', '', '65364d56418e57.05596546.jpg', '653646fc128324.82613172.webp', '65364704956a58.15773233.webp', '6536470d6bd233.72763459.webp', '65364716a9e7a7.55391851.webp', 'Cloud Campus', '2023-09-01', '2025-09-01', '653646ced86828.36815518.jpeg', 'Believemy', '2021-12-01', '2023-10-25', '653646db7d4723.31422210.jpeg', '', NULL, NULL, '', 'SDP', '2023-09-25', '2024-10-01', 'Lorem ipsum.', 'Mairie de Paris', '2020-05-01', '2023-10-26', 'Lorem ipsum.', 'Lorem', '2023-10-13', '2023-10-27', 'Lorem Ipsum.', 'CDI', '2023-10-02', '2023-11-05', '', '', 13, '', '', '35', '', 0, 0.25, 0, '', NULL, 0, '', NULL, 0, '', NULL, 0, '', NULL, '0', '2023-10-02', '2023-10-29', '', NULL, NULL, '', NULL, NULL),
-(20, '0', 'John', 'Doe', 'o@o.oo', '52660f6b103c6f63b62134c7a831dec4a828d1511697122766', 'zk3272f3175835e6b65b315b2a00357f9b9d229dae38345', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2023-10-12 14:59:26', '', '', '', '', '', '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, '2023-10-20', '', '', 0, '', '', '', '', 0, 0, 0, '', NULL, 0, '', NULL, 0, '', NULL, 0, '', NULL, '', NULL, NULL, '', NULL, NULL, '', NULL, NULL),
-(21, '1', 'Jean', 'Dujardin', 't@t.tt', 'a5cea6f90d77c023a575f9b6733b468188328fad1697466634', 'zk32eb846250ff215d2b7e8eb735b3312727f493e1db345', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2023-10-16 14:30:34', '', '', '', '', '', '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', '2023-10-12', NULL, '', '', 0, '', '', '', '', 0, 0, 0, '', NULL, 0, '', NULL, 0, '', NULL, 0, '', NULL, '0', '2023-10-02', '2023-10-15', '', NULL, NULL, '', NULL, NULL);
+INSERT INTO `user` (`id`, `active`, `name`, `surname`, `email`, `secret`, `password`, `birth_date`, `sex`, `phone_number`, `birth_city`, `birth_country`, `current_street_number`, `current_city_street`, `current_city`, `current_zip_code`, `current_country`, `id_number`, `social_security_number`, `creation_date`, `profile_picture`, `curriculum_vitae`, `insurance_card_face`, `insurance_card_back`, `id_card_face`, `id_card_back`, `school_1`, `school_1_start`, `school_1_end`, `school_1_doc`, `school_2`, `school_2_start`, `school_2_end`, `school_2_doc`, `school_3`, `school_3_start`, `school_3_end`, `school_3_doc`, `job_1`, `job_1_start`, `job_1_end`, `job_1_exp`, `job_2`, `job_2_start`, `job_2_end`, `job_2_exp`, `job_3`, `job_3_start`, `job_3_end`, `job_3_exp`, `contract_type`, `contract_start`, `contract_end`, `contract_level`, `contract_coef`, `contract_remuneration`, `contract_insurance`, `contract_insurance_number`, `contract_weekly`, `contract_transports`, `user_absence`, `user_delay`, `user_extra_time`, `day_off_bank`, `day_off_response1`, `day_off1`, `day_off1_desc`, `day_off_response2`, `day_off2`, `day_off2_desc`, `day_off_response3`, `day_off3`, `day_off3_desc`, `illness_justif`, `illness_date`, `user_absence2`, `illness_justif2`, `illness_date2`, `user_absence3`, `illness_justif3`, `illness_date3`, `user_absence4`, `illness_justif4`, `illness_date4`, `planned_illness_1`, `planned_illness_1_date`, `planned_illness_1_justif`, `planned_illness_2`, `planned_illness_2_date`, `planned_illness_2_justif`, `planned_illness_3`, `planned_illness_3_date`, `planned_illness_3_justif`, `holidays_total`, `holiday1_response`, `holiday1_start`, `holiday1_end`, `holiday2_response`, `holiday2_start`, `holiday2_end`, `holiday3_response`, `holiday3_start`, `holiday3_end`) VALUES
+(1, '1', 'Flo', 'Maury', 'e@e.ee', 'bfd53533fbd80993fe5a6d80c7fc2675fdb8a6d91695905527', 'zk32a253b835f3ac4fe27137d4a142440e6ba36620c8345', '1994-06-03', 'Homme', '0612121212', 'Londres', 'Royaume_Uni', '18', 'Rue Saint Antoine', 'Paris', '75004', 'France', '599454644', '1949494052560', '2023-09-28 12:52:07', '', '', '', '', '', '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', 'CDI', '2023-10-02', '2023-11-05', '', '', 13, '', '', '35', '', 0, 0.25, 0, '5', '', NULL, '', '', NULL, '', '', NULL, '', '', NULL, 0, '', NULL, 0, '', NULL, 0, '', NULL, 0, NULL, '', 0, NULL, '', 0, NULL, '', 25, '', NULL, NULL, '', NULL, NULL, '', NULL, NULL),
+(24, '0', 'Test', 'Delete', 't@t.tt', '59434a5a02c35302cd292e346a000994d77d91131698666777', 'zk32eb846250ff215d2b7e8eb735b3312727f493e1db345', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '2023-10-30 11:52:57', '', '', '', '', '', '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, '2023-10-30', '', '', 0, '', '', '', '', 0, 0, 0, '0', '0', NULL, '', '0', NULL, '', '0', NULL, '', '', NULL, 0, '', NULL, 0, '', NULL, 0, '', NULL, 0, NULL, '', 0, NULL, '', 0, NULL, '', 25, '', NULL, NULL, '', NULL, NULL, '', NULL, NULL),
+(25, '1', 'Jean', 'Dupond', 'o@o.oo', 'ec24d5f8f95b382fe2231f7da02d7803eda69e211698749098', 'zk3272f3175835e6b65b315b2a00357f9b9d229dae38345', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '2023-10-31 10:44:58', '', '', '', '', '', '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', NULL, NULL, '', '', 0, '', '', '', '', 0, 0, 0, '1', '0', '2023-10-04', 'Raison de ma demande', '0', NULL, '', '0', NULL, '', '', NULL, 0, '', NULL, 0, '', NULL, 0, '', NULL, 0, NULL, '', 0, NULL, '', 0, NULL, '', 25, '', NULL, NULL, '', NULL, NULL, '', NULL, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -140,7 +160,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 DELIMITER $$
 --
