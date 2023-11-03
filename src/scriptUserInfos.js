@@ -111,3 +111,43 @@ userTimeBankButton.addEventListener('click', () => {
     userContractButton.style.backgroundColor     = '#ffffff';
     userTimeBankButton.style.backgroundColor     = '#f5f5f5';
 });
+
+
+// Obtenez les paramètres de l'URL afin de générer les onClick.
+let params = new URLSearchParams(window.location.search);
+
+// Vérifiez si le paramètre 'action' est égal à 'managerViewGridButton'.
+if(params.get('action') === 'generalUserInfosButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    generalUserInfosButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'generalInfosButton'.
+if(params.get('action') === 'userSchoolButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    userSchoolButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'experiencesButton'.
+if(params.get('action') === 'userExpButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    userExpButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'contractButton'.
+if(params.get('action') === 'userContractButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    userContractButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'timeBankButton'.
+if(params.get('action') === 'userContractButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    userContractButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'timeBankButton'.
+if(params.get('action') === 'userTimeBankButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    userTimeBankButton.click();
+}

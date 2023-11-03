@@ -34,7 +34,7 @@ if(
 
     if($result) {
         // Redirection.
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {    
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le mot de passe.');
@@ -65,7 +65,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la ville de naissance.');
@@ -96,7 +96,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le pays de naissance.');
@@ -127,7 +127,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la date de naissance.');
@@ -158,7 +158,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la ville actuelle.');
@@ -189,7 +189,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le pays actuel.');
@@ -220,7 +220,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la rue actuelle.');
@@ -251,7 +251,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le numéro de la rue actuelle.');
@@ -310,7 +310,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
             exit;
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la carte d\'identité.');
@@ -375,7 +375,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
             exit;
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la carte d\'identité.');
@@ -410,7 +410,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le numéro de carte d\'identité.');
@@ -469,7 +469,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
             exit;
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la carte vitale.');
@@ -533,7 +533,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
             exit;
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la carte vitale.');
@@ -568,7 +568,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le numéro de carte vitale.');
@@ -599,7 +599,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {    
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le prénom.');
@@ -658,7 +658,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
             exit;
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier la photo de profil.');
@@ -693,7 +693,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {    
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le nom de famille.');
@@ -724,7 +724,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {    
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le code postal.');
@@ -784,7 +784,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=generalInfosButton');
             exit;
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le CV.');

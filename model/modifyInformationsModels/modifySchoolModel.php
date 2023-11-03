@@ -23,7 +23,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
@@ -54,7 +54,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
@@ -85,7 +85,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
@@ -144,7 +144,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');
@@ -180,7 +180,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
@@ -212,7 +212,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
@@ -244,7 +244,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
@@ -303,7 +303,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');
@@ -339,7 +339,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience scolaire.');
@@ -371,7 +371,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
@@ -403,7 +403,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ces dates.');
@@ -462,7 +462,7 @@ if(
         $result = $req->execute([$school3Doc, $userModifiedId]);
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&modification=1');
+            header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&error=1&message=Impossible de modifier ce document.');

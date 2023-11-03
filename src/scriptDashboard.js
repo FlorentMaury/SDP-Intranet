@@ -144,3 +144,37 @@ inactiveButton.addEventListener('click', () => {
     activeButton.style.backgroundColor   = '#ffffff';
     inactiveButton.style.backgroundColor = '#f5f5f5';
 });
+
+
+// Obtenez les paramètres de l'URL afin de générer les onClick.
+let params = new URLSearchParams(window.location.search);
+
+// Vérifiez si le paramètre 'action' est égal à 'managerViewGridButton'.
+if(params.get('action') === 'managerViewGridButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    generalInfosButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'generalInfosButton'.
+if(params.get('action') === 'generalInfosButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    generalInfosButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'experiencesButton'.
+if(params.get('action') === 'experiencesButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    experiencesButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'contractButton'.
+if(params.get('action') === 'contractButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    contractButton.click();
+}
+
+// Vérifiez si le paramètre 'action' est égal à 'timeBankButton'.
+if(params.get('action') === 'timeBankButton') {
+    // Déclenchez l'événement 'click' sur le bouton souhaité.
+    timeBankButton.click();
+}

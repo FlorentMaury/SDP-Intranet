@@ -30,7 +30,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ce retard.');
@@ -140,7 +140,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&timeBankModification=1');
+            header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ce retard.');
@@ -246,7 +246,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&timeBankModification=1');
+            header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette absence.');
@@ -353,7 +353,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&timeBankModification=1');
+            header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette absence.');
@@ -459,7 +459,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&timeBankModification=1');
+            header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette absence.');
@@ -502,7 +502,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ces heures supplémentaires.');
@@ -592,7 +592,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
@@ -679,7 +679,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
@@ -766,7 +766,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
@@ -806,7 +806,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ces jours supplémentaires.');
@@ -899,7 +899,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
@@ -989,7 +989,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
@@ -1080,7 +1080,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1');
+        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
@@ -1182,7 +1182,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&timeBankModification=1');
+            header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ce retard.');
@@ -1288,7 +1288,7 @@ if(
 
         // Redirection avec message de validation.
         if($result) {
-            header('location: index.php?page=dashboard&timeBankModification=1');
+            header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
             header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer ce retard.');

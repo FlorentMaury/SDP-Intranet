@@ -14,7 +14,7 @@ if (isset($_GET['id']) && isset($_GET['dayOff1'])) {
 
     // Redirection.
     if($result) {
-        header('location: ../index.php?page=dashboard&removal=1');
+        header('location: ../index.php?page=dashboard&removal=1&action=timeBankButton');
         exit();
     } else {
         header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');
@@ -39,7 +39,7 @@ if (isset($_GET['id']) && isset($_GET['dayOff2'])) {
 
     // Redirection.
     if($result) {
-        header('location: ../index.php?page=dashboard&removal=1');
+        header('location: ../index.php?page=dashboard&removal=1&action=timeBankButton');
         exit();
     } else {
         header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');
@@ -62,7 +62,7 @@ if (isset($_GET['id']) && isset($_GET['dayOff3'])) {
 
     // Redirection.
     if($result) {
-        header('location: ../index.php?page=dashboard&removal=1');
+        header('location: ../index.php?page=dashboard&removal=1&action=timeBankButton');
         exit();
     } else {
         header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de RTT.');

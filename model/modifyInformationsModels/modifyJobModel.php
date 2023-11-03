@@ -23,7 +23,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
@@ -54,7 +54,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
@@ -85,7 +85,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
@@ -116,7 +116,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
@@ -149,7 +149,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
@@ -180,7 +180,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
@@ -211,7 +211,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
@@ -242,7 +242,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
@@ -273,7 +273,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette expérience professionnelle.');
@@ -304,7 +304,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
@@ -335,7 +335,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
         exit();
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette date.');
@@ -366,7 +366,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=dashboard&modification=1');
+        header('location: index.php?page=dashboard&modification=1&action=experiencesButton');
     } else {
         header('location: index.php?page=dashboard&error=1&message=Impossible de modifier cette mission.');
     }

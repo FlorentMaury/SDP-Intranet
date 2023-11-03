@@ -14,7 +14,7 @@ if (isset($_GET['id']) && isset($_GET['holiday1'])) {
 
     // Redirection.
     if($result) {
-        header('location: ../index.php?page=dashboard&removal=1');
+        header('location: ../index.php?page=dashboard&removal=1&action=timeBankButton');
         exit();
     } else {
         header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
@@ -37,7 +37,7 @@ if (isset($_GET['id']) && isset($_GET['holiday2'])) {
 
     // Redirection.
     if($result) {
-        header('location: ../index.php?page=dashboard&removal=1');
+        header('location: ../index.php?page=dashboard&removal=1&action=timeBankButton');
         exit();
     } else {
         header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
@@ -60,7 +60,7 @@ if (isset($_GET['id']) && isset($_GET['holiday3'])) {
 
     // Redirection.
     if($result) {
-        header('location: ../index.php?page=dashboard&removal=1');
+        header('location: ../index.php?page=dashboard&removal=1&action=timeBankButton');
         exit();
     } else {
         header('location: ../index.php?page=dashboard&error=1&message=Impossible de supprimer cette demande de vacances.');
