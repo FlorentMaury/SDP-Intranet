@@ -60,7 +60,7 @@ if(isset($_GET['holiday1ResponseMail'], $_GET['id'])) {
                 </head>
                 <body>
                     <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
-                     du $holiday1Start au $holiday1End vient d'être $holidayRes.</p>
+                    du $holiday1Start au $holiday1End vient d'être $holidayRes.</p>
                 </body>
             </html>";
         // $to         = 'contact@florent-maury.fr';
@@ -159,7 +159,7 @@ if(isset($_GET['holiday2ResponseMail'], $_GET['id'])) {
                 </head>
                 <body>
                     <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
-                     du $holiday2Start au $holiday2End vient d'être $holidayRes.</p>
+                    du $holiday2Start au $holiday2End vient d'être $holidayRes.</p>
                 </body>
             </html>";
         // $to         = 'contact@florent-maury.fr';
@@ -217,6 +217,8 @@ if(isset($_GET['holiday3ResponseMail'], $_GET['id'])) {
     $userName      = $user['name'];
     $userSurname   = $user['surname'];
     $userEmail     = $user['email'];
+
+
     $holiday3Start = $user['holiday3_start'];
     $holiday3End   = $user['holiday3_end'];
 
@@ -257,7 +259,7 @@ if(isset($_GET['holiday3ResponseMail'], $_GET['id'])) {
                 </head>
                 <body>
                     <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
-                     du $holiday3Start au $holiday3End vient d'être $holidayRes.</p>
+                    du $holiday3Start au $holiday3End vient d'être $holidayRes.</p>
                 </body>
             </html>";
         // $to         = 'contact@florent-maury.fr';

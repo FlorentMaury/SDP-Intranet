@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 02 nov. 2023 à 11:09
+-- Généré le : ven. 03 nov. 2023 à 11:35
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -161,15 +161,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
-DELIMITER $$
---
--- Évènements
---
-CREATE DEFINER=`dbu5440750`@`db5014654403` EVENT `resetUserTimeBank` ON SCHEDULE EVERY 1 MONTH STARTS '2023-11-1 00:00:00' ON COMPLETION NOT PRESERVE DISABLE DO UPDATE user SET user_extra_time = 0, user_delay = 0, user_absence = 0$$
-CREATE DEFINER=`dbu5440750`@`db5014654403` EVENT `resetUserHolidays` ON SCHEDULE EVERY 1 MONTH STARTS '2024-05-31 00:00:00' ON COMPLETION NOT PRESERVE DISABLE DO UPDATE user SET holidays_total = 0$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
