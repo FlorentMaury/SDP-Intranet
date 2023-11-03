@@ -1520,153 +1520,166 @@ if ($_SESSION['id'] == 1) {
                     }
                     ?>
 
-                <!-- Vacances. -->
-                <div class="contract border rounded mt-3 p-3">
-                    <h4 class="my-3">Congés</h4>
-
                     <!-- Vacances. -->
+                    <div class="contract border rounded mt-3 p-3">
+                        <h4 class="my-3">Congés</h4>
 
-                    <p>Nombre de jours de vacances restants : 
-                        <?php $data['holidays_total'];
-                        // Date de début des vacances (1er juin de l'année en cours)
-                        $start = new DateTime(date('Y') . '-06-01');
+                        <!-- Vacances. -->
 
-                        // Date actuelle
-                        $now = new DateTime();
+                        <p>Nombre de jours de vacances restants :
+                            <?php $data['holidays_total'];
+                            // Date de début des vacances (1er juin de l'année en cours).
+                            $start = new DateTime(date('Y') . '-06-01');
 
-                        // Nombre de mois écoulés depuis le 1er juin
-                        $months = $now->diff($start)->format('%m');
+                            // Date du contrat.
+                            $contractDate = new DateTime($data['contract_start']);
 
-                        // Nombre total de jours de vacances gagnés
-                        $totalHolidays = $months * 2.08;
+                            // Date actuelle.
+                            $now = new DateTime();
 
-                        // Jours de vacances déjà pris
-                        $usedHolidays = 0;
+                            if ($contractDate < $start) {
+                                // Si la date du contrat est antérieure au 1er juin de l'année en cours,
+                                // alors l'employé a droit à 25 jours de vacances.
+                                $totalHolidays = 25;
+                            } else {
+                                // Sinon, calculez le nombre de mois écoulés depuis le 1er juin.
+                                $months = $now->diff($start)->format('%m');
 
-                        // Jours de vacances restants
-                        $remainingHolidays = $totalHolidays - $usedHolidays;
+                                // Nombre total de jours de vacances gagnés.
+                                $totalHolidays = $months * 2.08;
+                            }
 
-                        echo "Nombre de jours de vacances restants : $remainingHolidays jours.";
-                        
-                        ?> jours.</p>
+                            // Jours de vacances déjà pris
+                            $usedHolidays = $data['holidays_total'] - 25;
 
-                    <?php
-                    if ($data['holiday1_start']) {
-                    ?>
+                            // Jours de vacances restants.
+                            $remainingHolidays = $totalHolidays - $usedHolidays;
 
-                        <div class="userExpGrid d-flex flex-column flex-md-row">
+                            // Mettre a jour la quantité de vacances restantes.
+                            $updateHolidays = $bdd->prepare('UPDATE user SET holidays_total = ? WHERE id = ?');
+                            $updateHolidays->execute(array($remainingHolidays, $data['id']));
 
-                            <div class="expFirstItem border rounded m-1 p-3">
-                                <button class="btn btn-md btn-light mb-4">
-                                    <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday1=<?= $data['holiday1_start'] ?>' type="button" class="btn btn-infos">
-                                        Supprimer la demande
-                                    </a>
-                                </button>
-                                <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
-                                <p>
-                                    <?php
-                                    if ($data['holiday1_response'] == 0) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                    } else if ($data['holiday1_response'] == 1) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                    } else if ($data['holiday1_response'] == 2) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                    }
-                                    ?>
-                                </p>
-                            </div>
+                            echo "Nombre de jours de vacances restants : $remainingHolidays jours.";
+
+                            ?></p>
 
                         <?php
-                    }
-                    if ($data['holiday2_start']) {
+                        if ($data['holiday1_start']) {
                         ?>
 
-                            <div class="expSecondItem border rounded m-1 p-3">
-                                <button class="btn btn-md btn-light mb-4">
-                                    <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday2=<?= $data['holiday2_start'] ?>' type="button" class="btn btn-infos">
-                                        Supprimer la demande
-                                    </a>
-                                </button>
-                                <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
-                                <p>
-                                    <?php
-                                    if ($data['holiday2_response'] == 0) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                    } else if ($data['holiday2_response'] == 1) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                    } else if ($data['holiday2_response'] == 2) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                    }
-                                    ?>
-                                </p>
-                            </div>
+                            <div class="userExpGrid d-flex flex-column flex-md-row">
 
-                        <?php
-                    }
-                    if ($data['holiday3_start']) {
-                        ?>
+                                <div class="expFirstItem border rounded m-1 p-3">
+                                    <button class="btn btn-md btn-light mb-4">
+                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday1=<?= $data['holiday1_start'] ?>' type="button" class="btn btn-infos">
+                                            Supprimer la demande
+                                        </a>
+                                    </button>
+                                    <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
+                                    <p>
+                                        <?php
+                                        if ($data['holiday1_response'] == 0) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                        } else if ($data['holiday1_response'] == 1) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                        } else if ($data['holiday1_response'] == 2) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
 
-                            <div class="expThirdItem border rounded m-1 p-3">
-                                <button class="btn btn-md btn-light mb-4">
-                                    <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday3=<?= $data['holiday3_start'] ?>' type="button" class="btn btn-infos">
-                                        Supprimer la demande
-                                    </a>
-                                </button>
-                                <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
-                                <p>
-                                    <?php
-                                    if ($data['holiday3_response'] == 0) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                    } else if ($data['holiday3_response'] == 1) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                    } else if ($data['holiday3_response'] == 2) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                    }
-                                    ?>
-                                </p>
-                            </div>
-
-                        <?php
-                    } else if (!$data['holiday1_start'] && !$data['holiday2_start'] && !$data['holiday3_start']) {
-                        echo ('<p>Aucune demande de congés</p>');
-                    }
-                        ?>
-
-                        </div>
-
-                        <?php
-                        if (!$data['holiday1_start']) {
-                        ?>
-                            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest1">
-                                    Faire une demande de vacances
-                                </a>
-                            </button>
-                        <?php
-                        } else if ($data['holiday1_start'] && !$data['holiday2_start']) {
-                        ?>
-                            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
-                                    Faire une demande de vacances
-                                </a>
-                            </button>
-
-                        <?php
-                        } else if ($data['holiday2_start']) {
-                        ?>
-                            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
-                                    Faire une demande de vacances
-                                </a>
-                            </button>
-                        <?php
+                            <?php
                         }
-                        ?>
+                        if ($data['holiday2_start']) {
+                            ?>
 
-                </div>
+                                <div class="expSecondItem border rounded m-1 p-3">
+                                    <button class="btn btn-md btn-light mb-4">
+                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday2=<?= $data['holiday2_start'] ?>' type="button" class="btn btn-infos">
+                                            Supprimer la demande
+                                        </a>
+                                    </button>
+                                    <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
+                                    <p>
+                                        <?php
+                                        if ($data['holiday2_response'] == 0) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                        } else if ($data['holiday2_response'] == 1) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                        } else if ($data['holiday2_response'] == 2) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+
+                            <?php
+                        }
+                        if ($data['holiday3_start']) {
+                            ?>
+
+                                <div class="expThirdItem border rounded m-1 p-3">
+                                    <button class="btn btn-md btn-light mb-4">
+                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday3=<?= $data['holiday3_start'] ?>' type="button" class="btn btn-infos">
+                                            Supprimer la demande
+                                        </a>
+                                    </button>
+                                    <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
+                                    <p>
+                                        <?php
+                                        if ($data['holiday3_response'] == 0) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                        } else if ($data['holiday3_response'] == 1) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                        } else if ($data['holiday3_response'] == 2) {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+
+                            <?php
+                        } else if (!$data['holiday1_start'] && !$data['holiday2_start'] && !$data['holiday3_start']) {
+                            echo ('<p>Aucune demande de congés</p>');
+                        }
+                            ?>
+
+                            </div>
+
+                            <?php
+                            if (!$data['holiday1_start']) {
+                            ?>
+                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest1">
+                                        Faire une demande de vacances
+                                    </a>
+                                </button>
+                            <?php
+                            } else if ($data['holiday1_start'] && !$data['holiday2_start']) {
+                            ?>
+                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
+                                        Faire une demande de vacances
+                                    </a>
+                                </button>
+
+                            <?php
+                            } else if ($data['holiday2_start']) {
+                            ?>
+                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
+                                        Faire une demande de vacances
+                                    </a>
+                                </button>
+                            <?php
+                            }
+                            ?>
+
+                    </div>
             </div>
-        </div>
     </div>
+</div>
 </div>
 
 
