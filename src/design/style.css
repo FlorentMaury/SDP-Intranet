@@ -1,7 +1,7 @@
 body.dark-mode {
-    background-color: #333 !important;
-    color: #fff !important;
-  }
+  background-color: #212529 !important;
+  color: #fff !important;
+}
 
 main {
     margin: 0 auto;
@@ -44,7 +44,7 @@ nav ul li:hover {
 
 .dashboardItems:hover,
 .expItems:hover {
-    background-color: rgba(142, 141, 141, 0.205);
+    background-color: #8e8d8d34;
     border-radius   : 10px;
 }
 
@@ -100,18 +100,13 @@ nav ul li:hover {
 
 /* MODE SOMBRE. */
 
-.table-dark {
-    background-color: #333;
-    color: #fff;
-}
-
-
+/* Styles pour le mode clair (par défaut) */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;  /* Modifié */
-    height: 20px; /* Modifié */
-  }
+  width: 40px;
+  height: 20px;
+  display: block;
+  margin: auto;
+}
   
   .switch input { 
     opacity: 0;
@@ -122,10 +117,6 @@ nav ul li:hover {
   .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     width: 40px;  /* Ajouté */
     height: 20px; /* Ajouté */
     background-color: #ccc;
@@ -146,11 +137,11 @@ nav ul li:hover {
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: rgb(105, 2, 2);
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px rgb(105, 2, 2);
   }
   
   input:checked + .slider:before {
