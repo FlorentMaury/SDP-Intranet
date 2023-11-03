@@ -21,6 +21,7 @@
         </a>
     </header>
 
+
     <!-- Message de validation de la connexion utilisateur. -->
     <?php
     if (isset($_GET['error']) && !empty($_GET['message'])) {
@@ -75,7 +76,14 @@
         <?= $content ?>
     </main>
 
+    <!-- Switch mode sombre -->
+    <label class="switch m-4">
+        <input type="checkbox" id="darkModeSwitch">
+        <span class="slider round"></span>
+    </label>
+
     <footer>
+
 
         <!-- Condition de connexion pour permettre une déconnexion. -->
         <?php

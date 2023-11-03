@@ -66,11 +66,13 @@ managerViewGridButton.addEventListener('click', () => {
     contract.style.display        = 'none';
     timeBank.style.display        = 'none';
 
-    managerViewGridButton.style.backgroundColor = '#f5f5f5';
-    generalInfosButton.style.backgroundColor    = '#ffffff';
-    experiencesButton.style.backgroundColor     = '#ffffff';
-    contractButton.style.backgroundColor        = '#ffffff';
-    timeBankButton.style.backgroundColor        = '#ffffff';
+    let isDarkMode = document.body.classList.contains('dark-mode');
+
+    managerViewGridButton.style.backgroundColor = isDarkMode ? '#555' : '#f5f5f5';
+    generalInfosButton.style.backgroundColor    = isDarkMode ? '#333' : '#ffffff';
+    experiencesButton.style.backgroundColor     = isDarkMode ? '#333' : '#ffffff';
+    contractButton.style.backgroundColor        = isDarkMode ? '#333' : '#ffffff';
+    timeBankButton.style.backgroundColor        = isDarkMode ? '#333' : '#ffffff';
 });
 
 generalInfosButton.addEventListener('click', () => {
@@ -80,11 +82,13 @@ generalInfosButton.addEventListener('click', () => {
     contract.style.display        = 'none';
     timeBank.style.display        = 'none';
 
-    managerViewGridButton.style.backgroundColor = '#ffffff';
-    generalInfosButton.style.backgroundColor    = '#f5f5f5';
-    experiencesButton.style.backgroundColor     = '#ffffff';
-    contractButton.style.backgroundColor        = '#ffffff';
-    timeBankButton.style.backgroundColor        = '#ffffff';
+    let isDarkMode = document.body.classList.contains('dark-mode');
+
+    managerViewGridButton.style.backgroundColor = isDarkMode ? '#333' : '#ffffff';
+    generalInfosButton.style.backgroundColor    = isDarkMode ? '#555' : '#f5f5f5';
+    experiencesButton.style.backgroundColor     = isDarkMode ? '#333' : '#ffffff';
+    contractButton.style.backgroundColor        = isDarkMode ? '#333' : '#ffffff';
+    timeBankButton.style.backgroundColor        = isDarkMode ? '#333' : '#ffffff';
 });
 
 experiencesButton.addEventListener('click', () => {
@@ -94,11 +98,13 @@ experiencesButton.addEventListener('click', () => {
     contract.style.display        = 'none';
     timeBank.style.display        = 'none';
 
-    managerViewGridButton.style.backgroundColor = '#ffffff';
-    generalInfosButton.style.backgroundColor    = '#ffffff';
-    experiencesButton.style.backgroundColor     = '#f5f5f5';
-    contractButton.style.backgroundColor        = '#ffffff';
-    timeBankButton.style.backgroundColor        = '#ffffff';
+    let isDarkMode = document.body.classList.contains('dark-mode');
+
+    managerViewGridButton.style.backgroundColor = isDarkMode ? '#333' : '#ffffff';
+    generalInfosButton.style.backgroundColor    = isDarkMode ? '#333' : '#ffffff';
+    experiencesButton.style.backgroundColor     = isDarkMode ? '#555' : '#f5f5f5';
+    contractButton.style.backgroundColor        = isDarkMode ? '#333' : '#ffffff';
+    timeBankButton.style.backgroundColor        = isDarkMode ? '#333' : '#ffffff';
 });
 
 contractButton.addEventListener('click', () => {
@@ -108,11 +114,13 @@ contractButton.addEventListener('click', () => {
     contract.style.display        = 'block';
     timeBank.style.display        = 'none';
 
-    managerViewGridButton.style.backgroundColor = '#ffffff';
-    generalInfosButton.style.backgroundColor    = '#ffffff';
-    experiencesButton.style.backgroundColor     = '#ffffff';
-    contractButton.style.backgroundColor        = '#f5f5f5';
-    timeBankButton.style.backgroundColor        = '#ffffff';
+    let isDarkMode = document.body.classList.contains('dark-mode');
+
+    managerViewGridButton.style.backgroundColor = isDarkMode ? '#333' : '#ffffff';
+    generalInfosButton.style.backgroundColor    = isDarkMode ? '#333' : '#ffffff';
+    experiencesButton.style.backgroundColor     = isDarkMode ? '#333' : '#ffffff';
+    contractButton.style.backgroundColor        = isDarkMode ? '#555' : '#f5f5f5';
+    timeBankButton.style.backgroundColor        = isDarkMode ? '#333' : '#ffffff';
 });
 
 timeBankButton.addEventListener('click', () => {
@@ -122,27 +130,33 @@ timeBankButton.addEventListener('click', () => {
     contract.style.display        = 'none';
     timeBank.style.display        = 'block';
 
-    managerViewGridButton.style.backgroundColor = '#ffffff';
-    generalInfosButton.style.backgroundColor    = '#ffffff';
-    experiencesButton.style.backgroundColor     = '#ffffff';
-    contractButton.style.backgroundColor        = '#ffffff';
-    timeBankButton.style.backgroundColor        = '#f5f5f5';
+    let isDarkMode = document.body.classList.contains('dark-mode');
+
+    managerViewGridButton.style.backgroundColor = isDarkMode ? '#333' : '#ffffff';
+    generalInfosButton.style.backgroundColor    = isDarkMode ? '#333' : '#ffffff';
+    experiencesButton.style.backgroundColor     = isDarkMode ? '#333' : '#ffffff';
+    contractButton.style.backgroundColor        = isDarkMode ? '#333' : '#ffffff';
+    timeBankButton.style.backgroundColor        = isDarkMode ? '#555' : '#f5f5f5';
 });
 
 activeButton.addEventListener('click', () => {
     employeesList.style.display         = 'block';
     employeesListInactive.style.display = 'none';
 
-    activeButton.style.backgroundColor   = '#f5f5f5';
-    inactiveButton.style.backgroundColor = '#ffffff';
+    let isDarkMode = document.body.classList.contains('dark-mode');
+
+    activeButton.style.backgroundColor   = isDarkMode ? '#555' : '#f5f5f5';
+    inactiveButton.style.backgroundColor = isDarkMode ? '#333' : '#ffffff';
 });
 
 inactiveButton.addEventListener('click', () => {
     employeesList.style.display         = 'none';
     employeesListInactive.style.display = 'block';
 
-    activeButton.style.backgroundColor   = '#ffffff';
-    inactiveButton.style.backgroundColor = '#f5f5f5';
+    let isDarkMode = document.body.classList.contains('dark-mode');
+
+    activeButton.style.backgroundColor   = isDarkMode ? '#333' : '#ffffff';
+    inactiveButton.style.backgroundColor = isDarkMode ? '#555' : '#f5f5f5';
 });
 
 
@@ -178,3 +192,29 @@ if(params.get('action') === 'timeBankButton') {
     // Déclenchez l'événement 'click' sur le bouton souhaité.
     timeBankButton.click();
 }
+
+
+// MODE SOMBRE.
+// Lorsque le DOM est chargé
+document.addEventListener('DOMContentLoaded', (event) => {
+    let darkModeSwitch = document.querySelector('#darkModeSwitch');
+
+    // Appliquer le mode sombre au chargement de la page si l'état enregistré est 'dark'
+    if (localStorage.getItem('mode') === 'dark') {
+        document.body.classList.add('dark-mode');
+        darkModeSwitch.checked = true;
+    }
+
+    // Lorsque l'utilisateur change le mode
+    darkModeSwitch.addEventListener('change', () => {
+        if (darkModeSwitch.checked) {
+            // Activer le mode sombre et enregistrer l'état
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('mode', 'dark');
+        } else {
+            // Désactiver le mode sombre et enregistrer l'état
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('mode', 'light');
+        }
+    });
+});
