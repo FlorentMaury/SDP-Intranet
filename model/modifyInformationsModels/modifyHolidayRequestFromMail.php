@@ -24,9 +24,9 @@ if(isset($_GET['holiday1ResponseMail'], $_GET['id'])) {
     $holiday1End   = $user['holiday1_end'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_total FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT holidays_taken FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $holidaysPreviousBank = $r->fetchColumn();
+    $currentHolidaysTaken = $r->fetchColumn();
 
     if ($holiday1Request == 1) {
         $holidayRes = 'Acceptée';
@@ -35,11 +35,11 @@ if(isset($_GET['holiday1ResponseMail'], $_GET['id'])) {
         $holiday1EndDateTime   = new DateTime($user['holiday1_end']);
 
         $diff = date_diff($holiday1EndDateTime, $holiday1StartDateTime)->days;
-        $holidaysLeft = $holidaysPreviousBank - $diff;
+        $newHolidaysTaken = $currentHolidaysTaken + $diff;
 
         // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE `user` SET holidays_total = ? WHERE id = ?");
-        $r->execute([$holidaysLeft, $userId]);
+        $r = $bdd->prepare("UPDATE `user` SET holidays_taken = ? WHERE id = ?");
+        $r->execute([$newHolidaysTaken, $userId]);
 
     } else if ($holiday1Request == 2) {
         $holidayRes = 'Refusée';
@@ -123,9 +123,9 @@ if(isset($_GET['holiday2ResponseMail'], $_GET['id'])) {
     $holiday2End   = $user['holiday2_end'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_total FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT holidays_taken FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $holidaysPreviousBank = $r->fetchColumn();
+    $currentHolidaysTaken = $r->fetchColumn();
 
     if ($holiday2Request == 1) {
         $holidayRes = 'Acceptée';
@@ -134,11 +134,11 @@ if(isset($_GET['holiday2ResponseMail'], $_GET['id'])) {
         $holiday2EndDateTime   = new DateTime($user['holiday2_end']);
 
         $diff = date_diff($holiday2EndDateTime, $holiday2StartDateTime)->days;
-        $holidaysLeft = $holidaysPreviousBank - $diff;
+        $newHolidaysTaken = $currentHolidaysTaken + $diff;
 
         // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE `user` SET holidays_total = ? WHERE id = ?");
-        $r->execute([$holidaysLeft, $userId]);
+        $r = $bdd->prepare("UPDATE `user` SET holidays_taken = ? WHERE id = ?");
+        $r->execute([$newHolidaysTaken, $userId]);
 
     } else if ($holiday2Request == 2) {
         $holidayRes = 'Refusée';
@@ -223,9 +223,9 @@ if(isset($_GET['holiday3ResponseMail'], $_GET['id'])) {
     $holiday3End   = $user['holiday3_end'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_total FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT holidays_taken FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $holidaysPreviousBank = $r->fetchColumn();
+    $currentHolidaysTaken = $r->fetchColumn();
 
     if ($holiday3Request == 1) {
         $holidayRes = 'Acceptée';
@@ -234,11 +234,11 @@ if(isset($_GET['holiday3ResponseMail'], $_GET['id'])) {
         $holiday3EndDateTime   = new DateTime($user['holiday3_end']);
 
         $diff = date_diff($holiday3EndDateTime, $holiday3StartDateTime)->days;
-        $holidaysLeft = $holidaysPreviousBank - $diff;
+        $newHolidaysTaken = $currentHolidaysTaken + $diff;
 
         // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE `user` SET holidays_total = ? WHERE id = ?");
-        $r->execute([$holidaysLeft, $userId]);
+        $r = $bdd->prepare("UPDATE `user` SET holidays_taken = ? WHERE id = ?");
+        $r->execute([$newHolidaysTaken, $userId]);
 
     } else if ($holiday3Request == 2) {
         $holidayRes = 'Refusée';
