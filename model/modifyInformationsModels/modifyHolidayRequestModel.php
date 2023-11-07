@@ -42,7 +42,7 @@ if (
         $newHolidaysTaken = $currentHolidaysTaken + $diff;
 
         // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE `user` SET holidays_total = ? WHERE id = ?");
+        $r = $bdd->prepare("UPDATE `user` SET holidays_taken = ? WHERE id = ?");
         $r->execute([$newHolidaysTaken, $userId]);
 
     } else if ($holiday1Request == 2) {
@@ -50,7 +50,7 @@ if (
     }
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET holidays_taken = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user SET holiday1_response = ? WHERE id = ?');
     $result = $req->execute([$holiday1Request, $userModifiedId]);
 
     // FONCTION MAILTO.

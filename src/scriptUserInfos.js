@@ -20,6 +20,8 @@ userExpButton          = document.querySelector('#userExpButton');
 userContractButton     = document.querySelector('#userContractButton');
 userTimeBankButton     = document.querySelector('#userTimeBankButton');
 
+const buttons = [generalUserInfosButton, userSchoolButton, userExpButton, userContractButton, userTimeBankButton];
+
 // Conteneurs.
 generalUserInfos = document.querySelector('#generalUserInfos');
 userSchool       = document.querySelector('#userSchool');
@@ -48,78 +50,48 @@ generalUserInfosButton.addEventListener('click', () => {
     userExp.style.display          = 'none';
     userContract.style.display     = 'none';
     userTimeBank.style.display     = 'none';
-
-    let isDarkMode = document.body.classList.contains('dark-mode');
-
-    generalUserInfosButton.style.backgroundColor = isDarkMode ? '#8e8d8d34' : '#f5f5f5';
-    userSchoolButton.style.backgroundColor       = isDarkMode ? '#212529' : '#ffffff';
-    userExpButton.style.backgroundColor          = isDarkMode ? '#212529' : '#ffffff';
-    userContractButton.style.backgroundColor     = isDarkMode ? '#212529' : '#ffffff';
-    userTimeBankButton.style.backgroundColor     = isDarkMode ? '#212529' : '#ffffff';
+    buttons.forEach(btn => btn.classList.remove('active'));
+    generalUserInfosButton.classList.add('active');
 });
 
 userSchoolButton.addEventListener('click', () => {
+    userSchool.style.display = 'block';
     generalUserInfos.style.display = 'none';
-    userSchool.style.display       = 'block';
     userExp.style.display          = 'none';
     userContract.style.display     = 'none';
     userTimeBank.style.display     = 'none';
-
-    let isDarkMode = document.body.classList.contains('dark-mode');
-
-    generalUserInfosButton.style.backgroundColor = isDarkMode ? '#212529' : '#ffffff';
-    userSchoolButton.style.backgroundColor       = isDarkMode ? '#8e8d8d34' : '#f5f5f5';
-    userExpButton.style.backgroundColor          = isDarkMode ? '#212529' : '#ffffff';
-    userContractButton.style.backgroundColor     = isDarkMode ? '#212529' : '#ffffff';
-    userTimeBankButton.style.backgroundColor     = isDarkMode ? '#212529' : '#ffffff';
+    buttons.forEach(btn => btn.classList.remove('active'));
+    userSchoolButton.classList.add('active');
 });
 
 userExpButton.addEventListener('click', () => {
+    userExp.style.display    = 'block';
     generalUserInfos.style.display = 'none';
     userSchool.style.display       = 'none';
-    userExp.style.display          = 'block';
     userContract.style.display     = 'none';
     userTimeBank.style.display     = 'none';
-
-    let isDarkMode = document.body.classList.contains('dark-mode');
-
-    generalUserInfosButton.style.backgroundColor = isDarkMode ? '#212529' : '#ffffff';
-    userSchoolButton.style.backgroundColor       = isDarkMode ? '#212529' : '#ffffff';
-    userExpButton.style.backgroundColor          = isDarkMode ? '#8e8d8d34' : '#f5f5f5';
-    userContractButton.style.backgroundColor     = isDarkMode ? '#212529' : '#ffffff';
-    userTimeBankButton.style.backgroundColor     = isDarkMode ? '#212529' : '#ffffff';
+    buttons.forEach(btn => btn.classList.remove('active'));
+    userExpButton.classList.add('active');
 });
 
 userContractButton.addEventListener('click', () => {
+    userContract.style.display = 'block';
     generalUserInfos.style.display = 'none';
     userSchool.style.display       = 'none';
     userExp.style.display          = 'none';
-    userContract.style.display     = 'block';
     userTimeBank.style.display     = 'none';
-
-    let isDarkMode = document.body.classList.contains('dark-mode');
-
-    generalUserInfosButton.style.backgroundColor = isDarkMode ? '#212529' : '#ffffff';
-    userSchoolButton.style.backgroundColor       = isDarkMode ? '#212529' : '#ffffff';
-    userExpButton.style.backgroundColor          = isDarkMode ? '#212529' : '#ffffff';
-    userContractButton.style.backgroundColor     = isDarkMode ? '#8e8d8d34' : '#f5f5f5';
-    userTimeBankButton.style.backgroundColor     = isDarkMode ? '#212529' : '#ffffff';
+    buttons.forEach(btn => btn.classList.remove('active'));
+    userContractButton.classList.add('active');
 });
 
 userTimeBankButton.addEventListener('click', () => {
+    userTimeBank.style.display = 'block';
     generalUserInfos.style.display = 'none';
     userSchool.style.display       = 'none';
     userExp.style.display          = 'none';
     userContract.style.display     = 'none';
-    userTimeBank.style.display     = 'block';
-
-    let isDarkMode = document.body.classList.contains('dark-mode');
-
-    generalUserInfosButton.style.backgroundColor = isDarkMode ? '#212529' : '#ffffff';
-    userSchoolButton.style.backgroundColor       = isDarkMode ? '#212529' : '#ffffff';
-    userExpButton.style.backgroundColor          = isDarkMode ? '#212529' : '#ffffff';
-    userContractButton.style.backgroundColor     = isDarkMode ? '#212529' : '#ffffff';
-    userTimeBankButton.style.backgroundColor     = isDarkMode ? '#8e8d8d34' : '#f5f5f5';
+    buttons.forEach(btn => btn.classList.remove('active'));
+    userTimeBankButton.classList.add('active');
 });
 
 
@@ -168,11 +140,13 @@ if(params.get('action') === 'userTimeBankButton') {
 // Lorsque le DOM est chargé
 document.addEventListener('DOMContentLoaded', (event) => {
     let darkModeSwitch = document.querySelector('#darkModeSwitch');
+    const navItems = document.querySelectorAll('nav ul li');
 
     // Appliquer le mode sombre au chargement de la page si l'état enregistré est 'dark'
     if (localStorage.getItem('mode') === 'dark') {
         document.body.classList.add('dark-mode');
         darkModeSwitch.checked = true;
+        navItems.forEach(item => item.classList.add('dark-mode')); // Ajouter la classe dark-mode aux éléments li
     }
 
     // Lorsque l'utilisateur change le mode
@@ -181,10 +155,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             // Activer le mode sombre et enregistrer l'état
             document.body.classList.add('dark-mode');
             localStorage.setItem('mode', 'dark');
+            navItems.forEach(item => item.classList.add('dark-mode')); // Ajouter la classe dark-mode aux éléments li
         } else {
             // Désactiver le mode sombre et enregistrer l'état
             document.body.classList.remove('dark-mode');
             localStorage.setItem('mode', 'light');
+            navItems.forEach(item => item.classList.remove('dark-mode')); // Supprimer la classe dark-mode des éléments li
         }
     });
 });

@@ -77,10 +77,20 @@
     </main>
 
     <!-- Switch mode sombre -->
-    <label class="switch m-4">
-        <input type="checkbox" id="darkModeSwitch">
-        <span class="slider round"></span>
-    </label>
+    <?php 
+        if(isset($_GET['page'])) {
+            if($_GET['page'] == 'home') {
+                home();
+            } else {
+                ?>
+                    <label class="switch m-4">
+                        <input type="checkbox" id="darkModeSwitch">
+                        <span class="slider round"></span>
+                    </label>
+                <?php
+            }
+        }
+    ?>
 
     <footer>
 
