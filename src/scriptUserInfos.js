@@ -65,7 +65,7 @@ userSchoolButton.addEventListener('click', () => {
 });
 
 userExpButton.addEventListener('click', () => {
-    userExp.style.display    = 'block';
+    userExp.style.display = 'block';
     generalUserInfos.style.display = 'none';
     userSchool.style.display       = 'none';
     userContract.style.display     = 'none';
@@ -141,12 +141,14 @@ if(params.get('action') === 'userTimeBankButton') {
 document.addEventListener('DOMContentLoaded', (event) => {
     let darkModeSwitch = document.querySelector('#darkModeSwitch');
     const navItems = document.querySelectorAll('nav ul li');
+    const svgImages = document.querySelectorAll('img'); // Sélectionnez toutes les images
 
     // Appliquer le mode sombre au chargement de la page si l'état enregistré est 'dark'
     if (localStorage.getItem('mode') === 'dark') {
         document.body.classList.add('dark-mode');
         darkModeSwitch.checked = true;
         navItems.forEach(item => item.classList.add('dark-mode')); // Ajouter la classe dark-mode aux éléments li
+        svgImages.forEach(img => img.classList.add('dark-mode')); // Ajouter la classe dark-mode aux images SVG
     }
 
     // Lorsque l'utilisateur change le mode
@@ -156,11 +158,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.body.classList.add('dark-mode');
             localStorage.setItem('mode', 'dark');
             navItems.forEach(item => item.classList.add('dark-mode')); // Ajouter la classe dark-mode aux éléments li
+            svgImages.forEach(img => img.classList.add('dark-mode')); // Ajouter la classe dark-mode aux images SVG
         } else {
             // Désactiver le mode sombre et enregistrer l'état
             document.body.classList.remove('dark-mode');
             localStorage.setItem('mode', 'light');
             navItems.forEach(item => item.classList.remove('dark-mode')); // Supprimer la classe dark-mode des éléments li
+            svgImages.forEach(img => img.classList.remove('dark-mode')); // Supprimer la classe dark-mode des images SVG
         }
     });
 });

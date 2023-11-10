@@ -3,6 +3,11 @@ body.dark-mode {
   color: #fff !important;
 }
 
+nav ul li img.dark-mode,
+header a img.dark-mode {
+  filter: invert(1);
+}
+
 main {
     margin: 0 auto;
 }

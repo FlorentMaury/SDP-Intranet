@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let darkModeSwitch = document.querySelector('#darkModeSwitch');
     let tables = document.querySelectorAll('.table');
     const navItems = document.querySelectorAll('nav ul li');
+    const svgImages = document.querySelectorAll('img'); // Sélectionnez toutes les images
 
     // Appliquer le mode sombre au chargement de la page si l'état enregistré est 'dark'
     if (localStorage.getItem('mode') === 'dark') {
@@ -184,6 +185,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         darkModeSwitch.checked = true;
         tables.forEach(table => table.classList.add('table-dark'));
         navItems.forEach(item => item.classList.add('dark-mode')); // Ajouter la classe dark-mode aux éléments li
+        svgImages.forEach(img => img.classList.add('dark-mode')); // Ajouter la classe dark-mode aux images SVG
     }
 
     // Lorsque l'utilisateur change le mode
@@ -194,12 +196,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             localStorage.setItem('mode', 'dark');
             tables.forEach(table => table.classList.add('table-dark'));
             navItems.forEach(item => item.classList.add('dark-mode')); // Ajouter la classe dark-mode aux éléments li
+            svgImages.forEach(img => img.classList.add('dark-mode')); // Ajouter la classe dark-mode aux images SVG
         } else {
             // Désactiver le mode sombre et enregistrer l'état
             document.body.classList.remove('dark-mode');
             localStorage.setItem('mode', 'light');
             tables.forEach(table => table.classList.remove('table-dark'));
             navItems.forEach(item => item.classList.remove('dark-mode')); // Supprimer la classe dark-mode des éléments li
+            svgImages.forEach(img => img.classList.remove('dark-mode')); // Supprimer la classe dark-mode des images SVG
         }
     });
 });
