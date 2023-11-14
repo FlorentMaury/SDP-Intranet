@@ -9,9 +9,22 @@
 
     <h1 class="display-6 text-center">Une erreur est survenue</h1>
 
-    <button class="btn btn-dark">
-        <a href="index.php" class="text-decoration-none text-light">Retour à la page de connexion</a>
-    </button>
+    <?php
+        if($_SESSION) {
+            echo '
+                <button class="btn btn-dark">
+                    <a href="index.php?page=dashboard" class="text-decoration-none text-light">Retour au tableau de bord</a>
+                </button>
+            ';
+        } else {
+            echo '
+            <button class="btn btn-dark">
+                <a href="index.php" class="text-decoration-none text-light">Retour à la page de connexion</a>
+            </button>
+        ';
+        }
+    ?>
+
 
 <?php 
 
