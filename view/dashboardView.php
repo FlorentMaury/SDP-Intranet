@@ -4,7 +4,14 @@ $title = 'Tableau De Bord';
 // Début d'enregistrement du HTML.
 ob_start();
 
-$req = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+$req = $bdd->prepare('
+    SELECT *
+    FROM user 
+    INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+    INNER JOIN user_role ON user.id = user_role.user_role_id
+    INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+    WHERE user.id = ?
+');
 $req->execute([$_SESSION['id']]);
 $data = $req->fetch();
 ?>
@@ -63,7 +70,7 @@ $data = $req->fetch();
 
 <!-- Grille administrateur. -->
 <?php
-if ($_SESSION['id'] == 1) {
+if ($data['id'] == 1) {
 ?>
 
     <!-- Compte administrateur. -->
@@ -1653,19 +1660,17 @@ if ($_SESSION['id'] == 1) {
 </div>
 </div>
 
-
-
 <!-- Javascript dynamique. -->
 <?php
-if ($_SESSION['id'] == 1) {
-?>
-    <script type="text/javascript" src="./src/scriptDashboard.js"></script>
-<?php
-} else {
-?>
-    <script type="text/javascript" src="./src/scriptDashboardUsers.js"></script>
-<?php
-};
+    if ($data['id'] == 1) {
+        ?>
+            <script type="text/javascript" src="./src/scriptDashboard.js"></script>
+        <?php
+        } else {
+        ?>
+            <script type="text/javascript" src="./src/scriptDashboardUsers.js"></script>
+        <?php
+    };
 ?>
 
 

@@ -17,7 +17,14 @@ if (
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt = $bdd->prepare('
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        WHERE id = ?
+        ');
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
 
@@ -28,7 +35,7 @@ if (
     $holiday1End   = $user['holiday1_end'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_taken FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT holidays_taken FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $currentHolidaysTaken = $r->fetchColumn();
 
@@ -42,7 +49,7 @@ if (
         $newHolidaysTaken = $currentHolidaysTaken + $diff;
 
         // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE `user` SET holidays_taken = ? WHERE id = ?");
+        $r = $bdd->prepare("UPDATE user_time_bank SET holidays_taken = ? WHERE user_time_bank_id = ?");
         $r->execute([$newHolidaysTaken, $userId]);
 
     } else if ($holiday1Request == 2) {
@@ -50,7 +57,7 @@ if (
     }
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET holiday1_response = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday1_response = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$holiday1Request, $userModifiedId]);
 
     // FONCTION MAILTO.
@@ -108,7 +115,14 @@ if (
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt = $bdd->prepare('
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        WHERE id = ?
+        ');
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
 
@@ -119,7 +133,7 @@ if (
     $holiday2End   = $user['holiday2_end'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_taken FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT holidays_taken FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $currentHolidaysTaken = $r->fetchColumn();
 
@@ -133,7 +147,7 @@ if (
         $newHolidaysTaken = $currentHolidaysTaken + $diff;
 
         // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE `user` SET holidays_taken = ? WHERE id = ?");
+        $r = $bdd->prepare("UPDATE user_time_bank SET holidays_taken = ? WHERE user_time_bank_id = ?");
         $r->execute([$newHolidaysTaken, $userId]);
 
     } else if ($holiday2Request == 2) {
@@ -141,7 +155,7 @@ if (
     }
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET holiday2_response = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday2_response = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$holiday2Request, $userModifiedId]);
 
     // FONCTION MAILTO.
@@ -199,7 +213,14 @@ if (
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt = $bdd->prepare('
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        WHERE id = ?
+        ');
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
 
@@ -210,7 +231,7 @@ if (
     $holiday3End   = $user['holiday3_end'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_taken FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT holidays_taken FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $currentHolidaysTaken = $r->fetchColumn();
 
@@ -224,7 +245,7 @@ if (
         $newHolidaysTaken = $currentHolidaysTaken + $diff;
 
         // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE `user` SET holidays_taken = ? WHERE id = ?");
+        $r = $bdd->prepare("UPDATE user_time_bank SET holidays_taken = ? WHERE user_time_bank_id = ?");
         $r->execute([$newHolidaysTaken, $userId]);
 
     } else if ($holiday3Request == 2) {
@@ -232,7 +253,7 @@ if (
     }
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET holiday3_response = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday3_response = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$holiday3Request, $userModifiedId]);
 
     // FONCTION MAILTO.
@@ -298,7 +319,14 @@ if (
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt = $bdd->prepare('
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        WHERE id = ?
+    ');
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
 
@@ -308,17 +336,17 @@ if (
     $modifyDayOffRequest1 = $user['day_off1'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT day_off_bank FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousDaysOffBank = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
     if ($dayOff1Request == '1') {
-        $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET day_off_bank = ? WHERE user_time_bank_id = ?');
         $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
     }
 
-    $req = $bdd->prepare('UPDATE user SET day_off_response1 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response1 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$dayOff1Request, $userModifiedId]);
 
     // FONCTION MAILTO.
@@ -383,7 +411,14 @@ if (
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt = $bdd->prepare('
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        WHERE id = ?
+        ');
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
 
@@ -393,17 +428,17 @@ if (
     $modifyDayOffRequest2 = $user['day_off2'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT day_off_bank FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousDaysOffBank = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
     if ($dayOff2Request == '1') {
-        $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET day_off_bank = ? WHERE user_time_bank_id = ?');
         $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
     }
 
-    $req = $bdd->prepare('UPDATE user SET day_off_response2 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response2 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$dayOff2Request, $userModifiedId]);
 
     // FONCTION MAILTO.
@@ -467,7 +502,14 @@ if (
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    $stmt = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $stmt = $bdd->prepare('
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        WHERE id = ?
+        ');
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
 
@@ -477,17 +519,17 @@ if (
     $modifyDayOffRequest3 = $user['day_off3'];
 
     // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT day_off_bank FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousDaysOffBank = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
     if ($dayOff3Request == '1') {
-        $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET day_off_bank = ? WHERE user_time_bank_id = ?');
         $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
     }
 
-    $req = $bdd->prepare('UPDATE user SET day_off_response3 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response3 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$dayOff3Request, $userModifiedId]);
 
     // FONCTION MAILTO.

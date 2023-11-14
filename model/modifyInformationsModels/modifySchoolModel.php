@@ -18,7 +18,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_1 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_1 = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool1, $userModifiedId]);
 
     // Redirection.
@@ -49,7 +49,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_1_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_1_start = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool1Start, $userModifiedId]);
 
     // Redirection.
@@ -80,7 +80,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_1_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_1_end = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool1End, $userModifiedId]);
 
     // Redirection.
@@ -108,7 +108,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Suppression de l'ancien diplôme.
-    $req = $bdd->prepare("SELECT school_1_doc FROM `user` WHERE id = ?");
+    $req = $bdd->prepare("SELECT school_1_doc FROM user_exp WHERE user_exp_id = ?");
     $req->execute([$userId]);
     $school1Doc = $req->fetchColumn();
     unlink('./public/assets/school1Doc/'.$school1Doc);
@@ -139,7 +139,7 @@ if(
         move_uploaded_file($school1DocTmpName, './public/assets/school1Doc/'.$school1Doc);
 
         // Ajout des informations si les images ont étés validées.
-        $req = $bdd->prepare('UPDATE user SET school_1_doc = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_exp SET school_1_doc = ? WHERE user_exp_id = ?');
         $result = $req->execute([$school1Doc, $userModifiedId]);
 
         // Redirection avec message de validation.
@@ -175,7 +175,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_2 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_2 = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool2, $userModifiedId]);
 
     // Redirection.
@@ -207,7 +207,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_2_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_2_start = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool2Start, $userModifiedId]);
 
     // Redirection.
@@ -239,7 +239,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_2_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_2_end = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool2End, $userModifiedId]);
 
     // Redirection.
@@ -267,7 +267,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Suppression de l'ancien diplôme.
-    $req = $bdd->prepare("SELECT school_2_doc FROM `user` WHERE id = ?");
+    $req = $bdd->prepare("SELECT school_2_doc FROM user_exp WHERE user_exp_id = ?");
     $req->execute([$userId]);
     $school2Doc = $req->fetchColumn();
     unlink('./public/assets/school2Doc/'.$school2Doc);
@@ -298,7 +298,7 @@ if(
         move_uploaded_file($school2DocTmpName, './public/assets/school2Doc/'.$school2Doc);
 
         // Ajout d'un véhicule avec toutes les informations si les images ont étés validées.
-        $req = $bdd->prepare('UPDATE user SET school_2_doc = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_exp SET school_2_doc = ? WHERE user_exp_id = ?');
         $result = $req->execute([$school2Doc, $userModifiedId]);
 
         // Redirection avec message de validation.
@@ -334,7 +334,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_3 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_3 = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool3, $userModifiedId]);
 
     // Redirection.
@@ -366,7 +366,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_3_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_3_start = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool3Start, $userModifiedId]);
 
     // Redirection.
@@ -398,7 +398,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET school_3_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET school_3_end = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifySchool3End, $userModifiedId]);
 
     // Redirection.
@@ -427,7 +427,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Suppression de l'ancien diplôme.
-    $req = $bdd->prepare("SELECT school_3_doc FROM `user` WHERE id = ?");
+    $req = $bdd->prepare("SELECT school_3_doc FROM user_exp WHERE user_exp_id = ?");
     $req->execute([$userId]);
     $school3Doc = $req->fetchColumn();
     unlink('./public/assets/school3Doc/'.$school2Doc);
@@ -458,7 +458,7 @@ if(
         move_uploaded_file($school3DocTmpName, './public/assets/school3Doc/'.$school3Doc);
 
         // Ajout d'un véhicule avec toutes les informations si les images ont étés validées.
-        $req = $bdd->prepare('UPDATE user SET school_3_doc = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_exp SET school_3_doc = ? WHERE user_exp_id = ?');
         $result = $req->execute([$school3Doc, $userModifiedId]);
         // Redirection avec message de validation.
         if($result) {

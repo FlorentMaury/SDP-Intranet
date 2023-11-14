@@ -1,5 +1,7 @@
     // Menu Dynamique de l'Affichage des Utilisateurs.
 
+    console.log('script3 !');
+
 // Variables.
 let generalUserInfosButton;
 let userSchoolButton;
@@ -142,27 +144,46 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let darkModeSwitch = document.querySelector('#darkModeSwitch');
     const navItems = document.querySelectorAll('nav ul li');
     const svgImages = document.querySelectorAll('img'); // Sélectionnez toutes les images
+    let btn = document.querySelectorAll('.btn');
 
     // Appliquer le mode sombre au chargement de la page si l'état enregistré est 'dark'
     if (localStorage.getItem('mode') === 'dark') {
         document.body.classList.add('dark-mode');
         darkModeSwitch.checked = true;
+        btn.forEach(btn => {
+            if (btn.classList.contains('btn-light')) {
+                btn.classList.remove('btn-light');
+                btn.classList.add('btn-dark');
+            }
+        });
         navItems.forEach(item => item.classList.add('dark-mode')); // Ajouter la classe dark-mode aux éléments li
         svgImages.forEach(img => img.classList.add('dark-mode')); // Ajouter la classe dark-mode aux images SVG
     }
-
+    
     // Lorsque l'utilisateur change le mode
     darkModeSwitch.addEventListener('change', () => {
         if (darkModeSwitch.checked) {
             // Activer le mode sombre et enregistrer l'état
             document.body.classList.add('dark-mode');
             localStorage.setItem('mode', 'dark');
+            btn.forEach(btn => {
+                if (btn.classList.contains('btn-light')) {
+                    btn.classList.remove('btn-light');
+                    btn.classList.add('btn-dark');
+                }
+            });
             navItems.forEach(item => item.classList.add('dark-mode')); // Ajouter la classe dark-mode aux éléments li
             svgImages.forEach(img => img.classList.add('dark-mode')); // Ajouter la classe dark-mode aux images SVG
         } else {
             // Désactiver le mode sombre et enregistrer l'état
             document.body.classList.remove('dark-mode');
             localStorage.setItem('mode', 'light');
+            btn.forEach(btn => {
+                if (btn.classList.contains('btn-dark')) {
+                    btn.classList.remove('btn-dark');
+                    btn.classList.add('btn-light');
+                }
+            });
             navItems.forEach(item => item.classList.remove('dark-mode')); // Supprimer la classe dark-mode des éléments li
             svgImages.forEach(img => img.classList.remove('dark-mode')); // Supprimer la classe dark-mode des images SVG
         }

@@ -8,7 +8,14 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Récupération des identifiants de l'utilisateur séléctionné.
-    $req = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $req = $bdd->prepare('
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        WHERE user.id = ?
+        ');
     $req->execute([$id]);
     $data = $req->fetch();
 

@@ -9,7 +9,7 @@ if (isset($_GET['id']) && isset($_GET['dayOff1'])) {
     require('../model/connectionDBModel.php');
 
     // Suppression des informations de la base de donnée.
-    $req = $bdd->prepare('UPDATE user SET day_off_response1 = ?, day_off1 = ?, day_off1_desc = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response1 = ?, day_off1 = ?, day_off1_desc = ? WHERE user_time_bank_id  = ?');
     $result = $req->execute([null, null, null, $id]);
 
     // Redirection.
@@ -34,7 +34,7 @@ if (isset($_GET['id']) && isset($_GET['dayOff2'])) {
     require('../model/connectionDBModel.php');
 
     // Suppression des informations de la base de donnée.
-    $req = $bdd->prepare('UPDATE user SET day_off_response2 = ?, day_off2 = ?, day_off2_desc = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response2 = ?, day_off2 = ?, day_off2_desc = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([null, null, null, $id]);
 
     // Redirection.
@@ -57,7 +57,7 @@ if (isset($_GET['id']) && isset($_GET['dayOff3'])) {
     require('../model/connectionDBModel.php');
 
     // Suppression des informations de la base de donnée.
-    $req = $bdd->prepare('UPDATE user SET day_off_response3 = ?, day_off3 = ?, day_off1_desc = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response3 = ?, day_off3 = ?, day_off1_desc = ? WHERE user_time_bank_id  = ?');
     $result = $req->execute([null, null, null, $id]);
 
     // Redirection.

@@ -102,6 +102,12 @@ if (isset($_GET['id'])) {
     };
 
     // Suppression des informations de la base de donnée.
+    $req = $bdd->prepare('DELETE FROM user_exp WHERE user_exp_id = ?');
+    $result = $req->execute([$id]);
+    $req = $bdd->prepare('DELETE FROM user_role WHERE user_role_id = ?');
+    $result = $req->execute([$id]);
+    $req = $bdd->prepare('DELETE FROM user_time_bank WHERE user_time_bank_id = ?');
+    $result = $req->execute([$id]);
     $req = $bdd->prepare('DELETE FROM user WHERE id = ?');
     $result = $req->execute([$id]);
 

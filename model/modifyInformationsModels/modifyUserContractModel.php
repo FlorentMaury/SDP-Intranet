@@ -18,7 +18,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_type = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_type = ? WHERE user_role_id  = ?');
     $result = $req->execute([$modifyUserContract, $userModifiedId]);
 
     // Redirection.
@@ -50,7 +50,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_start = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyUserContractStart, $userModifiedId]);
 
     // Redirection.
@@ -82,7 +82,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_end = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyUserContractEnd, $userModifiedId]);
 
     // Redirection.
@@ -114,7 +114,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_level = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_level = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyUserContractLevel, $userModifiedId]);
 
     // Redirection.
@@ -146,7 +146,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_coef = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_coef = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyUserContractCoef, $userModifiedId]);
 
     // Redirection.
@@ -177,7 +177,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_remuneration = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_remuneration = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyUserContractRemuneration, $userModifiedId]);
 
     // Redirection.
@@ -209,7 +209,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_insurance = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_insurance = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyUserContractInsurance, $userModifiedId]);
 
     // Redirection.
@@ -241,7 +241,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_insurance_number = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_insurance_number = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyUserContractInsuranceNumber, $userModifiedId]);
 
     // Redirection.
@@ -273,7 +273,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_weekly = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_weekly = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyUserContractWeekly, $userModifiedId]);
 
     // Redirection.
@@ -305,7 +305,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET contract_transports = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_role SET contract_transports = ? WHERE user_role_id = ?');
     $result = $req->execute([$modifyContractTransports, $userModifiedId]);
 
     // Redirection.

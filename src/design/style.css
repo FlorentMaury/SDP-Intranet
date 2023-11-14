@@ -3,6 +3,18 @@ body.dark-mode {
   color: #fff !important;
 }
 
+/* Styles par défaut pour les modales */
+.modal-content {
+    background-color: #f5f5f5;
+    color: #212529;
+}
+
+/* Styles pour les modales en mode sombre */
+body.dark-mode .modal-content {
+    background-color: #212529;
+    color: #fff;
+}
+
 nav ul li img.dark-mode,
 header a img.dark-mode {
   filter: invert(1);

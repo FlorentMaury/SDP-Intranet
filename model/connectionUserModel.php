@@ -28,11 +28,24 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
         }
     }
 
-    // Connexion si le mot de passe est le bon.
-    $req = $bdd->prepare('SELECT * FROM user WHERE email = ?');
+    // Récupérer l'ID de l'utilisateur avec l'email
+    $req = $bdd->prepare('SELECT id FROM user WHERE email = ?');
     $req->execute([$email]);
+    $user = $req->fetch();
+
+    // Récuperer les données de l'utilisateur avec l'ID.
+    $req = $bdd->prepare('
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+        WHERE user.id = ?
+    ');
+    $req->execute([$user['id']]);
 
     while($user = $req->fetch()) {
+
         // Si le mot de passe est le bon création d'une session.
         if($password == $user['password']) {
             $_SESSION['connect'] = 1;

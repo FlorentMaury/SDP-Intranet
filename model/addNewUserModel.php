@@ -48,6 +48,18 @@ if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']
     $req = $bdd->prepare('INSERT INTO user(active, name, surname, email, password, secret) VALUES(?, ?, ?, ?, ?, ?)');
     $result = $req->execute([1, $name, $surname, $email, $password, $secret]);
 
+    $lastInsertId = $bdd->lastInsertId();
+
+    // Ajouter l'utilisateurs aux tables périphériques.
+    $req1 = $bdd->prepare('INSERT INTO user_exp(user_exp_id) VALUES(?)');
+    $req1->execute([$lastInsertId]);
+    
+    $req2 = $bdd->prepare('INSERT INTO user_role(user_role_id) VALUES(?)');
+    $req2->execute([$lastInsertId]);
+    
+    $req3 = $bdd->prepare('INSERT INTO user_time_bank(user_time_bank_id) VALUES(?)');
+    $req3->execute([$lastInsertId]);
+
     // Redirection.
     if($result) {
         header('location: index.php?page=dashboard&newUser=1');

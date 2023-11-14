@@ -18,7 +18,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_1 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_1 = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob1, $userModifiedId]);
 
     // Redirection.
@@ -49,7 +49,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_1_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_1_start = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob1Start, $userModifiedId]);
 
     // Redirection.
@@ -80,7 +80,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_1_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_1_end = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob1End, $userModifiedId]);
 
     // Redirection.
@@ -111,7 +111,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_1_exp = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_1_exp = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob1Exp, $userModifiedId]);
 
     // Redirection.
@@ -144,7 +144,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_2 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_2 = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob2, $userModifiedId]);
 
     // Redirection.
@@ -175,7 +175,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_2_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_2_start = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob2Start, $userModifiedId]);
 
     // Redirection.
@@ -206,7 +206,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_2_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_2_end = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob2End, $userModifiedId]);
 
     // Redirection.
@@ -237,7 +237,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_2_exp = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_2_exp = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob2Exp, $userModifiedId]);
 
     // Redirection.
@@ -268,7 +268,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_3 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_3 = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob3, $userModifiedId]);
 
     // Redirection.
@@ -299,7 +299,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_3_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_3_start = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob3Start, $userModifiedId]);
 
     // Redirection.
@@ -330,7 +330,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_3_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_3_end = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob3End, $userModifiedId]);
 
     // Redirection.
@@ -361,7 +361,7 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET job_3_exp = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_exp SET job_3_exp = ? WHERE user_exp_id = ?');
     $result = $req->execute([$modifyJob3Exp, $userModifiedId]);
 
     // Redirection.

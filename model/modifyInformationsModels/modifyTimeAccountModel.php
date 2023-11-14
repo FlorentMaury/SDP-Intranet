@@ -18,14 +18,14 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Selection du précédent retard.
-    $r = $bdd->prepare("SELECT user_delay FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT user_delay FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousUserDelays = $r->fetchColumn();
 
     $totalsOfDelays = floatval($modifyUserDelayInfo) + floatval($previousUserDelays);
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET user_delay = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET user_delay = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$totalsOfDelays, $userModifiedId]);
 
     // Redirection.
@@ -67,19 +67,18 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    // Selection du retard précédent.
-    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    // Sélection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
 
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
 
     // Document de l'arrêt maladie.
     $medicalJustificationName    = $_FILES['medicalJustification']['name'];
@@ -109,15 +108,15 @@ if(
         move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
-        $req = $bdd->prepare('UPDATE user SET user_absence = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET user_absence = ? WHERE user_time_bank_id = ?');
         $req->execute([$totalsOfAbsences, $userModifiedId]);
 
         // Ajout de toutes les informations si le document a été validé.
-        $req = $bdd->prepare('UPDATE user SET illness_justif = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET illness_justif = ? WHERE user_time_bank_id = ?');
         $req->execute([$medicalJustif, $userModifiedId]);
 
         // Ajout de la date de l'arrêt.
-        $req = $bdd->prepare('UPDATE user SET illness_date = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET illness_date = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
                 // FONCTION MAILTO.
@@ -168,22 +167,17 @@ if(
     $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate2']);
     $userId                = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
 
     // Selection du retard précédent.
-    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT user_absence FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
 
@@ -215,15 +209,15 @@ if(
         move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif2/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
-        $req = $bdd->prepare('UPDATE user SET user_absence2 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET user_absence2 = ? WHERE user_time_bank_id = ?');
         $req->execute([$totalsOfAbsences, $userModifiedId]);
 
         // Ajout de toutes les informations si le document a été validé.
-        $req = $bdd->prepare('UPDATE user SET illness_justif2 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET illness_justif2 = ? WHERE user_time_bank_id = ?');
         $req->execute([$medicalJustif, $userModifiedId]);
 
         // Ajout de la date de l'arrêt.
-        $req = $bdd->prepare('UPDATE user SET illness_date2 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET illness_date2 = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
                         // FONCTION MAILTO.
@@ -275,22 +269,17 @@ if(
     $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate3']);
     $userId                = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
 
     // Selection du retard précédent.
-    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT user_absence FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
 
@@ -322,15 +311,15 @@ if(
         move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif3/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
-        $req = $bdd->prepare('UPDATE user SET user_absence3 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET user_absence3 = ? WHERE user_time_bank_id = ?');
         $req->execute([$totalsOfAbsences, $userModifiedId]);
 
         // Ajout de toutes les informations si le document a été validé.
-        $req = $bdd->prepare('UPDATE user SET illness_justif3 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET illness_justif3 = ? WHERE user_time_bank_id = ?');
         $req->execute([$medicalJustif, $userModifiedId]);
 
         // Ajout de la date de l'arrêt.
-        $req = $bdd->prepare('UPDATE user SET illness_date3 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET illness_date3 = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
             // FONCTION MAILTO.
@@ -381,22 +370,17 @@ if(
     $modifyUserAbsenceDate = htmlspecialchars($_POST['userAbsenceDate4']);
     $userId                = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
 
     // Selection du retard précédent.
-    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT user_absence FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
 
@@ -428,15 +412,15 @@ if(
         move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif4/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
-        $req = $bdd->prepare('UPDATE user SET user_absence4 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET user_absence4 = ? WHERE user_time_bank_id = ?');
         $req->execute([$totalsOfAbsences, $userModifiedId]);
 
         // Ajout de toutes les informations si le document a été validé.
-        $req = $bdd->prepare('UPDATE user SET illness_justif4 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET illness_justif4 = ? WHERE user_time_bank_id = ?');
         $req->execute([$medicalJustif, $userModifiedId]);
 
         // Ajout de la date de l'arrêt.
-        $req = $bdd->prepare('UPDATE user SET illness_date4 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET illness_date4 = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
             // FONCTION MAILTO.
@@ -490,14 +474,14 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    $r = $bdd->prepare("SELECT user_extra_time FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT user_extra_time FROM `user_time_bank` WHERE user_time_bank_id = ?");
     $r->execute([$userModifiedId]);
     $previousUserExtraTime = $r->fetchColumn();
 
     $totalsOfExtraTime = floatval($modifyUserExtraTimeInfo) + floatval($previousUserExtraTime);
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET user_extra_time = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET user_extra_time = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$totalsOfExtraTime, $userModifiedId]);
 
     // Redirection.
@@ -527,26 +511,21 @@ if(
     $holidayRequest1End   = htmlspecialchars($_POST['holidayRequest1End']);
     $userId               = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET holiday1_response = 0 WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday1_response = 0 WHERE user_time_bank_id = ?');
     $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET holiday1_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday1_start = ? WHERE user_time_bank_id = ?');
     $req->execute([$holidayRequest1Start, $userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET holiday1_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday1_end = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$holidayRequest1End, $userModifiedId]);
 
         // FONCTION MAILTO.
@@ -615,26 +594,21 @@ if(
     $holidayRequest2End   = htmlspecialchars($_POST['holidayRequest2End']);
     $userId               = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET holiday2_response = 0 WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday2_response = 0 WHERE user_time_bank_id = ?');
     $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET holiday2_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday2_start = ? WHERE user_time_bank_id = ?');
     $req->execute([$holidayRequest2Start, $userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET holiday2_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday2_end = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$holidayRequest2End, $userModifiedId]);
 
             // FONCTION MAILTO.
@@ -702,26 +676,21 @@ if(
     $holidayRequest3End   = htmlspecialchars($_POST['holidayRequest3End']);
     $userId               = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET holiday3_response = 0 WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday3_response = 0 WHERE user_time_bank_id = ?');
     $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET holiday3_start = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday3_start = ? WHERE user_time_bank_id = ?');
     $req->execute([$holidayRequest3Start, $userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET holiday3_end = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET holiday3_end = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$holidayRequest3End, $userModifiedId]);
 
                 // FONCTION MAILTO.
@@ -794,14 +763,14 @@ if(
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
-    $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT day_off_bank FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userModifiedId]);
     $previousAddDayOffBank = $r->fetchColumn();
 
     $totalsOfDayOffBank = floatval($modifyAddDayOffBank) + floatval($previousAddDayOffBank);
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET day_off_bank = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_bank = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$totalsOfDayOffBank, $userModifiedId]);
 
     // Redirection.
@@ -829,30 +798,22 @@ if(
     $dayOffRequest1Desc   = htmlspecialchars($_POST['dayOffRequest1Desc']);
     $userId               = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname, email FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
-
-    $r = $bdd->prepare("SELECT email FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userEmail = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET day_off_response1 = 0 WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response1 = 0 WHERE user_time_bank_id = ?');
     $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET day_off1_desc = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off1_desc = ? WHERE user_time_bank_id = ?');
     $req->execute([$dayOffRequest1Desc, $userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET day_off1 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off1 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$modifyDayOffRequest1, $userModifiedId]);
 
         // FONCTION MAILTO.
@@ -922,28 +883,20 @@ if(
     $dayOffRequest2Desc   = htmlspecialchars($_POST['dayOffRequest2Desc']);
     $userId               = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname, email FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
-
-    $r = $bdd->prepare("SELECT email FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userEmail = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET day_off_response2 = 0 WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response2 = 0 WHERE user_time_bank_id = ?');
     $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET day_off2 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off2 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$modifyDayOffRequest2, $userModifiedId]);
 
         // FONCTION MAILTO.
@@ -1012,28 +965,20 @@ if(
     $dayOffRequest3Desc   = htmlspecialchars($_POST['dayOffRequest3Desc']);
     $userId               = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
     // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
+    $r = $bdd->prepare("SELECT id, name, surname, email FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userName = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
-
-    $r = $bdd->prepare("SELECT email FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userEmail = $r->fetchColumn();
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+    $userEmail = $user['email'];
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user SET day_off_response3 = 0 WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response3 = 0 WHERE user_time_bank_id = ?');
     $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user SET day_off3 = ? WHERE id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off3 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$modifyDayOffRequest3, $userModifiedId]);
 
         // FONCTION MAILTO.
@@ -1104,24 +1049,19 @@ if(
     $modifyUserAbsenceDate = htmlspecialchars($_POST['plannedUserAbsenceDate']);
     $userId                = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    // Sélection de l'ID, du nom et du prénom.
+    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    // Selection du retard précédent.
-    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+
+    // Sélection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
-
-    // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userName = $r->fetchColumn();
-
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
 
     // Document de l'arrêt maladie.
     $plannedMedicalJustificationName    = $_FILES['plannedMedicalJustification']['name'];
@@ -1151,15 +1091,15 @@ if(
         move_uploaded_file($plannedMedicalJustificationTmpName, './public/assets/plannedIllnessJustif1/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
-        $req = $bdd->prepare('UPDATE user SET planned_illness_1 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_1 = ? WHERE user_time_bank_id = ?');
         $req->execute([$totalsOfAbsences, $userModifiedId]);
 
         // Ajout de toutes les informations si le document a été validé.
-        $req = $bdd->prepare('UPDATE user SET planned_illness_1_justif = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_1_justif = ? WHERE user_time_bank_id = ?');
         $req->execute([$medicalJustif, $userModifiedId]);
 
         // Ajout de la date de l'arrêt.
-        $req = $bdd->prepare('UPDATE user SET planned_illness_1_date = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_1_date = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
                 // FONCTION MAILTO.
@@ -1210,24 +1150,19 @@ if(
     $modifyUserAbsenceDate = htmlspecialchars($_POST['plannedUserAbsenceDate2']);
     $userId                = $_SESSION['id'];
 
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    // Sélection de l'ID, du nom et du prénom.
+    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
     $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
+    $user = $r->fetch(PDO::FETCH_ASSOC);
 
-    // Selection du retard précédent.
-    $r = $bdd->prepare("SELECT user_absence FROM `user` WHERE id = ?");
+    $userModifiedId = $user['id'];
+    $userName = $user['name'];
+    $userSurname = $user['surname'];
+
+    // Sélection du retard précédent.
+    $r = $bdd->prepare("SELECT user_absence FROM user_time_bank WHERE user_time_bank_id = ?");
     $r->execute([$userId]);
     $previousUserAbsences = $r->fetchColumn();
-
-    // Gestion des variables.
-    $r = $bdd->prepare("SELECT name FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userName = $r->fetchColumn();
-
-    $r = $bdd->prepare("SELECT surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userSurname = $r->fetchColumn();
 
     // Document de l'arrêt maladie.
     $plannedMedicalJustificationName    = $_FILES['plannedMedicalJustification2']['name'];
@@ -1257,15 +1192,15 @@ if(
         move_uploaded_file($plannedMedicalJustificationTmpName, './public/assets/plannedIllnessJustif2/'.$medicalJustif);
 
         // Modification des modifications dans la base de données.
-        $req = $bdd->prepare('UPDATE user SET planned_illness_2 = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_2 = ? WHERE user_time_bank_id = ?');
         $req->execute([$totalsOfAbsences, $userModifiedId]);
 
         // Ajout de toutes les informations si le document a été validé.
-        $req = $bdd->prepare('UPDATE user SET planned_illness_2_justif = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_2_justif = ? WHERE user_time_bank_id = ?');
         $req->execute([$medicalJustif, $userModifiedId]);
 
         // Ajout de la date de l'arrêt.
-        $req = $bdd->prepare('UPDATE user SET planned_illness_2_date = ? WHERE id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_2_date = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
                 // FONCTION MAILTO.

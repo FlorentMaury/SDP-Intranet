@@ -27,7 +27,7 @@
     $remainingHolidays = floor($totalHolidays - $usedHolidays);
 
     // Mettre a jour la quantité de vacances restantes.
-    $updateHolidays = $bdd->prepare('UPDATE user SET holidays_total = ? WHERE id = ?');
+    $updateHolidays = $bdd->prepare('UPDATE user_time_bank SET holidays_total = ? WHERE user_time_bank_id = ?');
     $updateHolidays->execute(array($remainingHolidays, $data['id']));
 
     echo "Nombre de jours de vacances restants : $remainingHolidays jours.";
