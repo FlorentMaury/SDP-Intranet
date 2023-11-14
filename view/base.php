@@ -64,8 +64,8 @@
     <!-- Lien de retour en haut de page. -->
     <a class="rounded-circle d-flex justify-content-center shadow-sm" href="#" style="
                 position: fixed;
-                width: 3vw;
-                height: 5vh;
+                width: 3%;
+                height: 5%;
                 bottom: 70px;
                 right: 30px;">
         <img src="./public/assets/arrow_up.svg" alt="Retour haut de page">
