@@ -55,7 +55,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=contractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le début de ce contrat.');
@@ -87,7 +87,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=contractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la fin de ce contrat.');
@@ -119,7 +119,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=contractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le niveau de ce contrat.');
@@ -151,7 +151,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=contractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le coefficient de ce contrat.');
@@ -182,7 +182,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=contractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la rémunération de ce contrat.');
@@ -214,7 +214,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=contractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la mutuelle de ce contrat.');
@@ -278,7 +278,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=contractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier les heures hebdomadaires de ce contrat.');
@@ -310,7 +310,7 @@ if(
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=contractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la carte Navigo de ce contrat.');

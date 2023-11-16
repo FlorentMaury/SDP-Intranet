@@ -125,12 +125,6 @@ if(params.get('action') === 'userContractButton') {
 }
 
 // Vérifiez si le paramètre 'action' est égal à 'timeBankButton'.
-if(params.get('action') === 'userContractButton') {
-    // Déclenchez l'événement 'click' sur le bouton souhaité.
-    userContractButton.click();
-}
-
-// Vérifiez si le paramètre 'action' est égal à 'timeBankButton'.
 if(params.get('action') === 'userTimeBankButton') {
     // Déclenchez l'événement 'click' sur le bouton souhaité.
     userTimeBankButton.click();

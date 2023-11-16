@@ -16,7 +16,7 @@
 <body class="container" id="output">
 
     <header class="text-center">
-        <a href="<?php ($_SESSION) ? 'index.php?page=home' : 'index.php?page=dashboard' ?>">
+        <a href="<?php ($_SESSION) ? 'index.php?page=home' : 'index.php?page=dashboard&action=generalInfosButton' ?>">
             <img class="w-25 my-4" src="./public/assets/logo.webp" alt="Logo Studio Des Parfums">
         </a>
     </header>

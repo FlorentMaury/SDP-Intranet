@@ -113,7 +113,7 @@ if ($data['id'] == 1) {
                                         ?>
                                     </td>
                                     <td>
-                                        <a href='index.php?page=user&id=<?= $user["id"] ?>' type="button" class="btn btn-info m-1">
+                                        <a href='index.php?page=user&id=<?= $user["id"] ?>&action=generalUserInfosButton' type="button" class="btn btn-info m-1">
                                             <img style="width: 15px" src="./public/assets/infos.svg" alt="Informations">
                                         </a>
                                     </td>

@@ -100,7 +100,7 @@ if(params.get('action') === 'experiencesButton') {
 }
 
 // Vérifiez si le paramètre 'action' est égal à 'contractButtonUser'.
-if(params.get('action') === 'contractButtonUser') {
+if(params.get('action') === 'contractButton') {
     // Déclenchez l'événement 'click' sur le bouton souhaité.
     contractButtonUser.click();
 }

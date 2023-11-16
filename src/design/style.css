@@ -1,25 +1,3 @@
-body.dark-mode {
-  background-color: #212529 !important;
-  color: #fff !important;
-}
-
-/* Styles par défaut pour les modales */
-.modal-content {
-    background-color: #f5f5f5;
-    color: #212529;
-}
-
-/* Styles pour les modales en mode sombre */
-body.dark-mode .modal-content {
-    background-color: #212529;
-    color: #fff;
-}
-
-nav ul li img.dark-mode,
-header a img.dark-mode {
-  filter: invert(1);
-}
-
 main {
     margin: 0 auto;
 }
@@ -181,9 +159,9 @@ nav ul li:hover {
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(20px);  /* Modifié */
-    -ms-transform: translateX(20px);      /* Modifié */
-    transform: translateX(20px);          /* Modifié */
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);          
   }
   
   /* Rounded sliders */
@@ -193,4 +171,26 @@ nav ul li:hover {
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+  body.dark-mode {
+    background-color: #212529 !important;
+    color: #fff !important;
+  }
+  
+  /* Styles par défaut pour les modales */
+  .modal-content {
+      background-color: #f5f5f5;
+      color: #212529;
+  }
+  
+  /* Styles pour les modales en mode sombre */
+  body.dark-mode .modal-content {
+      background-color: #212529;
+      color: #fff;
+  }
+  
+  nav ul li img.dark-mode,
+  header a img.dark-mode {
+    filter: invert(1);
   }

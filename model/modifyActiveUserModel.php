@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
 
     // Redirection.
     if($result) {
-        header('location: ../index.php?page=dashboard&modification=1');
+        header('location: ../index.php?page=dashboard&modification=1&action=generalInfosButton');
         exit();
     } else {
         header('location: ../index.php?page=dashboard&errorMod=1&messageMod=Impossible de modifier le status de ce compte.');

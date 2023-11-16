@@ -63,7 +63,7 @@ if (isset($_GET['id'])) {
         </li>
         <li>
             <button type="button" href="" class="btn btn-dark me-2">
-                <a class="text-decoration-none text-white" href="index.php?page=dashboard">Retour au tableau de bord</a>
+                <a class="text-decoration-none text-white" href="index.php?page=dashboard&action=generalInfosButton">Retour au tableau de bord</a>
             </button>
         </li>
     </ul>

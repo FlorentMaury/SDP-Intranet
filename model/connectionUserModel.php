@@ -76,7 +76,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             $_SESSION['user_extra_time'] = $user['user_extra_time'];
 
             // Validation de la connexion.
-            header('location: index.php?page=dashboard&connexion=1');
+            header('location: index.php?page=dashboard&connexion=1&action=generalInfosButton');
             exit();
         } else {
             // Erreur dans le mot de passe.
