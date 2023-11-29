@@ -371,6 +371,8 @@ if ($data['id'] == 1) {
                         ?>
                             <img src="./public/assets/usersImg/userBlankImg/user_blank.webp" alt="Photo de profil à modifier" class="w-25">
                             <?php
+                        }
+                            else {
                             ?>
                             <img src="<?= './public/assets/usersImg/' . $data['profile_picture'] ?>" alt="Photo de profil à télécharger" class="w-25">
                         <?php

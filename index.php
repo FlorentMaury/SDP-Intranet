@@ -45,6 +45,7 @@
             home();
         };
     }
+
     // En cas d'erreur.
     catch(Exception $e) {
         $error = $e->getMessage();
