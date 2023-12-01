@@ -606,20 +606,6 @@ if (isset($_GET['id'])) {
             </a>
         </button>
     </div>
-
-    <!-- Navigo -->
-    <div class="expItems">
-        <p>Navigo : <?php if (empty($data['contract_transports'])) {
-                        echo 'En attente';
-                    } else {
-                        echo $data['contract_transports'];
-                    } ?></p>
-        <button class="btn btn-md btn-light p-2" type="submit">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractTransport">
-                <img src="./public/assets/settings.svg" alt="Modifier">
-            </a>
-        </button>
-    </div>
 </div>
 
 <!-- Compte de temps. -->
@@ -631,8 +617,36 @@ if (isset($_GET['id'])) {
     require('./model/timeAccountModel.php')
     ?>
 
+    <!-- Navigo -->
+    <div class="userExpGrid border rounded mt-3 p-3">
+        <h4>Navigo : </h4>
+        <div class="expFirstItem border rounded m-1 p-3">
+            <p>Numéro Navigo : <?php if (empty($data['contract_transports'])) {
+                            echo 'En attente';
+                        } else {
+                            echo $data['contract_transports'];
+                        } ?></p>
+            <button class="btn btn-md btn-light p-2" type="submit">
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractTransport">
+                    <img src="./public/assets/settings.svg" alt="Modifier">
+                </a>
+            </button>
+            <p>Scan du Navigo : <?php if (empty($data['transport_scan'])) {
+                            echo 'En attente';
+                        } else {
+                            echo $data['transport_scan'];
+                        } ?></p>
+            <button class="btn btn-md btn-light p-2" type="submit">
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyTransportScan">
+                    <img src="./public/assets/settings.svg" alt="Modifier">
+                </a>
+            </button>
+        </div>
+    </div>
+
     <!-- Absences. -->
     <div class="contract border rounded mt-3 p-3">
+
         <h4 class="my-3">Absences</h4>
 
         <!-- Arrêt -->

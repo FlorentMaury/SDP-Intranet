@@ -305,12 +305,12 @@ if(
     $userModifiedId = $r->fetchColumn();
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_role SET contract_transports = ? WHERE user_role_id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET contract_transports = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$modifyContractTransports, $userModifiedId]);
 
     // Redirection.
     if($result) {
-        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=timeBankButton');
         exit();
     } else {
         header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la carte Navigo de ce contrat.');
