@@ -30,7 +30,7 @@
 
     if (isset($_GET['newUser'])) {
         echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Nouveau collaborateur enregistré avec succès.</p></div>';
-    } else if (isset($_GET['errorAddnew']) && !empty($_GET['messageAddNew'])) {
+    } else if (isset($_GET['errorAddNew']) && !empty($_GET['messageAddNew'])) {
         echo '<div class=\'container\'><p class="mt-3 fw-bold text-danger">' . htmlspecialchars($_GET['messageAddNew']) . '</p></div>';
     }
 
