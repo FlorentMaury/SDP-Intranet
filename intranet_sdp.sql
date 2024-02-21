@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 14 nov. 2023 à 12:56
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
+-- Généré le : mer. 21 fév. 2024 à 12:16
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,38 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `intranet_sdp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `customer`
+--
+
+CREATE TABLE `customer` (
+  `id` int(11) NOT NULL,
+  `title` varchar(6) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `email` text NOT NULL,
+  `address` text NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `country` varchar(30) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `host` varchar(30) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `how_did_you` text NOT NULL,
+  `creation_id` varchar(10) NOT NULL,
+  `created_by` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `customer`
+--
+
+INSERT INTO `customer` (`id`, `title`, `lastname`, `firstname`, `email`, `address`, `city`, `country`, `phone_number`, `host`, `date`, `how_did_you`, `creation_id`, `created_by`) VALUES
+(0, 'Mr', 'Reno', 'Jean', 'r@r.rr', '4 Rue de Reno', 'New-York', 'États-Unis', '+1111111', 'Karim', '2024-02-21', 'TripAdvisor', '202402001', ''),
+(1, 'Mme', 'Dujardin', 'Jean', 'd@d.dd', '4 Rue du Jardin', 'Londres', 'Royaume-Uni', '+44444444', 'Lea', '2024-02-21', 'WeCanDo', '202402002', ''),
+(2, 'Enfant', 'Gabin', 'Jean', 'g@g.gg', '4 rue de Gabin', 'Paris', 'France', '+33333333', 'Patrice', '2024-02-21', 'Google', '202402003', '');
 
 -- --------------------------------------------------------
 
@@ -62,8 +94,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `active`, `name`, `surname`, `email`, `secret`, `password`, `birth_date`, `sex`, `phone_number`, `birth_city`, `birth_country`, `current_street_number`, `current_city_street`, `current_city`, `current_zip_code`, `current_country`, `id_number`, `social_security_number`, `creation_date`, `profile_picture`, `curriculum_vitae`, `insurance_card_face`, `insurance_card_back`, `id_card_face`, `id_card_back`) VALUES
 (1, '1', 'Flo', 'Maury', 'e@e.ee', 'bfd53533fbd80993fe5a6d80c7fc2675fdb8a6d91695905527', 'zk32a253b835f3ac4fe27137d4a142440e6ba36620c8345', '1994-06-03', 'Homme', '0612121212', 'Londres', 'Royaume_Uni', '18', 'Rue Saint Antoine', 'Paris', '75004', 'France', '599454644', '1949494052560', '2022-09-28 12:52:07', '', '', '', '', '', ''),
-(29, '1', 'John', 'Doe', 'o@o.oo', 'e043cabede08db1411cec7470c54427896de3d3c1699960535', 'zk3272f3175835e6b65b315b2a00357f9b9d229dae38345', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-14 11:15:35', '', '', '', '', '', ''),
-(30, '0', 'Test', 'ToDelete', 'r@r.rr', 'c1290d333721427b5abd3fa7ace29ba18dfc716f1699962977', 'zk325ff2615197d4dadcc3dd086098372b7f64b069c3345', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-14 11:56:17', '', '', '', '', '', '');
+(2, '1', 'John', 'Doe', 'o@o.oo', 'e043cabede08db1411cec7470c54427896de3d3c1699960535', 'zk3272f3175835e6b65b315b2a00357f9b9d229dae38345', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-14 11:15:35', '', '', '', '', '', ''),
+(3, '0', 'Test', 'ToDelete', 'r@r.rr', 'c1290d333721427b5abd3fa7ace29ba18dfc716f1699962977', 'zk325ff2615197d4dadcc3dd086098372b7f64b069c3345', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-14 11:56:17', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -116,6 +148,7 @@ INSERT INTO `user_exp` (`user_exp_id`, `school_1`, `school_1_start`, `school_1_e
 
 CREATE TABLE `user_role` (
   `user_role_id` int(11) NOT NULL,
+  `can_access_db` int(11) NOT NULL,
   `contract_type` text DEFAULT NULL,
   `contract_start` date DEFAULT NULL,
   `contract_end` date DEFAULT NULL,
@@ -124,18 +157,17 @@ CREATE TABLE `user_role` (
   `contract_remuneration` float DEFAULT NULL,
   `contract_insurance` varchar(10) DEFAULT NULL,
   `contract_insurance_number` varchar(30) DEFAULT NULL,
-  `contract_weekly` varchar(10) DEFAULT NULL,
-  `contract_transports` varchar(10) DEFAULT NULL
+  `contract_weekly` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `user_role`
 --
 
-INSERT INTO `user_role` (`user_role_id`, `contract_type`, `contract_start`, `contract_end`, `contract_level`, `contract_coef`, `contract_remuneration`, `contract_insurance`, `contract_insurance_number`, `contract_weekly`, `contract_transports`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user_role` (`user_role_id`, `can_access_db`, `contract_type`, `contract_start`, `contract_end`, `contract_level`, `contract_coef`, `contract_remuneration`, `contract_insurance`, `contract_insurance_number`, `contract_weekly`) VALUES
+(1, 1, NULL, '2023-08-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -145,6 +177,8 @@ INSERT INTO `user_role` (`user_role_id`, `contract_type`, `contract_start`, `con
 
 CREATE TABLE `user_time_bank` (
   `user_time_bank_id` int(11) NOT NULL,
+  `transport_scan` varchar(255) NOT NULL,
+  `contract_transports` varchar(10) NOT NULL,
   `user_absence` float DEFAULT 0,
   `user_delay` float DEFAULT 0,
   `user_extra_time` float DEFAULT 0,
@@ -194,14 +228,20 @@ CREATE TABLE `user_time_bank` (
 -- Déchargement des données de la table `user_time_bank`
 --
 
-INSERT INTO `user_time_bank` (`user_time_bank_id`, `user_absence`, `user_delay`, `user_extra_time`, `day_off_bank`, `day_off_response1`, `day_off1`, `day_off1_desc`, `day_off_response2`, `day_off2`, `day_off2_desc`, `day_off_response3`, `day_off3`, `day_off3_desc`, `illness_justif`, `illness_date`, `user_absence2`, `illness_justif2`, `illness_date2`, `user_absence3`, `illness_justif3`, `illness_date3`, `user_absence4`, `illness_justif4`, `illness_date4`, `planned_illness_1`, `planned_illness_1_date`, `planned_illness_1_justif`, `planned_illness_2`, `planned_illness_2_date`, `planned_illness_2_justif`, `planned_illness_3`, `planned_illness_3_date`, `planned_illness_3_justif`, `holidays_total`, `holidays_taken`, `holiday1_response`, `holiday1_start`, `holiday1_end`, `holiday2_response`, `holiday2_start`, `holiday2_end`, `holiday3_response`, `holiday3_start`) VALUES
-(1, 0, 0, 0, '0', '0', NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, 0, 0, 0, '0', '0', NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0', '2023-11-01', '2023-11-07', NULL, NULL, NULL, NULL, NULL),
-(30, 0, 0, 0, '0', '0', NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user_time_bank` (`user_time_bank_id`, `transport_scan`, `contract_transports`, `user_absence`, `user_delay`, `user_extra_time`, `day_off_bank`, `day_off_response1`, `day_off1`, `day_off1_desc`, `day_off_response2`, `day_off2`, `day_off2_desc`, `day_off_response3`, `day_off3`, `day_off3_desc`, `illness_justif`, `illness_date`, `user_absence2`, `illness_justif2`, `illness_date2`, `user_absence3`, `illness_justif3`, `illness_date3`, `user_absence4`, `illness_justif4`, `illness_date4`, `planned_illness_1`, `planned_illness_1_date`, `planned_illness_1_justif`, `planned_illness_2`, `planned_illness_2_date`, `planned_illness_2_justif`, `planned_illness_3`, `planned_illness_3_date`, `planned_illness_3_justif`, `holidays_total`, `holidays_taken`, `holiday1_response`, `holiday1_start`, `holiday1_end`, `holiday2_response`, `holiday2_start`, `holiday2_end`, `holiday3_response`, `holiday3_start`) VALUES
+(1, '', '98765432', 0, 0, 0.25, '1', '0', '2023-11-16', 'Raisons de ma demande.', '0', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25, 0, '0', '2023-11-02', '2023-11-24', NULL, NULL, NULL, NULL, NULL),
+(29, '', '', 0, 0, 0, '0', '0', NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25, 0, '0', '2023-11-01', '2023-11-07', NULL, NULL, NULL, NULL, NULL),
+(30, '', '', 0, 0, 0, '0', '0', NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `user`
@@ -232,10 +272,16 @@ ALTER TABLE `user_time_bank`
 --
 
 --
+-- AUTO_INCREMENT pour la table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 DELIMITER $$
 --
