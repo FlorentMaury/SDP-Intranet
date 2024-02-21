@@ -12,7 +12,7 @@
 
     // Direction de l'utilisateur en fonction de la requête.
     try{
-        if(isset($_GET['page'])) {
+        if(isset($_GET['page']) && isset($_SESSION['id'])) {
 
             // Page d'accueil.
             if($_GET['page'] == 'home') {
