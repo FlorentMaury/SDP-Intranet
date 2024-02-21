@@ -71,13 +71,28 @@
         <img src="./public/assets/arrow_up.svg" alt="Retour haut de page">
     </a>
 
+    <?php
+    if ($_SESSION) {
+        if ($_SESSION['can_access_db'] == 1) {
+    ?>
+    <div>
+        <button type="button" href="" class="btn btn-info m-2">
+            <a class="text-decoration-none text-white p-2" href="https://formulairesdp.florent-maury.fr/index.php?page=home">Aller aux fichiers créas</a>
+        </button>
+    </div>
+
+    <?php
+        }
+    }
+    ?>
+
     <!-- Contenu de la page. -->
     <main>
         <?= $content ?>
     </main>
 
     <!-- Switch mode sombre -->
-    <?php if(isset($_GET['page']) && $_GET['page'] != 'home'): ?>
+    <?php if (isset($_GET['page']) && $_GET['page'] != 'home') : ?>
         <label class="switch m-4">
             <input type="checkbox" id="darkModeSwitch">
             <span class="slider round"></span>

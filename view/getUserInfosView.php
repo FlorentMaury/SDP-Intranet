@@ -213,7 +213,7 @@ if (isset($_GET['id'])) {
             </p>
         </div>
         <div class="dashboardItems">
-            <p>Date d'inscription : <?= $_SESSION['creation_date'] ?></p>
+            <p>Date d'inscription : <?= $data['creation_date'] ?></p>
         </div>
         <div>
             <a href='./model/deleteUserModel.php?id=<?= $data["id"] ?>' type="button" class="m-3">
@@ -223,7 +223,12 @@ if (isset($_GET['id'])) {
             </a>
             <a href='./model/modifyActiveUserModel.php?id=<?= $data["id"] ?>' type="button" class="m-3">
                 <button class="btn btn-dark text-align-center">
-                    Modifier le status
+                    Rendre inactif / actif
+                </button>
+            </a>
+            <a href='./model/modifyCanAccessDBModel.php?id=<?= $data["id"] ?>' type="button" class="m-3">
+                <button class="btn btn-dark text-align-center">
+                    Autoriser / Révoquer l'accès à la base de données
                 </button>
             </a>
         </div>

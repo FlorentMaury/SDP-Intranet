@@ -1947,6 +1947,10 @@
                     <label for="passwordTwo">Confirmation du mot de passe</label>
                     <input type="password" name="passwordTwo" class="form-control" id="passwordTwo">
                 </p>
+                <p>
+                    <label for="canAccessDB">Autoriser l'accès au numéros de creations ?</label>
+                    <input type="checkbox" name="canAccessDB" class="form-check-input mx-3" id="canAccessDB" value="1">
+                </p>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Ajouter</button>
             </form>

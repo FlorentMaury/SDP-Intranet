@@ -70,6 +70,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             $_SESSION['contract_coef']          = $user['contract_coef'];
             $_SESSION['contract_remuneration']  = $user['contract_remuneration'];
             $_SESSION['contract_weekly']        = $user['contract_weekly'];
+            $_SESSION['can_access_db']         = $user['can_access_db'];
             $_SESSION['user_absence']    = $user['user_absence'];
             $_SESSION['user_delay']      = $user['user_delay'];
             $_SESSION['user_illness']    = $user['user_illness'];

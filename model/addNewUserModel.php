@@ -60,6 +60,13 @@ if (!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email'
     $secret = sha1($email) . time();
     $secret = sha1($secret) . time();
 
+    // L'utilisateur peut-il accéder à la base de données ?
+    if (isset($_POST['canAccessDB'])) {
+        $canAccessDB = 1;
+    } else {
+        $canAccessDB = 0;
+    }
+
     // Ajouter un utilisateur.
     $req = $bdd->prepare('INSERT INTO user(active, name, surname, email, password, secret) VALUES(?, ?, ?, ?, ?, ?)');
     $result = $req->execute([1, $name, $surname, $email, $password, $secret]);
@@ -70,8 +77,8 @@ if (!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email'
     $req1 = $bdd->prepare('INSERT INTO user_exp(user_exp_id) VALUES(?)');
     $req1->execute([$lastInsertId]);
 
-    $req2 = $bdd->prepare('INSERT INTO user_role(user_role_id) VALUES(?)');
-    $req2->execute([$lastInsertId]);
+    $req2 = $bdd->prepare('INSERT INTO user_role(user_role_id, can_access_db) VALUES(?, ?)');
+    $req2->execute([$lastInsertId, $canAccessDB]);
 
     $req3 = $bdd->prepare('INSERT INTO user_time_bank(user_time_bank_id) VALUES(?)');
     $req3->execute([$lastInsertId]);
