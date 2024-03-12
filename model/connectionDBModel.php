@@ -25,6 +25,7 @@
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
         WHERE active = 0
+        ORDER BY surname
         ');
     $usersValid = $bdd->query('
         SELECT *
@@ -33,6 +34,7 @@
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
         WHERE active = 1
+        ORDER BY surname
         ');
     $usersHoliday1 = $bdd->query('
         SELECT *

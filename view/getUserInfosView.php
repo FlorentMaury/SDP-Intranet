@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <!-- Titre dynamique. -->
-<h1 class="mb-3 display-4 text-center mt-3">Profil de <?= $data['name'] ?> <?= $data['surname'] ?></h1>
+<h1 class="mb-3 display-4 text-center mt-3">Profil de <?= $data['name'] ?> <?= strtoupper($data['surname']) ?></h1>
 
 <!-- Navigation des utilisateurs. -->
 <nav class="m-3 my-5">
@@ -607,6 +607,20 @@ if (isset($_GET['id'])) {
                                     } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractWeekly">
+                <img src="./public/assets/settings.svg" alt="Modifier">
+            </a>
+        </button>
+    </div>
+
+    <!-- Médecine du travail -->
+    <div class="expItems">
+        <p>Date de la visite médicale : <?php if (empty($data['work_medicine'])) {
+                                        echo 'En attente';
+                                    } else {
+                                        echo $data['work_medicine'];
+                                    } ?></p>
+        <button class="btn btn-md btn-light p-2" type="submit">
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyWorkMedicine">
                 <img src="./public/assets/settings.svg" alt="Modifier">
             </a>
         </button>

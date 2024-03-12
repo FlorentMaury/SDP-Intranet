@@ -286,6 +286,36 @@ if(
     };
 };
 
+// Vérification du formulaire de modification de la date de la visite médicale.
+if(
+    !empty($_POST['modifyWorkMedicine'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyWorkMedicine = htmlspecialchars($_POST['modifyWorkMedicine']);
+    $userId = $_GET['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user_role SET work_medicine = ? WHERE user_role_id = ?');
+    $result = $req->execute([$modifyWorkMedicine, $userModifiedId]);
+
+    // Redirection.
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier la date de la visite médicale.');
+        exit();
+    };
+};
 
 // Vérification du formulaire de modification de la carte Navigo.
 if(

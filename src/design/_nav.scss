@@ -1,0 +1,50 @@
+.nav {
+    border       : 1px solid #8e8d8d34;
+    border-radius: 10px;
+    margin       : 5px;
+    height       : auto;
+}
+
+ul {
+    padding-left: 0rem;
+}
+
+nav ul li.active.dark-mode {
+  background-color: #1a1e23;
+  color: #ffffff; 
+}
+
+nav ul li.active {
+  background-color: #f5f5f5;
+}
+
+nav ul li.dark-mode {  
+    background-color: #212529;
+    color: #fff;
+}
+
+nav ul li.dark-mode:hover {
+  background-color: #1a1e23;
+  transition      : all 0.2s ease-in-out;
+}
+
+nav ul li {
+    border-radius  : 10px;
+    padding        : 10px;
+    transition     : all 0.2s ease-in-out;
+    display        : flex;
+    justify-content: start;
+    align-items    : center;
+}
+
+nav ul li:hover {
+    background: #f5f5f5;
+    transition: all 0.2s ease-in-out;
+}
+
+
+@media all and (max-width: 450px) {
+    nav ul p {
+        display: none;
+    };
+};

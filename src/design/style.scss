@@ -1,0 +1,75 @@
+// sass --watch ./src/design/style.scss:./src/design/style.css --style compressed
+
+@import 'reset';
+@import 'nav';
+@import 'darkMode';
+
+main {
+    margin: 0 auto;
+}
+
+#employeesList {
+    height         : 80%;
+    overflow-y     : scroll;
+    scrollbar-width: thin;
+}
+
+.dashboardItems,
+.expItems {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    padding        : 5px;
+    border-radius  : 10px;
+}
+
+.dashboardItems:hover,
+.expItems:hover {
+    background-color: #8e8d8d34;
+    border-radius   : 10px;
+}
+
+.userInfosInsuranceCards,
+.userInfosIdCards,
+.userInfosDiplomaCards {
+    display        : flex;
+    justify-content: space-evenly;
+    align-items    : center;
+}
+
+.userInfosInsuranceCard,
+.userInfosIdCard,
+.userInfosDiplomaCard {
+    display       : flex;
+    flex-direction: column;
+}
+
+.userInfosInsuranceCard img,
+.userInfosIdCard img,
+.userInfosDiplomaCard img {
+    max-width : 200px;
+    max-height: 150px;
+}
+
+.userExpGrid {
+    display              : grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap             : 10px;
+}
+
+.expFirstItem {
+    grid-column: 1 / 2;
+}
+
+.expSecondItem {
+    grid-column: 2 / 3;
+}
+
+.expThirdItem {
+    grid-column: 3 / 4;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}

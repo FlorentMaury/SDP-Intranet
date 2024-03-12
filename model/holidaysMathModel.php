@@ -9,7 +9,11 @@
     // Date actuelle.
     $now = new DateTime();
 
-    if ($contractDate < $start) {
+    if ($now >= $start) {
+        // Si la date actuelle est après le 1er juin de l'année en cours,
+        // alors réinitialisez le total des jours de vacances à 25.
+        $totalHolidays = 25;
+    } else if ($contractDate < $start) {
         // Si la date du contrat est antérieure au 1er juin de l'année en cours,
         // alors l'employé a droit à 25 jours de vacances.
         $totalHolidays = 25;

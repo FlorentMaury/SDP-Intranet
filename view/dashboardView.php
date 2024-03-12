@@ -25,7 +25,7 @@ $data = $req->fetch();
 <nav class="m-3 my-5 text-center">
     <ul class="d-flex justify-content-center align-items-center flex-wrap flex-sm-row">
         <?php
-        if ($_SESSION['id'] == 1) {
+        if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
         ?>
             <li id="managerViewGridButton">
                 <img src="./public/assets/add.svg" alt="Ajouter">
@@ -70,7 +70,7 @@ $data = $req->fetch();
 
 <!-- Grille administrateur. -->
 <?php
-if ($data['id'] == 1) {
+if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
 ?>
 
     <!-- Compte administrateur. -->
@@ -102,7 +102,7 @@ if ($data['id'] == 1) {
                             ?>
                                 <tr>
                                     <td><?= $user['name'] ?></td>
-                                    <td><?= $user['surname'] ?></td>
+                                    <td><?= strtoupper($user['surname']) ?></td>
                                     <td class="creationDate">
                                         <?php
                                         if ((floatval($user['user_extra_time'] * 60) - floatval($user['user_delay'] * 60)) >= 0) {
@@ -145,7 +145,7 @@ if ($data['id'] == 1) {
                             ?>
                                 <tr>
                                     <td><?= $user['name'] ?></td>
-                                    <td><?= $user['surname'] ?></td>
+                                    <td><?= strtoupper($user['surname']) ?></td>
                                     <td class="creationDate"><?= $user['contract_end'] ?></td>
                                     <td>
                                         <a href='index.php?page=user&id=<?= $user["id"] ?>' type="button" class="btn btn-info">
@@ -370,10 +370,9 @@ if ($data['id'] == 1) {
                         if (empty($data['profile_picture'])) {
                         ?>
                             <img src="./public/assets/usersImg/userBlankImg/user_blank.webp" alt="Photo de profil à modifier" class="w-25">
-                            <?php
-                        }
-                            else {
-                            ?>
+                        <?php
+                        } else {
+                        ?>
                             <img src="<?= './public/assets/usersImg/' . $data['profile_picture'] ?>" alt="Photo de profil à télécharger" class="w-25">
                         <?php
                         }
@@ -1154,6 +1153,15 @@ if ($data['id'] == 1) {
                                             echo $data['contract_weekly'];
                                         } ?></p>
         </div>
+
+        <!-- Médecine du travail. -->
+        <div>
+            <p>Date de la visite du travail : <?php if (empty($data['work_medicine'])) {
+                                                    echo 'En attente';
+                                                } else {
+                                                    echo $data['work_medicine'];
+                                                } ?></p>
+        </div>
     </div>
 </div>
 
@@ -1300,20 +1308,20 @@ if ($data['id'] == 1) {
         <h4>Navigo : </h4>
         <div class="expFirstItem border rounded m-1 p-3">
             <p>Numéro Navigo : <?php if (empty($data['contract_transports'])) {
-                            echo 'En attente';
-                        } else {
-                            echo $data['contract_transports'];
-                        } ?></p>
+                                    echo 'En attente';
+                                } else {
+                                    echo $data['contract_transports'];
+                                } ?></p>
             <button class="btn btn-md btn-light p-2" type="submit">
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractTransport">
                     <img src="./public/assets/settings.svg" alt="Modifier">
                 </a>
             </button>
             <p>Scan du Navigo : <?php if (empty($data['transport_scan'])) {
-                            echo 'En attente';
-                        } else {
-                            echo $data['transport_scan'];
-                        } ?></p>
+                                    echo 'En attente';
+                                } else {
+                                    echo $data['transport_scan'];
+                                } ?></p>
             <button class="btn btn-md btn-light p-2" type="submit">
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyTransportScan">
                     <img src="./public/assets/settings.svg" alt="Modifier">
@@ -1438,16 +1446,16 @@ if ($data['id'] == 1) {
             ?>
 
 
-            <!-- Absences plannifiées. -->
+            <!-- Absences planifiées. -->
             <div class="contract border rounded mt-3 p-3">
-                <h4 class="my-3">Absences plannifiée</h4>
+                <h4 class="my-3">Absences planifiée</h4>
 
                 <!-- Arrêt. -->
                 <?php
                 if (!$data['planned_illness_1']) {
                 ?>
 
-                    <p>Aucune absence n'est plannifiée</p>
+                    <p>Aucune absence n'est planifiée</p>
 
                 <?php
                 }
@@ -1516,7 +1524,7 @@ if ($data['id'] == 1) {
                     ?>
                         <button class="btn btn-md btn-danger p-2 m-3" type="submit">
                             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo">
-                                Plannifier une absence
+                                Planifier une absence
                             </a>
                         </button>
                     <?php
@@ -1524,7 +1532,7 @@ if ($data['id'] == 1) {
                     ?>
                         <button class="btn btn-md btn-danger p-2 m-3" type="submit">
                             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo2">
-                                Plannifier une absence
+                                Planifier une absence
                             </a>
                         </button>
                     <?php
@@ -1532,7 +1540,7 @@ if ($data['id'] == 1) {
                     ?>
                         <button class="btn btn-md btn-danger p-2 m-3" type="submit">
                             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo3">
-                                Plannifier une absence
+                                Planifier une absence
                             </a>
                         </button>
                     <?php
@@ -1540,7 +1548,7 @@ if ($data['id'] == 1) {
                     ?>
                         <button class="btn btn-md btn-danger p-2 m-3" type="submit">
                             <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyPlannedAbsenceInfo4">
-                                Plannifier une absence
+                                Planifier une absence
                             </a>
                         </button>
                     <?php
@@ -1682,15 +1690,15 @@ if ($data['id'] == 1) {
 
 <!-- Javascript dynamique. -->
 <?php
-    if ($data['id'] == 1) {
-        ?>
-            <script type="text/javascript" src="./src/scriptDashboard.js"></script>
-        <?php
-        } else {
-        ?>
-            <script type="text/javascript" src="./src/scriptDashboardUsers.js"></script>
-        <?php
-    };
+if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
+?>
+    <script type="text/javascript" src="./src/scriptDashboard.js"></script>
+<?php
+} else {
+?>
+    <script type="text/javascript" src="./src/scriptDashboardUsers.js"></script>
+<?php
+};
 ?>
 
 
