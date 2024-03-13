@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
         <li id="userContractButton">
             <img src="./public/assets/place.svg" alt="Poste">
             <p>
-                Poste au studio
+                Contrat
             </p>
         </li>
         <li id="userTimeBankButton">

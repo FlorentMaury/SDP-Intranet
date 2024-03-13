@@ -1,64 +1,54 @@
 <?php
 
+
 // Fonction qui permet l'acceptation ou non d'une demande de CA.
 if (
-    !empty($_POST['holiday1Request'])
+    !empty($_POST['holidayRequest']) &&
+    !empty($_POST['holiday_id']) // Assurez-vous que holiday_id est envoyé
 ) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $holiday1Request = htmlspecialchars($_POST['holiday1Request']);
-    $userId          = $_GET['id'];
+    $holidayRequest = htmlspecialchars($_POST['holidayRequest']);
+    $holidayId = htmlspecialchars($_POST['holiday_id']); // Récupérez holiday_id
+    $userId = $_GET['id'];
 
     // Sélection de l'ID.
     $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
     $r->execute([$userId]);
     $userModifiedId = $r->fetchColumn();
 
+    // Sélection de l'utilisateur et des informations de vacances
     $stmt = $bdd->prepare('
         SELECT *
         FROM user 
         INNER JOIN user_exp ON user.id = user_exp.user_exp_id
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
-        WHERE id = ?
-        ');
-    $stmt->execute([$userId]);
+        INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
+        WHERE id = ? AND user_holiday.user_holiday_id = ?
+    ');
+    $stmt->execute([$userId, $holidayId]); // Passez holiday_id ici
     $user = $stmt->fetch();
 
     $userName      = $user['name'];
     $userSurname   = $user['surname'];
     $userEmail     = $user['email'];
-    $holiday1Start = $user['holiday1_start'];
-    $holiday1End   = $user['holiday1_end'];
+    $holidayStart  = $user['holiday_start'];
+    $holidayEnd    = $user['holiday_end'];
 
-    // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_taken FROM user_time_bank WHERE user_time_bank_id = ?");
-    $r->execute([$userId]);
-    $currentHolidaysTaken = $r->fetchColumn();
-
-    if ($holiday1Request == 1) {
+    if ($holidayRequest == 1) {
         $holidayRes = 'Acceptée';
 
-        $holiday1StartDateTime = new DateTime($user['holiday1_start']);
-        $holiday1EndDateTime   = new DateTime($user['holiday1_end']);
-
-        $diff = date_diff($holiday1EndDateTime, $holiday1StartDateTime)->days;
-        $newHolidaysTaken = $currentHolidaysTaken + $diff;
-
-        // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE user_time_bank SET holidays_taken = ? WHERE user_time_bank_id = ?");
-        $r->execute([$newHolidaysTaken, $userId]);
-
-    } else if ($holiday1Request == 2) {
+    } else if ($holidayRequest == 2) {
         $holidayRes = 'Refusée';
     }
 
     // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday1_response = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$holiday1Request, $userModifiedId]);
+    $req = $bdd->prepare('UPDATE user_holiday SET holiday_response = ?, holiday_response_text = ? WHERE holiday_id = ?');
+    $result = $req->execute([$holidayRequest, $holidayRes, $holidayId]);
 
     // FONCTION MAILTO.
 
@@ -98,201 +88,6 @@ if (
     }
 };
 
-// Fonction qui permet l'acceptation ou non d'une seconde demande de CA.
-if (
-    !empty($_POST['holiday2Request'])
-) {
-
-    // Connexion à la base de données.
-    require('./model/connectionDBModel.php');
-
-    // Variables.
-    $holiday2Request = htmlspecialchars($_POST['holiday2Request']);
-    $userId          = $_GET['id'];
-
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
-    $stmt = $bdd->prepare('
-        SELECT *
-        FROM user 
-        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
-        INNER JOIN user_role ON user.id = user_role.user_role_id
-        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
-        WHERE id = ?
-        ');
-    $stmt->execute([$userId]);
-    $user = $stmt->fetch();
-
-    $userName      = $user['name'];
-    $userSurname   = $user['surname'];
-    $userEmail     = $user['email'];
-    $holiday2Start = $user['holiday2_start'];
-    $holiday2End   = $user['holiday2_end'];
-
-    // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_taken FROM user_time_bank WHERE user_time_bank_id = ?");
-    $r->execute([$userId]);
-    $currentHolidaysTaken = $r->fetchColumn();
-
-    if ($holiday2Request == 1) {
-        $holidayRes = 'Acceptée';
-
-        $holiday2StartDateTime = new DateTime($user['holiday2_start']);
-        $holiday2EndDateTime   = new DateTime($user['holiday2_end']);
-
-        $diff = date_diff($holiday2EndDateTime, $holiday2StartDateTime)->days;
-        $newHolidaysTaken = $currentHolidaysTaken + $diff;
-
-        // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE user_time_bank SET holidays_taken = ? WHERE user_time_bank_id = ?");
-        $r->execute([$newHolidaysTaken, $userId]);
-
-    } else if ($holiday2Request == 2) {
-        $holidayRes = 'Refusée';
-    }
-
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday2_response = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$holiday2Request, $userModifiedId]);
-
-    // FONCTION MAILTO.
-
-    // Variables.
-    $userMessage   =
-        "<html>
-                <head>
-                    <title>Réponse à la demande de vacances | $userName $userSurname</title>
-                </head>
-                <body>
-                    <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
-                     du $holiday2Start au $holiday2End vient d'être $holidayRes.</p>
-                </body>
-            </html>";
-    // $to         = 'contact@florent-maury.fr';
-    $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-    $subject       = "Réponse à la demande de vacances | $userName $userSurname";
-
-    // Retour à la ligne en cas de dépassement des 70 caractères.
-    $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
-    // Personnalisation du contenu en fonction des variables.
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: $userName <$userEmail>" . "\r\n";
-    $headers .= "Reply-To: $userEmail" . "\r\n";
-
-    mail($to, $subject, $contentMessage, $headers);
-
-    // Redirection.
-    if ($result) {
-        header('location: index.php?page=dashboard&holidayResponse=1');
-        exit();
-    } else {
-        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-        exit();
-    }
-};
-
-// Fonction qui permet l'acceptation ou non d'une troisième demande de CA.
-if (
-    !empty($_POST['holiday3Request'])
-) {
-
-    // Connexion à la base de données.
-    require('./model/connectionDBModel.php');
-
-    // Variables.
-    $holiday3Request = htmlspecialchars($_POST['holiday3Request']);
-    $userId          = $_GET['id'];
-
-    // Sélection de l'ID.
-    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $userModifiedId = $r->fetchColumn();
-
-    $stmt = $bdd->prepare('
-        SELECT *
-        FROM user 
-        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
-        INNER JOIN user_role ON user.id = user_role.user_role_id
-        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
-        WHERE id = ?
-        ');
-    $stmt->execute([$userId]);
-    $user = $stmt->fetch();
-
-    $userName      = $user['name'];
-    $userSurname   = $user['surname'];
-    $userEmail     = $user['email'];
-    $holiday3Start = $user['holiday3_start'];
-    $holiday3End   = $user['holiday3_end'];
-
-    // Selection de la banque de repos.
-    $r = $bdd->prepare("SELECT holidays_taken FROM user_time_bank WHERE user_time_bank_id = ?");
-    $r->execute([$userId]);
-    $currentHolidaysTaken = $r->fetchColumn();
-
-    if ($holiday3Request == 1) {
-        $holidayRes = 'Acceptée';
-
-        $holiday3StartDateTime = new DateTime($user['holiday3_start']);
-        $holiday3EndDateTime   = new DateTime($user['holiday3_end']);
-
-        $diff = date_diff($holiday3EndDateTime, $holiday3StartDateTime)->days;
-        $newHolidaysTaken = $currentHolidaysTaken + $diff;
-
-        // Selection de la banque de repos.
-        $r = $bdd->prepare("UPDATE user_time_bank SET holidays_taken = ? WHERE user_time_bank_id = ?");
-        $r->execute([$newHolidaysTaken, $userId]);
-
-    } else if ($holiday3Request == 2) {
-        $holidayRes = 'Refusée';
-    }
-
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday3_response = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$holiday3Request, $userModifiedId]);
-
-    // FONCTION MAILTO.
-
-    // Variables.
-    $userMessage   =
-        "<html>
-                <head>
-                    <title>Réponse à la demande de vacances | $userName $userSurname</title>
-                </head>
-                <body>
-                    <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
-                     du $holiday3Start au $holiday3End vient d'être $holidayRes.</p>
-                </body>
-            </html>";
-    // $to         = 'contact@florent-maury.fr';
-    $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-    $subject       = "Réponse à la demande de vacances | $userName $userSurname";
-
-    // Retour à la ligne en cas de dépassement des 70 caractères.
-    $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
-    // Personnalisation du contenu en fonction des variables.
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: $userName <$userEmail>" . "\r\n";
-    $headers .= "Reply-To: $userEmail" . "\r\n";
-
-    mail($to, $subject, $contentMessage, $headers);
-
-    // Redirection.
-    if ($result) {
-        header('location: index.php?page=dashboard&holidayResponse=1');
-        exit();
-    } else {
-        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-        exit();
-    }
-};
 
 // Fonction qui permet l'acceptation ou non d'une demande de RTT.
 

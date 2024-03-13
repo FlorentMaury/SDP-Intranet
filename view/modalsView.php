@@ -1981,76 +1981,28 @@
 </div>
 
 <!-- Modale de modification de première demande de vacances. -->
-<div class="modal fade" id="modifyHolidayRequest1" data-bs-backdrop="static">
+<div class="modal fade" id="modifyHolidayRequest" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
             <!-- Titre de la modale. -->
             <div class="modal-header">
-                <h5 class="modal-title">Modification de demande de vacances</h5>
+                <h5 class="modal-title">Demande de vacances</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
             <!-- Corps de la modale. -->
             <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
-                    <input type="date" name="holidayRequest1Start" class="form-control" id="holidayRequest1Start">
-                    <label for="holidayRequest1Start">Début des vacances</label>
+                    <input type="date" name="holidayRequestStart" class="form-control" id="holidayRequestStart">
+                    <label for="holidayRequestStart">Début des vacances</label>
                 </p>
                 <p class="form-floating m-2">
-                    <input type="date" name="holidayRequest1End" class="form-control" id="holidayRequest1End">
-                    <label for="holidayRequest1End">Fin des vacances</label>
-                </p>
-                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modale de modification de seconde demande de vacances. -->
-<div class="modal fade" id="modifyHolidayRequest2" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-3 mt-0">
-            <!-- Titre de la modale. -->
-            <div class="modal-header">
-                <h5 class="modal-title">Modification de demande de vacances</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                </button>
-            </div>
-            <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=dashboard">
-                <p class="form-floating m-2">
-                    <input type="date" name="holidayRequest2Start" class="form-control" id="holidayRequest2Start">
-                    <label for="holidayRequest2Start">Début des vacances</label>
+                    <input type="date" name="holidayRequestEnd" class="form-control" id="holidayRequestEnd">
+                    <label for="holidayRequestEnd">Fin des vacances</label>
                 </p>
                 <p class="form-floating m-2">
-                    <input type="date" name="holidayRequest2End" class="form-control" id="holidayRequest2End">
-                    <label for="holidayRequest2End">Fin des vacances</label>
-                </p>
-                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modale de modification de troisième demande de vacances. -->
-<div class="modal fade" id="modifyHolidayRequest3" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-3 mt-0">
-            <!-- Titre de la modale. -->
-            <div class="modal-header">
-                <h5 class="modal-title">Modification de demande de vacances</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                </button>
-            </div>
-            <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=dashboard">
-                <p class="form-floating m-2">
-                    <input type="date" name="holidayRequest3Start" class="form-control" id="holidayRequest3Start">
-                    <label for="holidayRequest3Start">Début des vacances</label>
-                </p>
-                <p class="form-floating m-2">
-                    <input type="date" name="holidayRequest3End" class="form-control" id="holidayRequest3End">
-                    <label for="holidayRequest3End">Fin des vacances</label>
+                    <input type="text" name="holidayRequestText" class="form-control" id="holidayRequestText">
+                    <label for="holidayRequestText">Motif</label>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>

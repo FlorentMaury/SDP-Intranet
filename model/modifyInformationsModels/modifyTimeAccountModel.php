@@ -1,9 +1,12 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
 // Vérification du formulaire de déclaration de retard.
-if(
+if (
     !empty($_POST['userDelayInfo'])
-    ) {
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -29,7 +32,7 @@ if(
     $result = $req->execute([$totalsOfDelays, $userModifiedId]);
 
     // Redirection.
-    if($result) {
+    if ($result) {
         header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
@@ -39,11 +42,11 @@ if(
 };
 
 // Vérification du formulaire de déclaration d'absence.
-if(
+if (
     !empty($_POST['userAbsenceInfo']) &&
     !empty($_POST['userAbsenceDate']) &&
-    isset($_FILES['medicalJustification']) 
-    ) {
+    isset($_FILES['medicalJustification'])
+) {
 
     // Pseudo-code pour ALTER TABLE d'ajout des déclarations d'absences.
     // ALTER TABLE user ADD user_absence2 FLOAT(5,2) NOT NULL DEFAULT 0 AFTER user_absence;
@@ -100,12 +103,12 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille du document.
-    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0){
+    if (in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0) {
         $uniqId = uniqid('', true);
         // Création d'un uniqid
-        $medicalJustif = $uniqId.".".$extension;
+        $medicalJustif = $uniqId . "." . $extension;
         // Enregistrement de l'image dans le dossier 'illnessJustif'.
-        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif/'.$medicalJustif);
+        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif/' . $medicalJustif);
 
         // Modification des modifications dans la base de données.
         $req = $bdd->prepare('UPDATE user_time_bank SET user_absence = ? WHERE user_time_bank_id = ?');
@@ -119,7 +122,7 @@ if(
         $req = $bdd->prepare('UPDATE user_time_bank SET illness_date = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
-                // FONCTION MAILTO.
+        // FONCTION MAILTO.
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
@@ -138,7 +141,7 @@ if(
         mail($to, $subject, $contentMessage, $header);
 
         // Redirection avec message de validation.
-        if($result) {
+        if ($result) {
             header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
@@ -153,11 +156,11 @@ if(
 };
 
 // Vérification du formulaire de déclaration d'une seconde absence.
-if(
+if (
     !empty($_POST['userAbsenceInfo2']) &&
     !empty($_POST['userAbsenceDate2']) &&
-    isset($_FILES['medicalJustification2']) 
-    ) {
+    isset($_FILES['medicalJustification2'])
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -201,12 +204,12 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille du document.
-    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0){
+    if (in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0) {
         $uniqId = uniqid('', true);
         // Création d'un uniqid
-        $medicalJustif = $uniqId.".".$extension;
+        $medicalJustif = $uniqId . "." . $extension;
         // Enregistrement de l'image dans le dossier 'illnessJustif2'.
-        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif2/'.$medicalJustif);
+        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif2/' . $medicalJustif);
 
         // Modification des modifications dans la base de données.
         $req = $bdd->prepare('UPDATE user_time_bank SET user_absence2 = ? WHERE user_time_bank_id = ?');
@@ -220,7 +223,7 @@ if(
         $req = $bdd->prepare('UPDATE user_time_bank SET illness_date2 = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
-                        // FONCTION MAILTO.
+        // FONCTION MAILTO.
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
@@ -239,7 +242,7 @@ if(
         mail($to, $subject, $contentMessage, $header);
 
         // Redirection avec message de validation.
-        if($result) {
+        if ($result) {
             header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
@@ -255,11 +258,11 @@ if(
 
 
 // Vérification du formulaire de déclaration d'une troisème absence.
-if(
+if (
     !empty($_POST['userAbsenceInfo3']) &&
     !empty($_POST['userAbsenceDate3']) &&
-    isset($_FILES['medicalJustification3']) 
-    ) {
+    isset($_FILES['medicalJustification3'])
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -303,12 +306,12 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille du document.
-    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0){
+    if (in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0) {
         $uniqId = uniqid('', true);
         // Création d'un uniqid
-        $medicalJustif = $uniqId.".".$extension;
+        $medicalJustif = $uniqId . "." . $extension;
         // Enregistrement de l'image dans le dossier 'illnessJustif3'.
-        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif3/'.$medicalJustif);
+        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif3/' . $medicalJustif);
 
         // Modification des modifications dans la base de données.
         $req = $bdd->prepare('UPDATE user_time_bank SET user_absence3 = ? WHERE user_time_bank_id = ?');
@@ -322,7 +325,7 @@ if(
         $req = $bdd->prepare('UPDATE user_time_bank SET illness_date3 = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
-            // FONCTION MAILTO.
+        // FONCTION MAILTO.
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
@@ -341,7 +344,7 @@ if(
         mail($to, $subject, $contentMessage, $header);
 
         // Redirection avec message de validation.
-        if($result) {
+        if ($result) {
             header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
@@ -356,11 +359,11 @@ if(
 };
 
 // Vérification du formulaire de déclaration d'une quatrième absence.
-if(
+if (
     !empty($_POST['userAbsenceInfo4']) &&
     !empty($_POST['userAbsenceDate4']) &&
-    isset($_FILES['medicalJustification4']) 
-    ) {
+    isset($_FILES['medicalJustification4'])
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -404,12 +407,12 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille du document.
-    if(in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0){
+    if (in_array($extension, $extensions) && $medicalJustificationSize <= $maxSize && $medicalJustificationError == 0) {
         $uniqId = uniqid('', true);
         // Création d'un uniqid
-        $medicalJustif = $uniqId.".".$extension;
+        $medicalJustif = $uniqId . "." . $extension;
         // Enregistrement de l'image dans le dossier 'illnessJustif3'.
-        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif4/'.$medicalJustif);
+        move_uploaded_file($medicalJustificationTmpName, './public/assets/illnessJustif4/' . $medicalJustif);
 
         // Modification des modifications dans la base de données.
         $req = $bdd->prepare('UPDATE user_time_bank SET user_absence4 = ? WHERE user_time_bank_id = ?');
@@ -423,7 +426,7 @@ if(
         $req = $bdd->prepare('UPDATE user_time_bank SET illness_date4 = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
-            // FONCTION MAILTO.
+        // FONCTION MAILTO.
 
         // Variables.
         $userMessage   = "Bonjour, un arrêt de travail vient d'être déclaré de la part de $userName $userSurname en date du $modifyDayOffRequest3.";
@@ -442,7 +445,7 @@ if(
         mail($to, $subject, $contentMessage, $header);
 
         // Redirection avec message de validation.
-        if($result) {
+        if ($result) {
             header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
@@ -458,9 +461,9 @@ if(
 
 
 // Vérification du formulaire de déclaration d'heures supplémentaires.
-if(
+if (
     !empty($_POST['userExtraTimeInfo'])
-    ) {
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -485,7 +488,7 @@ if(
     $result = $req->execute([$totalsOfExtraTime, $userModifiedId]);
 
     // Redirection.
-    if($result) {
+    if ($result) {
         header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
@@ -497,80 +500,107 @@ if(
 
 // DEMANDE DE VACANCES.
 
-// Vérification du formulaire de première demande de CA.
-if(
-    !empty($_POST['holidayRequest1Start']) &&
-    !empty($_POST['holidayRequest1End'])
-    ) {
+// Vérification du formulaire de demande de CA.
+if (
+    !empty($_POST['holidayRequestStart']) &&
+    !empty($_POST['holidayRequestEnd']) &&
+    !empty($_POST['holidayRequestText'])
+) {
 
-    // Connexion à la base de données.
+    require 'vendor/autoload.php';
     require('./model/connectionDBModel.php');
 
-    // Variables.
-    $holidayRequest1Start = htmlspecialchars($_POST['holidayRequest1Start']);
-    $holidayRequest1End   = htmlspecialchars($_POST['holidayRequest1End']);
-    $userId               = $_SESSION['id'];
+    $userId = $_SESSION['id'];
+    $holidayRequestStart = htmlspecialchars($_POST['holidayRequestStart']);
+    $holidayRequestEnd   = htmlspecialchars($_POST['holidayRequestEnd']);
+    $holidayRequestText  = htmlspecialchars($_POST['holidayRequestText']);
 
-    // Gestion des variables.
-    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $user = $r->fetch(PDO::FETCH_ASSOC);
+    $userQuery = $bdd->prepare("SELECT id, email, name, surname FROM `user` WHERE id = ?");
+    $userQuery->execute([$userId]);
+    $user = $userQuery->fetch(PDO::FETCH_ASSOC);
 
     $userModifiedId = $user['id'];
+    $userEmail = $user['email'];
     $userName = $user['name'];
     $userSurname = $user['surname'];
 
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday1_response = 0 WHERE user_time_bank_id = ?');
-    $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday1_start = ? WHERE user_time_bank_id = ?');
-    $req->execute([$holidayRequest1Start, $userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday1_end = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$holidayRequest1End, $userModifiedId]);
+    $holidayRequestStart = new DateTime($holidayRequestStart);
+    $holidayRequestEnd = new DateTime($holidayRequestEnd);
 
-        // FONCTION MAILTO.
+    $interval = $holidayRequestStart->diff($holidayRequestEnd);
 
-        // Variables.
-        $userMessage = 
+    $numberOfDays = $interval->days;
+
+    $holidayRequestQuery = $bdd->prepare('INSERT INTO user_holiday (user_holiday_id, holiday_start, holiday_end, holiday_request_text, holiday_response) VALUES (?, ?, ?, ?, 0)');
+    $result = $holidayRequestQuery->execute([$userModifiedId, $holidayRequestStart->format('Y-m-d'), $holidayRequestEnd->format('Y-m-d'), $holidayRequestText]);
+
+    if ($result) {
+        $lastInsertId = $bdd->lastInsertId();
+    }
+
+    // FONCTION MAILTO.
+
+    // Variables.
+    $userMessage =
         "<html>
             <head>
                 <title>Demande de vacances | $userName $userSurname</title>
             </head>
             <body>
                 <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
-                du $holidayRequest1Start au $holidayRequest1End.</p>
+                du $holidayRequest1Start au $holidayRequest1End (soit $numberOfDays) pour le motif suivant : '$holidayRequestText'.</p>
                 <a 
-                    href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=1&id=$userId'
+                    href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=1&id=$lastInsertId'
                     style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                 >
                     Accepter
                 </a>
                 <a 
-                    href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday1ResponseMail=2&id=$userId'
+                    href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=2&id=$lastInsertId'
                     style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                 >
                     Refuser
                 </a>
             </body>
         </html>";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-        $subject     = "Demande de vacances | $userName $userSurname";
-        
-        // Retour à la ligne en cas de dépassement des 70 caractères.
-        $contentMessage = wordwrap($userMessage, 70, "\r\n");
-        
-        // Personnalisation du contenu en fonction des variables.
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: $userName <$userEmail>" . "\r\n";
-        $headers .= "Reply-To: $userEmail" . "\r\n";
-        
-        mail($to, $subject, $contentMessage, $headers);
+    // $to       = 'contact@florent-maury.fr';
+    $to          = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
+    $subject     = "Demande de vacances | $userName $userSurname";
+
+    // Retour à la ligne en cas de dépassement des 70 caractères.
+    $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+    // Personnalisation du contenu en fonction des variables.
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+    $headers .= "From: $userName <$userEmail>" . "\r\n";
+    $headers .= "Reply-To: $userEmail" . "\r\n";
+
+    mail($to, $subject, $contentMessage, $headers);
+
+    // // Charger le fichier Excel existant
+    // $spreadsheet = IOFactory::load('./public/assets/fichier_vacances.xlsx');
+
+    // // Obtenir la première feuille de calcul
+    // $worksheet = $spreadsheet->getActiveSheet();
+
+    // // Obtenir le numéro de la dernière ligne
+    // $lastRow = $worksheet->getHighestRow();
+
+    // // Ajouter la nouvelle demande de vacances à la dernière ligne
+    // $worksheet->setCellValue('A' . ($lastRow + 1), $userModifiedId);
+    // $worksheet->setCellValue('B' . ($lastRow + 1), $userName);
+    // $worksheet->setCellValue('C' . ($lastRow + 1), $userSurname);
+    // $worksheet->setCellValue('D' . ($lastRow + 1), $holidayRequest1Start);
+    // $worksheet->setCellValue('E' . ($lastRow + 1), $holidayRequest1End);
+
+    // // Sauvegarder le fichier Excel
+    // $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+    // $writer->save('./public/assets/fichier_vacances.xlsx');
 
 
     // Redirection.
-    if($result) {
+    if ($result) {
         header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
@@ -580,176 +610,12 @@ if(
 };
 
 
-// Vérification du formulaire de seconde demande de CA.
-if(
-    !empty($_POST['holidayRequest2Start']) &&
-    !empty($_POST['holidayRequest2End'])
-    ) {
-
-    // Connexion à la base de données.
-    require('./model/connectionDBModel.php');
-
-    // Variables.
-    $holidayRequest2Start = htmlspecialchars($_POST['holidayRequest2Start']);
-    $holidayRequest2End   = htmlspecialchars($_POST['holidayRequest2End']);
-    $userId               = $_SESSION['id'];
-
-    // Gestion des variables.
-    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $user = $r->fetch(PDO::FETCH_ASSOC);
-
-    $userModifiedId = $user['id'];
-    $userName = $user['name'];
-    $userSurname = $user['surname'];
-
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday2_response = 0 WHERE user_time_bank_id = ?');
-    $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday2_start = ? WHERE user_time_bank_id = ?');
-    $req->execute([$holidayRequest2Start, $userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday2_end = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$holidayRequest2End, $userModifiedId]);
-
-            // FONCTION MAILTO.
-
-        // Variables.
-        $userMessage = 
-            "<html>
-                <head>
-                    <title>Demande de vacances | $userName $userSurname</title>
-                </head>
-                <body>
-                    <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
-                    du $holidayRequest2Start au $holidayRequest2End.</p>
-                    <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=1&id=$userId'
-                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
-                    >
-                        Accepter
-                    </a>
-                    <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday2ResponseMail=2&id=$userId'
-                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
-                    >
-                        Refuser
-                    </a>
-                </body>
-            </html>";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-        $subject     = "Demande de vacances | $userName $userSurname";
-
-        // Retour à la ligne en cas de dépassement des 70 caractères.
-        $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
-        // Personnalisation du contenu en fonction des variables.
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: $userName <$userEmail>" . "\r\n";
-        $headers .= "Reply-To: $userEmail" . "\r\n";
-
-        mail($to, $subject, $contentMessage, $headers);
-
-    // Redirection.
-    if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
-        exit();
-    } else {
-        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
-        exit();
-    }
-};
-
-
-// Vérification du formulaire de troisième demande de CA.
-if(
-    !empty($_POST['holidayRequest3Start']) &&
-    !empty($_POST['holidayRequest3End'])
-    ) {
-
-    // Connexion à la base de données.
-    require('./model/connectionDBModel.php');
-
-    // Variables.
-    $holidayRequest3Start = htmlspecialchars($_POST['holidayRequest3Start']);
-    $holidayRequest3End   = htmlspecialchars($_POST['holidayRequest3End']);
-    $userId               = $_SESSION['id'];
-
-    // Gestion des variables.
-    $r = $bdd->prepare("SELECT id, name, surname FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $user = $r->fetch(PDO::FETCH_ASSOC);
-
-    $userModifiedId = $user['id'];
-    $userName = $user['name'];
-    $userSurname = $user['surname'];
-
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday3_response = 0 WHERE user_time_bank_id = ?');
-    $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday3_start = ? WHERE user_time_bank_id = ?');
-    $req->execute([$holidayRequest3Start, $userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET holiday3_end = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$holidayRequest3End, $userModifiedId]);
-
-                // FONCTION MAILTO.
-
-        // Variables.
-        $userMessage = 
-            "<html>
-                <head>
-                    <title>Demande de vacances | $userName $userSurname</title>
-                </head>
-                <body>
-                    <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
-                    du $holidayRequest3Start au $holidayRequest3End.</p>
-                    <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=1&id=$userId'
-                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
-                    >
-                        Accepter
-                    </a>
-                    <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holiday3ResponseMail=2&id=$userId'
-                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
-                    >
-                        Refuser
-                    </a>
-                </body>
-            </html>";
-        // $to       = 'contact@florent-maury.fr';
-        $to          = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-        $subject     = "Demande de vacances | $userName $userSurname";
-
-        // Retour à la ligne en cas de dépassement des 70 caractères.
-        $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
-        // Personnalisation du contenu en fonction des variables.
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: $userName <$userEmail>" . "\r\n";
-        $headers .= "Reply-To: $userEmail" . "\r\n";
-
-        mail($to, $subject, $contentMessage, $headers);
-
-    // Redirection.
-    if($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
-        exit();
-    } else {
-        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
-        exit();
-    }
-};
-
-
-    // DEMANDE DE JOUR SUPPLEMENTAIRE.
+// DEMANDE DE JOUR SUPPLEMENTAIRE.
 
 // Vérification du formulaire de déclaration de jours supplémentaires.
-if(
+if (
     !empty($_POST['addDayOffBank'])
-    ) {
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -774,7 +640,7 @@ if(
     $result = $req->execute([$totalsOfDayOffBank, $userModifiedId]);
 
     // Redirection.
-    if($result) {
+    if ($result) {
         header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
@@ -785,10 +651,10 @@ if(
 
 
 // Vérification du formulaire de première demande de jour de repos.
-if(
+if (
     !empty($_POST['dayOffRequest1Start']) &&
     !empty($_POST['dayOffRequest1Desc'])
-    ) {
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -816,11 +682,11 @@ if(
     $req = $bdd->prepare('UPDATE user_time_bank SET day_off1 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$modifyDayOffRequest1, $userModifiedId]);
 
-        // FONCTION MAILTO.
+    // FONCTION MAILTO.
 
-        // Variables.
-        $userMessage   = 
-            "<html>
+    // Variables.
+    $userMessage   =
+        "<html>
                 <head>
                     <title>Demande de journée de repos | $userName $userSurname</title>
                 </head>
@@ -842,24 +708,24 @@ if(
                     </a>
                 </body>
             </html>";
-        // $to    = 'contact@florent-maury.fr';
-        $to       = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-        $subject  = "Demande de repos | $userName $userSurname";
+    // $to    = 'contact@florent-maury.fr';
+    $to       = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
+    $subject  = "Demande de repos | $userName $userSurname";
 
-        // Retour à la ligne en cas de dépassement des 70 caractères.
-        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+    // Retour à la ligne en cas de dépassement des 70 caractères.
+    $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-        // Personnalisation du conatenu en fonction des variables.
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: $userName <$userEmail>" . "\r\n";
-        $headers .= "Reply-To: $userEmail" . "\r\n";
+    // Personnalisation du conatenu en fonction des variables.
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+    $headers .= "From: $userName <$userEmail>" . "\r\n";
+    $headers .= "Reply-To: $userEmail" . "\r\n";
 
-        mail($to, $subject, $contentMessage, $headers);
+    mail($to, $subject, $contentMessage, $headers);
 
 
     // Redirection.
-    if($result) {
+    if ($result) {
         header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
@@ -870,10 +736,10 @@ if(
 
 
 // Vérification du formulaire de seconde demande de jour de repos.
-if(
+if (
     !empty($_POST['dayOffRequest2Start']) &&
     !empty($_POST['dayOffRequest2Desc'])
-    ) {
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -899,11 +765,11 @@ if(
     $req = $bdd->prepare('UPDATE user_time_bank SET day_off2 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$modifyDayOffRequest2, $userModifiedId]);
 
-        // FONCTION MAILTO.
-        
-        // Variables.
-        $userMessage   = 
-            "<html>
+    // FONCTION MAILTO.
+
+    // Variables.
+    $userMessage   =
+        "<html>
                 <head>
                     <title>Demande de journée de repos | $userName $userSurname</title>
                 </head>
@@ -925,23 +791,23 @@ if(
                     </a>
                 </body>
             </html>";
-        // $to      = 'contact@florent-maury.fr';
-        $to         = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-        $subject    = "Demande de repos | $userName $userSurname";
+    // $to      = 'contact@florent-maury.fr';
+    $to         = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
+    $subject    = "Demande de repos | $userName $userSurname";
 
-        // Retour à la ligne en cas de dépassement des 70 caractères.
-        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+    // Retour à la ligne en cas de dépassement des 70 caractères.
+    $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-        // Personnalisation du conatenu en fonction des variables.
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: $userName <$userEmail>" . "\r\n";
-        $headers .= "Reply-To: $userEmail" . "\r\n";
+    // Personnalisation du conatenu en fonction des variables.
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+    $headers .= "From: $userName <$userEmail>" . "\r\n";
+    $headers .= "Reply-To: $userEmail" . "\r\n";
 
-        mail($to, $subject, $contentMessage, $headers);
+    mail($to, $subject, $contentMessage, $headers);
 
     // Redirection.
-    if($result) {
+    if ($result) {
         header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
@@ -952,10 +818,10 @@ if(
 
 
 // Vérification du formulaire de troisième demande de jour de repos.
-if(
+if (
     !empty($_POST['dayOffRequest3Start']) &&
     !empty($_POST['dayOffRequest3Desc'])
-    ) {
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -981,11 +847,11 @@ if(
     $req = $bdd->prepare('UPDATE user_time_bank SET day_off3 = ? WHERE user_time_bank_id = ?');
     $result = $req->execute([$modifyDayOffRequest3, $userModifiedId]);
 
-        // FONCTION MAILTO.
+    // FONCTION MAILTO.
 
-        // Variables.
-        $userMessage   = 
-            "<html>
+    // Variables.
+    $userMessage   =
+        "<html>
                 <head>
                     <title>Demande de journée de repos | $userName $userSurname</title>
                 </head>
@@ -1007,24 +873,24 @@ if(
                     </a>
                 </body>
             </html>";
-        // $to      = 'contact@florent-maury.fr';
-        $to         = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-        $subject    = "Demande de repos | $userName $userSurname";
+    // $to      = 'contact@florent-maury.fr';
+    $to         = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
+    $subject    = "Demande de repos | $userName $userSurname";
 
-        // Retour à la ligne en cas de dépassement des 70 caractères.
-        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+    // Retour à la ligne en cas de dépassement des 70 caractères.
+    $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-        // Personnalisation du conatenu en fonction des variables.
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: $userName <$userEmail>" . "\r\n";
-        $headers .= "Reply-To: $userEmail" . "\r\n";
+    // Personnalisation du conatenu en fonction des variables.
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+    $headers .= "From: $userName <$userEmail>" . "\r\n";
+    $headers .= "Reply-To: $userEmail" . "\r\n";
 
-        mail($to, $subject, $contentMessage, $headers);
+    mail($to, $subject, $contentMessage, $headers);
 
 
     // Redirection.
-    if($result) {
+    if ($result) {
         header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
@@ -1035,11 +901,11 @@ if(
 
 
 // Vérification du formulaire d'une première absence plannifiée.
-if(
+if (
     !empty($_POST['plannedUserAbsenceInfo']) &&
     !empty($_POST['plannedUserAbsenceDate']) &&
-    isset($_FILES['plannedMedicalJustification']) 
-    ) {
+    isset($_FILES['plannedMedicalJustification'])
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -1083,12 +949,12 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille du document.
-    if(in_array($extension, $extensions) && $plannedMedicalJustificationSize <= $maxSize && $plannedMedicalJustificationError == 0){
+    if (in_array($extension, $extensions) && $plannedMedicalJustificationSize <= $maxSize && $plannedMedicalJustificationError == 0) {
         $uniqId = uniqid('', true);
         // Création d'un uniqid
-        $medicalJustif = $uniqId.".".$extension;
+        $medicalJustif = $uniqId . "." . $extension;
         // Enregistrement de l'image dans le dossier 'illnessJustif'.
-        move_uploaded_file($plannedMedicalJustificationTmpName, './public/assets/plannedIllnessJustif1/'.$medicalJustif);
+        move_uploaded_file($plannedMedicalJustificationTmpName, './public/assets/plannedIllnessJustif1/' . $medicalJustif);
 
         // Modification des modifications dans la base de données.
         $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_1 = ? WHERE user_time_bank_id = ?');
@@ -1102,26 +968,26 @@ if(
         $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_1_date = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
-                // FONCTION MAILTO.
+        // FONCTION MAILTO.
 
-            // Variables.
-            $userMessage   = "Bonjour, une absence plannifié vient d'être déclaré de la part de $userName $userSurname en date du $modifyUserAbsenceDate.";
-            // $to         = 'contact@florent-maury.fr';
-            $to            = "pdana@free.fr,mrisler@sdp-paris.com";
-            $subject       = "Absence prévue | $userName $userSurname";
+        // Variables.
+        $userMessage   = "Bonjour, une absence plannifié vient d'être déclaré de la part de $userName $userSurname en date du $modifyUserAbsenceDate.";
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com";
+        $subject       = "Absence prévue | $userName $userSurname";
 
-            // Retour à la ligne en cas de dépassement des 70 caractères.
-            $contentMessage = wordwrap($userMessage, 70, "\r\n");
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-            // Personnalisation du contenu en fonction des variables.
-            $header = [
-                "Name" => $userName
-            ];
+        // Personnalisation du contenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
 
-            mail($to, $subject, $contentMessage, $header);
+        mail($to, $subject, $contentMessage, $header);
 
         // Redirection avec message de validation.
-        if($result) {
+        if ($result) {
             header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {
@@ -1136,11 +1002,11 @@ if(
 };
 
 // Vérification du formulaire d'une seconde absence plannifiée.
-if(
+if (
     !empty($_POST['plannedUserAbsenceInfo2']) &&
     !empty($_POST['plannedUserAbsenceDate2']) &&
-    isset($_FILES['plannedMedicalJustification2']) 
-    ) {
+    isset($_FILES['plannedMedicalJustification2'])
+) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -1184,12 +1050,12 @@ if(
     $maxSize = 50000000;
 
     // Vérification de l'extension et de la taille du document.
-    if(in_array($extension, $extensions) && $plannedMedicalJustificationSize <= $maxSize && $plannedMedicalJustificationError == 0){
+    if (in_array($extension, $extensions) && $plannedMedicalJustificationSize <= $maxSize && $plannedMedicalJustificationError == 0) {
         $uniqId = uniqid('', true);
         // Création d'un uniqid
-        $medicalJustif = $uniqId.".".$extension;
+        $medicalJustif = $uniqId . "." . $extension;
         // Enregistrement de l'image dans le dossier 'illnessJustif'.
-        move_uploaded_file($plannedMedicalJustificationTmpName, './public/assets/plannedIllnessJustif2/'.$medicalJustif);
+        move_uploaded_file($plannedMedicalJustificationTmpName, './public/assets/plannedIllnessJustif2/' . $medicalJustif);
 
         // Modification des modifications dans la base de données.
         $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_2 = ? WHERE user_time_bank_id = ?');
@@ -1203,26 +1069,26 @@ if(
         $req = $bdd->prepare('UPDATE user_time_bank SET planned_illness_2_date = ? WHERE user_time_bank_id = ?');
         $result = $req->execute([$modifyUserAbsenceDate, $userModifiedId]);
 
-                // FONCTION MAILTO.
+        // FONCTION MAILTO.
 
-            // Variables.
-            $userMessage   = "Bonjour, une absence plannifié vient d'être déclaré de la part de $userName $userSurname en date du $modifyUserAbsenceDate.";
-            // $to         = 'contact@florent-maury.fr';
-            $to            = "pdana@free.fr,mrisler@sdp-paris.com";
-            $subject       = "Absence prévue | $userName $userSurname";
+        // Variables.
+        $userMessage   = "Bonjour, une absence plannifié vient d'être déclaré de la part de $userName $userSurname en date du $modifyUserAbsenceDate.";
+        // $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com";
+        $subject       = "Absence prévue | $userName $userSurname";
 
-            // Retour à la ligne en cas de dépassement des 70 caractères.
-            $contentMessage = wordwrap($userMessage, 70, "\r\n");
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
 
-            // Personnalisation du contenu en fonction des variables.
-            $header = [
-                "Name" => $userName
-            ];
+        // Personnalisation du contenu en fonction des variables.
+        $header = [
+            "Name" => $userName
+        ];
 
-            mail($to, $subject, $contentMessage, $header);
+        mail($to, $subject, $contentMessage, $header);
 
         // Redirection avec message de validation.
-        if($result) {
+        if ($result) {
             header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
             exit();
         } else {

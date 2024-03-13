@@ -24,8 +24,21 @@
         $totalHolidays = $months * 2.08;
     }
 
-    // Jours de vacances déjà pris
-    $usedHolidays = $data['holidays_taken'];
+    // Récupérer toutes les entrées de vacances acceptées pour l'utilisateur
+    $holidayQuery = $bdd->prepare('SELECT holiday_start, holiday_end FROM user_holiday WHERE user_holiday_id = ? AND holiday_response = 1');
+    $holidayQuery->execute([$data['id']]);
+
+    $usedHolidays = 0;
+
+    // Calculer la différence en jours pour chaque entrée
+    while ($holiday = $holidayQuery->fetch(PDO::FETCH_ASSOC)) {
+        $start = new DateTime($holiday['holiday_start']);
+        $end = new DateTime($holiday['holiday_end']);
+
+        $interval = $start->diff($end);
+
+        $usedHolidays += $interval->days;
+    }
 
     // Jours de vacances restants.
     $remainingHolidays = floor($totalHolidays - $usedHolidays);

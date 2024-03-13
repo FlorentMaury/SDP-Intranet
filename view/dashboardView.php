@@ -25,7 +25,7 @@ $data = $req->fetch();
 <nav class="m-3 my-5 text-center">
     <ul class="d-flex justify-content-center align-items-center flex-wrap flex-sm-row">
         <?php
-        if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
+        if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
         ?>
             <li id="managerViewGridButton">
                 <img src="./public/assets/add.svg" alt="Ajouter">
@@ -51,7 +51,7 @@ $data = $req->fetch();
         <li id="contractButton">
             <img src="./public/assets/place.svg" alt="Poste">
             <p>
-                Poste au studio
+                Contrat
             </p>
         </li>
         <li id="timeBankButton">
@@ -70,7 +70,7 @@ $data = $req->fetch();
 
 <!-- Grille administrateur. -->
 <?php
-if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
+if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
 ?>
 
     <!-- Compte administrateur. -->
@@ -176,77 +176,30 @@ if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
         <div class="employeesList border rounded p-3 my-3">
             <h2 class="display-6 text-center" id="collabList">Vacances à modérer</h2>
 
-            <!-- Première tranche. -->
             <?php
+            // Récupération des résultats
+            $usersHoliday1 = $usersHoliday->fetchAll();
+
+            // Affichage des résultats
             foreach ($usersHoliday1 as $usersHoliday1) {
-                if ($usersHoliday1['holiday1_start'] != NULL) {
+                if ($usersHoliday1['holiday_start'] != NULL) {
             ?>
+
                     <div class="dashboardItems">
-                        <?= $usersHoliday1['name'] . ' ' . $usersHoliday1['surname'] ?>
-                        souhaite des vacances du
-                        <?= $usersHoliday1['holiday1_start'] ?> au <?= $usersHoliday1['holiday1_end'] ?>
+                        <p><?= $usersHoliday1['name'] . ' ' . $usersHoliday1['surname'] ?>
+                            souhaite des vacances du
+                            <?= $usersHoliday1['holiday_start'] ?> au <?= $usersHoliday1['holiday_end'] ?>
+                            Motif : <?= $usersHoliday1['holiday_request_text'] ?></p>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday1['id'] ?>">
                             <p class="d-flex flex-column flex-sm-row form-floating m-2">
                                 <!-- Select option 1 ou 0 -->
-                                <select type="text" name="holiday1Request" class="form-control" id="holiday1Request">
-                                    <label for="holiday1Request">Réponse</label>
+                                <select type="text" name="holidayRequest" class="form-control" id="holidayRequest">
+                                    <label for="holidayRequest">Réponse</label>
                                     <option value="1">Accepter</option>
                                     <option value="2">Refuser</option>
                                 </select>
-                                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-                            </p>
-                        </form>
-                    </div>
-
-            <?php
-                }
-            }
-            ?>
-
-            <!-- Seconde tranche. -->
-            <?php
-            foreach ($usersHoliday2 as $usersHoliday2) {
-                if ($usersHoliday2['holiday2_start'] != NULL) {
-            ?>
-                    <div class="dashboardItems">
-                        <?= $usersHoliday2['name'] . ' ' . $usersHoliday2['surname'] ?>
-                        souhaite des vacances du
-                        <?= $usersHoliday2['holiday2_start'] ?> au <?= $usersHoliday2['holiday2_end'] ?>
-                        <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday2['id'] ?>">
-                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
-                                <!-- Select option 1 ou 0 -->
-                                <select type="text" name="holiday2Request" class="form-control" id="holiday2Request">
-                                    <label for="holiday2Request">Réponse</label>
-                                    <option value="1">Accepter</option>
-                                    <option value="2">Refuser</option>
-                                </select>
-                                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-                            </p>
-                        </form>
-                    </div>
-
-            <?php
-                }
-            }
-            ?>
-
-            <!-- Troisième tranche. -->
-            <?php
-            foreach ($usersHoliday3 as $usersHoliday3) {
-                if ($usersHoliday3['holiday3_start'] != NULL) {
-            ?>
-                    <div class="dashboardItems">
-                        <?= $usersHoliday3['name'] . ' ' . $usersHoliday3['surname'] ?>
-                        souhaite des vacances du
-                        <?= $usersHoliday3['holiday3_start'] ?> au <?= $usersHoliday3['holiday3_end'] ?>
-                        <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday3['id'] ?>">
-                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
-                                <!-- Select option 1 ou 0 -->
-                                <select type="text" name="holiday3Request" class="form-control" id="holiday3Request">
-                                    <label for="holiday3Request">Réponse</label>
-                                    <option value="1">Accepter</option>
-                                    <option value="2">Refuser</option>
-                                </select>
+                                <!-- Champ caché pour passer holiday_id -->
+                                <input type="hidden" name="holiday_id" value="<?= $usersHoliday1['holiday_id'] ?>">
                                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
                             </p>
                         </form>
@@ -1568,119 +1521,64 @@ if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
 
                             ?>
                         </p>
-
                         <?php
-                        if ($data['holiday1_start']) {
+                        // Exécution de la requête SQL
+                        $usersHoliday = $bdd->prepare('
+                            SELECT *
+                            FROM user 
+                            INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+                            INNER JOIN user_role ON user.id = user_role.user_role_id
+                            INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+                            INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
+                            WHERE user_holiday.user_holiday_id = ?
+                        ');
+                        $usersHoliday->execute([$data['id']]);
+
+                        // Récupération des résultats
+                        $data = $usersHoliday->fetchAll();
+
+                        // Affichage des résultats
+                        if (empty($data)) {
+                            echo ('<p>Aucune demande de vacances</p>');
+                        }
+                        foreach ($data as $holiday) {
                         ?>
 
                             <div class="userExpGrid d-flex flex-column flex-md-row">
 
                                 <div class="expFirstItem border rounded m-1 p-3">
-                                    <button class="btn btn-md btn-light mb-4">
-                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday1=<?= $data['holiday1_start'] ?>' type="button" class="btn btn-infos">
+                                    <!-- <button class="btn btn-md btn-light mb-4">
+                                        <a href='./model/deleteHolidayRequest.php?id=<?= $holiday["user_holiday_id"] ?>&holiday=<?= $holiday['holiday_start'] ?>' type="button" class="btn btn-infos">
                                             Supprimer la demande
                                         </a>
-                                    </button>
-                                    <p>Dates de la demande : du <?= $data['holiday1_start'] ?> au <?= $data['holiday1_end'] ?></p>
+                                    </button> -->
+                                    <p>Dates de la demande : du <?= $holiday['holiday_start'] ?> au <?= $holiday['holiday_end'] ?></p>
+                                    <p>Motif : <?= $holiday['holiday_request_text'] ?></p>
                                     <p>
                                         <?php
-                                        if ($data['holiday1_response'] == 0) {
+                                        if ($holiday['holiday_response'] == '0') {
                                             echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                        } else if ($data['holiday1_response'] == 1) {
+                                        } else if ($holiday['holiday_response'] == '1') {
                                             echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                        } else if ($data['holiday1_response'] == 2) {
+                                        } else if ($holiday['holiday_response'] == '2') {
                                             echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
                                         }
                                         ?>
                                     </p>
                                 </div>
-
-                            <?php
-                        }
-                        if ($data['holiday2_start']) {
-                            ?>
-
-                                <div class="expSecondItem border rounded m-1 p-3">
-                                    <button class="btn btn-md btn-light mb-4">
-                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday2=<?= $data['holiday2_start'] ?>' type="button" class="btn btn-infos">
-                                            Supprimer la demande
-                                        </a>
-                                    </button>
-                                    <p>Dates de la demande : du <?= $data['holiday2_start'] ?> au <?= $data['holiday2_end'] ?></p>
-                                    <p>
-                                        <?php
-                                        if ($data['holiday2_response'] == 0) {
-                                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                        } else if ($data['holiday2_response'] == 1) {
-                                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                        } else if ($data['holiday2_response'] == 2) {
-                                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                        }
-                                        ?>
-                                    </p>
-                                </div>
-
-                            <?php
-                        }
-                        if ($data['holiday3_start']) {
-                            ?>
-
-                                <div class="expThirdItem border rounded m-1 p-3">
-                                    <button class="btn btn-md btn-light mb-4">
-                                        <a href='./model/deleteHolidayRequest.php?id=<?= $data["id"] ?>&holiday3=<?= $data['holiday3_start'] ?>' type="button" class="btn btn-infos">
-                                            Supprimer la demande
-                                        </a>
-                                    </button>
-                                    <p>Dates de la demande : du <?= $data['holiday3_start'] ?> au <?= $data['holiday3_end'] ?></p>
-                                    <p>
-                                        <?php
-                                        if ($data['holiday3_response'] == 0) {
-                                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                        } else if ($data['holiday3_response'] == 1) {
-                                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                        } else if ($data['holiday3_response'] == 2) {
-                                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                        }
-                                        ?>
-                                    </p>
-                                </div>
-
-                            <?php
-                        } else if (!$data['holiday1_start'] && !$data['holiday2_start'] && !$data['holiday3_start']) {
-                            echo ('<p>Aucune demande de congés</p>');
-                        }
-                            ?>
 
                             </div>
 
-                            <?php
-                            if (!$data['holiday1_start']) {
-                            ?>
-                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest1">
-                                        Faire une demande de vacances
-                                    </a>
-                                </button>
-                            <?php
-                            } else if ($data['holiday1_start'] && !$data['holiday2_start']) {
-                            ?>
-                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest2">
-                                        Faire une demande de vacances
-                                    </a>
-                                </button>
+                        <?php
+                        }
+                        ?>
 
-                            <?php
-                            } else if ($data['holiday2_start']) {
-                            ?>
-                                <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest3">
-                                        Faire une demande de vacances
-                                    </a>
-                                </button>
-                            <?php
-                            }
-                            ?>
+
+                        <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest">
+                                Faire une demande de vacances
+                            </a>
+                        </button>
 
                     </div>
             </div>
@@ -1690,7 +1588,17 @@ if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
 
 <!-- Javascript dynamique. -->
 <?php
-if ($data['id'] == 1 || $data['id'] == 42 || $data['id'] == 43) {
+$req = $bdd->prepare('
+SELECT *
+FROM user 
+INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+INNER JOIN user_role ON user.id = user_role.user_role_id
+INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+WHERE user.id = ?
+');
+$req->execute([$_SESSION['id']]);
+$data = $req->fetch();
+if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
 ?>
     <script type="text/javascript" src="./src/scriptDashboard.js"></script>
 <?php
