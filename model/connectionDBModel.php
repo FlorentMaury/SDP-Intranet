@@ -2,9 +2,9 @@
 
 // Connexion à la base de donnée : "intranet_SDP".
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=intranet_sdp;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=intranet_sdp;charset=utf8', 'root', '');
 } catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
+        die('Erreur : ' . $e->getMessage());
 };
 
 // Récupération des données de la table 'user'.
@@ -61,14 +61,14 @@ $usersDayOff3  = $bdd->query('
          WHERE day_off_response3 = 0
          ');
 $usersHoliday = $bdd->query('
-    SELECT *
-    FROM user 
-    INNER JOIN user_exp ON user.id = user_exp.user_exp_id
-    INNER JOIN user_role ON user.id = user_role.user_role_id
-    INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
-    INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
-    WHERE holiday_response = 0
-    ');
+        SELECT *
+        FROM user 
+        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+        INNER JOIN user_role ON user.id = user_role.user_role_id
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+        INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
+        WHERE holiday_response = 0
+        ');
 
 // Accorder les privilèges EVENT et TRIGGER à l'utilisateur 'user' sur la base de données 'intranet_sdp'
 // $bdd->query("GRANT EVENT, TRIGGER ON intranet_sdp.* TO '%'@'localhost';");

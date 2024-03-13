@@ -1547,11 +1547,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                             <div class="userExpGrid d-flex flex-column flex-md-row">
 
                                 <div class="expFirstItem border rounded m-1 p-3">
-                                    <!-- <button class="btn btn-md btn-light mb-4">
-                                        <a href='./model/deleteHolidayRequest.php?id=<?= $holiday["user_holiday_id"] ?>&holiday=<?= $holiday['holiday_start'] ?>' type="button" class="btn btn-infos">
-                                            Supprimer la demande
-                                        </a>
-                                    </button> -->
+
                                     <p>Dates de la demande : du <?= $holiday['holiday_start'] ?> au <?= $holiday['holiday_end'] ?></p>
                                     <p>Motif : <?= $holiday['holiday_request_text'] ?></p>
                                     <p>
