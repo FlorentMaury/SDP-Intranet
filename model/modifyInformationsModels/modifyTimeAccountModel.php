@@ -515,6 +515,12 @@ if (
     $holidayRequestEnd   = htmlspecialchars($_POST['holidayRequestEnd']);
     $holidayRequestText  = htmlspecialchars($_POST['holidayRequestText']);
 
+    // Vérification que la date de fin soit postérieure à la date de début.
+    if ($holidayRequestEnd < $holidayRequestStart) {
+        header('location: index.php?page=dashboard&error=1&message=La date de fin des vacances doit être postérieure à la date de début.');
+        return;
+    }
+
     $userQuery = $bdd->prepare("SELECT id, email, name, surname FROM `user` WHERE id = ?");
     $userQuery->execute([$userId]);
     $user = $userQuery->fetch(PDO::FETCH_ASSOC);
@@ -534,49 +540,6 @@ if (
     $holidayRequestQuery = $bdd->prepare('INSERT INTO user_holiday (user_holiday_id, holiday_start, holiday_end, holiday_request_text, holiday_response) VALUES (?, ?, ?, ?, 0)');
     $result = $holidayRequestQuery->execute([$userModifiedId, $holidayRequestStart->format('Y-m-d'), $holidayRequestEnd->format('Y-m-d'), $holidayRequestText]);
 
-    if ($result) {
-        $lastInsertId = $bdd->lastInsertId();
-    }
-
-    // FONCTION MAILTO.
-
-    // Variables.
-    $userMessage =
-        "<html>
-            <head>
-                <title>Demande de vacances | $userName $userSurname</title>
-            </head>
-            <body>
-                <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
-                du $holidayRequest1Start au $holidayRequest1End (soit $numberOfDays) pour le motif suivant : '$holidayRequestText'.</p>
-                <a 
-                    href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=1&id=$lastInsertId'
-                    style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
-                >
-                    Accepter
-                </a>
-                <a 
-                    href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=2&id=$lastInsertId'
-                    style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
-                >
-                    Refuser
-                </a>
-            </body>
-        </html>";
-    // $to       = 'contact@florent-maury.fr';
-    $to          = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-    $subject     = "Demande de vacances | $userName $userSurname";
-
-    // Retour à la ligne en cas de dépassement des 70 caractères.
-    $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
-    // Personnalisation du contenu en fonction des variables.
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: $userName <$userEmail>" . "\r\n";
-    $headers .= "Reply-To: $userEmail" . "\r\n";
-
-    mail($to, $subject, $contentMessage, $headers);
 
     // // Charger le fichier Excel existant
     // $spreadsheet = IOFactory::load('./public/assets/fichier_vacances.xlsx');
@@ -598,17 +561,70 @@ if (
     // $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
     // $writer->save('./public/assets/fichier_vacances.xlsx');
 
-
-    // Redirection.
     if ($result) {
+        $lastInsertId = $bdd->lastInsertId();
+
+        // FONCTION MAILTO.
+
+        // Variables pour le premier mail.
+        $userMessage1 =
+            "<html>
+                <head>
+                    <title>Demande de vacances | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
+                    du " . $holidayRequestStart->format('Y-m-d') . " au " . $holidayRequestEnd->format('Y-m-d') . " (soit $numberOfDays jours) pour le motif suivant : '$holidayRequestText'.</p>
+                    <a 
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=1&id=$lastInsertId&user=$userModifiedId'
+                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
+                    >
+                        Accepter
+                    </a>
+                    <a 
+                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=2&id=$lastInsertId&user=$userModifiedId'
+                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
+                    >
+                        Refuser
+                    </a>
+                </body>
+            </html>";
+        $to1      = 'contact@florent-maury.fr';
+        // $to1      = 'pdana@free.fr, mrisler@sdp-paris.com';
+        $subject1 = "Demande de vacances | $userName $userSurname";
+        $contentMessage1 = wordwrap($userMessage1, 70, "\r\n");
+        $headers1 = "MIME-Version: 1.0" . "\r\n";
+        $headers1 .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers1 .= "From: $userName <$userEmail>" . "\r\n";
+        $headers1 .= "Reply-To: $userEmail" . "\r\n";
+        mail($to1, $subject1, $contentMessage1, $headers1);
+
+        // Variables pour le deuxième mail.
+        $userMessage2 =
+            "<html>
+                <head>
+                    <title>Demande de vacances | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, votre demande de vacances du " . $holidayRequestStart->format('Y-m-d') . " au " . $holidayRequestEnd->format('Y-m-d') . " (soit $numberOfDays jours) pour le motif suivant : '$holidayRequestText' à été transmise.</p>
+                </body>
+            </html>";
+        $to2          = $userEmail;
+        $subject2     = "Demande de vacances | $userName $userSurname";
+        $contentMessage2 = wordwrap($userMessage2, 70, "\r\n");
+        $headers2 = "MIME-Version: 1.0" . "\r\n";
+        $headers2 .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers2 .= "From: $userName <$userEmail>" . "\r\n";
+        $headers2 .= "Reply-To: $userEmail" . "\r\n";
+        mail($to2, $subject2, $contentMessage2, $headers2);
+
         header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
         exit();
     } else {
-        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de vacances.');
+        header('location: index.php?page=dashboard&error=1&messageMod=Impossible de déclarer cette demande de vacances.');
         exit();
     }
 };
-
 
 // DEMANDE DE JOUR SUPPLEMENTAIRE.
 
@@ -650,19 +666,19 @@ if (
 };
 
 
-// Vérification du formulaire de première demande de jour de repos.
+// Vérification du formulaire de demande de jour de repos.
 if (
-    !empty($_POST['dayOffRequest1Start']) &&
-    !empty($_POST['dayOffRequest1Desc'])
+    !empty($_POST['dayOffRequestStart']) &&
+    !empty($_POST['dayOffRequestDesc'])
 ) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $modifyDayOffRequest1 = htmlspecialchars($_POST['dayOffRequest1Start']);
-    $dayOffRequest1Desc   = htmlspecialchars($_POST['dayOffRequest1Desc']);
-    $userId               = $_SESSION['id'];
+    $modifyDayOffRequest = htmlspecialchars($_POST['dayOffRequestStart']);
+    $dayOffRequestDesc   = htmlspecialchars($_POST['dayOffRequestDesc']);
+    $userId              = $_SESSION['id'];
 
     // Gestion des variables.
     $r = $bdd->prepare("SELECT id, name, surname, email FROM `user` WHERE id = ?");
@@ -670,17 +686,12 @@ if (
     $user = $r->fetch(PDO::FETCH_ASSOC);
 
     $userModifiedId = $user['id'];
-    $userName = $user['name'];
-    $userSurname = $user['surname'];
-    $userEmail = $user['email'];
+    $userName       = $user['name'];
+    $userSurname    = $user['surname'];
+    $userEmail      = $user['email'];
 
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response1 = 0 WHERE user_time_bank_id = ?');
-    $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off1_desc = ? WHERE user_time_bank_id = ?');
-    $req->execute([$dayOffRequest1Desc, $userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off1 = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$modifyDayOffRequest1, $userModifiedId]);
+    $dayOffRequestQuery = $bdd->prepare('INSERT INTO user_day_off (user_day_off_id, day_off, day_off_request_text, day_off_response) VALUES (?, ?, ?, 0)');
+    $result = $dayOffRequestQuery->execute([$userModifiedId, $modifyDayOffRequest, $dayOffRequestDesc]);
 
     // FONCTION MAILTO.
 
@@ -692,8 +703,8 @@ if (
                 </head>
                 <body>
                     <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
-                    au $modifyDayOffRequest1.</p>
-                    <p>Voici le motif de cette demande : $dayOffRequest1Desc</p>
+                    au $modifyDayOffRequest.</p>
+                    <p>Voici le motif de cette demande : $dayOffRequestDesc</p>
                     <a 
                         href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff1Mail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
@@ -709,7 +720,33 @@ if (
                 </body>
             </html>";
     // $to    = 'contact@florent-maury.fr';
-    $to       = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
+    $to       = "pdana@free.fr,mrisler@sdp-paris.com";
+    $subject  = "Demande de repos | $userName $userSurname";
+
+    // Retour à la ligne en cas de dépassement des 70 caractères.
+    $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+    // Personnalisation du conatenu en fonction des variables.
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+    $headers .= "From: $userName <$userEmail>" . "\r\n";
+    $headers .= "Reply-To: $userEmail" . "\r\n";
+
+    mail($to, $subject, $contentMessage, $headers);
+
+    // Variables.
+    $userMessage   =
+        "<html>
+                <head>
+                    <title>Demande de journée de repos | $userName $userSurname</title>
+                </head>
+                <body>
+                    <p>Bonjour, votre demande de repos au $modifyDayOffRequest pour le motif suivant : $dayOffRequest à bien été transmise</p>
+                    <p>Voici le motif de cette demande : $dayOffRequestDesc</p>
+                </body>
+            </html>";
+    // $to    = 'contact@florent-maury.fr';
+    $to       = "$userEmail";
     $subject  = "Demande de repos | $userName $userSurname";
 
     // Retour à la ligne en cas de dépassement des 70 caractères.
@@ -732,171 +769,6 @@ if (
         header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
         exit();
     }
-};
-
-
-// Vérification du formulaire de seconde demande de jour de repos.
-if (
-    !empty($_POST['dayOffRequest2Start']) &&
-    !empty($_POST['dayOffRequest2Desc'])
-) {
-
-    // Connexion à la base de données.
-    require('./model/connectionDBModel.php');
-
-    // Variables.
-    $modifyDayOffRequest2 = htmlspecialchars($_POST['dayOffRequest2Start']);
-    $dayOffRequest2Desc   = htmlspecialchars($_POST['dayOffRequest2Desc']);
-    $userId               = $_SESSION['id'];
-
-    // Gestion des variables.
-    $r = $bdd->prepare("SELECT id, name, surname, email FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $user = $r->fetch(PDO::FETCH_ASSOC);
-
-    $userModifiedId = $user['id'];
-    $userName = $user['name'];
-    $userSurname = $user['surname'];
-    $userEmail = $user['email'];
-
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response2 = 0 WHERE user_time_bank_id = ?');
-    $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off2 = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$modifyDayOffRequest2, $userModifiedId]);
-
-    // FONCTION MAILTO.
-
-    // Variables.
-    $userMessage   =
-        "<html>
-                <head>
-                    <title>Demande de journée de repos | $userName $userSurname</title>
-                </head>
-                <body>
-                    <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
-                    au $modifyDayOffRequest2.</p>
-                    <p>Voici le motif de cette demande : $dayOffRequest2Desc</p>
-                    <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=1&id=$userId'
-                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
-                    >
-                        Accepter
-                    </a>
-                    <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff2Mail=2&id=$userId'
-                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
-                    >
-                        Refuser
-                    </a>
-                </body>
-            </html>";
-    // $to      = 'contact@florent-maury.fr';
-    $to         = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-    $subject    = "Demande de repos | $userName $userSurname";
-
-    // Retour à la ligne en cas de dépassement des 70 caractères.
-    $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
-    // Personnalisation du conatenu en fonction des variables.
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: $userName <$userEmail>" . "\r\n";
-    $headers .= "Reply-To: $userEmail" . "\r\n";
-
-    mail($to, $subject, $contentMessage, $headers);
-
-    // Redirection.
-    if ($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
-        exit();
-    } else {
-        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
-        exit();
-    }
-};
-
-
-// Vérification du formulaire de troisième demande de jour de repos.
-if (
-    !empty($_POST['dayOffRequest3Start']) &&
-    !empty($_POST['dayOffRequest3Desc'])
-) {
-
-    // Connexion à la base de données.
-    require('./model/connectionDBModel.php');
-
-    // Variables.
-    $modifyDayOffRequest3 = htmlspecialchars($_POST['dayOffRequest3Start']);
-    $dayOffRequest3Desc   = htmlspecialchars($_POST['dayOffRequest3Desc']);
-    $userId               = $_SESSION['id'];
-
-    // Gestion des variables.
-    $r = $bdd->prepare("SELECT id, name, surname, email FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
-    $user = $r->fetch(PDO::FETCH_ASSOC);
-
-    $userModifiedId = $user['id'];
-    $userName = $user['name'];
-    $userSurname = $user['surname'];
-    $userEmail = $user['email'];
-
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response3 = 0 WHERE user_time_bank_id = ?');
-    $req->execute([$userModifiedId]);
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off3 = ? WHERE user_time_bank_id = ?');
-    $result = $req->execute([$modifyDayOffRequest3, $userModifiedId]);
-
-    // FONCTION MAILTO.
-
-    // Variables.
-    $userMessage   =
-        "<html>
-                <head>
-                    <title>Demande de journée de repos | $userName $userSurname</title>
-                </head>
-                <body>
-                    <p>Bonjour, vous avez une demande de repos de la part de $userName $userSurname 
-                    au $modifyDayOffRequest3.</p>
-                    <p>Voici le motif de cette demande : $dayOffRequest3Desc</p>
-                    <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=1&id=$userId'
-                        style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
-                    >
-                        Accepter
-                    </a>
-                    <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOff3Mail=2&id=$userId'
-                        style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
-                    >
-                        Refuser
-                    </a>
-                </body>
-            </html>";
-    // $to      = 'contact@florent-maury.fr';
-    $to         = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-    $subject    = "Demande de repos | $userName $userSurname";
-
-    // Retour à la ligne en cas de dépassement des 70 caractères.
-    $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
-    // Personnalisation du conatenu en fonction des variables.
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: $userName <$userEmail>" . "\r\n";
-    $headers .= "Reply-To: $userEmail" . "\r\n";
-
-    mail($to, $subject, $contentMessage, $headers);
-
-
-    // Redirection.
-    if ($result) {
-        header('location: index.php?page=dashboard&timeBankModification=1&action=timeBankButton');
-        exit();
-    } else {
-        header('location: index.php?page=dashboard&errorMod=1&messageMod=Impossible de déclarer cette demande de repos.');
-        exit();
-    };
 };
 
 

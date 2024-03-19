@@ -36,30 +36,15 @@ $usersValid = $bdd->query('
         WHERE active = 1
         ORDER BY surname
         ');
-$usersDayOff1  = $bdd->query('
+$usersDayOff = $bdd->query('
         SELECT *
         FROM user 
         INNER JOIN user_exp ON user.id = user_exp.user_exp_id
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
-         WHERE day_off_response1 = 0
-         ');
-$usersDayOff2  = $bdd->query('
-        SELECT *
-        FROM user 
-        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
-        INNER JOIN user_role ON user.id = user_role.user_role_id
-        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
-         WHERE day_off_response2 = 0
-         ');
-$usersDayOff3  = $bdd->query('
-        SELECT *
-        FROM user 
-        INNER JOIN user_exp ON user.id = user_exp.user_exp_id
-        INNER JOIN user_role ON user.id = user_role.user_role_id
-        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
-         WHERE day_off_response3 = 0
-         ');
+        INNER JOIN user_day_off ON user.id = user_day_off.user_day_off_id
+        WHERE day_off_response = 0
+        ');
 $usersHoliday = $bdd->query('
         SELECT *
         FROM user 

@@ -2058,8 +2058,8 @@
     </div>
 </div>
 
-<!-- Modale de modification de première demande de RTT. -->
-<div class="modal fade" id="modifyDayOffRequest1" data-bs-backdrop="static">
+<!-- Modale de modification de demande de RTT. -->
+<div class="modal fade" id="modifyDayOffRequest" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-3 mt-0">
             <!-- Titre de la modale. -->
@@ -2071,64 +2071,12 @@
             <!-- Corps de la modale. -->
             <form method="POST" action="index.php?page=dashboard">
                 <p class="form-floating m-2">
-                    <input type="date" name="dayOffRequest1Start" class="form-control" id="dayOffRequest1Start">
-                    <label for="dayOffRequest1Start">Date du jour souhaité</label>
+                    <input type="date" name="dayOffRequestStart" class="form-control" id="dayOffRequestStart">
+                    <label for="dayOffRequestStart">Date du jour souhaité</label>
                 </p>
                 <p class="form-floating m-2">
-                    <input type="text" name="dayOffRequest1Desc" class="form-control" id="dayOffRequest1Desc">
-                    <label for="dayOffRequest1Desc">Raison de la demande</label>
-                </p>
-                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modale de modification de seconde demande de RTT. -->
-<div class="modal fade" id="modifyDayOffRequest2" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-3 mt-0">
-            <!-- Titre de la modale. -->
-            <div class="modal-header">
-                <h5 class="modal-title">Déclaration de demande de repos</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                </button>
-            </div>
-            <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=dashboard">
-                <p class="form-floating m-2">
-                    <input type="date" name="dayOffRequest2Start" class="form-control" id="dayOffRequest2Start">
-                    <label for="dayOffRequest2Start">Date du jour souhaité</label>
-                </p>
-                <p class="form-floating m-2">
-                    <input type="text" name="dayOffRequest2Desc" class="form-control" id="dayOffRequest2Desc">
-                    <label for="dayOffRequest2Desc">Raison de la demande</label>
-                </p>
-                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modale de modification de troisième demande de RTT. -->
-<div class="modal fade" id="modifyDayOffRequest3" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-3 mt-0">
-            <!-- Titre de la modale. -->
-            <div class="modal-header">
-                <h5 class="modal-title">Déclaration de demande de repos</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                </button>
-            </div>
-            <!-- Corps de la modale. -->
-            <form method="POST" action="index.php?page=dashboard">
-                <p class="form-floating m-2">
-                    <input type="date" name="dayOffRequest3Start" class="form-control" id="dayOffRequest3Start">
-                    <label for="dayOffRequest3Start">Date du jour souhaité</label>
-                </p>
-                <p class="form-floating m-2">
-                    <input type="text" name="dayOffRequest3Desc" class="form-control" id="dayOffRequest3Desc">
-                    <label for="dayOffRequest3Desc">Raison de la demande</label>
+                    <input type="text" name="dayOffRequest1Desc" class="form-control" id="dayOffRequestDesc">
+                    <label for="dayOffRequestDesc">Raison de la demande</label>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
             </form>

@@ -1,12 +1,13 @@
 <?php
 
-if (isset($_GET['holidayResponseMail'], $_GET['id'])) {
+if (isset($_GET['holidayResponseMail'], $_GET['id'], $_GET['user'])) {
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
     $holidayRequest = htmlspecialchars($_GET['holidayResponseMail']);
-    $userId          = $_GET['id'];
+    $userId         = $_GET['user'];
+    $holidayId      = $_GET['id'];
 
     // Vérification de l'existence de l'utilisateur.
     $stmt = $bdd->prepare('SELECT id FROM user WHERE id = ?');
@@ -19,14 +20,15 @@ if (isset($_GET['holidayResponseMail'], $_GET['id'])) {
         INNER JOIN user_exp ON user.id = user_exp.user_exp_id
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
-        WHERE id = ?
+        INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
+        WHERE id = ? AND holiday_id = ?
         ');
-    $stmt->execute([$userId]);
+    $stmt->execute([$userId, $holidayId]);
     $user = $stmt->fetch();
 
-    $userName      = $user['name'];
-    $userSurname   = $user['surname'];
-    $userEmail     = $user['email'];
+    $userName     = $user['name'];
+    $userSurname  = $user['surname'];
+    $userEmail    = $user['email'];
     $holidayStart = $user['holiday_start'];
     $holidayEnd   = $user['holiday_end'];
 
@@ -36,9 +38,9 @@ if (isset($_GET['holidayResponseMail'], $_GET['id'])) {
     $currentHolidaysTaken = $r->fetchColumn();
 
     if ($holidayRequest == 1) {
-        $holidayRes = 'Acceptée';
+        $holidayRes = 'acceptée';
     } else if ($holidayRequest == 2) {
-        $holidayRes = 'Refusée';
+        $holidayRes = 'refusée';
     }
 
     if ($userModifiedId) {
@@ -98,7 +100,7 @@ if (isset($_GET['dayOff1Mail'], $_GET['id'])) {
 
     // Variables.
     $dayOff1Mail  = htmlspecialchars($_GET['dayOff1Mail']);
-    $userId       = $_GET['id'];
+    $holidayId       = $_GET['id'];
 
     if ($dayOff1Mail == 1) {
         $dayOffRes = 'Acceptée';
@@ -108,7 +110,7 @@ if (isset($_GET['dayOff1Mail'], $_GET['id'])) {
 
     // Vérification de l'existence de l'utilisateur.
     $stmt = $bdd->prepare('SELECT id FROM user WHERE id = ?');
-    $stmt->execute([$userId]);
+    $stmt->execute([$holidayId]);
     $userModifiedId = $stmt->fetchColumn();
 
     $stmt = $bdd->prepare('
@@ -119,7 +121,7 @@ if (isset($_GET['dayOff1Mail'], $_GET['id'])) {
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
         WHERE id = ?
         ');
-    $stmt->execute([$userId]);
+    $stmt->execute([$holidayId]);
     $user = $stmt->fetch();
 
     $userName = $user['name'];
@@ -129,7 +131,7 @@ if (isset($_GET['dayOff1Mail'], $_GET['id'])) {
 
     // Selection de la banque de repos.
     $r = $bdd->prepare("SELECT day_off_bank FROM user_time_bank WHERE user_time_bank_id = ?");
-    $r->execute([$userId]);
+    $r->execute([$holidayId]);
     $previousDaysOffBank = $r->fetchColumn();
 
     if ($userModifiedId) {
@@ -193,7 +195,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
 
     // Variables.
     $dayOff2Mail  = htmlspecialchars($_GET['dayOff2Mail']);
-    $userId       = $_GET['id'];
+    $holidayId       = $_GET['id'];
 
     if ($dayOff2Mail == 1) {
         $dayOffRes = 'Acceptée';
@@ -203,7 +205,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
 
     // Vérification de l'existence de l'utilisateur.
     $stmt = $bdd->prepare('SELECT id FROM user WHERE id = ?');
-    $stmt->execute([$userId]);
+    $stmt->execute([$holidayId]);
     $userModifiedId = $stmt->fetchColumn();
 
     $stmt = $bdd->prepare('
@@ -214,7 +216,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
         WHERE id = ?
         ');
-    $stmt->execute([$userId]);
+    $stmt->execute([$holidayId]);
     $user = $stmt->fetch();
 
     $userName = $user['name'];
@@ -224,7 +226,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
 
     // Selection de la banque de repos.
     $r = $bdd->prepare("SELECT day_off_bank FROM `user` WHERE id = ?");
-    $r->execute([$userId]);
+    $r->execute([$holidayId]);
     $previousDaysOffBank = $r->fetchColumn();
 
     if ($userModifiedId) {
@@ -286,7 +288,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
 
         // Variables.
         $dayOff3Mail  = htmlspecialchars($_GET['dayOff3Mail']);
-        $userId       = $_GET['id'];
+        $holidayId       = $_GET['id'];
 
         if ($dayOff3Mail == 1) {
             $dayOffRes = 'Acceptée';
@@ -296,7 +298,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
 
         // Vérification de l'existence de l'utilisateur.
         $stmt = $bdd->prepare('SELECT id FROM user WHERE id = ?');
-        $stmt->execute([$userId]);
+        $stmt->execute([$holidayId]);
         $userModifiedId = $stmt->fetchColumn();
 
         $stmt = $bdd->prepare('
@@ -307,7 +309,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
             INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
             WHERE id = ?
             ');
-        $stmt->execute([$userId]);
+        $stmt->execute([$holidayId]);
         $user = $stmt->fetch();
 
         $userName = $user['name'];
@@ -317,7 +319,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
 
         // Selection de la banque de repos.
         $r = $bdd->prepare("SELECT day_off_bank FROM user_time_bank_id WHERE user_time_bank_id = ?");
-        $r->execute([$userId]);
+        $r->execute([$holidayId]);
         $previousDaysOffBank = $r->fetchColumn();
 
         if ($userModifiedId) {
