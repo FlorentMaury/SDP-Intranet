@@ -1,5 +1,6 @@
 <?php
 
+// Réponse de congés par mail.
 if (isset($_GET['holidayResponseMail'], $_GET['id'], $_GET['user'])) {
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
@@ -71,15 +72,20 @@ if (isset($_GET['holidayResponseMail'], $_GET['id'], $_GET['user'])) {
         // Personnalisation du contenu en fonction des variables.
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "From: SDP - Vacances <$userEmail>" . "\r\n";
         $headers .= "Reply-To: $userEmail" . "\r\n";
 
         mail($to, $subject, $contentMessage, $headers);
 
         // Redirection.
         if ($result) {
-            header('location: index.php?page=email&holidayResponse=1');
-            exit();
+            if ($holidayRequest == 1) {
+                header('location: index.php?page=email&holidayResponse=1');
+                exit();
+            } else if ($holidayRequest == 2) {
+                header('location: index.php?page=email&holidayResponse=2');
+                exit();
+            }
         } else {
             header('location: index.php?page=email&error=1&message=Impossible de répondre à cette demande.');
             exit();

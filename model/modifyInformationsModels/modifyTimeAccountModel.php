@@ -574,7 +574,7 @@ if (
                 </head>
                 <body>
                     <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
-                    du " . $holidayRequestStart->format('Y-m-d') . " au " . $holidayRequestEnd->format('Y-m-d') . " (soit $numberOfDays jours) pour le motif suivant : '$holidayRequestText'.</p>
+                    du " . $holidayRequestStart->format('d-m-Y') . " au " . $holidayRequestEnd->format('d-m-Y') . " (soit $numberOfDays jours) pour le motif suivant : '$holidayRequestText'.</p>
                     <a 
                         href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=1&id=$lastInsertId&user=$userModifiedId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
@@ -589,13 +589,13 @@ if (
                     </a>
                 </body>
             </html>";
-        $to1      = 'contact@florent-maury.fr';
-        // $to1      = 'pdana@free.fr, mrisler@sdp-paris.com';
+        // $to1      = 'contact@florent-maury.fr';
+        $to1      = 'pdana@free.fr, mrisler@sdp-paris.com';
         $subject1 = "Demande de vacances | $userName $userSurname";
         $contentMessage1 = wordwrap($userMessage1, 70, "\r\n");
         $headers1 = "MIME-Version: 1.0" . "\r\n";
         $headers1 .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers1 .= "From: $userName <$userEmail>" . "\r\n";
+        $headers1 .= "From: SDP - Vacances <$userEmail>" . "\r\n";
         $headers1 .= "Reply-To: $userEmail" . "\r\n";
         mail($to1, $subject1, $contentMessage1, $headers1);
 
@@ -606,7 +606,7 @@ if (
                     <title>Demande de vacances | $userName $userSurname</title>
                 </head>
                 <body>
-                    <p>Bonjour, votre demande de vacances du " . $holidayRequestStart->format('Y-m-d') . " au " . $holidayRequestEnd->format('Y-m-d') . " (soit $numberOfDays jours) pour le motif suivant : '$holidayRequestText' à été transmise.</p>
+                    <p>Bonjour, votre demande de vacances du " . $holidayRequestStart->format('d-m-Y') . " au " . $holidayRequestEnd->format('d-m-Y') . " (soit $numberOfDays jours) pour le motif suivant : '$holidayRequestText' à été transmise.</p>
                 </body>
             </html>";
         $to2          = $userEmail;
@@ -614,7 +614,7 @@ if (
         $contentMessage2 = wordwrap($userMessage2, 70, "\r\n");
         $headers2 = "MIME-Version: 1.0" . "\r\n";
         $headers2 .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers2 .= "From: $userName <$userEmail>" . "\r\n";
+        $headers2 .= "From: SDP - Vacances <$userEmail>" . "\r\n";
         $headers2 .= "Reply-To: $userEmail" . "\r\n";
         mail($to2, $subject2, $contentMessage2, $headers2);
 

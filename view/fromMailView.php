@@ -2,12 +2,21 @@
 
     // Modification du titre de la page.
     $title = 'Réponse à la demande';
+
     // Début d'enregistrement du HTML.
     ob_start();
 
 ?>
 
-    <h1 class="display-6 text-center">Réponse à la demande</h1>
+    <h1 class="display-6 text-center">
+        <?php
+        if($_GET['holidayResponse'] == 1) {
+            echo 'Demande de congé acceptée';
+        } else {
+            echo 'Demande de congé refusée';
+        }
+        ?>
+    </h1>
 
     <?php
         if($_SESSION) {
