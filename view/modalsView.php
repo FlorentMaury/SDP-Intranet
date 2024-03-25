@@ -2071,7 +2071,7 @@
                     <label for="dayOffRequestStart">Date du jour souhaité</label>
                 </p>
                 <p class="form-floating m-2">
-                    <input type="text" name="dayOffRequest1Desc" class="form-control" id="dayOffRequestDesc">
+                    <input type="text" name="dayOffRequestDesc" class="form-control" id="dayOffRequestDesc">
                     <label for="dayOffRequestDesc">Raison de la demande</label>
                 </p>
                 <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>

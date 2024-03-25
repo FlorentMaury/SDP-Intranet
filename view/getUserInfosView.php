@@ -769,6 +769,69 @@ if (isset($_GET['id'])) {
         }
         ?>
     </div>
+    <div class="contract border rounded mt-3 p-3">
+        <h4 class="my-3">Journées supplémentaires</h4>
+
+        <p>Jours supplémentaire effectués: <?= $data['day_off_bank'] ?> jours</p>
+
+        <!-- Récapitulatif des demandes de RTT. -->
+        <div class="userExpGrid d-flex flex-column flex-md-row">
+
+            <?php
+            // Exécution de la requête SQL
+            $usersDayOff = $bdd->prepare('
+                            SELECT *
+                            FROM user 
+                            INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+                            INNER JOIN user_role ON user.id = user_role.user_role_id
+                            INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+                            INNER JOIN user_day_off ON user.id = user_day_off.user_day_off_id
+                            WHERE user_day_off.user_day_off_id = ?
+                        ');
+            $usersDayOff->execute([$data['id']]);
+
+            // Récupération des résultats
+            $dataDayOff = $usersDayOff->fetchAll();
+
+            // Affichage des résultats
+            if (empty($dataDayOff)) {
+                echo ('<p>Aucune demande de journée à rattraper</p>');
+            }
+            foreach ($dataDayOff as $dayOff) {
+            ?>
+
+                <div class="expSecondItem border rounded m-1 p-3">
+                    <p>Dates de la demande : du <?= $dayOff['day_off'] ?></p>
+                    <p>Raison : <?= $dayOff['day_off_desc'] ?></p>
+                    <p>
+                        <?php
+                        if ($dayOff['day_off_response'] == 0) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if ($dayOff['day_off_response'] == 1) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Date validée !</p>';
+                        } else if ($dayOff['day_off_response'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Date refusée.</p>';
+                        }
+                        ?>
+                    </p>
+                </div>
+
+            <?php
+            }
+            ?>
+        </div>
+        <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDayOffRequest">
+                Faire une demande de repos
+            </a>
+        </button>
+
+        <button class="btn btn-md btn-dark p-2 m-3" type="submit">
+            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyDayOffBank">
+                Déclarer un jour supplémentaire
+            </a>
+        </button>
+    </div>
 
     <!-- Vacances. -->
     <div class="border rounded mt-3 p-3">

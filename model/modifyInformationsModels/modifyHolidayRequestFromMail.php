@@ -100,13 +100,13 @@ if (isset($_GET['holidayResponseMail'], $_GET['id'], $_GET['user'])) {
 
 // REPONSE JOUR DE REPOS PAR MAIL.
 
-if (isset($_GET['dayOff1Mail'], $_GET['id'])) {
+if (isset($_GET['dayOffMail'], $_GET['id'])) {
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $dayOff1Mail  = htmlspecialchars($_GET['dayOff1Mail']);
-    $holidayId       = $_GET['id'];
+    $dayOff1Mail  = htmlspecialchars($_GET['dayOffMail']);
+    $holidayId    = $_GET['id'];
 
     if ($dayOff1Mail == 1) {
         $dayOffRes = 'Acceptée';
@@ -121,10 +121,11 @@ if (isset($_GET['dayOff1Mail'], $_GET['id'])) {
 
     $stmt = $bdd->prepare('
         SELECT *
-        FROM user 
+        FROM user
         INNER JOIN user_exp ON user.id = user_exp.user_exp_id
         INNER JOIN user_role ON user.id = user_role.user_role_id
-        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+        INNER JOIN user_day_off ON user.id = user_day_off.user_day_off_id
         WHERE id = ?
         ');
     $stmt->execute([$holidayId]);
@@ -148,9 +149,8 @@ if (isset($_GET['dayOff1Mail'], $_GET['id'])) {
         }
 
         // Modification de la réponse de l'utilisateur dans la base de données.
-        $stmt = $bdd->prepare('UPDATE user_time_bank SET day_off_response1 = ? WHERE user_time_bank_id = ?');
+        $stmt = $bdd->prepare('UPDATE user_time_bank SET day_off_response = ? WHERE user_time_bank_id = ?');
         $result = $stmt->execute([$dayOff1Mail, $userModifiedId]);
-
 
         // FONCTION MAILTO.
 
@@ -201,7 +201,7 @@ if (isset($_GET['dayOff2Mail'], $_GET['id'])) {
 
     // Variables.
     $dayOff2Mail  = htmlspecialchars($_GET['dayOff2Mail']);
-    $holidayId       = $_GET['id'];
+    $holidayId    = $_GET['id'];
 
     if ($dayOff2Mail == 1) {
         $dayOffRes = 'Acceptée';

@@ -10,6 +10,7 @@ $req = $bdd->prepare('
     INNER JOIN user_exp ON user.id = user_exp.user_exp_id
     INNER JOIN user_role ON user.id = user_role.user_role_id
     INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+    LEFT JOIN user_holiday ON user.id = user_holiday.user_holiday_id
     WHERE user.id = ?
 ');
 $req->execute([$_SESSION['id']]);
@@ -184,27 +185,25 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
             foreach ($usersHoliday1 as $usersHoliday1) {
                 if ($usersHoliday1['holiday_start'] != NULL) {
             ?>
-
                     <div class="dashboardItems">
-                        <p><?= $usersHoliday1['name'] . ' ' . $usersHoliday1['surname'] ?>
-                            souhaite des vacances du
-                            <?= $usersHoliday1['holiday_start'] ?> au <?= $usersHoliday1['holiday_end'] ?>
-                            Motif : <?= $usersHoliday1['holiday_request_text'] ?></p>
-                        <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday1['id'] ?>">
-                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
-                                <!-- Select option 1 ou 0 -->
-                                <select type="text" name="holidayRequest" class="form-control" id="holidayRequest">
-                                    <label for="holidayRequest">Réponse</label>
-                                    <option value="1">Accepter</option>
-                                    <option value="2">Refuser</option>
-                                </select>
-                                <!-- Champ caché pour passer holiday_id -->
-                                <input type="hidden" name="holiday_id" value="<?= $usersHoliday1['holiday_id'] ?>">
-                                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-                            </p>
-                        </form>
-                    </div>
-
+                    <p><?= $usersHoliday1['name'] . ' ' . $usersHoliday1['surname'] ?>
+                        souhaite des vacances du
+                        <?= $usersHoliday1['holiday_start'] ?> au <?= $usersHoliday1['holiday_end'] ?>
+                        Motif : <?= $usersHoliday1['holiday_request_text'] ?></p>
+                    <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday1['id'] ?>">
+                        <p class="d-flex flex-column flex-sm-row form-floating m-2">
+                            <!-- Select option 1 ou 0 -->
+                            <select type="text" name="holidayRequest" class="form-control" id="holidayRequest">
+                                <label for="holidayRequest">Réponse</label>
+                                <option value="1">Accepter</option>
+                                <option value="2">Refuser</option>
+                            </select>
+                            <!-- Champ caché pour passer holiday_id -->
+                            <input type="hidden" name="holiday_id" value="<?= $usersHoliday1['holiday_id'] ?>">
+                            <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
+                        </p>
+                    </form>
+                </div>
             <?php
                 }
             }
@@ -227,7 +226,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                             souhaite un repos à la date du
                             <?= $usersDayOff['day_off'] ?>
                             </br>
-                            Pour la raison suivante : <?= $usersDayOff['day_off_desc'] ?>
+                            Pour la raison suivante : <?= $usersDayOff['day_off_request_text'] ?>
                         </p>
                         <form method="POST" action="index.php?page=dashboard&id=<?= $usersDayOff['id'] ?>">
                             <p class="d-flex flex-column flex-sm-row form-floating m-2">
@@ -1010,7 +1009,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
             <p>Date de début du contrat : <?php if (empty($data['contract_start'])) {
                                                 echo 'En attente';
                                             } else {
-                                                echo $data['contract_end'];
+                                                echo $data['contract_start'];
                                             } ?></p>
         </div>
 
@@ -1101,7 +1100,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
     <div class="contract border rounded mt-3 p-3">
         <h4 class="my-3">Journées supplémentaires</h4>
 
-        <p>Jours supplémentaire effectué: <?= $data['day_off_bank'] ?> jours</p>
+        <p>Jours supplémentaire effectués: <?= $data['day_off_bank'] ?> jours</p>
 
         <!-- Récapitulatif des demandes de RTT. -->
         <div class="userExpGrid d-flex flex-column flex-md-row">
@@ -1130,11 +1129,11 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
             ?>
 
                 <div class="expSecondItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light mb-4">
+                    <!-- <button class="btn btn-md btn-light mb-4">
                         <a href='./model/deleteDayOffRequest.php?id=<?= $dayOff["id"] ?>&dayOff=<?= $dayOff['day_off'] ?>' type="button" class="btn btn-infos">
                             Supprimer la demande
                         </a>
-                    </button>
+                    </button> -->
                     <p>Dates de la demande : du <?= $dayOff['day_off'] ?></p>
                     <p>Raison : <?= $dayOff['day_off_desc'] ?></p>
                     <p>
