@@ -616,10 +616,10 @@ if (isset($_GET['id'])) {
     <!-- Médecine du travail -->
     <div class="expItems">
         <p>Date de la visite médicale : <?php if (empty($data['work_medicine'])) {
-                                        echo 'En attente';
-                                    } else {
-                                        echo $data['work_medicine'];
-                                    } ?></p>
+                                            echo 'En attente';
+                                        } else {
+                                            echo $data['work_medicine'];
+                                        } ?></p>
         <button class="btn btn-md btn-light p-2" type="submit">
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyWorkMedicine">
                 <img src="./public/assets/settings.svg" alt="Modifier">
@@ -633,29 +633,25 @@ if (isset($_GET['id'])) {
 
     <h2 class="display-6 text-center" id="experiences">Compte temps</h2>
 
-    <?php
-    require('./model/timeAccountModel.php')
-    ?>
-
     <!-- Navigo -->
     <div class="userExpGrid border rounded mt-3 p-3">
         <h4>Navigo : </h4>
         <div class="expFirstItem border rounded m-1 p-3">
             <p>Numéro Navigo : <?php if (empty($data['contract_transports'])) {
-                            echo 'En attente';
-                        } else {
-                            echo $data['contract_transports'];
-                        } ?></p>
+                                    echo 'En attente';
+                                } else {
+                                    echo $data['contract_transports'];
+                                } ?></p>
             <button class="btn btn-md btn-light p-2" type="submit">
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyContractTransport">
                     <img src="./public/assets/settings.svg" alt="Modifier">
                 </a>
             </button>
             <p>Scan du Navigo : <?php if (empty($data['transport_scan'])) {
-                            echo 'En attente';
-                        } else {
-                            echo $data['transport_scan'];
-                        } ?></p>
+                                    echo 'En attente';
+                                } else {
+                                    echo $data['transport_scan'];
+                                } ?></p>
             <button class="btn btn-md btn-light p-2" type="submit">
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyTransportScan">
                     <img src="./public/assets/settings.svg" alt="Modifier">
@@ -838,142 +834,151 @@ if (isset($_GET['id'])) {
         <h4 class="my-3">Congés</h4>
 
         <!-- Vacances. -->
-                            <!-- Vacances. -->
+        <!-- Vacances. -->
 
-                            <p>
-                                <?php $data['holidays_total'];
+        <p>
+            <?php $data['holidays_total'];
 
-                                require('./model/holidaysMathModel.php');
+            if ($data['contract_type'] == "Stage") {
+                echo 'La personne est en stage et n\à pas de vacances.';
+            } elseif (empty($data['contract_type'])) {
+                echo 'Le type de contrat n\'est pas renseigné.';
+            } elseif (empty($data['contract_start'])) {
+                echo 'La date de début de contrat n\'est pas renseignée.';
+            } else {
+                require('./model/holidaysMathModel.php');
+            }
 
-                                ?>
-                            </p>
-                            <?php
-                            // Exécution de la requête SQL
-                            $usersHoliday = $bdd->prepare('
-                            SELECT *
-                            FROM user 
-                            INNER JOIN user_exp ON user.id = user_exp.user_exp_id
-                            INNER JOIN user_role ON user.id = user_role.user_role_id
-                            INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
-                            INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
-                            WHERE user_holiday.user_holiday_id = ?
-                        ');
-                            $usersHoliday->execute([$data['id']]);
+            ?>
+        </p>
+        <?php
+        // Exécution de la requête SQL
+        $usersHoliday = $bdd->prepare('
+            SELECT *
+            FROM user 
+            INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+            INNER JOIN user_role ON user.id = user_role.user_role_id
+            INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+            INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
+            WHERE user_holiday.user_holiday_id = ?
+        ');
+        $usersHoliday->execute([$data['id']]);
 
-                            // Récupération des résultats
-                            $data = $usersHoliday->fetchAll();
+        // Récupération des résultats.
+        $userHolidayData = $usersHoliday->fetchAll();
 
-                            // Affichage des résultats
-                            if (empty($data)) {
-                                echo ('<p>Aucune demande de vacances</p>');
-                            }
-                            foreach ($data as $holiday) {
-                            ?>
+        // Affichage des résultats.
+        if (empty($userHolidayData)) {
+            echo ('<p>Aucune demande de vacances</p>');
+        }
+        foreach ($userHolidayData as $holiday) {
+        ?>
 
-                                <div class="userExpGrid d-flex flex-column flex-md-row">
+            <div class="userExpGrid d-flex flex-column flex-md-row">
 
-                                    <div class="expFirstItem border rounded m-1 p-3">
-                                        <!-- <button class="btn btn-md btn-light mb-4">
-                                        <a href='./model/deleteHolidayRequest.php?id=
-                                        <?= $holiday["user_holiday_id"] ?>
-                                        &holiday=<?= $holiday['holiday_start'] ?>' type="button" class="btn btn-infos">
-                                            Supprimer la demande
-                                        </a>
-                                    </button> -->
-                                        <p>Dates de la demande : du <?= $holiday['holiday_start'] ?> au <?= $holiday['holiday_end'] ?></p>
-                                        <p>Motif : <?= $holiday['holiday_request_text'] ?></p>
-                                        <p>
-                                            <?php
-                                            if ($holiday['holiday_response'] == '0') {
-                                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                            } else if ($holiday['holiday_response'] == '1') {
-                                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                            } else if ($holiday['holiday_response'] == '2') {
-                                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                            }
-                                            ?>
-                                        </p>
-                                    </div>
+                <div class="expFirstItem border rounded m-1 p-3">
+                    <!-- <button class="btn btn-md btn-light mb-4">
+                        <a href='./model/deleteHolidayRequest.php?id=
+                        <?= $holiday["user_holiday_id"] ?>
+                        &holiday=<?= $holiday['holiday_start'] ?>' type="button" class="btn btn-infos">
+                            Supprimer la demande
+                        </a>
+                    </button> -->
+                    <p>Dates de la demande : du <?= $holiday['holiday_start'] ?> au <?= $holiday['holiday_end'] ?></p>
+                    <p>Motif : <?= $holiday['holiday_request_text'] ?></p>
+                    <p>
+                        <?php
+                        if ($holiday['holiday_response'] == '0') {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if ($holiday['holiday_response'] == '1') {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                        } else if ($holiday['holiday_response'] == '2') {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
+                        ?>
+                    </p>
+                </div>
 
-                                </div>
+            </div>
 
-                            <?php
-                            }
-                            ?>
+        <?php
+        }
+        ?>
 
-            <!-- Temps supplémentaire. -->
-            <div class="border rounded mt-3 p-3">
-                <h4 class="my-3">Temps supplémentaire</h4>
+    </div>
+
+    <!-- Temps supplémentaire. -->
+    <div class="border rounded mt-3 p-3">
+        <h4 class="my-3">Temps supplémentaire</h4>
+        <?php
+        if ($data['day_off1']) {
+        ?>
+
+            <div class="userExpGrid d-flex flex-column flex-md-row">
+
+                <div class="expFirstItem border rounded m-1 p-3">
+                    <p>Dates de la demande : <?= $data['day_off1'] ?></p>
+                    <p>Raison : <?= $data['day_off1_desc'] ?></p>
+                    <p>
+                        <?php
+                        if ($data['day_off_response1'] == 0) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                        } else if ($data['day_off_response1'] == 1) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                        } else if ($data['day_off_response1'] == 2) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                        }
+                        ?>
+                    </p>
+                </div>
+
                 <?php
-                if ($data['day_off1']) {
+                if ($data['day_off2']) {
                 ?>
 
-                    <div class="userExpGrid d-flex flex-column flex-md-row">
-
-                        <div class="expFirstItem border rounded m-1 p-3">
-                            <p>Dates de la demande : <?= $data['day_off1'] ?></p>
-                            <p>Raison : <?= $data['day_off1_desc'] ?></p>
-                            <p>
-                                <?php
-                                if ($data['day_off_response1'] == 0) {
-                                    echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                } else if ($data['day_off_response1'] == 1) {
-                                    echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                } else if ($data['day_off_response1'] == 2) {
-                                    echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                }
-                                ?>
-                            </p>
-                        </div>
-
-                        <?php
-                        if ($data['day_off2']) {
-                        ?>
-
-                            <div class="expFirstItem border rounded m-1 p-3">
-                                <p>Dates de la demande : <?= $data['day_off2'] ?></p>
-                                <p>Raison : <?= $data['day_off2_desc'] ?></p>
-                                <p>
-                                    <?php
-                                    if ($data['day_off_response2'] == 0) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                    } else if ($data['day_off_response2'] == 1) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                    } else if ($data['day_off_response2'] == 2) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                    }
-                                    ?>
-                                </p>
-                            </div>
-
-                        <?php
-                        }
-                        if ($data['day_off3']) {
-                        ?>
-
-                            <div class="expFirstItem border rounded m-1 p-3">
-                                <p>Dates de la demande : <?= $data['day_off3'] ?></p>
-                                <p>Raison : <?= $data['day_off3_desc'] ?></p>
-                                <p>
-                                    <?php
-                                    if ($data['day_off_response3'] == 0) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                                    } else if ($data['day_off_response3'] == 1) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                                    } else if ($data['day_off_response3'] == 2) {
-                                        echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                                    }
-                                    ?>
-                                </p>
-                            </div>
-
-                    <?php
-                        }
-                    } else {
-                        echo ('<p>Aucune demande de repos</p>');
-                    }
-                    ?>
+                    <div class="expFirstItem border rounded m-1 p-3">
+                        <p>Dates de la demande : <?= $data['day_off2'] ?></p>
+                        <p>Raison : <?= $data['day_off2_desc'] ?></p>
+                        <p>
+                            <?php
+                            if ($data['day_off_response2'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if ($data['day_off_response2'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if ($data['day_off_response2'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
+                            ?>
+                        </p>
                     </div>
+
+                <?php
+                }
+                if ($data['day_off3']) {
+                ?>
+
+                    <div class="expFirstItem border rounded m-1 p-3">
+                        <p>Dates de la demande : <?= $data['day_off3'] ?></p>
+                        <p>Raison : <?= $data['day_off3_desc'] ?></p>
+                        <p>
+                            <?php
+                            if ($data['day_off_response3'] == 0) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                            } else if ($data['day_off_response3'] == 1) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                            } else if ($data['day_off_response3'] == 2) {
+                                echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                            }
+                            ?>
+                        </p>
+                    </div>
+
+            <?php
+                }
+            } else {
+                echo ('<p>Aucune demande de repos</p>');
+            }
+            ?>
             </div>
     </div>
 </div>

@@ -186,24 +186,24 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                 if ($usersHoliday1['holiday_start'] != NULL) {
             ?>
                     <div class="dashboardItems">
-                    <p><?= $usersHoliday1['name'] . ' ' . $usersHoliday1['surname'] ?>
-                        souhaite des vacances du
-                        <?= $usersHoliday1['holiday_start'] ?> au <?= $usersHoliday1['holiday_end'] ?>
-                        Motif : <?= $usersHoliday1['holiday_request_text'] ?></p>
-                    <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday1['id'] ?>">
-                        <p class="d-flex flex-column flex-sm-row form-floating m-2">
-                            <!-- Select option 1 ou 0 -->
-                            <select type="text" name="holidayRequest" class="form-control" id="holidayRequest">
-                                <label for="holidayRequest">Réponse</label>
-                                <option value="1">Accepter</option>
-                                <option value="2">Refuser</option>
-                            </select>
-                            <!-- Champ caché pour passer holiday_id -->
-                            <input type="hidden" name="holiday_id" value="<?= $usersHoliday1['holiday_id'] ?>">
-                            <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
-                        </p>
-                    </form>
-                </div>
+                        <p><?= $usersHoliday1['name'] . ' ' . $usersHoliday1['surname'] ?>
+                            souhaite des vacances du
+                            <?= $usersHoliday1['holiday_start'] ?> au <?= $usersHoliday1['holiday_end'] ?>
+                            Motif : <?= $usersHoliday1['holiday_request_text'] ?></p>
+                        <form method="POST" action="index.php?page=dashboard&id=<?= $usersHoliday1['id'] ?>">
+                            <p class="d-flex flex-column flex-sm-row form-floating m-2">
+                                <!-- Select option 1 ou 0 -->
+                                <select type="text" name="holidayRequest" class="form-control" id="holidayRequest">
+                                    <label for="holidayRequest">Réponse</label>
+                                    <option value="1">Accepter</option>
+                                    <option value="2">Refuser</option>
+                                </select>
+                                <!-- Champ caché pour passer holiday_id -->
+                                <input type="hidden" name="holiday_id" value="<?= $usersHoliday1['holiday_id'] ?>">
+                                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Confirmer</button>
+                            </p>
+                        </form>
+                    </div>
             <?php
                 }
             }
@@ -1269,7 +1269,6 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                 Ajouter une absence
             </a>
         </button> -->
-            </div>
 
 
             <?php
@@ -1307,7 +1306,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
             <?php
             }
             ?>
-
+    </div>
 
             <!-- Absences planifiées. -->
             <div class="contract border rounded mt-3 p-3">
@@ -1380,8 +1379,6 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                 }
                     ?>
 
-                    </div>
-
                     <?php
                     if (!$data['planned_illness_1']) {
                     ?>
@@ -1418,6 +1415,8 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                     }
                     ?>
 
+                    </div>
+
                     <!-- Vacances. -->
                     <div class="contract border rounded mt-3 p-3">
                         <h4 class="my-3">Congés</h4>
@@ -1427,8 +1426,15 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                         <p>
                             <?php $data['holidays_total'];
 
-                            require('./model/holidaysMathModel.php');
-
+                            if ($data['contract_type'] == "Stage") {
+                                echo 'Vous n\'avez pas de droit à des congés. Vous êtes en stage.';
+                            } elseif (empty($data['contract_type'])) {
+                                echo 'Votre type de contrat n\'est pas renseigné. Veuillez contacter votre responsable.';
+                            } elseif (empty($data['contract_start'])) {
+                                echo 'Votre date de début de contrat n\'est pas renseignée. Veuillez contacter votre responsable.';
+                            } else {
+                                require('./model/holidaysMathModel.php');
+                            }
                             ?>
                         </p>
                         <?php
@@ -1445,13 +1451,13 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                         $usersHoliday->execute([$data['id']]);
 
                         // Récupération des résultats
-                        $data = $usersHoliday->fetchAll();
+                        $holiday = $usersHoliday->fetchAll();
 
                         // Affichage des résultats
-                        if (empty($data)) {
+                        if (empty($holiday)) {
                             echo ('<p>Aucune demande de vacances</p>');
                         }
-                        foreach ($data as $holiday) {
+                        foreach ($holiday as $holiday) {
                         ?>
 
                             <div class="userExpGrid d-flex flex-column flex-md-row">
@@ -1485,13 +1491,19 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                         }
                         ?>
 
+                        <?php
+                        if ($data['holidays_total'] != 0 || $data['contract_type'] != "Stage") {
+                        ?>
 
-                        <button class="btn btn-md btn-danger p-2 m-3" type="submit">
-                            <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest">
-                                Faire une demande de vacances
-                            </a>
-                        </button>
+                            <button class="btn btn-md btn-danger p-2 m-3" type="submit">
+                                <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#modifyHolidayRequest">
+                                    Faire une demande de vacances
+                                </a>
+                            </button>
 
+                        <?php
+                        }
+                        ?>
                     </div>
             </div>
     </div>
