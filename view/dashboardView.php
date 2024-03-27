@@ -216,11 +216,8 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
         <div class="employeesList border rounded p-3 my-3">
             <h2 class="display-6 text-center" id="collabList">Demandes de récupération à modérer</h2>
 
+            <!-- Première tranche. -->
             <?php
-            
-            // Récupération des résultats
-            $usersHoliday1 = $usersHoliday->fetchAll();
-
             foreach ($usersDayOff as $usersDayOff) {
                 if ($usersDayOff['day_off'] != NULL) {
             ?>
