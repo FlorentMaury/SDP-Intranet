@@ -521,6 +521,30 @@ if (
         return;
     }
 
+    // Vérification que la date de début soit postérieure à la date du jour.
+    if ($holidayRequestStart < date('Y-m-d')) {
+        header('location: index.php?page=dashboard&error=1&message=La date de début des vacances doit être postérieure à la date du jour.');
+        return;
+    }
+
+    // Vérification que la date de fin soit postérieure à la date du jour.
+    if ($holidayRequestEnd < date('Y-m-d')) {
+        header('location: index.php?page=dashboard&error=1&message=La date de fin des vacances doit être postérieure à la date du jour.');
+        return;
+    }
+
+    // Vérification que la date de début ne soit pas égale à la date de fin.
+    if ($holidayRequestStart == $holidayRequestEnd) {
+        header('location: index.php?page=dashboard&error=1&message=La date de début des vacances ne peut pas être égale à la date de fin.');
+        return;
+    }
+
+    // Vérification que la date de début ne soit pas égale à la date de fin.
+    if ($holidayRequestStart == $holidayRequestEnd) {
+        header('location: index.php?page=dashboard&error=1&message=La date de début des vacances ne peut pas être égale à la date de fin.');
+        return;
+    }
+
     $userQuery = $bdd->prepare("SELECT id, email, name, surname FROM `user` WHERE id = ?");
     $userQuery->execute([$userId]);
     $user = $userQuery->fetch(PDO::FETCH_ASSOC);
@@ -533,6 +557,12 @@ if (
     $holidayRequestStart = new DateTime($holidayRequestStart);
     $holidayRequestEnd = new DateTime($holidayRequestEnd);
 
+    // Vérification qu'il reste des jours de congés à poser.
+    if ($holidaysTotal > ((strtotime($holidayEnd) - strtotime($holidayStart)) / 86400)) {
+        header('location: index.php?page=dashboard&error=1&message=Il ne vous reste pas suffisament de jours de congés à poser.');
+        return;
+    }
+
     $interval = $holidayRequestStart->diff($holidayRequestEnd);
 
     $numberOfDays = $interval->days;
@@ -541,7 +571,15 @@ if (
     $result = $holidayRequestQuery->execute([$userModifiedId, $holidayRequestStart->format('Y-m-d'), $holidayRequestEnd->format('Y-m-d'), $holidayRequestText]);
 
     // // Charger le fichier Excel existant
-    // $spreadsheet = IOFactory::load('./public/assets/fichier_vacances.xlsx');
+    // $filePath = './public/assets/fichier_vacances.xlsx';
+
+    // if (!file_exists($filePath)) {
+    //     $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+    //     $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+    //     $writer->save($filePath);
+    // } else {
+    //     $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($filePath);
+    // }$
 
     // // Obtenir la première feuille de calcul
     // $worksheet = $spreadsheet->getActiveSheet();

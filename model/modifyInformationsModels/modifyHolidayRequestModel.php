@@ -12,7 +12,7 @@ if (
 
     // Variables.
     $holidayRequest = htmlspecialchars($_POST['holidayRequest']);
-    $holidayId = htmlspecialchars($_POST['holiday_id']); // Récupérez holiday_id
+    $holidayId = htmlspecialchars($_POST['holiday_id']);
     $userId = $_GET['id'];
 
     // Sélection de l'ID.
@@ -30,7 +30,7 @@ if (
         INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
         WHERE id = ? AND user_holiday.user_holiday_id = ?
     ');
-    $stmt->execute([$userId, $holidayId]); // Passez holiday_id ici
+    $stmt->execute([$userId, $holidayId]);
     $user = $stmt->fetch();
 
     $userName      = $user['name'];
@@ -38,53 +38,61 @@ if (
     $userEmail     = $user['email'];
     $holidayStart  = $user['holiday_start'];
     $holidayEnd    = $user['holiday_end'];
+    $holidaysTotal = $user['holidays_total'];
 
-    if ($holidayRequest == 1) {
-        $holidayRes = 'Acceptée';
+    if ($holidaysTotal > ((strtotime($holidayEnd) - strtotime($holidayStart)) / 86400)) {
 
-    } else if ($holidayRequest == 2) {
-        $holidayRes = 'Refusée';
-    }
-
-    // Modification des modifications dans la base de données.
-    $req = $bdd->prepare('UPDATE user_holiday SET holiday_response = ?, holiday_response_text = ? WHERE holiday_id = ?');
-    $result = $req->execute([$holidayRequest, $holidayRes, $holidayId]);
-
-    // FONCTION MAILTO.
-
-    // Variables.
-    $userMessage   =
-        "<html>
-                <head>
-                    <title>Réponse à la demande de vacances | $userName $userSurname</title>
-                </head>
-                <body>
-                    <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
-                     du $holiday1Start au $holiday1End vient d'être $holidayRes.</p>
-                </body>
-            </html>";
-    // $to         = 'contact@florent-maury.fr';
-    $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
-    $subject       = "Réponse à la demande de vacances | $userName $userSurname";
-
-    // Retour à la ligne en cas de dépassement des 70 caractères.
-    $contentMessage = wordwrap($userMessage, 70, "\r\n");
-
-    // Personnalisation du contenu en fonction des variables.
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: $userName <$userEmail>" . "\r\n";
-    $headers .= "Reply-To: $userEmail" . "\r\n";
-
-    mail($to, $subject, $contentMessage, $headers);
-
-    // Redirection.
-    if ($result) {
-        header('location: index.php?page=dashboard&holidayResponse=1');
+        header('location: index.php?page=dashboard&error=1&message=L\'employé à demandé plus de vacances que possible.');
         exit();
+
     } else {
-        header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
-        exit();
+
+        if ($holidayRequest == 1) {
+            $holidayRes = 'Acceptée';
+        } else if ($holidayRequest == 2) {
+            $holidayRes = 'Refusée';
+        }
+
+        // Modification des modifications dans la base de données.
+        $req = $bdd->prepare('UPDATE user_holiday SET holiday_response = ?, holiday_response_text = ? WHERE holiday_id = ?');
+        $result = $req->execute([$holidayRequest, $holidayRes, $holidayId]);
+
+        // FONCTION MAILTO.
+
+        // Variables.
+        $userMessage   =
+            "<html>
+                    <head>
+                        <title>Réponse à la demande de vacances | $userName $userSurname</title>
+                    </head>
+                    <body>
+                        <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
+                         du $holiday1Start au $holiday1End vient d'être $holidayRes.</p>
+                    </body>
+                </html>";
+        $to         = 'contact@florent-maury.fr';
+        $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
+        $subject       = "Réponse à la demande de vacances | $userName $userSurname";
+
+        // Retour à la ligne en cas de dépassement des 70 caractères.
+        $contentMessage = wordwrap($userMessage, 70, "\r\n");
+
+        // Personnalisation du contenu en fonction des variables.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $userName <$userEmail>" . "\r\n";
+        $headers .= "Reply-To: $userEmail" . "\r\n";
+
+        mail($to, $subject, $contentMessage, $headers);
+
+        // Redirection.
+        if ($result) {
+            header('location: index.php?page=dashboard&holidayResponse=1');
+            exit();
+        } else {
+            header('location: index.php?page=dashboard&error=1&message=Impossible de répondre à cette demande.');
+            exit();
+        }
     }
 };
 

@@ -1470,7 +1470,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                                             Supprimer la demande
                                         </a>
                                     </button> -->
-                                    <p>Dates de la demande : du <?= $holiday['holiday_start'] ?> au <?= $holiday['holiday_end'] ?></p>
+                                    <p>Dates de la demande : du <?= (new DateTime($holiday['holiday_start']))->format('d-m-Y') ?> au <?= (new DateTime($holiday['holiday_end']))->format('d-m-Y') ?></p>
                                     <p>Motif : <?= $holiday['holiday_request_text'] ?></p>
                                     <p>
                                         <?php
