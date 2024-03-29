@@ -23,10 +23,10 @@ if (
     // Sélection de l'utilisateur et des informations de vacances
     $stmt = $bdd->prepare('
         SELECT *
-        FROM user 
+        FROM user
         INNER JOIN user_exp ON user.id = user_exp.user_exp_id
         INNER JOIN user_role ON user.id = user_role.user_role_id
-        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
         INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
         WHERE id = ? AND user_holiday.user_holiday_id = ?
     ');
@@ -41,10 +41,8 @@ if (
     $holidaysTotal = $user['holidays_total'];
 
     if ($holidaysTotal > ((strtotime($holidayEnd) - strtotime($holidayStart)) / 86400)) {
-
         header('location: index.php?page=dashboard&error=1&message=L\'employé à demandé plus de vacances que possible.');
         exit();
-
     } else {
 
         if ($holidayRequest == 1) {
@@ -60,17 +58,17 @@ if (
         // FONCTION MAILTO.
 
         // Variables.
-        $userMessage   =
+        $userMessage =
             "<html>
                     <head>
                         <title>Réponse à la demande de vacances | $userName $userSurname</title>
                     </head>
                     <body>
-                        <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
-                         du $holiday1Start au $holiday1End vient d'être $holidayRes.</p>
+                    <p>Bonjour, la demande de vacances de la part de $userName $userSurname 
+                        du $holidayStart au $holidayEnd vient d'être $holidayRes.</p>
                     </body>
                 </html>";
-        $to         = 'contact@florent-maury.fr';
+        // $to         = 'contact@florent-maury.fr';
         $to            = "pdana@free.fr,mrisler@sdp-paris.com,$userEmail";
         $subject       = "Réponse à la demande de vacances | $userName $userSurname";
 
@@ -145,11 +143,15 @@ if (
 
     // Modification des modifications dans la base de données.
     if ($dayOff1Request == '1') {
-        $req = $bdd->prepare('UPDATE user_time_bank SET day_off_bank = ? WHERE user_time_bank_id = ?');
+        $req = $bdd->prepare('UPDATE user_day_off SET day_off_bank = ? WHERE user_time_bank_id = ?');
         $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
     }
 
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response1 = ? WHERE user_time_bank_id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response = ? WHERE day_off
+    
+    
+    
+    _id = ?');
     $result = $req->execute([$dayOff1Request, $userModifiedId]);
 
     // FONCTION MAILTO.

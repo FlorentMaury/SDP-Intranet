@@ -4,6 +4,8 @@ $title = 'Tableau De Bord';
 // Début d'enregistrement du HTML.
 ob_start();
 
+require('./model/connectionDBModel.php');
+
 $req = $bdd->prepare('
     SELECT *
     FROM user 
@@ -216,8 +218,19 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
         <div class="employeesList border rounded p-3 my-3">
             <h2 class="display-6 text-center" id="collabList">Demandes de récupération à modérer</h2>
 
-            <!-- Première tranche. -->
             <?php
+
+            // Récupération des résultats
+            $usersDayOff = $bdd->query('
+            SELECT *
+            FROM user 
+            INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+            INNER JOIN user_role ON user.id = user_role.user_role_id
+            INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+            INNER JOIN user_day_off ON user.id = user_day_off.user_day_off_id
+            WHERE day_off_response = 0
+            ');
+
             foreach ($usersDayOff as $usersDayOff) {
                 if ($usersDayOff['day_off'] != NULL) {
             ?>

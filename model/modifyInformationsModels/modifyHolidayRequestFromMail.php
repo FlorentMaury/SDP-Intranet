@@ -52,7 +52,7 @@ if (isset($_GET['holidayResponseMail'], $_GET['id'], $_GET['user'])) {
         // FONCTION MAILTO.
 
         // Variables.
-        $userMessage   =
+        $userMessage =
             "<html>
                 <head>
                     <title>Réponse à la demande de vacances | $userName $userSurname</title>
