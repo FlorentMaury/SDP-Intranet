@@ -101,6 +101,7 @@ if (isset($_GET['holidayResponseMail'], $_GET['id'], $_GET['user'])) {
 // REPONSE JOUR DE REPOS PAR MAIL.
 
 if (isset($_GET['dayOffMail'], $_GET['id'])) {
+    
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
@@ -109,9 +110,9 @@ if (isset($_GET['dayOffMail'], $_GET['id'])) {
     $holidayId    = $_GET['id'];
 
     if ($dayOff1Mail == 1) {
-        $dayOffRes = 'Acceptée';
+        $dayOffRes = 'acceptée';
     } else if ($dayOff1Mail == 2) {
-        $dayOffRes = 'Refusée';
+        $dayOffRes = 'refusée';
     }
 
     // Vérification de l'existence de l'utilisateur.

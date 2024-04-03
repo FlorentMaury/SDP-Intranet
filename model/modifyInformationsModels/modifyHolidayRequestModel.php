@@ -4,7 +4,7 @@
 // Fonction qui permet l'acceptation ou non d'une demande de CA.
 if (
     !empty($_POST['holidayRequest']) &&
-    !empty($_POST['holiday_id']) // Assurez-vous que holiday_id est envoyé
+    !empty($_POST['holiday_id']) 
 ) {
 
     // Connexion à la base de données.
@@ -99,7 +99,8 @@ if (
 
 // Fonction qui permet l'acceptation ou non d'une première demande de RTT.
 if (
-    !empty($_POST['dayOffRequest'])
+    !empty($_POST['dayOffRequest']) &&
+    !empty($_POST['day_off_id'])
 ) {
 
     // Connexion à la base de données.
@@ -107,12 +108,13 @@ if (
 
     // Variables.
     $dayOff1Request = htmlspecialchars($_POST['dayOffRequest']);
-    $userId          = $_GET['id'];
+    $dayOffId       = htmlspecialchars($_POST['day_off_id']);
+    $userId         = $_GET['id'];
 
     if ($dayOff1Request == 1) {
-        $dayOffRes = 'Acceptée';
+        $dayOffRes = 'acceptée';
     } else if ($dayOff1Request == 2) {
-        $dayOffRes = 'Refusée';
+        $dayOffRes = 'refusée';
     }
 
     // Sélection de l'ID.
@@ -126,6 +128,7 @@ if (
         INNER JOIN user_exp ON user.id = user_exp.user_exp_id
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id 
+        INNER JOIN user_day_off ON user.id = user_day_off.user_day_off_id
         WHERE id = ?
     ');
     $stmt->execute([$userId]);
@@ -134,7 +137,7 @@ if (
     $userName = $user['name'];
     $userSurname = $user['surname'];
     $userEmail = $user['email'];
-    $modifyDayOffRequest1 = $user['day_off1'];
+    $modifyDayOffRequest1 = $user['day_off'];
 
     // Selection de la banque de repos.
     $r = $bdd->prepare("SELECT day_off_bank FROM user_time_bank WHERE user_time_bank_id = ?");
@@ -143,12 +146,12 @@ if (
 
     // Modification des modifications dans la base de données.
     if ($dayOff1Request == '1') {
-        $req = $bdd->prepare('UPDATE user_day_off SET day_off_bank = ? WHERE user_time_bank_id = ?');
+        $req = $bdd->prepare('UPDATE user_time_bank SET day_off_bank = ? WHERE user_time_bank_id = ?');
         $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
     }
 
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response = ? WHERE day_off_id = ?');
-    $result = $req->execute([$dayOff1Request, $userModifiedId]);
+    $req = $bdd->prepare('UPDATE user_day_off SET day_off_response = ?, day_off_response_text = ? WHERE day_off_id = ?');
+    $result = $req->execute([$dayOff1Request, $dayOffRes, $dayOffId]);
 
     // FONCTION MAILTO.
 
