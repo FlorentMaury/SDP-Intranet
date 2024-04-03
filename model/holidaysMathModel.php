@@ -1,13 +1,15 @@
 <?php
 
+date_default_timezone_set('Europe/Paris');
+
 // Date de début des vacances (1er juin de l'année en cours).
-$start = new DateTime(date('Y') . '-06-01');
+$start = new DateTime(date('Y') . '-06-01', new DateTimeZone('Europe/Paris'));
 
 // Date actuelle.
-$now = new DateTime();
+$now = new DateTime('now', new DateTimeZone('Europe/Paris'));
 
 // Date de contrat.
-$contractDate = new DateTime($data['contract_start']);
+$contractDate = new DateTime($data['contract_start'], new DateTimeZone('Europe/Paris'));
 
 // Utiliser la date de contrat comme date de référence pour calculer le nombre de mois travaillés.
 $referenceDate = $contractDate;

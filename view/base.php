@@ -77,7 +77,7 @@
     </main>
 
     <!-- Switch mode sombre -->
-    <?php if (isset($_GET['page']) && $_GET['page'] != 'home') : ?>
+    <?php if (isset($_GET['page']) && $_GET['page'] != 'home' && $_SESSION) : ?>
         <label class="switch m-4">
             Mode nuit
             <input type="checkbox" id="darkModeSwitch">

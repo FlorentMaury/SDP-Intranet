@@ -14,11 +14,11 @@
     session_start();
 
     // Intégration des connexions.
-    require('./model/connectionDBModel.php');
-    require('./model/connectionUserModel.php');
+    require_once('./model/connectionDBModel.php');
+    require_once('./model/connectionUserModel.php');
 
     // Routeur.
-    require('./controller/controller.php');
+    require_once('./controller/controller.php');
 
     // Direction de l'utilisateur en fonction de la requête.
     try{

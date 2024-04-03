@@ -1,7 +1,13 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Vérification du formulaire de connexion.
 if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
+
+    require_once('./model/connectionDBModel.php');
 
     // Sécurisation des variables.
     $email     = htmlspecialchars($_POST['email']);
@@ -48,33 +54,10 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
 
         // Si le mot de passe est le bon création d'une session.
         if($password == $user['password']) {
+
             $_SESSION['connect'] = 1;
             $_SESSION['email']   = $user['email'];
             $_SESSION['id']      = $user['id'];
-            $_SESSION['surname'] = $user['surname'];
-            $_SESSION['name']    = $user['name'];
-            $_SESSION['sex']     = $user['sex'];
-            $_SESSION['password']       = $user['password'];
-            $_SESSION['birth_date']     = $user['birth_date'];
-            $_SESSION['phone_number']   = $user['phone_number'];
-            $_SESSION['birth_city']     = $user['birth_city'];
-            $_SESSION['birth_country']  = $user['birth_country'];
-            $_SESSION['current_street_number']  = $user['current_street_number'];
-            $_SESSION['current_city_street']    = $user['current_city_street'];
-            $_SESSION['current_city']           = $user['current_city'];
-            $_SESSION['current_country']        = $user['current_country'];
-            $_SESSION['id_number']              = $user['id_number'];
-            $_SESSION['social_security_number'] = $user['social_security_number'];
-            $_SESSION['creation_date']          = $user['creation_date'];
-            $_SESSION['contract_level']         = $user['contract_level'];
-            $_SESSION['contract_coef']          = $user['contract_coef'];
-            $_SESSION['contract_remuneration']  = $user['contract_remuneration'];
-            $_SESSION['contract_weekly']        = $user['contract_weekly'];
-            $_SESSION['can_access_db']         = $user['can_access_db'];
-            $_SESSION['user_absence']    = $user['user_absence'];
-            $_SESSION['user_delay']      = $user['user_delay'];
-            $_SESSION['user_illness']    = $user['user_illness'];
-            $_SESSION['user_extra_time'] = $user['user_extra_time'];
 
             // Validation de la connexion.
             header('location: index.php?page=dashboard&connexion=1&action=generalInfosButton');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db5014654403.hosting-data.io
--- Généré le : mar. 19 mars 2024 à 11:37
+-- Généré le : ven. 29 mars 2024 à 11:07
 -- Version du serveur : 10.6.15-MariaDB-1:10.6.15+maria~deb11-log
 -- Version de PHP : 7.4.33
 
@@ -83,8 +83,7 @@ INSERT INTO `user` (`id`, `active`, `name`, `surname`, `email`, `secret`, `passw
 CREATE TABLE `user_day_off` (
   `day_off_id` int(11) NOT NULL,
   `user_day_off_id` int(11) NOT NULL,
-  `day_off_start` date NOT NULL,
-  `day_off_end` date NOT NULL,
+  `day_off` date NOT NULL,
   `day_off_response` varchar(2) NOT NULL,
   `day_off_request_text` text NOT NULL,
   `day_off_response_text` varchar(11) NOT NULL
@@ -180,15 +179,15 @@ CREATE TABLE `user_role` (
 --
 
 INSERT INTO `user_role` (`user_role_id`, `can_access_db`, `contract_type`, `contract_start`, `contract_end`, `contract_level`, `contract_coef`, `contract_remuneration`, `contract_insurance`, `contract_insurance_number`, `contract_weekly`) VALUES
-(1, 0, NULL, '2023-08-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 0, 'Stage', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 0, 'Alternance', '2023-10-01', '2024-09-01', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 0, 'CDI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(4, 0, 'Alternance', '2023-09-04', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 0, 'Alternance', '2023-09-05', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 0, 'Alternance', '2024-01-15', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 0, 'Alternance', '2023-09-19', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 0, 'Stage', '2024-03-19', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 0, 'Alternance', '2021-09-22', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -252,6 +251,7 @@ INSERT INTO `user_time_bank` (`user_time_bank_id`, `transport_scan`, `contract_t
 (9, '', '', 0, 0, 0, '0', '0', NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25, 0),
 (10, '', '', 0, 0, 0, '0', '0', NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25, 0);
 
+
 --
 -- Index pour les tables déchargées
 --
@@ -306,13 +306,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `user_day_off`
 --
 ALTER TABLE `user_day_off`
-  MODIFY `day_off_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `day_off_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT pour la table `user_holiday`
 --
 ALTER TABLE `user_holiday`
-  MODIFY `holiday_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `holiday_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

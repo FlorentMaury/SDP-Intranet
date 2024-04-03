@@ -99,14 +99,14 @@ if (
 
 // Fonction qui permet l'acceptation ou non d'une première demande de RTT.
 if (
-    !empty($_POST['dayOff1Request'])
+    !empty($_POST['dayOffRequest'])
 ) {
 
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
-    $dayOff1Request = htmlspecialchars($_POST['dayOff1Request']);
+    $dayOff1Request = htmlspecialchars($_POST['dayOffRequest']);
     $userId          = $_GET['id'];
 
     if ($dayOff1Request == 1) {
@@ -147,11 +147,7 @@ if (
         $req->execute([($previousDaysOffBank - 1), $userModifiedId]);
     }
 
-    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response = ? WHERE day_off
-    
-    
-    
-    _id = ?');
+    $req = $bdd->prepare('UPDATE user_time_bank SET day_off_response = ? WHERE day_off_id = ?');
     $result = $req->execute([$dayOff1Request, $userModifiedId]);
 
     // FONCTION MAILTO.

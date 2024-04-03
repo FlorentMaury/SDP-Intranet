@@ -4,44 +4,44 @@
     
     // Dans la page d'accueil.
     function home() {
-        require('model/connectionDBModel.php');
-        require('view/homeView.php');
+        require_once('model/connectionDBModel.php');
+        require_once('view/homeView.php');
     };
 
     // Dans les tableaux de bord.
     function dashboard() {
-        require('model/connectionDBModel.php');
-        require('model/addNewUserModel.php');
+        require_once('model/connectionDBModel.php');
+        require_once('model/addNewUserModel.php');
 
             // Modifications des informations utilisateurs.
-            require('model/modifyInformationsModels/modifyUserInformationsModel.php');
-            require('model/modifyInformationsModels/modifySchoolModel.php');
-            require('model/modifyInformationsModels/modifyJobModel.php');
-            require('model/modifyInformationsModels/modifyTimeAccountModel.php');
-            require('model/modifyInformationsModels/modifyHolidayRequestModel.php');
+            require_once('model/modifyInformationsModels/modifyUserInformationsModel.php');
+            require_once('model/modifyInformationsModels/modifySchoolModel.php');
+            require_once('model/modifyInformationsModels/modifyJobModel.php');
+            require_once('model/modifyInformationsModels/modifyTimeAccountModel.php');
+            require_once('model/modifyInformationsModels/modifyHolidayRequestModel.php');
 
-        require('view/dashboardView.php');
-        require('view/modalsView.php');
+        require_once('view/dashboardView.php');
+        require_once('view/modalsView.php');
     };
 
     // Dans la page employée.
     function user() {
-        require('model/connectionDBModel.php');
-        require('model/modifyInformationsModels/modifyUserContractModel.php');
-        require('view/getUserInfosView.php');
-        require('view/modalsView.php');
+        require_once('model/connectionDBModel.php');
+        require_once('model/modifyInformationsModels/modifyUserContractModel.php');
+        require_once('view/getUserInfosView.php');
+        require_once('view/modalsView.php');
     };
 
     // Dans la fonction de déconnexion.
     function logOut() {
-        require('model/logoutModel.php');
+        require_once('model/logoutModel.php');
     };
 
     // En provenance d'email.
     function email() {
-        require('model/connectionDBModel.php');
-        require('model/modifyInformationsModels/modifyHolidayRequestFromMail.php');
-        require('view/fromMailView.php');
+        require_once('model/connectionDBModel.php');
+        require_once('model/modifyInformationsModels/modifyHolidayRequestFromMail.php');
+        require_once('view/fromMailView.php');
     };
 
 ?>
