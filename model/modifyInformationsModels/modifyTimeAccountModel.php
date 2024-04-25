@@ -534,16 +534,10 @@ if (
     }
 
     // Vérification que la date de début ne soit pas égale à la date de fin.
-    if ($holidayRequestStart == $holidayRequestEnd) {
-        header('location: index.php?page=dashboard&error=1&message=La date de début des vacances ne peut pas être égale à la date de fin.');
-        return;
-    }
-
-    // Vérification que la date de début ne soit pas égale à la date de fin.
-    if ($holidayRequestStart == $holidayRequestEnd) {
-        header('location: index.php?page=dashboard&error=1&message=La date de début des vacances ne peut pas être égale à la date de fin.');
-        return;
-    }
+    // if ($holidayRequestStart == $holidayRequestEnd) {
+    //     header('location: index.php?page=dashboard&error=1&message=La date de début des vacances ne peut pas être égale à la date de fin.');
+    //     return;
+    // }
 
     $userQuery = $bdd->prepare("SELECT id, email, name, surname FROM `user` WHERE id = ?");
     $userQuery->execute([$userId]);
@@ -565,7 +559,7 @@ if (
 
     $interval = $holidayRequestStart->diff($holidayRequestEnd);
 
-    $numberOfDays = $interval->days;
+    $numberOfDays = $interval->days + 1;
 
     $holidayRequestQuery = $bdd->prepare('INSERT INTO user_holiday (user_holiday_id, holiday_start, holiday_end, holiday_request_text, holiday_response) VALUES (?, ?, ?, ?, 0)');
     $result = $holidayRequestQuery->execute([$userModifiedId, $holidayRequestStart->format('Y-m-d'), $holidayRequestEnd->format('Y-m-d'), $holidayRequestText]);
