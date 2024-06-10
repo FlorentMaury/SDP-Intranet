@@ -19,6 +19,7 @@
             require_once('model/modifyInformationsModels/modifyJobModel.php');
             require_once('model/modifyInformationsModels/modifyTimeAccountModel.php');
             require_once('model/modifyInformationsModels/modifyHolidayRequestModel.php');
+            require_once('model/modifyInformationsModels/modifyHolidayRequestFromMail.php');
 
         require_once('view/dashboardView.php');
         require_once('view/modalsView.php');
@@ -30,6 +31,7 @@
         require_once('model/modifyInformationsModels/modifyUserContractModel.php');
         require_once('view/getUserInfosView.php');
         require_once('view/modalsView.php');
+        require_once('model/modifyInformationsModels/modifyHolidayRequestFromMail.php');
     };
 
     // Dans la fonction de déconnexion.

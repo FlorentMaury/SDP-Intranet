@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Vérification du formulaire de connexion.
+// Vérification du formulaire de connexion si venant d'un email.
 if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
 
     require_once('./model/connectionDBModel.php');
@@ -59,9 +59,24 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             $_SESSION['email']   = $user['email'];
             $_SESSION['id']      = $user['id'];
 
-            // Validation de la connexion.
-            header('location: index.php?page=dashboard&connexion=1&action=generalInfosButton');
-            exit();
+            if(isset($_POST['user'] ) && isset($_POST['id']) && isset($_POST['hid']) && isset($_POST['action']) && isset($_POST['holidayResponseMail'])) {
+                $user   = $_POST['user'];
+                $id     = $_POST['id'];
+                $hid    = $_POST['hid'];
+                $action = $_POST['action'];
+                $holidayResponseMail = $_POST['holidayResponseMail'];
+                            
+                // Créez le lien
+                $link = "https://sdp-paris.com/Intranet-SDP/index.php?page=user&holidayResponseMail={$holidayResponseMail}&hid={$hid}&user={$user}&id={$user}&action=userTimeBankButton";
+                            
+                // Redirigez vers le lien
+                header("Location: {$link}");
+                exit();
+            } else {
+                // Validation de la connexion.
+                header('location: index.php?page=dashboard&connexion=1&action=generalInfosButton');
+                exit();
+            }
         } else {
             // Erreur dans le mot de passe.
             header('location: index.php?error=1&message=Impossible de vous authentifier correctement.');

@@ -91,11 +91,11 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
             <!-- Liste des collaborateurs actifs. -->
             <div id="employeesList">
                 <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs actifs</h2>
-                <div class="table-responsive">
+                <div class="table-responsive" style="max-height: 500px;">
                     <table class="table">
                         <thead>
-                            <th>Prénom</th>
                             <th>Nom</th>
+                            <th>Prénom</th>
                             <th class="creationDate">Compte de temps</th>
                             <th>Infos</th>
                         </thead>
@@ -105,8 +105,8 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                             while ($user = $usersValid->fetch()) {
                             ?>
                                 <tr>
-                                    <td><?= $user['name'] ?></td>
                                     <td><?= strtoupper($user['surname']) ?></td>
+                                    <td><?= $user['name'] ?></td>
                                     <td class="creationDate">
                                         <?php
                                         if ((floatval($user['user_extra_time'] * 60) - floatval($user['user_delay'] * 60)) >= 0) {
@@ -133,7 +133,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
             <!-- Liste des collaborateurs inactifs. -->
             <div id="employeesListInactive">
                 <h2 class="display-6 text-center" id="collabList">Liste des collaborateurs inactifs</h2>
-                <div class="table-responsive">
+                <div class="table-responsive" style="max-height: 500px;">
                     <table class="table">
                         <thead>
                             <th>Prénom</th>
@@ -1094,7 +1094,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
 
         <!-- Médecine du travail. -->
         <div>
-            <p>Date de la visite du travail : <?php if (empty($data['work_medicine'])) {
+            <p>Date de la visite médicale : <?php if (empty($data['work_medicine'])) {
                                                     echo 'En attente';
                                                 } else {
                                                     echo $data['work_medicine'];

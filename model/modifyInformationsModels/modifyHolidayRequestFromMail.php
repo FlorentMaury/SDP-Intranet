@@ -1,14 +1,14 @@
 <?php
 
 // Réponse de congés par mail.
-if (isset($_GET['holidayResponseMail'], $_GET['id'], $_GET['user'])) {
+if (isset($_GET['holidayResponseMail'], $_GET['hid'], $_GET['user'])) {
     // Connexion à la base de données.
     require('./model/connectionDBModel.php');
 
     // Variables.
     $holidayRequest = htmlspecialchars($_GET['holidayResponseMail']);
     $userId         = $_GET['user'];
-    $holidayId      = $_GET['id'];
+    $holidayId      = $_GET['hid'];
 
     // Vérification de l'existence de l'utilisateur.
     $stmt = $bdd->prepare('SELECT id FROM user WHERE id = ?');
@@ -79,13 +79,14 @@ if (isset($_GET['holidayResponseMail'], $_GET['id'], $_GET['user'])) {
 
         // Redirection.
         if ($result) {
-            if ($holidayRequest == 1) {
-                header('location: index.php?page=email&holidayResponse=1');
-                exit();
-            } else if ($holidayRequest == 2) {
-                header('location: index.php?page=email&holidayResponse=2');
-                exit();
-            }
+            // if ($holidayRequest == 1) {
+            //     header('location: index.php?page=email&holidayResponse=1');
+            //     exit();
+            // } else if ($holidayRequest == 2) {
+            //     header('location: index.php?page=email&holidayResponse=2');
+            //     exit();
+            // }
+            exit();
         } else {
             header('location: index.php?page=email&error=1&message=Impossible de répondre à cette demande.');
             exit();

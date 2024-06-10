@@ -607,13 +607,13 @@ if (
                     <p>Bonjour, vous avez une demande de vacances de la part de $userName $userSurname 
                     du " . $holidayRequestStart->format('d-m-Y') . " au " . $holidayRequestEnd->format('d-m-Y') . " (soit $numberOfDays jours) pour le motif suivant : '$holidayRequestText'.</p>
                     <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=1&id=$lastInsertId&user=$userModifiedId'
+                        href='https://sdp-paris.com/Intranet-SDP/index.php?page=user&holidayResponseMail=1&hid=$lastInsertId&user=$userModifiedId&id=$userModifiedId&action=userTimeBankButton'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                     >
                         Accepter
                     </a>
                     <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&holidayResponseMail=2&id=$lastInsertId&user=$userModifiedId'
+                        href='https://sdp-paris.com/Intranet-SDP/index.php?page=user&holidayResponseMail=2&hid=$lastInsertId&user=$userModifiedId&id=$userModifiedId&action=userTimeBankButton'
                         style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                     >
                         Refuser
@@ -741,13 +741,13 @@ if (
                     au $modifyDayOffRequest.</p>
                     <p>Voici le motif de cette demande : $dayOffRequestDesc</p>
                     <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOffMail=1&id=$userId'
+                        href='https://sdp-paris.com/Intranet-SDP/index.php?page=email&dayOffMail=1&id=$userId'
                         style='padding: 10px 20px; background-color: green; color: white; text-decoration: none;'
                     >
                         Accepter
                     </a>
                     <a 
-                        href='https://intranetsdp.florent-maury.fr/index.php?page=email&dayOffMail=2&id=$userId'
+                        href='https://sdp-paris.com/Intranet-SDP/index.php?page=email&dayOffMail=2&id=$userId'
                         style='padding: 10px 20px; background-color: red; color: white; text-decoration: none;'
                     >
                         Refuser

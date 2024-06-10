@@ -12,7 +12,7 @@ ob_start();
 ?>
 
 <div class="d-flex justify-content-center connection">
-    <form class="w-75 text-center" method="POST" action="index.php?page=home" style="max-width: 600px;">
+    <form class="w-75 text-center" method="POST" action="index.php?page=dashboard" style="max-width: 600px;">
         <p class="form-floating m-2">
             <input type="email" name="email" class="form-control" id="email">
             <label for="email">Email</label>
@@ -22,6 +22,14 @@ ob_start();
             <input type="password" name="password" class="form-control" id="password">
             <label for="password">Mot de passe</label>
         </p>
+
+        <!-- Champs cachés pour les variables $_GET -->
+        <input type="hidden" name="user" value="<?php echo isset($_GET['user']) ? htmlspecialchars($_GET['user'], ENT_QUOTES, 'UTF-8') : ''; ?>">
+        <input type="hidden" name="hid" value="<?php echo isset($_GET['hid']) ? htmlspecialchars($_GET['hid'], ENT_QUOTES, 'UTF-8') : ''; ?>">
+        <input type="hidden" name="id" value="<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8') : ''; ?>">
+        <input type="hidden" name="action" value="<?php echo isset($_GET['action']) ? htmlspecialchars($_GET['action'], ENT_QUOTES, 'UTF-8') : ''; ?>">
+        <input type="hidden" name="holidayResponseMail" value="<?php echo isset($_GET['holidayResponseMail']) ? htmlspecialchars($_GET['holidayResponseMail'], ENT_QUOTES, 'UTF-8') : ''; ?>">
+
         <button class="btn btn-lg btn-dark" type="submit">Connexion</button>
     </form>
 </div>

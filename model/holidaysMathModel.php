@@ -80,8 +80,11 @@ if ($holidayQuery->rowCount() > 0) {
         $end = new DateTime($holiday['holiday_end']);
 
         // Calculer le nombre de jours de vacances pour chaque intervalle de vacances.
-        $interval = $start->diff($end);
-        $usedHolidays += $interval->days + 1; // Ajoutez 1 pour inclure le jour de fin.
+        for($i = $start; $i <= $end; $i->modify('+1 day')){
+            if($i->format("N") < 6) { // Si le jour n'est pas un samedi ou un dimanche
+                $usedHolidays++;
+            }
+        }
     }
 }
 

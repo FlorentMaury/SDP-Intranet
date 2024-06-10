@@ -227,11 +227,11 @@ if (isset($_GET['id'])) {
                     Rendre inactif / actif
                 </button>
             </a>
-            <a href='./model/modifyCanAccessDBModel.php?id=<?= $data["id"] ?>' type="button" class="m-3">
+            <!-- <a href='./model/modifyCanAccessDBModel.php?id=<?= $data["id"] ?>' type="button" class="m-3">
                 <button class="btn btn-dark text-align-center">
                     Autoriser / Révoquer l'accès à la base de données
                 </button>
-            </a>
+            </a> -->
         </div>
     </div>
 </div>
