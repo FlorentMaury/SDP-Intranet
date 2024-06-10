@@ -128,6 +128,7 @@ if (isset($_GET['dayOffMail'], $_GET['id'])) {
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
         INNER JOIN user_day_off ON user.id = user_day_off.user_day_off_id
+        INNER JOIN user_revision_day ON user.id = user_revision_day.user_revision_day_id
         WHERE id = ?
         ');
     $stmt->execute([$holidayId]);

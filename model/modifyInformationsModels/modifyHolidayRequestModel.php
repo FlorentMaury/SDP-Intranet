@@ -28,6 +28,7 @@ if (
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
         INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
+        INNER JOIN user_revision_day ON user.id = user_revision_day.user_revision_day_id
         WHERE id = ? AND user_holiday.user_holiday_id = ?
     ');
     $stmt->execute([$userId, $holidayId]);
