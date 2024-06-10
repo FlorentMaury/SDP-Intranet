@@ -14,7 +14,6 @@ $req = $bdd->prepare('
     INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
     LEFT JOIN user_holiday ON user.id = user_holiday.user_holiday_id
     LEFT JOIN user_day_off ON user.id = user_day_off.user_day_off_id
-    LEFT JOIN user_revision_day ON user.id = user_revision_day.user_revision_day_id
     WHERE user.id = ?
 ');
 $req->execute([$_SESSION['id']]);
