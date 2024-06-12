@@ -754,8 +754,8 @@ if (
                     </a>
                 </body>
             </html>";
-        $to1    = 'contact@florent-maury.fr';
-        // $to       = "pdana@free.fr,mrisler@sdp-paris.com";
+        // $to1    = 'contact@florent-maury.fr';
+        $to       = "pdana@free.fr,mrisler@sdp-paris.com";
         $subject1  = "Demande de repos | $userName $userSurname";
 
         // Retour à la ligne en cas de dépassement des 70 caractères.

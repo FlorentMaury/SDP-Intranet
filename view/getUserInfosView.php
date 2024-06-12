@@ -798,7 +798,7 @@ if (isset($_GET['id'])) {
 
                 <div class="expSecondItem border rounded m-1 p-3">
                     <p>Dates de la demande : du <?= $dayOff['day_off'] ?></p>
-                    <p>Raison : <?= $dayOff['day_off_desc'] ?></p>
+                    <p>Raison : <?= $dayOff['day_off_request_text'] ?></p>
                     <p>
                         <?php
                         if ($dayOff['day_off_response'] == 0) {

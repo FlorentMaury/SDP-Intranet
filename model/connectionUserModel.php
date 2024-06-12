@@ -59,11 +59,11 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
             $_SESSION['email']   = $user['email'];
             $_SESSION['id']      = $user['id'];
 
-            if(isset($_POST['user'] ) && isset($_POST['id']) && isset($_POST['hid']) && isset($_POST['action']) && isset($_POST['holidayResponseMail'])) {
-                $user   = $_POST['user'];
-                $id     = $_POST['id'];
-                $hid    = $_POST['hid'];
-                $action = $_POST['action'];
+            if(isset($_GET['user'] ) && isset($_GET['id']) && isset($_GET['hid']) && isset($_GET['action']) && isset($_GET['holidayResponseMail'])) {
+                $user   = $_GET['user'];
+                $id     = $_GET['id'];
+                $hid    = $_GET['hid'];
+                $action = $_GET['action'];
                 $holidayResponseMail = $_POST['holidayResponseMail'];
                             
                 // Créez le lien
