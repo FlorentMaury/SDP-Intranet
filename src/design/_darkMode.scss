@@ -1,0 +1,82 @@
+/* MODE SOMBRE. */
+
+/* Styles pour le mode clair (par défaut) */
+.switch {
+    width: 40px;
+    height: 20px;
+    display: block;
+    margin: auto;
+  }
+    
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      width: 40px;  /* Ajouté */
+      height: 20px; /* Ajouté */
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;  /* Modifié */
+      width: 14px;   /* Modifié */
+      left: 3px;     /* Modifié */
+      bottom: 3px;   /* Modifié */
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background-color: rgb(105, 2, 2);
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px rgb(105, 2, 2);
+    }
+    
+    input:checked + .slider:before {
+      -webkit-transform: translateX(20px);
+      -ms-transform: translateX(20px);
+      transform: translateX(20px);          
+    }
+    
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+    
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  
+    body.dark-mode {
+      background-color: #212529 !important;
+      color: #fff !important;
+    }
+    
+    /* Styles par défaut pour les modales */
+    .modal-content {
+        background-color: #f5f5f5;
+        color: #212529;
+    }
+    
+    /* Styles pour les modales en mode sombre */
+    body.dark-mode .modal-content {
+        background-color: #212529;
+        color: #fff;
+    }
+    
+    nav ul li img.dark-mode,
+    header a img.dark-mode {
+      filter: invert(1);
+    }

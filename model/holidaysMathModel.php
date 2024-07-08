@@ -62,33 +62,50 @@
 // echo "Nombre de jours de vacances restants : $remainingHolidays jours.";
 
 
-// Récupérer le nombre total de jours de vacances de la base de données.
+// Étape 1 : Récupérer la date de début de contrat et calculer le total des jours de vacances acquis.
+$contractStartQuery = $bdd->prepare('SELECT contract_start FROM user_role WHERE user_role_id = ?');
+$contractStartQuery->execute([$data['user_role_id']]);
+$contractStart = $contractStartQuery->fetchColumn();
+
+$contractStartDate = new DateTime($contractStart);
+$today = new DateTime();
+$interval = $contractStartDate->diff($today);
+$monthsWorked = ($interval->y * 12) + $interval->m;
+$totalHolidaysAccrued = $monthsWorked * 2.5;
+
+// Récupérer le nombre total de jours de vacances de la base de données et ajouter les jours acquis.
 $totalHolidaysQuery = $bdd->prepare('SELECT holidays_total FROM user_time_bank WHERE user_time_bank_id = ?');
 $totalHolidaysQuery->execute([$data['id']]);
-$totalHolidays = $totalHolidaysQuery->fetchColumn();
+$totalHolidays = $totalHolidaysQuery->fetchColumn() + $totalHolidaysAccrued;
 
-// Récupérer toutes les entrées de vacances acceptées pour l'utilisateur.
+// Étape 2 : Calculer les jours de vacances utilisés.
 $holidayQuery = $bdd->prepare('SELECT holiday_start, holiday_end FROM user_holiday WHERE user_holiday_id = ? AND holiday_response = 1');
 $holidayQuery->execute([$data['id']]);
 
 $usedHolidays = 0;
 
 if ($holidayQuery->rowCount() > 0) {
-    // Calculer la différence en jours pour chaque entrée.
     while ($holiday = $holidayQuery->fetch(PDO::FETCH_ASSOC)) {
         $start = new DateTime($holiday['holiday_start']);
         $end = new DateTime($holiday['holiday_end']);
+        $interval = $start->diff($end);
+        $days = $interval->days + 1;
 
-        // Calculer le nombre de jours de vacances pour chaque intervalle de vacances.
-        for($i = $start; $i <= $end; $i->modify('+1 day')){
-            if($i->format("N") < 6) { // Si le jour n'est pas un samedi ou un dimanche
-                $usedHolidays++;
+        if ($days >= 7) {
+            for($i = clone $start; $i <= $end; $i->modify('+1 day')){
+                if($i->format("N") < 6) {
+                    $usedHolidays++;
+                }
             }
+            $completeWeeks = floor($days / 7);
+            $usedHolidays -= $completeWeeks * 2;
+        } else {
+            $usedHolidays += $days;
         }
     }
 }
 
-// Jours de vacances restants.
+// Étape 3 : Mettre à jour le total des jours de vacances.
 $remainingHolidays = $totalHolidays - $usedHolidays;
 
 echo "Nombre de jours de vacances restants : $remainingHolidays jours.";

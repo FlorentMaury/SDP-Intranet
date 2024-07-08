@@ -32,8 +32,8 @@ $data = $req->fetch();
         if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
         ?>
             <li id="managerViewGridButton">
-                <img src="./public/assets/add.svg" alt="Ajouter">
-                <p>
+                <img class="m-2" src="./public/assets/add.svg" alt="Ajouter">
+                <p class="m-2">
                     Collaborateurs
                 </p>
             </li>
@@ -41,26 +41,26 @@ $data = $req->fetch();
         }
         ?>
         <li id="generalInfosButton">
-            <img src="./public/assets/infosUser.svg" alt="Informations">
-            <p>
+            <img class="m-2" src="./public/assets/infosUser.svg" alt="Informations">
+            <p class="m-2">
                 Informations personnelles
             </p>
         </li>
         <li id="experiencesButton">
-            <img src="./public/assets/work.svg" alt="Experiences">
-            <p>
+            <img class="m-2" src="./public/assets/work.svg" alt="Experiences">
+            <p class="m-2">
                 Expériences
             </p>
         </li>
         <li id="contractButton">
-            <img src="./public/assets/place.svg" alt="Poste">
-            <p>
+            <img class="m-2" src="./public/assets/place.svg" alt="Poste">
+            <p class="m-2">
                 Contrat
             </p>
         </li>
         <li id="timeBankButton">
-            <img src="./public/assets/time.svg" alt="Time Bank">
-            <p>
+            <img class="m-2" src="./public/assets/time.svg" alt="Time Bank">
+            <p class="m-2">
                 Banque de temps
             </p>
         </li>
@@ -199,6 +199,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                                 <select type="text" name="holidayRequest" class="form-control" id="holidayRequest">
                                     <label for="holidayRequest">Réponse</label>
                                     <option value="1">Accepter</option>
+                                    <option value="3">En attente</option>
                                     <option value="2">Refuser</option>
                                 </select>
                                 <!-- Champ caché pour passer holiday_id -->
@@ -248,6 +249,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                                 <select type="text" name="dayOffRequest" class="form-control" id="dayOffRequest">
                                     <label for="dayOffRequest">Réponse</label>
                                     <option value="1">Accepter</option>
+                                    <option value="3">En attente</option>
                                     <option value="2">Refuser</option>
                                 </select>
                                 <!-- Champ caché pour passer day_off_id -->
@@ -261,7 +263,98 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
             }
             ?>
         </div>
+
+            <!-- Récap des demandes de vacances -->
+    <?php
+    // 1. Déterminer le mois en cours
+    $moisEnCours = date('m');
+
+    // 2. Récupérer les données
+    require('./model/connectionDBModel.php');
+    $requete = $bdd->prepare("
+    SELECT name, holiday_start, holiday_end, holiday_request_text 
+    FROM user_holiday 
+    INNER JOIN user ON id = holiday_id
+    WHERE (MONTH(holiday_start) = :moisEnCours OR MONTH(holiday_end) = :moisEnCours) 
+    AND holiday_response = 1
+");
+    $requete->execute(['moisEnCours' => $moisEnCours]);
+    $demandesVacances = $requete->fetchAll();
+
+    // 3. Créer la structure HTML
+    ?>
+    <div class="agendaVacances border rounded p-3 my-3">
+        <h2 class="display-6 text-center">Demandes de vacances pour le mois</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Motif</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // 4. Remplir la structure avec les données
+                foreach ($demandesVacances as $demande) {
+                    echo "<tr>";
+                    echo "<td>" . $demande['name'] . "</td>"; // Utilisez 'user_name' au lieu de 'holiday_id'
+                    echo "<td>" . $demande['holiday_start'] . "</td>";
+                    echo "<td>" . $demande['holiday_end'] . "</td>";
+                    echo "<td>" . $demande['holiday_request_text'] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
+
+    <?php
+    // 1. Déterminer le mois en cours
+    $moisEnCours = date('m');
+
+    // 2. Récupérer les données
+    require('./model/connectionDBModel.php');
+    $requete = $bdd->prepare("
+        SELECT user.name, user.surname, user_day_off.day_off, user_day_off.day_off_request_text 
+        FROM user_day_off 
+        INNER JOIN user ON user.id = user_day_off.user_day_off_id
+        WHERE MONTH(user_day_off.day_off) = :moisEnCours AND user_day_off.day_off_response = 0
+    ");
+    $requete->execute(['moisEnCours' => $moisEnCours]);
+    $joursDeRepos = $requete->fetchAll();
+
+    // 3. Créer la structure HTML
+    ?>
+
+    <div class="joursDeRepos border rounded p-3 my-3">
+        <h2 class="display-6 text-center">Demandes de jours de repos pour le mois</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Date de repos</th>
+                    <th>Motif</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // 4. Remplir la structure avec les données
+                foreach ($joursDeRepos as $jour) {
+                    echo "<tr>";
+                    echo "<td>" . $jour['name'] . " " . $jour['surname'] . "</td>";
+                    echo "<td>" . $jour['day_off'] . "</td>";
+                    echo "<td>" . $jour['day_off_request_text'] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
 
 <?php
 }
@@ -1020,6 +1113,19 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                                     } ?></p>
         </div>
 
+        <!-- Contrat semaine ou weekend. -->
+        <div>
+            <p>Contrat semaine ou weekend : <?php if ($data['contract_weekly'] == 0) {
+                                                echo 'En attente';
+                                            } else {
+                                                if ($data['contract_weekly'] == 1) {
+                                                    echo 'Semaine';
+                                                } else {
+                                                    echo 'Weekend';
+                                                }
+                                            } ?></p>
+        </div>
+
         <!-- Date de début. -->
         <div>
             <p>Date de début du contrat : <?php if (empty($data['contract_start'])) {
@@ -1095,10 +1201,10 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
         <!-- Médecine du travail. -->
         <div>
             <p>Date de la visite médicale : <?php if (empty($data['work_medicine'])) {
-                                                    echo 'En attente';
-                                                } else {
-                                                    echo $data['work_medicine'];
-                                                } ?></p>
+                                                echo 'En attente';
+                                            } else {
+                                                echo $data['work_medicine'];
+                                            } ?></p>
         </div>
     </div>
 </div>
@@ -1160,6 +1266,8 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                             echo '<p class="text-center text-white p-1 border rounded bg-success">Date validée !</p>';
                         } else if ($dayOff['day_off_response'] == 2) {
                             echo '<p class="text-center text-white p-1 border rounded bg-danger">Date refusée.</p>';
+                        } else if ($dayOff['day_off_response'] == 3) {
+                            echo '<p class="text-center text-white p-1 border rounded bg-warning">Date reçue et en attente de validation.</p>';
                         }
                         ?>
                     </p>
@@ -1494,6 +1602,8 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                                             echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
                                         } else if ($holiday['holiday_response'] == '2') {
                                             echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                        } else if ($holiday['holiday_response'] == '3') {
+                                            echo '<p class="text-center text-white p-1 border rounded bg-warning">Dates reçues et en attente de validation.</p>';
                                         }
                                         ?>
                                     </p>

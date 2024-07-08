@@ -47,7 +47,7 @@ $usersDayOff = $bdd->query('
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
         INNER JOIN user_day_off ON user.id = user_day_off.user_day_off_id
-        WHERE day_off_response = 0
+        WHERE day_off_response = 0 OR day_off_response = 3
         ');
 $usersHoliday = $bdd->query('
         SELECT *
@@ -56,8 +56,8 @@ $usersHoliday = $bdd->query('
         INNER JOIN user_role ON user.id = user_role.user_role_id
         INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
         INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
-        WHERE holiday_response = 0
-        ');
+        WHERE holiday_response = 0 OR holiday_response = 3        
+');
 
 // Accorder les privilèges EVENT et TRIGGER à l'utilisateur 'user' sur la base de données 'intranet_sdp'
 // $bdd->query("GRANT EVENT, TRIGGER ON intranet_sdp.* TO '%'@'localhost';");

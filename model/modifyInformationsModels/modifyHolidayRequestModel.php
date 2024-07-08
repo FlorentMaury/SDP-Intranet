@@ -49,6 +49,8 @@ if (
             $holidayRes = 'Acceptée';
         } else if ($holidayRequest == 2) {
             $holidayRes = 'Refusée';
+        } else if ($holidayRequest == 3) {
+            $holidayRes = 'Mise en attente';
         }
 
         // Modification des modifications dans la base de données.
@@ -115,6 +117,8 @@ if (
         $dayOffRes = 'acceptée';
     } else if ($dayOff1Request == 2) {
         $dayOffRes = 'refusée';
+    } else if ($dayOff1Request == 3) {
+        $dayOffRes = 'mise en attente';
     }
 
     // Sélection de l'ID.

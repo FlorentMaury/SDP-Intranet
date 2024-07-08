@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="./src/design/reset.css">
-    <link rel="stylesheet" href="./src/design/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="./src/design/reset.css">
+    <link rel="stylesheet" href="./src/design/style.css">
     <link rel="shortcut icon" href="./public/assets/favicon.ico" type="image/x-icon">
     <title><?= $title ?> | Intranet SDP</title>
 </head>
@@ -78,11 +78,10 @@
 
     <!-- Switch mode sombre -->
     <?php if (isset($_GET['page']) && $_GET['page'] != 'home' && $_SESSION) : ?>
-        <label class="switch m-4">
-            Mode nuit
-            <input type="checkbox" id="darkModeSwitch">
-            <span class="slider round"></span>
-        </label>
+        <div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="darkModeSwitch">
+  <label class="custom-control-label" for="darkModeSwitch">Mode nuit</label>
+</div>
     <?php endif; ?>
 
     <footer>

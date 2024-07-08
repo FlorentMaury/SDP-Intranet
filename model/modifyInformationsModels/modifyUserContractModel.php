@@ -31,6 +31,37 @@ if(
     };
 };
 
+// Vérification du formulaire de modification du contrat semaine ou weekend.
+if(
+    !empty($_POST['userContractWeek'])
+    ) {
+
+    // Connexion à la base de données.
+    require('./model/connectionDBModel.php');
+
+    // Variables.
+    $modifyUserContractWeek = htmlspecialchars($_POST['userContractWeek']);
+    $userId = $_GET['id'];
+
+    // Sélection de l'ID.
+    $r = $bdd->prepare("SELECT id FROM `user` WHERE id = ?");
+    $r->execute([$userId]);
+    $userModifiedId = $r->fetchColumn();
+
+    // Modification des modifications dans la base de données.
+    $req = $bdd->prepare('UPDATE user_role SET contract_weekly = ? WHERE user_role_id  = ?');
+    $result = $req->execute([$modifyUserContractWeek, $userModifiedId]);
+
+    // Redirection.
+    if($result) {
+        header('location: index.php?page=user&id=' . $userModifiedId .'&modification=1&action=userContractButton');
+        exit();
+    } else {
+        header('location: index.php?page=user&errorMod=1&messageMod=Impossible de modifier le type de ce contrat.');
+        exit();
+    };
+};
+
 
 // Vérification du formulaire de modification du début de contrat.
 if(

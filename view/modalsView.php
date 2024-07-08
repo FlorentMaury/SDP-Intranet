@@ -1492,6 +1492,30 @@
     </div>
 </div>
 
+<!-- Modale de modification du champ des contrats weekend ou semaine. -->
+<div class="modal fade" id="modifyContractWeek" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+            <!-- Titre de la modale. -->
+            <div class="modal-header">
+                <h5 class="modal-title">Contrat semaine ou weeekend</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <!-- Corps de la modale. -->
+            <form method="POST" action="index.php?page=user&id=<?= $data['id'] ?>">
+                <p class="form-floating m-2">
+                    <select name="userContractWeek" class="form-select" id="userContractWeek" class="form-select" aria-label="Select contract week">
+                        <option value="1">Semaine</option>
+                        <option value="2">Weekend</option>
+                    </select>
+                </p>
+                <button class="btn btn-md btn-dark mt-4 p-2" type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Modale de modification de date de début du contrat. -->
 <div class="modal fade" id="modifyContractStart" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
