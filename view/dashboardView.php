@@ -97,6 +97,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th class="creationDate">Compte de temps</th>
+                            <th>Nombre de vacances</th>
                             <th>Infos</th>
                         </thead>
                         <tbody>
@@ -116,6 +117,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                                         };
                                         ?>
                                     </td>
+                                    <td><?= $user['holidays_total'] ?></td>
                                     <td>
                                         <a href='index.php?page=user&id=<?= $user["id"] ?>&action=generalUserInfosButton' type="button" class="btn btn-info m-1">
                                             <img style="width: 15px" src="./public/assets/infos.svg" alt="Informations">
@@ -264,94 +266,113 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
             ?>
         </div>
 
-            <!-- Récap des demandes de vacances -->
-    <?php
-    // 1. Déterminer le mois en cours
-    $moisEnCours = date('m');
+<!-- Récap des demandes de vacances -->
+<?php
+// 1. Vérifier si un mois a été sélectionné, sinon utiliser le mois en cours
+$moisVacances = isset($_GET['moisVacances']) ? $_GET['moisVacances'] : date('m');
+$moisRepos = isset($_GET['moisRepos']) ? $_GET['moisRepos'] : date('m');
 
-    // 2. Récupérer les données
-    require('./model/connectionDBModel.php');
-    $requete = $bdd->prepare("
-    SELECT name, holiday_start, holiday_end, holiday_request_text 
+// 2. Récupérer les données
+require('./model/connectionDBModel.php');
+$requeteVacances = $bdd->prepare("
+    SELECT name, holiday_start, holiday_end, holiday_request_text, holidays_total
     FROM user_holiday 
-    INNER JOIN user ON id = holiday_id
-    WHERE (MONTH(holiday_start) = :moisEnCours OR MONTH(holiday_end) = :moisEnCours) 
+    INNER JOIN user ON id = user_holiday_id
+    INNER JOIN user_time_bank ON id = user_time_bank_id
+    WHERE (MONTH(holiday_start) = :moisVacances OR MONTH(holiday_end) = :moisVacances) 
     AND holiday_response = 1
 ");
-    $requete->execute(['moisEnCours' => $moisEnCours]);
-    $demandesVacances = $requete->fetchAll();
+$requeteVacances->execute(['moisVacances' => $moisVacances]);
+$demandesVacances = $requeteVacances->fetchAll();
 
-    // 3. Créer la structure HTML
-    ?>
-    <div class="agendaVacances border rounded p-3 my-3">
-        <h2 class="display-6 text-center">Demandes de vacances pour le mois</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Date de début</th>
-                    <th>Date de fin</th>
-                    <th>Motif</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // 4. Remplir la structure avec les données
-                foreach ($demandesVacances as $demande) {
-                    echo "<tr>";
-                    echo "<td>" . $demande['name'] . "</td>"; // Utilisez 'user_name' au lieu de 'holiday_id'
-                    echo "<td>" . $demande['holiday_start'] . "</td>";
-                    echo "<td>" . $demande['holiday_end'] . "</td>";
-                    echo "<td>" . $demande['holiday_request_text'] . "</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
+$requeteRepos = $bdd->prepare("
+    SELECT user.name, user.surname, user_day_off.day_off, user_day_off.day_off_request_text 
+    FROM user_day_off 
+    INNER JOIN user ON user.id = user_day_off.user_day_off_id
+    WHERE MONTH(user_day_off.day_off) = :moisRepos AND user_day_off.day_off_response = 0
+");
+$requeteRepos->execute(['moisRepos' => $moisRepos]);
+$joursDeRepos = $requeteRepos->fetchAll();
 
-    <?php
-    // 1. Déterminer le mois en cours
-    $moisEnCours = date('m');
+// 3. Créer la structure HTML
+?>
+<div class="agendaVacances border rounded p-3 my-3">
+    <h2 class="display-6 text-center">Demandes de vacances pour le mois</h2>
+    <!-- Formulaire pour sélectionner le mois -->
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>#vacances" method="get">
+        <input type="hidden" name="page" value="dashboard">
+        <select class="btn btn-md btn-light p-2 m-3 border-secondary" name="moisVacances">
+            <?php for ($i = 1; $i <= 12; $i++) : ?>
+                <option value="<?= str_pad($i, 2, '0', STR_PAD_LEFT) ?>" <?= $i == $moisVacances ? 'selected' : '' ?>>
+                    <?= DateTime::createFromFormat('!m', $i)->format('F') ?>
+                </option>
+            <?php endfor; ?>
+        </select>
+        <button class="btn btn-md btn-light p-2 m-3 border-secondary" type="submit">Afficher</button>
+    </form>
+    <table class="table" id="vacances">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Motif</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // 4. Remplir la structure avec les données
+            foreach ($demandesVacances as $demande) {
+                echo "<tr>";
+                echo "<td>" . $demande['name'] . "</td>";
+                echo "<td>" . $demande['holiday_start'] . "</td>";
+                echo "<td>" . $demande['holiday_end'] . "</td>";
+                echo "<td>" . $demande['holiday_request_text'] . "</td>";
+                echo "<td>" . $demande['holidays_total'] . "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
-    // 2. Récupérer les données
-    require('./model/connectionDBModel.php');
-    $requete = $bdd->prepare("
-        SELECT user.name, user.surname, user_day_off.day_off, user_day_off.day_off_request_text 
-        FROM user_day_off 
-        INNER JOIN user ON user.id = user_day_off.user_day_off_id
-        WHERE MONTH(user_day_off.day_off) = :moisEnCours AND user_day_off.day_off_response = 0
-    ");
-    $requete->execute(['moisEnCours' => $moisEnCours]);
-    $joursDeRepos = $requete->fetchAll();
-
-    // 3. Créer la structure HTML
-    ?>
-
-    <div class="joursDeRepos border rounded p-3 my-3">
-        <h2 class="display-6 text-center">Demandes de jours de repos pour le mois</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Date de repos</th>
-                    <th>Motif</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // 4. Remplir la structure avec les données
-                foreach ($joursDeRepos as $jour) {
-                    echo "<tr>";
-                    echo "<td>" . $jour['name'] . " " . $jour['surname'] . "</td>";
-                    echo "<td>" . $jour['day_off'] . "</td>";
-                    echo "<td>" . $jour['day_off_request_text'] . "</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
+<div class="joursDeRepos border rounded p-3 my-3">
+    <h2 class="display-6 text-center">Demandes de jours de repos pour le mois</h2>
+    <!-- Formulaire pour sélectionner le mois -->
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>#repos" method="get">
+        <input type="hidden" name="page" value="dashboard">
+        <select class="btn btn-md btn-light p-2 m-3 border-secondary" name="moisRepos">
+            <?php for ($i = 1; $i <= 12; $i++) : ?>
+                <option value="<?= str_pad($i, 2, '0', STR_PAD_LEFT) ?>" <?= $i == $moisRepos ? 'selected' : '' ?>>
+                    <?= DateTime::createFromFormat('!m', $i)->format('F') ?>
+                </option>
+            <?php endfor; ?>
+        </select>
+        <button class="btn btn-md btn-light p-2 m-3 border-secondary" type="submit">Afficher</button>
+    </form>
+    <table class="table" id="repos">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Date de repos</th>
+                <th>Motif</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // 4. Remplir la structure avec les données
+            foreach ($joursDeRepos as $jour) {
+                echo "<tr>";
+                echo "<td>" . $jour['name'] . " " . $jour['surname'] . "</td>";
+                echo "<td>" . $jour['day_off'] . "</td>";
+                echo "<td>" . $jour['day_off_request_text'] . "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
     </div>
 
 
@@ -1549,7 +1570,7 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                             <?php $data['holidays_total'];
 
                             if ($data['contract_type'] == "Stage") {
-                                echo 'Vous n\'avez pas de droit à des congés. Vous êtes en stage.';
+                                echo 'Vous êtes en stage. Vous n\'avez pas de droit à des congés.';
                             } elseif (empty($data['contract_type'])) {
                                 echo 'Votre type de contrat n\'est pas renseigné. Veuillez contacter votre responsable.';
                             } elseif (empty($data['contract_start'])) {
@@ -1628,35 +1649,88 @@ if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
                         <?php
                         }
                         ?>
+
+                        <!-- Récapitulatif des demandes de vacances de l'employé sour forme de tableau -->
+                        <?php
+                        // Vérifier si un mois a été sélectionné, sinon utiliser le mois en cours
+                        $moisEnCours2 = isset($_GET['mois']) ? $_GET['mois'] : date('m');
+                        ?>
+
+                        <!-- Formulaire pour sélectionner le mois -->
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+                            <input type="hidden" name="page" value="dashboard">
+                            <select class="btn btn-md btn-light p-2 m-3 border-secondary" name="mois">
+                                <?php for ($i = 1; $i <= 12; $i++) : ?>
+                                    <option value="<?= str_pad($i, 2, '0', STR_PAD_LEFT) ?>" <?= $i == $moisEnCours2 ? 'selected' : '' ?>>
+                                        <?= DateTime::createFromFormat('!m', $i)->format('F') ?>
+                                    </option>
+                                <?php endfor; ?>
+                            </select>
+                            <button class="btn btn-md btn-light p-2 m-3 border-secondary" type="submit">Afficher</button>
+                        </form>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date de début</th>
+                                        <th scope="col">Date de fin</th>
+                                        <th scope="col">Motif</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    // 2. Récupérer les données selon le mois sélectionné
+                                    require('./model/connectionDBModel.php');
+                                    $requete = $bdd->prepare("
+                SELECT name, holiday_start, holiday_end, holiday_request_text 
+                FROM user_holiday 
+                INNER JOIN user ON id = holiday_id
+                WHERE (MONTH(holiday_start) = :moisEnCours OR MONTH(holiday_end) = :moisEnCours) 
+                AND holiday_response = 1
+            ");
+                                    $requete->execute(['moisEnCours' => $moisEnCours2]);
+                                    $validatedHolidays = $requete->fetchAll();
+
+                                    foreach ($validatedHolidays as $holiday) {
+                                        echo "<tr>
+                        <td>" . (new DateTime($holiday['holiday_start']))->format('d-m-Y') . "</td>
+                        <td>" . (new DateTime($holiday['holiday_end']))->format('d-m-Y') . "</td>
+                        <td>" . $holiday['holiday_request_text'] . "</td>
+                      </tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
             </div>
-    </div>
 
-    <!-- Javascript dynamique. -->
-    <?php
-    $req = $bdd->prepare('
+            <!-- Javascript dynamique. -->
+            <?php
+            $req = $bdd->prepare('
 SELECT *
 FROM user 
 WHERE user.id = ?
 ');
-    $req->execute([$_SESSION['id']]);
-    $data = $req->fetch();
-    if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
-    ?>
-        <script type="text/javascript" src="./src/scriptDashboard.js"></script>
-    <?php
-    } else {
-    ?>
-        <script type="text/javascript" src="./src/scriptDashboardUsers.js"></script>
-    <?php
-    };
-    ?>
+            $req->execute([$_SESSION['id']]);
+            $data = $req->fetch();
+            if ($data['id'] == 1 || $data['id'] == 2 || $data['id'] == 3) {
+            ?>
+                <script type="text/javascript" src="./src/scriptDashboard.js"></script>
+            <?php
+            } else {
+            ?>
+                <script type="text/javascript" src="./src/scriptDashboardUsers.js"></script>
+            <?php
+            };
+            ?>
 
 
-    <?php
-    // Fin de l'enregistrement du HTML.
-    $content = ob_get_clean();
+            <?php
+            // Fin de l'enregistrement du HTML.
+            $content = ob_get_clean();
 
-    // Intégration à base.php.
-    require('base.php');
-    ?>
+            // Intégration à base.php.
+            require('base.php');
+            ?>

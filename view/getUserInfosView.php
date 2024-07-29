@@ -847,84 +847,6 @@ if (isset($_GET['id'])) {
         </button>
     </div>
 
-    <!-- Vacances. -->
-    <div class="border rounded mt-3 p-3">
-        <h4 class="my-3">Congés</h4>
-
-        <!-- Vacances. -->
-        <!-- Vacances. -->
-
-        <p>
-            <?php $data['holidays_total'];
-
-            if ($data['contract_type'] == "Stage") {
-                echo 'La personne est en stage et n\à pas de vacances.';
-            } elseif (empty($data['contract_type'])) {
-                echo 'Le type de contrat n\'est pas renseigné.';
-            } elseif (empty($data['contract_start'])) {
-                echo 'La date de début de contrat n\'est pas renseignée.';
-            } else {
-                require('./model/holidaysMathModel.php');
-            }
-
-            ?>
-        </p>
-        <?php
-        // Exécution de la requête SQL
-        $usersHoliday = $bdd->prepare('
-            SELECT *
-            FROM user 
-            INNER JOIN user_exp ON user.id = user_exp.user_exp_id
-            INNER JOIN user_role ON user.id = user_role.user_role_id
-            INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
-            INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
-            WHERE user_holiday.user_holiday_id = ?
-        ');
-        $usersHoliday->execute([$data['id']]);
-
-        // Récupération des résultats.
-        $userHolidayData = $usersHoliday->fetchAll();
-
-        // Affichage des résultats.
-        if (empty($userHolidayData)) {
-            echo ('<p>Aucune demande de vacances</p>');
-        }
-        foreach ($userHolidayData as $holiday) {
-        ?>
-
-            <div class="userExpGrid d-flex flex-column flex-md-row">
-
-                <div class="expFirstItem border rounded m-1 p-3">
-                    <button class="btn btn-md btn-light mb-4">
-                        <a href='./model/deleteHolidayRequest.php?id=
-                        <?= $holiday["user_holiday_id"] ?>
-                        &holiday=<?= $holiday['holiday_start'] ?>' type="button" class="btn btn-infos">
-                            Supprimer la demande
-                        </a>
-                    </button>
-                    <p>Dates de la demande : du <?= $holiday['holiday_start'] ?> au <?= $holiday['holiday_end'] ?></p>
-                    <p>Motif : <?= $holiday['holiday_request_text'] ?></p>
-                    <p>
-                        <?php
-                        if ($holiday['holiday_response'] == '0') {
-                            echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
-                        } else if ($holiday['holiday_response'] == '1') {
-                            echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
-                        } else if ($holiday['holiday_response'] == '2') {
-                            echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
-                        }
-                        ?>
-                    </p>
-                </div>
-
-            </div>
-
-        <?php
-        }
-        ?>
-
-    </div>
-
     <!-- Temps supplémentaire. -->
     <div class="border rounded mt-3 p-3">
         <h4 class="my-3">Temps supplémentaire</h4>
@@ -998,8 +920,139 @@ if (isset($_GET['id'])) {
             }
             ?>
             </div>
+
+            <!-- Vacances. -->
+            <div class="border rounded mt-3 p-3">
+                <h4 class="my-3">Congés</h4>
+
+                <!-- Vacances. -->
+                <!-- Vacances. -->
+
+                <p>
+                    <?php $data['holidays_total'];
+
+                    if ($data['contract_type'] == "Stage") {
+                        echo 'La personne est en stage et n\à pas de vacances.';
+                    } elseif (empty($data['contract_type'])) {
+                        echo 'Le type de contrat n\'est pas renseigné.';
+                    } elseif (empty($data['contract_start'])) {
+                        echo 'La date de début de contrat n\'est pas renseignée.';
+                    } else {
+                        require('./model/holidaysMathModel.php');
+                    }
+
+                    ?>
+                </p>
+                <?php
+                // Exécution de la requête SQL
+                $usersHoliday = $bdd->prepare('
+            SELECT *
+            FROM user 
+            INNER JOIN user_exp ON user.id = user_exp.user_exp_id
+            INNER JOIN user_role ON user.id = user_role.user_role_id
+            INNER JOIN user_time_bank ON user.id = user_time_bank.user_time_bank_id
+            INNER JOIN user_holiday ON user.id = user_holiday.user_holiday_id
+            WHERE user_holiday.user_holiday_id = ?
+        ');
+                $usersHoliday->execute([$data['id']]);
+
+                // Récupération des résultats.
+                $userHolidayData = $usersHoliday->fetchAll();
+
+                // Affichage des résultats.
+                if (empty($userHolidayData)) {
+                    echo ('<p>Aucune demande de vacances</p>');
+                }
+                foreach ($userHolidayData as $holiday) {
+                ?>
+
+                    <div class="userExpGrid d-flex flex-column flex-md-row">
+
+                        <div class="expFirstItem border rounded m-1 p-3">
+                            <button class="btn btn-md btn-light mb-4">
+                                <a href='./model/deleteHolidayRequest.php?id=
+                        <?= $holiday["user_holiday_id"] ?>
+                        &holiday=<?= $holiday['holiday_start'] ?>' type="button" class="btn btn-infos">
+                                    Supprimer la demande
+                                </a>
+                            </button>
+                            <p>Dates de la demande : du <?= $holiday['holiday_start'] ?> au <?= $holiday['holiday_end'] ?></p>
+                            <p>Motif : <?= $holiday['holiday_request_text'] ?></p>
+                            <p>
+                                <?php
+                                if ($holiday['holiday_response'] == '0') {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-info">En attente de validation.</p>';
+                                } else if ($holiday['holiday_response'] == '1') {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-success">Dates validées !</p>';
+                                } else if ($holiday['holiday_response'] == '2') {
+                                    echo '<p class="text-center text-white p-1 border rounded bg-danger">Dates refusées.</p>';
+                                }
+                                ?>
+                            </p>
+                        </div>
+
+                    </div>
+
+                <?php
+                }
+                ?>
+
+            </div>
+
+            <!-- Récapitulatif des demandes de vacances de l'employé sous forme de tableau -->
+            <?php
+            // Vérifier si un mois a été sélectionné, sinon utiliser le mois en cours
+            $moisEnCours2 = isset($_GET['mois']) ? $_GET['mois'] : date('m');
+            ?>
+
+            <!-- Formulaire pour sélectionner le mois -->
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+                <input type="hidden" name="page" value="dashboard">
+                <select class="btn btn-md btn-light p-2 m-3 border-secondary" name="mois">
+                    <?php for ($i = 1; $i <= 12; $i++) : ?>
+                        <option value="<?= str_pad($i, 2, '0', STR_PAD_LEFT) ?>" <?= $i == $moisEnCours2 ? 'selected' : '' ?>>
+                            <?= DateTime::createFromFormat('!m', $i)->format('F') ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+                <button class="btn btn-md btn-light p-2 m-3 border-secondary" type="submit">Afficher</button>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date de début</th>
+                            <th scope="col">Date de fin</th>
+                            <th scope="col">Motif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Récupérer les données selon le mois sélectionné
+                        require('./model/connectionDBModel.php');
+                        $requete = $bdd->prepare("
+                SELECT name, holiday_start, holiday_end, holiday_request_text 
+                FROM user_holiday 
+                INNER JOIN user ON id = holiday_id
+                WHERE (MONTH(holiday_start) = :moisEnCours OR MONTH(holiday_end) = :moisEnCours) 
+                AND holiday_response = 1
+            ");
+                        $requete->execute(['moisEnCours' => $moisEnCours2]);
+                        $validatedHolidays = $requete->fetchAll();
+
+                        foreach ($validatedHolidays as $holiday) {
+                            echo "<tr>
+                        <td>" . (new DateTime($holiday['holiday_start']))->format('d-m-Y') . "</td>
+                        <td>" . (new DateTime($holiday['holiday_end']))->format('d-m-Y') . "</td>
+                        <td>" . $holiday['holiday_request_text'] . "</td>
+                      </tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
     </div>
-</div>
 </div>
 
 <button type="button" href="" class="btn btn-dark m-2">

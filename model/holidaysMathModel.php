@@ -66,31 +66,24 @@
 $contractStartQuery = $bdd->prepare('SELECT contract_start FROM user_role WHERE user_role_id = ?');
 $contractStartQuery->execute([$data['user_role_id']]);
 $contractStart = $contractStartQuery->fetchColumn();
-
 $contractStartDate = new DateTime($contractStart);
 $today = new DateTime();
 $interval = $contractStartDate->diff($today);
 $monthsWorked = ($interval->y * 12) + $interval->m;
-$totalHolidaysAccrued = $monthsWorked * 2.5;
 
-// Récupérer le nombre total de jours de vacances de la base de données et ajouter les jours acquis.
-$totalHolidaysQuery = $bdd->prepare('SELECT holidays_total FROM user_time_bank WHERE user_time_bank_id = ?');
-$totalHolidaysQuery->execute([$data['id']]);
-$totalHolidays = $totalHolidaysQuery->fetchColumn() + $totalHolidaysAccrued;
+// Modifier ici le taux à 2,08 jours de vacances par mois travaillé
+$totalHolidaysAccrued = $monthsWorked * 2.08;
 
 // Étape 2 : Calculer les jours de vacances utilisés.
 $holidayQuery = $bdd->prepare('SELECT holiday_start, holiday_end FROM user_holiday WHERE user_holiday_id = ? AND holiday_response = 1');
 $holidayQuery->execute([$data['id']]);
-
 $usedHolidays = 0;
-
 if ($holidayQuery->rowCount() > 0) {
     while ($holiday = $holidayQuery->fetch(PDO::FETCH_ASSOC)) {
         $start = new DateTime($holiday['holiday_start']);
         $end = new DateTime($holiday['holiday_end']);
         $interval = $start->diff($end);
         $days = $interval->days + 1;
-
         if ($days >= 7) {
             for($i = clone $start; $i <= $end; $i->modify('+1 day')){
                 if($i->format("N") < 6) {
@@ -98,7 +91,7 @@ if ($holidayQuery->rowCount() > 0) {
                 }
             }
             $completeWeeks = floor($days / 7);
-            $usedHolidays -= $completeWeeks * 2;
+            $usedHolidays -= $completeWeeks * 2; // Ajuster pour les weekends dans les périodes de vacances longues
         } else {
             $usedHolidays += $days;
         }
@@ -106,8 +99,8 @@ if ($holidayQuery->rowCount() > 0) {
 }
 
 // Étape 3 : Mettre à jour le total des jours de vacances.
-$remainingHolidays = $totalHolidays - $usedHolidays;
+// Assurez-vous que le total des jours de vacances acquis n'est pas ajouté directement à la base de données sans vérification
+$totalHolidays = max(0, $totalHolidaysAccrued - $usedHolidays); // S'assurer que le total n'est pas négatif
 
-echo "Nombre de jours de vacances restants : $remainingHolidays jours.";
-
+echo "Nombre de jours de vacances restants : " . floor($totalHolidays) . " jours.";
 ?>
